@@ -5,16 +5,8 @@
             "link": "/"
         },
         {
-            "tag": "Getting Started - 5 mins",
-            "children": [
-                {
-                    "tag": "Introduction",
-                    "link": "/docs/intro"
-                },{
-                    "tag": "Basic Usage",
-                    "link": "/docs/summary"
-                }
-            ]
+            "tag": "Getting Started - 5 Mins",
+            "link": "/docs/intro"
         },
         {
             "tag": "Config .json Files",
@@ -28,6 +20,9 @@
                 },{
                     "tag": "sidebar.json",
                     "link": "/docs/sidebar"
+                },{
+                    "tag": "Brand Name",
+                    "link": "/docs/brandname"
                 }
             ]
         },
@@ -35,11 +30,11 @@
             "tag": "Resources",
             "children": [
                 {
-                    "tag": "Website Github",
+                    "tag": "Clone Site Files - Github",
                     "type": "external",
                     "link": "https://github.com/ngDocumentor/ngDocumentor.github.io"
                 },{
-                    "tag": "Development Branch",
+                    "tag": "Development Branch - Github",
                     "type": "external",
                     "link": "https://github.com/ngDocumentor/ngDocumentor"
                 },{

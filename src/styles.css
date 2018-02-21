@@ -60,3 +60,7 @@ code[class*="language-"], pre[class*="language-"] {
     text-shadow: 0 0px rgba(0, 0, 0, 0.3) !important;
   }
 }
+
+.markdownclass {
+  padding:20px; border: 1px dotted #ddd; box-shadow: 3px 5px 3px 5px #f9f9f9;
+}

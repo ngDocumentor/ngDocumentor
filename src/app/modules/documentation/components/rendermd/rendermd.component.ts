@@ -25,6 +25,12 @@ export class RendermdComponent implements OnInit {
       }, (error) => {
         that._mhSrv.getSource('/assets/mddocs/' + 'intro.md').subscribe((data) => {
           that.fileData = data;
+        }, (error) => {
+          that.fileData = `
+          # 404 Error
+
+          Note: The file you were trying to find did not exist.
+          `
         });
       });
 
