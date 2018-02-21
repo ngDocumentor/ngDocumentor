@@ -1,0 +1,18 @@
+{
+    "brandname": " { ngDocumentor } ",
+    "topnav": [
+        {
+            "tag": "Getting Started",
+            "type": "internal",
+            "link": "/docs/intro"
+        },{
+            "tag": "Config .json Files",
+            "type": "internal",
+            "link": "/docs/config"
+        },{
+            "tag": "Github",
+            "type": "external",
+            "link": "https://github.com/ngDocumentor/ngDocumentor"
+        }
+    ]
+}
