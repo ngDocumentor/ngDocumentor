@@ -1,6 +1,6 @@
 # Brandname specification
 
-* The brand name is specified in the topnav.json config file. Read more about creating [`topnav.json` here](/docs/topnav)
+* The brand name is specified in the topnav.json config file. 
 
 
 * Key `brandname` specifies the brand name for the site (Sidebar and the Top navigation bar).
