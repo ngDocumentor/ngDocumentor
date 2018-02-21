@@ -4,7 +4,7 @@
 * The side navigation bar links are specified by `assets/config/sidebar.json` file as mentioned.
 
 
-* NOTE: The link definition need to be specified correctly for ngDocumentor to work right. It assumes you are providing the right definitions.
+* NOTE: The link definition needs to be specified correctly for ngDocumentor to work right. It assumes you are providing the right definitions.
 
 
 * The link definitions are very simple .json syntax; and look similar to that of topnav.json. Look at the following .json sample:
