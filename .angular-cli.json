@@ -20,7 +20,7 @@
       "prefix": "app",
       "styles": [
         "../node_modules/prismjs/themes/prism-okaidia.css",
-        "styles.1.css"
+        "styles.css"
         
       ],
       "scripts": [],
