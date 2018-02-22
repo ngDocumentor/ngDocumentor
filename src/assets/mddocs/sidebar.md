@@ -15,12 +15,12 @@
 ```json
 {
     "sidebar": [
-        { "tag": "Home", "link": "/" },
+        { "tag": "Home", "link": "/home" },
         {
             "tag": "Getting Started - 5 mins",
             "children": [
-                { "tag": "Introduction", "link": "/docs/intro" },
-                { "tag": "Basic Usage", "link": "/docs/summary" }
+                { "tag": "Introduction", "link": "/intro" },
+                { "tag": "Basic Usage", "link": "/summary" }
             ]
         }
     ]
@@ -55,7 +55,7 @@
 * The key children specifies the children / sub-menu item definitions. They are exactly the same as a normal link definition with `tag`, `type`, and `link`. All definition details are the same. `type` is for external links and all other values of type will be ignored as other definitions.
 
 
-* NOTE: The path maps compulsorily to `/docs/FILENAME` (without the .md). Example: `assets/mddocs/FILENAME.md` will map to application url `/docs/FILENAME`. Similarly, `assets/mddocs/somefolder/FILENAME` will map to application url `/docs/somefolder/FILENAME`. Please use your link url path mapping accordingly.
+* NOTE: The path maps compulsorily to `/FILENAME` (without the .md). Example: `assets/mddocs/FILENAME.md` will map to application url `/FILENAME`. Similarly, `assets/mddocs/somefolder/FILENAME` will map to application url `/somefolder/FILENAME`. Please use your link url path mapping accordingly.
 
 
 * Thats it!! You now know how to define `sidebar.json` definitions for side navigation bar.

@@ -12,7 +12,7 @@ ngDocumenter is a simple website that will serve your .md files from a location 
 * If you have created your markdown wiki for your project, that should be your starting point. Copy all your `.md` files (in respective folder structure, if needed) into the `assets/mddocs` folder in the cloned repository.
 
 
-* Create `assets/mddocs/home.md` and `assets/mddocs/error.md` for top first level links. [1] `home.md` will be path `/`, and [2] `error` will be path `/error` to be used in topnav links.
+* Create `assets/mddocs/home.md` for top first level home link. [1] `home.md` will be path `/` or `/home`.
 
 
 * You sidebar and top navigation both can be dynamically specified using `.json` configuration files inside `assets/config/` folder. Top navigation in `assets/config/topnav.json` and Sidebar menu in `assets/config/sidebar.json`
@@ -26,8 +26,8 @@ ngDocumenter is a simple website that will serve your .md files from a location 
 {
     "brandname": "My Documentation",
     "topnav": [
-        { "tag": "Home", "link": "/" },
-        { "tag": "Getting Started", "link": "/" }
+        { "tag": "Home", "link": "/home" },
+        { "tag": "Getting Started", "link": "/intro" }
     ]
 }
 ```
@@ -41,12 +41,12 @@ ngDocumenter is a simple website that will serve your .md files from a location 
 ```json
 {
     "sidebar": [
-        { "tag": "Home", "link": "/" },
+        { "tag": "Home", "link": "/home" },
         {
             "tag": "Getting Started - 5 mins",
             "children": [
-                { "tag": "Introduction", "link": "/docs/intro" },
-                { "tag": "Basic Usage", "link": "/docs/summary" }
+                { "tag": "Introduction", "link": "/intro" },
+                { "tag": "Basic Usage", "link": "/summary" }
             ]
         }
     ]
@@ -54,7 +54,7 @@ ngDocumenter is a simple website that will serve your .md files from a location 
 ```
 
 
-* NOTE: All .md files other than home.md and error.md will map to `/docs/FILENAME` (without .md) url path for .json configuration files. Example: `assets/mddocs/introduction.md` will be mapped to link `/docs/introduction`.
+* NOTE: All .md files including home.md and error.md will map to `/FILENAME` (without .md) url path for .json configuration files. Example: `assets/mddocs/introduction.md` will be mapped to link `/introduction`.
 
 
 * NOTE: Change the `<base href="/">` to `your` server subfolder path, if not root.

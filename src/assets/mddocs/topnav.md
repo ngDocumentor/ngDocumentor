@@ -16,8 +16,8 @@
 {
     "brandname": "My Documentation",
     "topnav": [
-        { "tag": "Home", "link": "/" },
-        { "tag": "Getting Started", "link": "/" }
+        { "tag": "Home", "link": "/home" },
+        { "tag": "Getting Started", "link": "/intro" }
     ]
 }
 ```
@@ -35,7 +35,7 @@
 * There is another optional internal key definition - `type`. It expects only one value - `external`. All other values or even the existance of key is ignored. The {Key:Value} `{"type":"external"}` denotes that it is an external site url (complete with http:// path). These links will open the specified `link` url in a new tab window.
 
 
-* NOTE: The path maps compulsorily to `/docs/FILENAME` (without the .md). Example: `assets/mddocs/FILENAME.md` will map to application url `/docs/FILENAME`. Similarly, `assets/mddocs/somefolder/FILENAME` will map to application url `/docs/somefolder/FILENAME`. Please use your link url path mapping accordingly.
+* NOTE: The path maps compulsorily to `/FILENAME` (without the .md). Example: `assets/mddocs/FILENAME.md` will map to application url `/FILENAME`. Similarly, `assets/mddocs/somefolder/FILENAME` will map to application url `/somefolder/FILENAME`. Please use your link url path mapping accordingly.
 
 
 * Thats it!! You now know how to create `topnav.json` definitions for top navigation. We will talk about brandname  in the brandname section.

@@ -20,16 +20,33 @@ export class RendermdComponent implements OnInit {
   ngOnInit() {
     let that = this;
     this._ar.url.subscribe((url) => {
-      that._mhSrv.getSource('assets/mddocs/' + url.join('/') + '.md').subscribe((data) => {
-        that.fileData = data;
-      }, (error) => {
-        that._mhSrv.getSource('assets/mddocs/' + 'intro.md').subscribe((data) => {
-          that.fileData = data;
-        }, (error) => {
+      let uri;
+      if (!url.join('/') || url.join('/') === '' || url.join('/') === '/') {
+        uri = 'home';
+      } else {
+        uri = url.join('/');
+      }
+      that._mhSrv.getSource('assets/mddocs/' + uri + '.md').subscribe((data) => {
+        console.log('Log area one');
+        if (data.includes('<!doctype html>')) {
           that.fileData = `
           # 404 Error
 
-          Note: The file you were trying to find did not exist.
+          Note: The file you were trying to find did not exist or escaped an unknown error.
+          `;
+        } else {
+          that.fileData = data;
+        }
+      }, (error) => {
+        that._mhSrv.getSource('assets/mddocs/' + 'home.md').subscribe((data) => {
+          console.log('Log area two');
+          that.fileData = data;
+        }, (error) => {
+          console.log('Log area three');
+          that.fileData = `
+          # 404 Error
+
+          Note: The file you were trying to find did not exist or escaped an unknown error.
           `
         });
       });
