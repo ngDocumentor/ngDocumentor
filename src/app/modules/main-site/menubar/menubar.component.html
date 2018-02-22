@@ -62,8 +62,8 @@
                 <div [ngStyle]="styleList[i] ? styleList[i] : styleList[i]={ 'display': 'none' }" class="panel-sidebar">
                     <p *ngFor="let dyobj of obj.children; let j = index;">
                         <ng-container>
-                            <a *ngIf="dyobj.type != 'external'" (click)="closeNav()" class="margin-zero fontcolor-primary" [routerLink]="dyobj.link ? dyobj.link : '/docs'">{{dyobj.tag ? dyobj.tag : 'No Tag'}}</a>
-                            <a  *ngIf="dyobj.type == 'external'" (click)="closeNav()" [attr.external]="dyobj" opennewwindow class="margin-zero fontcolor-primary" [routerLink]="dyobj.link ? obj.link : '/docs'">{{dyobj.tag ? dyobj.tag : 'No Tag'}}</a>
+                            <a *ngIf="dyobj.type != 'external'" (click)="closeMobileNav()" class="margin-zero fontcolor-primary" [routerLink]="dyobj.link ? dyobj.link : '/docs'">{{dyobj.tag ? dyobj.tag : 'No Tag'}}</a>
+                            <a  *ngIf="dyobj.type == 'external'" (click)="closeMobileNav()" [attr.external]="dyobj" opennewwindow class="margin-zero fontcolor-primary" [routerLink]="dyobj.link ? obj.link : '/docs'">{{dyobj.tag ? dyobj.tag : 'No Tag'}}</a>
                         </ng-container>
                     </p>
                 </div>
@@ -72,8 +72,8 @@
             <span *ngIf="!obj.children">
                 <p>
                     <ng-container>
-                        <a *ngIf="obj.type != 'external'" (click)="closeNav()" class="margin-zero fontcolor-primary" [routerLink]="obj.link ? obj.link : '/docs'">{{obj.tag ? obj.tag : 'No Tag'}}</a>
-                        <a  *ngIf="obj.type == 'external'" (click)="closeNav()" [attr.external]="obj" opennewwindow class="margin-zero fontcolor-primary" [routerLink]="obj.link ? obj.link : '/docs'">{{obj.tag ? obj.tag : 'No Tag'}}</a>
+                        <a *ngIf="obj.type != 'external'" (click)="closeMobileNav()" class="margin-zero fontcolor-primary" [routerLink]="obj.link ? obj.link : '/docs'">{{obj.tag ? obj.tag : 'No Tag'}}</a>
+                        <a  *ngIf="obj.type == 'external'" (click)="closeMobileNav()" [attr.external]="obj" opennewwindow class="margin-zero fontcolor-primary" [routerLink]="obj.link ? obj.link : '/docs'">{{obj.tag ? obj.tag : 'No Tag'}}</a>
                     </ng-container>
                     
                 </p>

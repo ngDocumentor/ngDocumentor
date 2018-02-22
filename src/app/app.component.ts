@@ -9,9 +9,9 @@ import { HttpService } from './commons/services/http/http.service';
 })
 export class AppComponent implements OnInit {
 
-  @Input('sidebarSrc') sidebarSrc: any = '/assets/config/sidebar.json';
+  @Input('sidebarSrc') sidebarSrc: any = 'assets/config/sidebar.json';
 
-  @Input('topnavSrc') topnavSrc: any = '/assets/config/topnav.json';
+  @Input('topnavSrc') topnavSrc: any = 'assets/config/topnav.json';
 
   brandname: string = ' { ngDocumentor } ';
 

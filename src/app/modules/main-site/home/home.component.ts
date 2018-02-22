@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  homeData: string = '/assets/mddocs/home.md';
+  homeData: string = 'assets/mddocs/home.md';
 
   constructor() { }
 

@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ErrorComponent implements OnInit {
 
-  errorData: string = '/assets/mddocs/error.md';
+  errorData: string = 'assets/mddocs/error.md';
   
   constructor() { }
 
