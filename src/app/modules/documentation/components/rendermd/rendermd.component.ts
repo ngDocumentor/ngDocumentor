@@ -20,10 +20,10 @@ export class RendermdComponent implements OnInit {
   ngOnInit() {
     let that = this;
     this._ar.url.subscribe((url) => {
-      that._mhSrv.getSource('/assets/mddocs/' + url.join('/') + '.md').subscribe((data) => {
+      that._mhSrv.getSource('assets/mddocs/' + url.join('/') + '.md').subscribe((data) => {
         that.fileData = data;
       }, (error) => {
-        that._mhSrv.getSource('/assets/mddocs/' + 'intro.md').subscribe((data) => {
+        that._mhSrv.getSource('assets/mddocs/' + 'intro.md').subscribe((data) => {
           that.fileData = data;
         }, (error) => {
           that.fileData = `
