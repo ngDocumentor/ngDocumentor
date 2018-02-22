@@ -17,19 +17,17 @@ import { HttpService } from './commons/services/http/http.service';
 
 // Components Directives Pipes
 import { AppComponent } from './app.component';
-import { HomeComponent } from './modules/main-site/home/home.component';
-import { ErrorComponent } from './modules/main-site/error/error.component';
 import { MenubarComponent } from './modules/main-site/menubar/menubar.component';
 import { OpenLinkInNewWindowDirective } from './commons/directives/newwindow/newwindow.directive';
+import { RendermdComponent } from './modules/main-site/rendermd/rendermd.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    ErrorComponent,
     MenubarComponent,
     OpenLinkInNewWindowDirective,
+    RendermdComponent
   ],
   imports: [
     BrowserModule,

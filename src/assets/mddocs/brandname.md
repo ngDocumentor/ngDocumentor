@@ -12,8 +12,8 @@
 {
     "brandname": "My Documentation",
     "topnav": [
-        { "tag": "Home", "link": "/" },
-        { "tag": "Getting Started", "link": "/" }
+        { "tag": "Home", "link": "/home" },
+        { "tag": "Getting Started", "link": "/intro" }
     ]
 }
 ```

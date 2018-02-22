@@ -1,15 +1,11 @@
 import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { HomeComponent } from '../modules/main-site/home/home.component';
-import { ErrorComponent } from '../modules/main-site/error/error.component';
+import { RendermdComponent } from '../modules/main-site/rendermd/rendermd.component';
 
 
 const appRoutes: Routes = [
-    { path: '', component:  HomeComponent },
-    { path: 'error', component:  ErrorComponent },
-    { path: 'docs', loadChildren: 'app/modules/documentation/documentation.module#DocumentationModule' },
-    { path: '**', redirectTo: '/error', pathMatch: 'full' }
+    { path: '**', component:  RendermdComponent }
 ];
 
 export const appRoutingProviders: any[] = [

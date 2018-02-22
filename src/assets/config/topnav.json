@@ -4,11 +4,11 @@
         {
             "tag": "Getting Started",
             "type": "internal",
-            "link": "/docs/intro"
+            "link": "/intro"
         },{
             "tag": "Config .json Files",
             "type": "internal",
-            "link": "/docs/config"
+            "link": "/config"
         },{
             "tag": "Github",
             "type": "external",

@@ -66,7 +66,7 @@ export class MenubarComponent implements OnInit {
   }
 
   routeMain() {
-    this._rtr.navigateByUrl('/');
+    this._rtr.navigateByUrl('/home');
   }
 
   routeTopnav(event: any, obj: any) {
@@ -80,7 +80,7 @@ export class MenubarComponent implements OnInit {
       }
     } else {
       event.target.target = '_self';
-      this._rtr.navigateByUrl('/docs');
+      this._rtr.navigateByUrl('/home');
     }
     return false;
   }
