@@ -60,5 +60,8 @@ ngDocumenter is a simple website that will serve your .md files from a location 
 * NOTE: Change the `<base href="/">` to `your` server subfolder path, if not root.
 
 
-* Thats it! Push your code to your server root. Your simple documentation site is online.
+* Thats it! Push your code to your server root. Your simple documentation site is online. 
+
+
+* Supports HTML only sites like github pages where there is no server configuration access to add url rewrites.
 
