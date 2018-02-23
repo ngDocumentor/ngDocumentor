@@ -1,8 +1,11 @@
 /* BASE FONT COLOR START */
 
+.font-bold {
+    font-weight: bold !important;
+}
 
 .fontcolor-default {
-    color: #323232 !important;
+    color: slategray !important;
 }
 
 .fontcolor-default:hover {
@@ -46,7 +49,7 @@
     min-height: 50px !important;
     width: 100%;
     max-width:100%;
-    
+    opacity: 0.75;
 }
 
 /* Style the links inside the navigation bar */
@@ -176,7 +179,7 @@
 .sidenav a, .sidenav p a {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
-    color: #323232;
+    color: slategray;
     display: block;
     transition: 0.5s;
 }
@@ -219,7 +222,7 @@
 /* Style the buttons that are used to open and close the accordion panel */
 .accordion {
     background-color: #ffffff;
-    color: #323232;
+    color: slategray;
     cursor: pointer;
     padding: 10px 30px;
     width: 100% !important;
@@ -233,9 +236,15 @@
 /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
 .active-sidebar, .accordion:hover {
     border: 1px dotted rgba(240, 239, 239, 0.8);
-    color: #323232;
+    color: slategray;
 }
 
+.button-plus-span {
+    padding: 0px 4px; 
+    background-color: #2980b9;
+    color: #f9f9f9;
+    border-radius: 2px;
+}
 
 /* Style the accordion panel. Note: hidden by default */
 .panel-sidebar {

@@ -15,7 +15,7 @@
             &nbsp;&nbsp;&nbsp;
         </span>
         <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-        <span (click)="routeMain()" class="font-primary"> {{ brandname }} </span>
+        <span (click)="routeMain()" class="fontcolor-primary font-bold"> {{ brandname }} </span>
     </a>
     
     <a class="invisible-brand" href="#/home"></a>
@@ -41,13 +41,15 @@
         </span>
 
         <span >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-        <span  class="pad-left-right" (click)="routeMain()" class="font-primary"> {{ brandname }} </span>
+        <span  class="pad-left-right" (click)="routeMain()" class="fontcolor-primary font-bold"> {{ brandname }} </span>
     </a>
     
 </div>
-<div #sidebarfixed id="sidebarfixed" class="sidenav">
-    <a href="#/home" class="brandname fontcolor-primary">  {{ brandname }}  </a>
-     <a style="font-size: 18px;" href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a> 
+<div #sidebarfixed id="sidebarfixed" class="sidenav sbar-style">
+    <a href="#/home" class="brandname fontcolor-primary font-bold">  {{ brandname }}  </a>
+     <a style="font-size: 18px;" href="javascript:void(0)" class="closebtn" (click)="closeNav()">
+         <span class="button-plus-span">&times;</span>
+     </a> 
 
     
     <div style="margin-top: 50px !important;">
@@ -57,7 +59,7 @@
             <span *ngIf="!!obj.children">
                 <button (click)="openItems($event, i)" [ngClass]="accordianClassList[i] ? accordianClassList[i] : accordianClassList[i]={'accordion': true, 'active-sidebar': false}">
                     <span>{{obj.tag}}</span>
-                    <span style="float: right">+</span>
+                    <span style="float: right" class="button-plus-span">+</span>
                 </button>
                 <div [ngStyle]="styleList[i] ? styleList[i] : styleList[i]={ 'display': 'none' }" class="panel-sidebar">
                     <p *ngFor="let dyobj of obj.children; let j = index;">
