@@ -36,7 +36,7 @@ a, a:hover, a:active, a:focus {
   
 }
 code[class*="language-"], pre[class*="language-"] {
-  color: #7f8c8d  !important;
+  color: #57606f  !important;
   text-shadow: 0 0px rgba(0, 0, 0, 0.3) !important;
 }
 
@@ -57,7 +57,7 @@ code[class*="language-"], pre[class*="language-"] {
     
   }
   code[class*="language-"], pre[class*="language-"] {
-    color: #f9f9f9  !important;
+    color: #57606f !important;
     text-shadow: 0 0px rgba(0, 0, 0, 0.3) !important;
   }
 }
