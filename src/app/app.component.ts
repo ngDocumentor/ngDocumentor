@@ -22,7 +22,7 @@ export class AppComponent implements OnInit {
   constructor(private _h: HttpService) {
   }
 
-  getTopnav(topnavSrc: string) { 
+  getTopnav(topnavSrc: string) {
     const that = this;
 
     that._h.httpReq(topnavSrc, 'GET', null, null)
@@ -50,13 +50,12 @@ export class AppComponent implements OnInit {
 
   }
 
-  
-
   ngOnInit() {
+    let that = this;
     this._h.fileUrl = window.location.href;
     this._h.getRouteEvent();
     if (!!this._h.fileUrl) {
-      console.log(this._h.fileUrl);
+      console.log('DEBUG: fileurl', this._h.fileUrl);
       this._h.routeme.emit(this._h.fileUrl);
     }
     // Get the items into the class arrays

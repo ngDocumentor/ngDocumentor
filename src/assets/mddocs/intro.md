@@ -9,7 +9,7 @@ ngDocumenter is a simple website that will serve your .md files from a location 
 #### Getting started
 
 
-* If you have created your markdown wiki for your project, that should be your starting point. Copy all your `.md` files (in respective folder structure, if needed) into the `assets/mddocs` folder in the cloned repository.
+* If you have created your markdown (.md files) wiki for your project, that should be your starting point. Copy all your `.md` files (in respective folder structure, if needed) into the `assets/mddocs` folder in the cloned repository.
 
 
 * Create `assets/mddocs/home.md` for top first level home link. [1] `home.md` will be path `/` or `/home`.
@@ -55,6 +55,9 @@ ngDocumenter is a simple website that will serve your .md files from a location 
 
 
 * NOTE: All .md files including home.md and error.md will map to `/FILENAME` (without .md) url path for .json configuration files. Example: `assets/mddocs/introduction.md` will be mapped to link `/introduction`.
+
+
+* EXCEPTION NOTE: If you want to reference other markdown files withing your markdown files as links then use a `#` in from of your links. Example: `assets/mddocs/somefile.md` will be referred as `#/somefile` like this `[Some File](#/somefile)`.
 
 
 * NOTE: Change the `<base href="/">` to `your` server subfolder path, if not root.
