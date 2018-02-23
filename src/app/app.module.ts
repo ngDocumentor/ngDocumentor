@@ -9,7 +9,6 @@ import { MarkdownToHtmlModule } from 'ng2-markdown-to-html';
 
 
 // Routes
-import { appRoutingProviders, routing } from './routes/main.routes';
 import { HttpService } from './commons/services/http/http.service';
 
 // Services
@@ -31,12 +30,10 @@ import { RendermdComponent } from './modules/main-site/rendermd/rendermd.compone
   ],
   imports: [
     BrowserModule,
-    routing,
     HttpModule,
     MarkdownToHtmlModule.forRoot(),
   ],
   providers: [
-    appRoutingProviders,
     HttpService,
   ],
   bootstrap: [AppComponent]
