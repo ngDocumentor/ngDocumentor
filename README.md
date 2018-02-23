@@ -22,8 +22,8 @@ Run `ng build --target=production --environment=prod --sourcemaps=false --base-h
 ## TODO / Plans
 
 * REDUCE code size. P2 (Create beta with Ivy renderer P2, Change ng/cli to latest version P3)
-* ADD SEARCH CAPABILITY for site or .md files without loss in performance P4
-* ADD TESTS P3
+* ADD Search Capability for site or .md files without loss in performance P4
+* ADD Tests P3
 
 ## Further help
 
