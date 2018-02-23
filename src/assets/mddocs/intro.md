@@ -57,7 +57,7 @@ ngDocumenter is a simple website that will serve your .md files from a location 
 * NOTE: All .md files including home.md and error.md will map to `/FILENAME` (without .md) url path for .json configuration files. Example: `assets/mddocs/introduction.md` will be mapped to link `/introduction`.
 
 
-* EXCEPTION NOTE: If you want to reference other markdown files withing your markdown files as links then use a `#` in from of your links. Example: `assets/mddocs/somefile.md` will be referred as `#/somefile` like this `[Some File](#/somefile)`. [Link inside .md file - Demo](#/intro)
+* EXCEPTION NOTE: If you want to reference other markdown files withing your markdown files as links then use a `#` in from of your links. Example: `assets/mddocs/somefile.md` will be referred as `#/somefile` like this `[Some File](#/somefile)`. [Link inside .md file - Demo](#/topnav)
 
 
 * NOTE: Change the `<base href="/">` to `your` server subfolder path, if not root.
