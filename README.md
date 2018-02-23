@@ -19,6 +19,10 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 Run `ng build --target=production --environment=prod --sourcemaps=false --base-href='/' --vendor-chunk=true --extract-css=true --delete-output-path=true --aot --build-optimizer=true` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
 
+## TODO / Plans
+
+* REDUCE code size. P2 (Create beta with Ivy renderer P2, Change ng/cli to latest version P3)
+* ADD SEARCH CAPABILITY for site or .md files without loss in performance P4
 
 ## Further help
 
