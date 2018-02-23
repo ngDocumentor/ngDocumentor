@@ -19,5 +19,4 @@ Pass brand name, top navigation menus, and sidebar navigation links using .json 
 ### Licensing
 MIT License
 
-[Test](#/intro)
 
