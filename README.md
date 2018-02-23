@@ -1,8 +1,8 @@
 # ngDocumentor
 
-## THIS IS THE DEVELOPMENT BRANCH AND MAY NOT BE COMPLETELY TESTED REAL-TIME. 
-## PLEASE DO NOT CLONE FOR PRODUCTION
-## USAGE DIRECTLY MAY LEAD TO YOUR SITE NOT WORKING
+#### THIS IS THE DEVELOPMENT BRANCH AND MAY NOT BE COMPLETELY TESTED REAL-TIME. 
+#### PLEASE DO NOT CLONE FOR PRODUCTION
+#### USAGE DIRECTLY MAY LEAD TO YOUR SITE NOT WORKING
 
 A simple site to serve .md files and gets you up and running in 10 minutes. 
 Pass brand name, top navigation menus, and sidebar navigation links using .json configuration files.
