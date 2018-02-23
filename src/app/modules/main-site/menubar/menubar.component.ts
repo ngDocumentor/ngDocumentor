@@ -32,11 +32,7 @@ export class MenubarComponent implements OnInit {
 
   menuclosed: boolean = true;
 
-  routeme: EventEmitter<string>;
-
-  constructor(private _h: HttpService) {
-    this.routeme = new EventEmitter();
-  }
+  constructor(private _h: HttpService) {}
 
   openNav() {
     this.sidebarclosed = false;
@@ -66,12 +62,12 @@ export class MenubarComponent implements OnInit {
       this.closeNav();
     }
     window.location.href = '#' + obj.link;
-    this._h.routeme.emit(window.location.href);
+    //this._h.routeme.emit(window.location.href);
   }
 
   routeMain() {
     window.location.href = '#/home';
-    this._h.routeme.emit(window.location.href);
+    //this._h.routeme.emit(window.location.href);
   }
 
   routeTopnav(event: any, obj: any) {
@@ -82,12 +78,12 @@ export class MenubarComponent implements OnInit {
       } else {
         event.target.target = '_self';
         window.location.href = '#' + obj.link;
-        this._h.routeme.emit(window.location.href);
+        //this._h.routeme.emit(window.location.href);
       }
     } else {
       event.target.target = '_self';
       window.location.href = '#/home';
-      this._h.routeme.emit(window.location.href);
+      //this._h.routeme.emit(window.location.href);
     }
     return false;
   }
@@ -123,8 +119,12 @@ export class MenubarComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    let that = this;
     this.addEventListenersAccordian();
+    window.onhashchange = function() { 
+      that._h.fileUrl = window.location.href;
+      that._h.routeme.emit(that._h.fileUrl);
+    }
 
   }
 

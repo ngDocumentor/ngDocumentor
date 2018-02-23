@@ -1,5 +1,5 @@
 import {MarkdownToHtmlService} from 'ng2-markdown-to-html';
-import { Injectable, EventEmitter } from '@angular/core';
+import { Injectable, EventEmitter, ApplicationRef } from '@angular/core';
 import { Http, Response, Request, RequestMethod, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
 
@@ -7,6 +7,8 @@ import 'rxjs/add/operator/map';
 export class HttpService {
 
   http: Http;
+
+  oldHash: string;
 
   fileUrl: string;
 
@@ -20,7 +22,7 @@ export class HttpService {
 
   routeme: EventEmitter<string>;
 
-  constructor(http: Http, private _mhSrv: MarkdownToHtmlService) {
+  constructor(http: Http, private _mhSrv: MarkdownToHtmlService, private _ar: ApplicationRef) {
 
     this.http = http;
 
@@ -29,32 +31,35 @@ export class HttpService {
 
   getRouteEvent() {
     let that = this;
-    console.log('Triggering routelistener');
     this.routeme.subscribe((url) => {
 
       let uri;
       let tmpUri = url.split('#')[1] ? url.split('#')[1].split('/') : [];
-      console.log(tmpUri);
+      console.log('DEBUG: tmpUri', tmpUri);
       if ((!tmpUri) || (tmpUri.length <= 1) || (tmpUri[1] == '')) {
         uri = '/home';
       } else {
-        console.log(url.split('#').splice(1, 1), url.split('#'));
+        console.log('DEBUG: uri arrays', url.split('#').splice(1, 1), url.split('#'));
         uri = url.split('#').splice(1, 1);
       }
       that._mhSrv.getSource('assets/mddocs' + uri + '.md').subscribe((data) => {
-        console.log('Log area one', data);
+        console.log('DEBUG: Log area one');
         if (data.includes('<!doctype html>')) {
           that.fileData = that.file404;
+          that._ar.tick();
         } else {
           that.fileData = data;
+          that._ar.tick();
         }
       }, (error) => {
         that._mhSrv.getSource('assets/mddocs/' + 'home.md').subscribe((data) => {
-          console.log('Log area two', data);
+          console.log('DEBUG: Log area two');
           that.fileData = data;
+          that._ar.tick();
         }, (errors) => {
-          console.log('Log area three', errors);
+          console.log('DEBUG: Log area three');
           that.fileData = that.file404;
+          that._ar.tick();
         });
       });
 
