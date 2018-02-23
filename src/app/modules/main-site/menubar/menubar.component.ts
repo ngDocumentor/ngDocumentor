@@ -1,5 +1,5 @@
-import { Component, Input, Output, ViewChild, ElementRef, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, Input, Output, ViewChild, ElementRef, OnInit, EventEmitter } from '@angular/core';
+import { HttpService } from '../../../commons/services/http/http.service';
 
 declare var gnMenu;
 
@@ -32,8 +32,10 @@ export class MenubarComponent implements OnInit {
 
   menuclosed: boolean = true;
 
-  constructor(private _rtr: Router) {
+  routeme: EventEmitter<string>;
 
+  constructor(private _h: HttpService) {
+    this.routeme = new EventEmitter();
   }
 
   openNav() {
@@ -58,15 +60,18 @@ export class MenubarComponent implements OnInit {
     return check;
   };
 
-  closeMobileNav() {
+  closeMobileNav(obj) {
     let mobile = this.mobileAndTabletCheck();
     if (!!mobile) {
       this.closeNav();
     }
+    window.location.href = '#' + obj.link;
+    this._h.routeme.emit(window.location.href);
   }
 
   routeMain() {
-    this._rtr.navigateByUrl('/home');
+    window.location.href = '#/home';
+    this._h.routeme.emit(window.location.href);
   }
 
   routeTopnav(event: any, obj: any) {
@@ -76,11 +81,13 @@ export class MenubarComponent implements OnInit {
         window.location.href = obj.link;
       } else {
         event.target.target = '_self';
-        this._rtr.navigateByUrl(obj.link);
+        window.location.href = '#' + obj.link;
+        this._h.routeme.emit(window.location.href);
       }
     } else {
       event.target.target = '_self';
-      this._rtr.navigateByUrl('/home');
+      window.location.href = '#/home';
+      this._h.routeme.emit(window.location.href);
     }
     return false;
   }

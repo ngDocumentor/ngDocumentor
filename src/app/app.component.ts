@@ -19,13 +19,13 @@ export class AppComponent implements OnInit {
 
   topnavItems: any[] = [];
 
-  constructor(private _http: HttpService) {
+  constructor(private _h: HttpService) {
   }
 
   getTopnav(topnavSrc: string) { 
     const that = this;
 
-    that._http.httpReq(topnavSrc, 'GET', null, null)
+    that._h.httpReq(topnavSrc, 'GET', null, null)
       .subscribe((data: any) => {
         if (!!data.topnav) {
           that.topnavItems = data.topnav;
@@ -39,7 +39,7 @@ export class AppComponent implements OnInit {
   getSidebar(sidebarSrc: string) {
     const that = this;
 
-    that._http.httpReq(sidebarSrc, 'GET', null, null)
+    that._h.httpReq(sidebarSrc, 'GET', null, null)
       .subscribe((data: any) => {
         if (!!data.sidebar) {
           that.sidebarItems = data.sidebar;
@@ -53,7 +53,12 @@ export class AppComponent implements OnInit {
   
 
   ngOnInit() {
-
+    this._h.fileUrl = window.location.href;
+    this._h.getRouteEvent();
+    if (!!this._h.fileUrl) {
+      console.log(this._h.fileUrl);
+      this._h.routeme.emit(this._h.fileUrl);
+    }
     // Get the items into the class arrays
     this.getTopnav(this.topnavSrc);
     this.getSidebar(this.sidebarSrc);

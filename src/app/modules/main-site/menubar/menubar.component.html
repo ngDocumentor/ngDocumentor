@@ -18,7 +18,7 @@
         <span (click)="routeMain()" class="font-primary"> {{ brandname }} </span>
     </a>
     
-    <a class="invisible-brand" routerLink="/home"></a>
+    <a class="invisible-brand" href="#/home"></a>
     <ng-container *ngFor="let obj of topnavItems; let i = index;">
         <a  *ngIf="obj.type != 'external'" (click)="routeTopnav($event, obj)" class="active">{{obj.tag ? obj.tag : 'No Tag'}}</a>
         <a  *ngIf="obj.type == 'external'" [attr.external]="obj" opennewwindow (click)="routeTopnav($event, obj)" class="active">{{obj.tag ? obj.tag : 'No Tag'}}</a>
@@ -46,7 +46,7 @@
     
 </div>
 <div #sidebarfixed id="sidebarfixed" class="sidenav">
-    <a routerLink="/home" class="brandname fontcolor-primary">  {{ brandname }}  </a>
+    <a href="#/home" class="brandname fontcolor-primary">  {{ brandname }}  </a>
      <a style="font-size: 18px;" href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a> 
 
     
@@ -62,8 +62,8 @@
                 <div [ngStyle]="styleList[i] ? styleList[i] : styleList[i]={ 'display': 'none' }" class="panel-sidebar">
                     <p *ngFor="let dyobj of obj.children; let j = index;">
                         <ng-container>
-                            <a *ngIf="dyobj.type != 'external'" (click)="closeMobileNav()" class="margin-zero fontcolor-primary" [routerLink]="dyobj.link ? dyobj.link : '/home'">{{dyobj.tag ? dyobj.tag : 'No Tag'}}</a>
-                            <a  *ngIf="dyobj.type == 'external'" (click)="closeMobileNav()" [attr.external]="dyobj" opennewwindow class="margin-zero fontcolor-primary" [routerLink]="dyobj.link ? obj.link : '/home'">{{dyobj.tag ? dyobj.tag : 'No Tag'}}</a>
+                            <a *ngIf="dyobj.type != 'external'" (click)="closeMobileNav(dyobj)" class="margin-zero fontcolor-primary" [href]="dyobj.link ? '#' + dyobj.link : '#/home'">{{dyobj.tag ? dyobj.tag : 'No Tag'}}</a>
+                            <a  *ngIf="dyobj.type == 'external'" (click)="closeMobileNav(dyobj)" [attr.external]="dyobj" opennewwindow class="margin-zero fontcolor-primary" [href]="dyobj.link ? '#' + obj.link : '#/home'">{{dyobj.tag ? dyobj.tag : 'No Tag'}}</a>
                         </ng-container>
                     </p>
                 </div>
@@ -72,8 +72,8 @@
             <span *ngIf="!obj.children">
                 <p>
                     <ng-container>
-                        <a *ngIf="obj.type != 'external'" (click)="closeMobileNav()" class="margin-zero fontcolor-primary" [routerLink]="obj.link ? obj.link : '/home'">{{obj.tag ? obj.tag : 'No Tag'}}</a>
-                        <a  *ngIf="obj.type == 'external'" (click)="closeMobileNav()" [attr.external]="obj" opennewwindow class="margin-zero fontcolor-primary" [routerLink]="obj.link ? obj.link : '/home'">{{obj.tag ? obj.tag : 'No Tag'}}</a>
+                        <a *ngIf="obj.type != 'external'" (click)="closeMobileNav(obj)" class="margin-zero fontcolor-primary" [href]="obj.link ? '#' + obj.link : '#/home'">{{obj.tag ? obj.tag : 'No Tag'}}</a>
+                        <a  *ngIf="obj.type == 'external'" (click)="closeMobileNav(obj)" [attr.external]="obj" opennewwindow class="margin-zero fontcolor-primary" [href]="obj.link ? '#' + obj.link : '#/home'">{{obj.tag ? obj.tag : 'No Tag'}}</a>
                     </ng-container>
                     
                 </p>
@@ -88,7 +88,5 @@
     </div>    
 </div>
 <div #contentmain class="main">
-    <router-outlet>
-        <ng-content></ng-content>
-    </router-outlet>
+    <app-rendermd></app-rendermd> 
 </div>
