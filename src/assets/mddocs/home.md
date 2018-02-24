@@ -6,8 +6,6 @@ Pass brand name, top navigation menus, and sidebar navigation links using .json 
 * Works well for any documentation site documented using .md files.
 * Edit the [ngDocumentor Angular source](https://github.com/ngDocumentor/ngDocumentor), if you need to extend or theme it as per your need.
 * Documentation available in this site.
-* ..
-* ..
 * Demo site - You are using it!
 
 ### Github repo to clone for site build

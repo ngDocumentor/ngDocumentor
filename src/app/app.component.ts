@@ -13,7 +13,7 @@ export class AppComponent implements OnInit {
 
   @Input('topnavSrc') topnavSrc: any = 'assets/config/topnav.json';
 
-  brandname: string = ' { ngDocumentor } ';
+  brandname: string = '  ';
 
   sidebarItems: any[] = [];
 
