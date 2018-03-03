@@ -281,3 +281,25 @@
     }
 }
 /* CONTENT SECTION END */
+
+/* BROWSER ONLY SUPPORT START */
+
+
+/*
+
+// WEBKIT SAFARI AND CHROME 
+@media screen and (-webkit-min-device-pixel-ratio:0) { 
+    color:green;
+}
+
+// FIREFOX ONLY 
+@media screen and (-moz-images-in-menus:0) {
+color:orange;
+}
+
+@supports (-moz-appearance:none) {
+    h1 { color:red; } 
+}
+*/
+
+/* BROWSER ONLY SUPPORT END */
