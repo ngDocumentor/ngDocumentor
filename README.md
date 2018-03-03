@@ -25,7 +25,7 @@ Run `ng build --target=production --environment=prod --sourcemaps=false --base-h
 * ADD Search Capability for site or .md files without loss in performance P4
 * ADD Tests P4
 * Move to Observable based routing P2
-* Check possibility to of removing # for .md file's internal linking inside ngDocumentor
+* Check possibility of removing `#/` for .md file's internal linking inside ngDocumentor
 
 ## Further help
 
