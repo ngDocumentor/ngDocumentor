@@ -95,6 +95,10 @@
 .invisible-brand {
     display: none !important;
 }
+.pad-top-menuicon {
+    top: 3px !important;
+    position: relative;
+}
 
 /* When the screen is less than 768 pixels wide, hide all links, except for the first one ("Home"). Show the link that contains should open and close the topnav (.icon) */
 @media screen and (max-width: 768px) {
@@ -133,7 +137,6 @@
         position: fixed;
         left: 0; 
         top: 0;
-        
     }
     .topnav.responsive a.icon-left {
         position: absolute;
