@@ -99,11 +99,19 @@
 /* When the screen is less than 768 pixels wide, hide all links, except for the first one ("Home"). Show the link that contains should open and close the topnav (.icon) */
 @media screen and (max-width: 768px) {
     .topnav a:not(:first-child) {display: none;}
-    .topnav a.icon, .topnav a.icon-left {
+    .topnav a.icon {
         float: right;
         display: block;
         position: fixed;
         left: 0;
+        outline: 0;
+    }
+    .topnav a.icon-left {
+        float: right;
+        display: block;
+        position: fixed;
+        right: 0;
+        top: -5px;
         outline: 0;
     }
     .topnav {
@@ -123,7 +131,7 @@
     .topnav.responsive {position: relative;}
     .topnav.responsive a.icon {
         position: fixed;
-        left: 0;
+        left: 0; 
         top: 0;
         
     }
