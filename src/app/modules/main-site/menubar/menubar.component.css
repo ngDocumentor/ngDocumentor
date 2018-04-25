@@ -204,14 +204,14 @@
 
 .sidenav .closebtn {
     position: absolute;
-    top: 0;
+    top: 10px;
     right: 20px;
     margin-left: 20px;
 }
 
 .sidenav .brandname {
     position: absolute;
-    top: 18px;
+    top: 15px;
     left: 0px;
     font-weight: normal;
     margin-right: 20px;
@@ -261,7 +261,6 @@
     display: none;
     overflow: hidden;
 }
-
 
 .input-sidebar:focus, .input-sidebar:active {
     outline: none !important;
