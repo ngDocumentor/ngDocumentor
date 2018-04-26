@@ -4,10 +4,11 @@
 A simple site to serve .md files and gets you up and running in 10 minutes. 
 Pass brand name, top navigation menus, and sidebar navigation links using .json configuration files.
 
-* Works well for any documentation site documented using .md files.
+* Works well for any documentation site documented using .md files. Also works with HTML only sites like Github pages where you do not have access to URL Rewrites due to security reasons
 * Edit the [ngDocumentor Angular source](https://github.com/ngDocumentor/ngDocumentor), if you need to extend.
 * Documentation available in this site.
-* This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.8.
+* This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.4.
+* Has Angular Service Workers enabled (basic PWA support)
 
 
 ## Development server
