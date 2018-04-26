@@ -1,6 +1,6 @@
 import { AppPage } from './app.po';
 
-describe('main-one App', () => {
+describe('ng-documentor300b App', () => {
   let page: AppPage;
 
   beforeEach(() => {

@@ -2,6 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { ServiceWorkerModule } from '@angular/service-worker'
+import { environment } from '../environments/environment';
+
 import { ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { MarkdownToHtmlModule } from 'ng2-markdown-to-html';
 
@@ -32,6 +35,7 @@ import { RendermdComponent } from './modules/main-site/rendermd/rendermd.compone
     BrowserModule,
     HttpModule,
     MarkdownToHtmlModule.forRoot(),
+    ServiceWorkerModule.register('/ngsw-worker.js')
   ],
   providers: [
     HttpService,

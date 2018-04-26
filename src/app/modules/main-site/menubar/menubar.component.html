@@ -1,103 +1,103 @@
 <div #topnav class="topnav" id="topnav">
     
-    <a class="invisible-menu" href="javascript:void(0);">
-        <span *ngIf="!sidebarclosed" class="pad-top-menuicon" (click)="closeNav()">
-            &nbsp;&nbsp;&nbsp;
-            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 26 26" version="1.1" width="12px" height="12px">
-                <g id="surface1">
-                <path style=" " d="M 0 4 L 0 6 L 26 6 L 26 4 Z M 0 12 L 0 14 L 26 14 L 26 12 Z M 0 20 L 0 22 L 26 22 L 26 20 Z "/>
-                </g>
-                </svg>
-            &nbsp;&nbsp;&nbsp;
-        </span>
-        <span *ngIf="!!sidebarclosed" class="pad-top-menuicon" (click)="openNav()">
-            &nbsp;&nbsp;&nbsp;
-            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 26 26" version="1.1" width="12px" height="12px">
-                <g id="surface1">
-                <path style=" " d="M 0 4 L 0 6 L 26 6 L 26 4 Z M 0 12 L 0 14 L 26 14 L 26 12 Z M 0 20 L 0 22 L 26 22 L 26 20 Z "/>
-                </g>
-            </svg>
-            &nbsp;&nbsp;&nbsp;
-        </span>
-        <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-        <span (click)="routeMain()" class="fontcolor-primary font-bold"> {{ brandname }} </span>
-    </a>
-    
-    <ng-container *ngFor="let obj of topnavItems; let i = index;">
-        <a  *ngIf="obj.type != 'external'" (click)="routeTopnav($event, obj)" class="active">{{obj.tag ? obj.tag : 'No Tag'}}</a>
-        <a  *ngIf="obj.type == 'external'" [attr.external]="obj" opennewwindow (click)="routeTopnav($event, obj)" class="active">{{obj.tag ? obj.tag : 'No Tag'}}</a>
-    </ng-container>
+  <a class="invisible-menu" href="javascript:void(0);">
+      <span *ngIf="!sidebarclosed" class="pad-top-menuicon" (click)="closeNav()">
+          &nbsp;&nbsp;&nbsp;
+          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 26 26" version="1.1" width="12px" height="12px">
+              <g id="surface1">
+              <path style=" " d="M 0 4 L 0 6 L 26 6 L 26 4 Z M 0 12 L 0 14 L 26 14 L 26 12 Z M 0 20 L 0 22 L 26 22 L 26 20 Z "/>
+              </g>
+              </svg>
+          &nbsp;&nbsp;&nbsp;
+      </span>
+      <span *ngIf="!!sidebarclosed" class="pad-top-menuicon" (click)="openNav()">
+          &nbsp;&nbsp;&nbsp;
+          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 26 26" version="1.1" width="12px" height="12px">
+              <g id="surface1">
+              <path style=" " d="M 0 4 L 0 6 L 26 6 L 26 4 Z M 0 12 L 0 14 L 26 14 L 26 12 Z M 0 20 L 0 22 L 26 22 L 26 20 Z "/>
+              </g>
+          </svg>
+          &nbsp;&nbsp;&nbsp;
+      </span>
+      <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+      <span (click)="routeMain()" class="fontcolor-primary font-bold"> {{ brandname }} </span>
+  </a>
+  
+  <ng-container *ngFor="let obj of topnavItems; let i = index;">
+      <a  *ngIf="obj.type != 'external'" (click)="routeTopnav($event, obj)" class="active">{{obj.tag ? obj.tag : 'No Tag'}}</a>
+      <a  *ngIf="obj.type == 'external'" [attr.external]="obj" opennewwindow (click)="routeTopnav($event, obj)" class="active">{{obj.tag ? obj.tag : 'No Tag'}}</a>
+  </ng-container>
 
-    <a  href="javascript:void(0);" class="icon">
-        <span >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-        <span  class="pad-left-right" (click)="routeMain()" class="fontcolor-primary font-bold"> {{ brandname }} </span>
-    </a>
-    <a  href="javascript:void(0);" class="icon-left">
-        <span class="pad-left-right menu-position"  *ngIf="!sidebarclosed"  (click)="closeNav()">
-            &nbsp;&nbsp;&nbsp;
-            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 26 26" version="1.1" width="12px" height="12px">
-                <g id="surface1">
-                <path style=" " d="M 0 4 L 0 6 L 26 6 L 26 4 Z M 0 12 L 0 14 L 26 14 L 26 12 Z M 0 20 L 0 22 L 26 22 L 26 20 Z "/>
-                </g>
-                </svg>
-            &nbsp;&nbsp;&nbsp; 
-        </span>
-        <span  class="pad-left-right menu-position"  *ngIf="!!sidebarclosed" (click)="openNav()">
-            &nbsp;&nbsp;&nbsp;
-            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 26 26" version="1.1" width="12px" height="12px">
-                <g id="surface1">
-                <path style=" " d="M 0 4 L 0 6 L 26 6 L 26 4 Z M 0 12 L 0 14 L 26 14 L 26 12 Z M 0 20 L 0 22 L 26 22 L 26 20 Z "/>
-                </g>
-                </svg>
-            &nbsp;&nbsp;&nbsp;
-        </span>
-    </a>
-    
+  <a  href="javascript:void(0);" class="icon">
+      <span >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+      <span  class="pad-left-right" (click)="routeMain()" class="fontcolor-primary font-bold"> {{ brandname }} </span>
+  </a>
+  <a  href="javascript:void(0);" class="icon-left">
+      <span class="pad-left-right menu-position"  *ngIf="!sidebarclosed"  (click)="closeNav()">
+          &nbsp;&nbsp;&nbsp;
+          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 26 26" version="1.1" width="12px" height="12px">
+              <g id="surface1">
+              <path style=" " d="M 0 4 L 0 6 L 26 6 L 26 4 Z M 0 12 L 0 14 L 26 14 L 26 12 Z M 0 20 L 0 22 L 26 22 L 26 20 Z "/>
+              </g>
+              </svg>
+          &nbsp;&nbsp;&nbsp; 
+      </span>
+      <span  class="pad-left-right menu-position"  *ngIf="!!sidebarclosed" (click)="openNav()">
+          &nbsp;&nbsp;&nbsp;
+          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 26 26" version="1.1" width="12px" height="12px">
+              <g id="surface1">
+              <path style=" " d="M 0 4 L 0 6 L 26 6 L 26 4 Z M 0 12 L 0 14 L 26 14 L 26 12 Z M 0 20 L 0 22 L 26 22 L 26 20 Z "/>
+              </g>
+              </svg>
+          &nbsp;&nbsp;&nbsp;
+      </span>
+  </a>
+  
 </div>
 <div #sidebarfixed id="sidebarfixed" class="sidenav sbar-style">
-    <a href="#/home" class="brandname fontcolor-primary font-bold">  {{ brandname }}  </a>
-     <a style="font-size: 18px;" href="javascript:void(0)" class="closebtn" (click)="closeNav()">
-         <span class="button-plus-span">&times;</span>
-     </a> 
+  <a href="#/home" class="brandname fontcolor-primary font-bold">  {{ brandname }}  </a>
+   <a style="font-size: 18px;" href="javascript:void(0)" class="closebtn" (click)="closeNav()">
+       <span class="button-plus-span">&times;</span>
+   </a> 
 
-    
-    <div style="margin-top: 50px !important;">
-        <br><br>
-        
-        <ng-container *ngFor="let obj of sidebarItems; let i = index;">
-            <span *ngIf="!!obj.children">
-                <button (click)="openItems($event, i)" [ngClass]="accordianClassList[i] ? accordianClassList[i] : accordianClassList[i]={'accordion': true, 'active-sidebar': false}">
-                    <span>{{obj.tag}}</span>
-                    <span style="float: right" class="">+</span>
-                </button>
-                <div [ngStyle]="styleList[i] ? styleList[i] : styleList[i]={ 'display': 'none' }" class="panel-sidebar">
-                    <p *ngFor="let dyobj of obj.children; let j = index;">
-                        <ng-container>
-                            <a *ngIf="dyobj.type != 'external'" (click)="closeMobileNav(dyobj)" class="margin-zero fontcolor-primary" [href]="dyobj.link ? '#' + dyobj.link : '#/home'">{{dyobj.tag ? dyobj.tag : 'No Tag'}}</a>
-                            <a  *ngIf="dyobj.type == 'external'" (click)="closeMobileNav(dyobj)" [attr.external]="dyobj" opennewwindow class="margin-zero fontcolor-primary" [href]="dyobj.link ? '#' + obj.link : '#/home'">{{dyobj.tag ? dyobj.tag : 'No Tag'}}</a>
-                        </ng-container>
-                    </p>
-                </div>
-            </span>
-    
-            <span *ngIf="!obj.children">
-                <p>
-                    <ng-container>
-                        <a *ngIf="obj.type != 'external'" (click)="closeMobileNav(obj)" class="margin-zero fontcolor-primary" [href]="obj.link ? '#' + obj.link : '#/home'">{{obj.tag ? obj.tag : 'No Tag'}}</a>
-                        <a  *ngIf="obj.type == 'external'" (click)="closeMobileNav(obj)" [attr.external]="obj" opennewwindow class="margin-zero fontcolor-primary" [href]="obj.link ? '#' + obj.link : '#/home'">{{obj.tag ? obj.tag : 'No Tag'}}</a>
-                    </ng-container>
-                    
-                </p>
-            </span>
-        </ng-container>
-        
-        <span *ngFor="let item of [1,1,1,1,1,1]; let i = index;">
-            <p>
-                <a class="margin-zero fontcolor-primary" ></a>
-            </p>
-        </span>
-    </div>    
+  
+  <div style="margin-top: 50px !important;">
+      <br><br>
+      
+      <ng-container *ngFor="let obj of sidebarItems; let i = index;">
+          <span *ngIf="!!obj.children">
+              <button (click)="openItems($event, i)" [ngClass]="accordianClassList[i] ? accordianClassList[i] : accordianClassList[i]={'accordion': true, 'active-sidebar': false}">
+                  <span>{{obj.tag}}</span>
+                  <span style="float: right" class="">+</span>
+              </button>
+              <div [ngStyle]="styleList[i] ? styleList[i] : styleList[i]={ 'display': 'none' }" class="panel-sidebar">
+                  <p *ngFor="let dyobj of obj.children; let j = index;">
+                      <ng-container>
+                          <a *ngIf="dyobj.type != 'external'" (click)="closeMobileNav(dyobj)" class="margin-zero fontcolor-primary" [href]="dyobj.link ? '#' + dyobj.link : '#/home'">{{dyobj.tag ? dyobj.tag : 'No Tag'}}</a>
+                          <a  *ngIf="dyobj.type == 'external'" (click)="closeMobileNav(dyobj)" [attr.external]="dyobj" opennewwindow class="margin-zero fontcolor-primary" [href]="dyobj.link ? '#' + obj.link : '#/home'">{{dyobj.tag ? dyobj.tag : 'No Tag'}}</a>
+                      </ng-container>
+                  </p>
+              </div>
+          </span>
+  
+          <span *ngIf="!obj.children">
+              <p>
+                  <ng-container>
+                      <a *ngIf="obj.type != 'external'" (click)="closeMobileNav(obj)" class="margin-zero fontcolor-primary" [href]="obj.link ? '#' + obj.link : '#/home'">{{obj.tag ? obj.tag : 'No Tag'}}</a>
+                      <a  *ngIf="obj.type == 'external'" (click)="closeMobileNav(obj)" [attr.external]="obj" opennewwindow class="margin-zero fontcolor-primary" [href]="obj.link ? '#' + obj.link : '#/home'">{{obj.tag ? obj.tag : 'No Tag'}}</a>
+                  </ng-container>
+                  
+              </p>
+          </span>
+      </ng-container>
+      
+      <span *ngFor="let item of [1,1,1,1,1,1]; let i = index;">
+          <p>
+              <a class="margin-zero fontcolor-primary" ></a>
+          </p>
+      </span>
+  </div>    
 </div>
 <div #contentmain class="main">
-    <app-rendermd></app-rendermd> 
+  <app-rendermd></app-rendermd> 
 </div>
