@@ -8,7 +8,10 @@ ngDocumenter is a simple website that will serve your .md files from a location 
 
 #### Getting started
 
-* Clone the [ngDocumentor site repository](https://github.com/ngDocumentor/ngDocumentor.github.io)
+* Clone the [ngDocumentor site repository](https://github.com/ngDocumentor/ngDocumentor.github.io) OR download the [release v2.1.8](https://github.com/ngDocumentor/ngDocumentor.github.io/releases) to use the ngDocumentor site distribution directly.
+
+
+* NOTE: If you clone the ngDocumentor github repository, and do not intend to use PWA support for offline viewing then you can safely delete the `ngsw-worker.js` and `ngsw.json` files. Else, use the [ngDocumentor Angular source](https://github.com/ngDocumentor/ngDocumentor) to create a PWA enabled build for yourself. Use the steps in the [ngDocumentor README.md](https://github.com/ngDocumentor/ngDocumentor/blob/master/README.md) to create a PWA enabled build.
 
 
 * If you have created your markdown (.md files) wiki for your project, that should be your starting point. Copy all your `.md` files (in respective folder structure, if needed) into the `assets/mddocs` folder in the cloned repository.
