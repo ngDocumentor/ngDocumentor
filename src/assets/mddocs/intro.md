@@ -3,12 +3,12 @@
 
 ### { ngDocumentor }
   
-ngDocumenter is a simple website that will serve your .md files from a location and present it as a readable site. It is quite nice and useful for static sites that are generally used for opensource documentation. Just clone the [ngDocumenter site repository](https://github.com/ngDocumentor/ngDocumentor.github.io), add your .md files, and add your links configuration .json files. It can be as simple as that.
+ngDocumenter is a simple website that will serve your .md files from a location and present it as a readable site. It is quite nice and useful for static sites that are generally used for opensource documentation. Just clone the [ngDocumentor site repository](https://github.com/ngDocumentor/ngDocumentor.github.io), add your .md files, and add your links configuration .json files. It can be as simple as that.
 
 
 #### Getting started
 
-* Clone the [ngDocumenter site repository](https://github.com/ngDocumentor/ngDocumentor.github.io)
+* Clone the [ngDocumentor site repository](https://github.com/ngDocumentor/ngDocumentor.github.io)
 
 
 * If you have created your markdown (.md files) wiki for your project, that should be your starting point. Copy all your `.md` files (in respective folder structure, if needed) into the `assets/mddocs` folder in the cloned repository.
