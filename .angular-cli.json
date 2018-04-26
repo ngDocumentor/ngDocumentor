@@ -21,7 +21,6 @@
       "styles": [
         "../node_modules/prismjs/themes/prism-okaidia.css",
         "styles.css"
-        
       ],
       "scripts": [],
       "environmentSource": "environments/environment.ts",
