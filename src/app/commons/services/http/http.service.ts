@@ -35,7 +35,7 @@ export class HttpService {
 
       let uri;
       let tmpUri = url.split('#')[1] ? url.split('#')[1].split('/') : [];
-      console.log('DEBUG: tmpUri', tmpUri);
+      //console.log('DEBUG: tmpUri', tmpUri);
       if ((!tmpUri) || (tmpUri.length <= 1) || (tmpUri[1] == '')) {
         uri = '/home';
       } else {

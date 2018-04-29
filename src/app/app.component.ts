@@ -13,11 +13,15 @@ export class AppComponent implements OnInit {
 
   @Input('topnavSrc') topnavSrc: any = 'assets/config/topnav.json';
 
+  @Input('footerSrc') footerSrc: any = 'assets/config/footer.json';
+
   brandname: string = '  ';
 
   sidebarItems: any[] = [];
 
   topnavItems: any[] = [];
+
+  footer: any = {copyright: '', text: '', link: '/home', type: 'internal', nav: [], social: []};
 
   constructor(private _h: HttpService) {
   }
@@ -45,7 +49,21 @@ export class AppComponent implements OnInit {
           that.sidebarItems = data.sidebar;
         }
       }, (e: any) => {
-        console.log('Http Get Request error from menu.json', e);
+        console.log('Http Get Request error from sidebar.json', e);
+      });
+
+  }
+
+  getFooter(footerSrc: string) {
+    const that = this;
+
+    that._h.httpReq(footerSrc, 'GET', null, null)
+      .subscribe((data: any) => {
+        if (!!data.copyright) {
+          that.footer = data;
+        }
+      }, (e: any) => {
+        console.log('Http Get Request error from footer.json', e);
       });
 
   }
@@ -61,5 +79,6 @@ export class AppComponent implements OnInit {
     // Get the items into the class arrays
     this.getTopnav(this.topnavSrc);
     this.getSidebar(this.sidebarSrc);
+    this.getFooter(this.footerSrc);
   }
 }

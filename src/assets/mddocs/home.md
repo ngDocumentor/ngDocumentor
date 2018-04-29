@@ -1,11 +1,11 @@
 ### { ngDocumentor }
   
 A simple site to serve .md files; and which gets you up and running in less than 10 minutes. 
-Pass brand name, top navigation menus, and sidebar navigation links using .json configuration files.
+Pass brand name, top navigation, sidebar menus, and footer navigation links using .json configuration files.
 
 * Works well for any documentation site documented using .md files. Also supports HTML pages only hosts like Github pages where URL rewrites are unavailable due to security reasons.
 * Edit the [ngDocumentor Angular source](https://github.com/ngDocumentor/ngDocumentor), if you need to extend or theme it as per your need.
-* Has Angular Service Workers enabled (basic PWA support). You will have to use the [developement repository](https://github.com/ngDocumentor/ngDocumentor) to achieve that. Disabled by default (service worker config file generation needed).
+* Has Angular Service Workers enabled (basic offline viewing support). You will have to use the [developement repository](https://github.com/ngDocumentor/ngDocumentor) to build and achieve that. Disabled by default (service worker config file generation needed).
 * Usage Documentation available in this site.
 * Demo site - You are using it!
 

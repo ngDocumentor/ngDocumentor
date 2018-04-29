@@ -16,6 +16,8 @@ export class MenubarComponent implements OnInit {
 
   @ViewChild('contentmain') contentmain: ElementRef;
 
+  @ViewChild('footernav') footernav: ElementRef;
+
   @Input('brandname') brandname: string;
 
   @Input('sidebartype') sidebartype: string = 'non-blocking';
@@ -23,6 +25,8 @@ export class MenubarComponent implements OnInit {
   @Input('sidebarItems') sidebarItems: any[] = [];
 
   @Input('topnavItems') topnavItems: any[] = [];
+
+  @Input('footer') footer: any = {copyright: "", text: "", link: "/home", type: "internal", nav: [], social: []};
 
   sidebarclosed: boolean = true;
 
@@ -32,13 +36,17 @@ export class MenubarComponent implements OnInit {
 
   menuclosed: boolean = true;
 
-  constructor(private _h: HttpService) {}
+  constructor(private _h: HttpService) {
+    console.log(this.footer);
+  }
 
   openNav() {
     this.sidebarclosed = false;
     this.sidebarfixed.nativeElement.style.width = '250px';
     this.topnav.nativeElement.style.left = '250px';
     this.contentmain.nativeElement.style.marginLeft = '250px';
+    this.footernav.nativeElement.style.left = '250px';
+    this.footernav.nativeElement.style.position = 'relative';
     return false;
   }
 
@@ -47,6 +55,8 @@ export class MenubarComponent implements OnInit {
     this.sidebarfixed.nativeElement.style.width = '0';
     this.topnav.nativeElement.style.left = '0';
     this.contentmain.nativeElement.style.marginLeft = '0px';
+    this.footernav.nativeElement.style.left = '0';
+    this.footernav.nativeElement.style.position = 'relative';
     return false;
   }
 
@@ -67,23 +77,24 @@ export class MenubarComponent implements OnInit {
 
   routeMain() {
     window.location.href = '#/home';
-    //this._h.routeme.emit(window.location.href);
   }
 
-  routeTopnav(event: any, obj: any) {
+  routeNav(event: any, obj: any) {
     if (!!obj.link) {
-      if (obj.type === 'external') {
+      if (obj.type && obj.type === 'external') {
         event.target.target = '_blank';
         window.location.href = obj.link;
       } else {
         event.target.target = '_self';
-        window.location.href = '#' + obj.link;
-        //this._h.routeme.emit(window.location.href);
+        if (!obj.link.includes("http")) {
+          window.location.href = '#' + obj.link;
+        } else {
+          window.location.href = obj.link;
+        }
       }
     } else {
       event.target.target = '_self';
       window.location.href = '#/home';
-      //this._h.routeme.emit(window.location.href);
     }
     return false;
   }

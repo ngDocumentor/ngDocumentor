@@ -16,7 +16,7 @@
       "test": "test.ts",
       "tsconfig": "tsconfig.app.json",
       "testTsconfig": "tsconfig.spec.json",
-      "serviceWorker": true,
+      "serviceworker": true,
       "prefix": "app",
       "styles": [
         "../node_modules/prismjs/themes/prism-okaidia.css",
