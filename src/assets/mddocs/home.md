@@ -5,7 +5,7 @@ Pass brand name, top navigation, sidebar menus, and footer navigation links usin
 
 * Works well for any documentation site documented using .md files. Also supports HTML pages only hosts like Github pages where URL rewrites are unavailable due to security reasons.
 * Edit the [ngDocumentor Angular source](https://github.com/ngDocumentor/ngDocumentor), if you need to extend or theme it as per your need.
-* Has Angular Service Workers enabled (basic offline viewing support). You will have to use the [developement repository](https://github.com/ngDocumentor/ngDocumentor) to build and achieve that. Disabled by default (service worker config file generation needed).
+* Has Angular Service Workers enabled (basic offline viewing support). You will have to use the [development repository](https://github.com/ngDocumentor/ngDocumentor) to build and achieve that. The service worker configuration file for assets of your site is needed.
 * Usage Documentation available in this site.
 * Demo site - You are using it!
 

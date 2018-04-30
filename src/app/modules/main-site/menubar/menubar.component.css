@@ -347,7 +347,7 @@ color:orange;
     background: #fff !important;
 }
 #footer h4{
-	padding-left: 10px;
+	padding-left: 20px;
     padding-bottom: 6px;
     margin-bottom: 20px;
     color: slategray;
@@ -383,21 +383,9 @@ color:orange;
 	color:#23527c !important;
 }
 #footer ul.quick-links li{
-    padding: 3px 0;
     list-style-type: none;
-    /*
-	-webkit-transition: .5s all ease;
-	-moz-transition: .5s all ease;
-    transition: .5s all ease;
-    */
 }
-#footer ul.quick-links li:hover{
-    /*
-	padding: 3px 0;
-	margin-left:5px;
-    font-weight:700;
-    */
-}
+#footer ul.quick-links li:hover{}
 #footer ul.quick-links li a i{
 	margin-right: 5px;
 }

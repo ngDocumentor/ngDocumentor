@@ -21,7 +21,7 @@ export class AppComponent implements OnInit {
 
   topnavItems: any[] = [];
 
-  footer: any = {copyright: '', text: '', link: '/home', type: 'internal', nav: [], social: []};
+  footer: any = { copyright: { tag: '', text: '', link: '/home', type: 'internal' }, nav: [], social: [] };
 
   constructor(private _h: HttpService) {
   }
@@ -31,12 +31,18 @@ export class AppComponent implements OnInit {
 
     that._h.httpReq(topnavSrc, 'GET', null, null)
       .subscribe((data: any) => {
-        if (!!data.topnav) {
-          that.topnavItems = data.topnav;
+        if (!!data.nav) {
+          that.topnavItems = data.nav;
+        }
+        if (!!data.brandname) {
           that.brandname = data.brandname;
         }
       }, (e: any) => {
-        console.log('Http Get Request error from topnav.json', e);
+        console.log(`
+        Http Get Request error from topnav.json. 
+        Check if the name is right or if the path is right. 
+        Filenames are case sensitive.
+        `, e);
       });
   }
 
@@ -45,11 +51,15 @@ export class AppComponent implements OnInit {
 
     that._h.httpReq(sidebarSrc, 'GET', null, null)
       .subscribe((data: any) => {
-        if (!!data.sidebar) {
-          that.sidebarItems = data.sidebar;
+        if (!!data.nav) {
+          that.sidebarItems = data.nav;
         }
       }, (e: any) => {
-        console.log('Http Get Request error from sidebar.json', e);
+        console.log(`
+        Http Get Request error from sidebar.json. 
+        Check if the name is right or if the path is right. 
+        Filenames are case sensitive.
+        `, e);
       });
 
   }
@@ -60,12 +70,22 @@ export class AppComponent implements OnInit {
     that._h.httpReq(footerSrc, 'GET', null, null)
       .subscribe((data: any) => {
         if (!!data.copyright) {
-          that.footer = data;
+          that.footer.copyright.tag = data.copyright.tag || '';
+          that.footer.copyright.link = data.copyright.link || '/home';
+          that.footer.copyright.type = data.copyright.type || 'internal';
+          that.footer.copyright.text = data.copyright.text || '';
+        } else {
+          that.footer.copyright = false;
         }
+        if (!!data.nav) { that.footer.nav = data.nav; }
+        if (!!data.social) { that.footer.social = data.social; }
       }, (e: any) => {
-        console.log('Http Get Request error from footer.json', e);
+        console.log(`
+        Http Get Request error from footer.json. 
+        Check if the name is right or if the path is right. 
+        Filenames are case sensitive.
+        `, e);
       });
-
   }
 
   ngOnInit() {
