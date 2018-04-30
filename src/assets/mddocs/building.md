@@ -1,15 +1,3 @@
-# ngDocumentor
-
-
-A simple site to serve .md files and gets you up and running in 10 minutes. 
-Pass brand name, top navigation menus, and sidebar navigation links using .json configuration files.
-
-* Works well for any documentation site documented using .md files. Also works with HTML only sites like Github pages where you do not have access to URL Rewrites due to security reasons
-* Edit the [ngDocumentor Angular source](https://github.com/ngDocumentor/ngDocumentor), if you need to extend.
-* Documentation available in this site.
-* This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.4.
-* Has Angular Service Workers enabled (basic PWA support). You will have to use the [developement repository](https://github.com/ngDocumentor/ngDocumentor) to achieve that. Disabled by default (service worker config file generation needed).
-
 
 ## Installation and Usage
 
@@ -47,15 +35,6 @@ Now run the build command using the steps in the `Creating a Build` section to c
 ## Creating a Build
 
 After `Add your documentation` section steps and `Enabling Service Worker (Support for offline viewing of website)` (if you want offline viewing support / service workers enabled), in the command prompt / CLI, run `ng build --target=production --environment=prod --sourcemaps=false --base-href='/' --vendor-chunk=true --extract-css=true --delete-output-path=true --aot --build-optimizer=true` in the project's folder to build the project. The built artifacts will be stored in the `dist/` directory. Use the `dist/` directory as your documentation site. Use can use this build to push to production.
-
-
-## TODO / Plans
-
-* REDUCE code size. P4 (Create beta with Ivy renderer P2, Change ng/cli to latest version P3)
-* ADD Search Capability for site or .md files without loss in performance P4
-* ADD Tests P4
-* Move to Observable based routing P2
-* Check possibility of removing `#/` for .md file's internal linking inside ngDocumentor
 
 
 ## Further help - Angular CLI

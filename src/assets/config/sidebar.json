@@ -1,11 +1,11 @@
 {
-    "sidebar": [
+    "nav": [
         {
             "tag": "Home",
             "link": "/home"
         },
         {
-            "tag": "Getting Started - 5 Mins",
+            "tag": "Getting Started - 10 Mins",
             "link": "/intro"
         },
         {
@@ -21,10 +21,17 @@
                     "tag": "sidebar.json",
                     "link": "/sidebar"
                 },{
+                    "tag": "footer.json",
+                    "link": "/footer"
+                },{
                     "tag": "Brand Name",
                     "link": "/brandname"
                 }
             ]
+        },
+        {
+            "tag": "Building / Offline Viewing",
+            "link": "/building"
         },
         {
             "tag": "Resources",

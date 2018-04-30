@@ -24,8 +24,8 @@
   </a>
   
   <ng-container *ngFor="let obj of topnavItems; let i = index;">
-      <a  *ngIf="obj.type != 'external'" (click)="routeTopnav($event, obj)" class="active">{{obj.tag ? obj.tag : 'No Tag'}}</a>
-      <a  *ngIf="obj.type == 'external'" [attr.external]="obj" opennewwindow (click)="routeTopnav($event, obj)" class="active">{{obj.tag ? obj.tag : 'No Tag'}}</a>
+      <a  *ngIf="obj.type != 'external'" (click)="routeNav($event, obj)" class="topnav-trans active">{{obj.tag ? obj.tag : 'No Tag'}}</a>
+      <a  *ngIf="obj.type == 'external'" [attr.external]="obj" opennewwindow (click)="routeNav($event, obj)" class="topnav-trans active">{{obj.tag ? obj.tag : 'No Tag'}}</a>
   </ng-container>
 
   <a  href="javascript:void(0);" class="icon">
@@ -100,4 +100,39 @@
 </div>
 <div #contentmain class="main">
   <app-rendermd></app-rendermd> 
+</div>
+
+<!-- FOOTER-->
+
+<div #footernav  *ngIf="!!footer" id="footer" class="container">
+    <div  *ngIf="!!footer.nav && footer.nav.length > 0" class="row text-center text-xs-center text-sm-left text-md-center">
+        <div *ngFor="let footerItems of footer.nav" class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+            <h4>{{ footerItems.tag }}</h4>
+            <ul class="list-unstyled quick-links">
+                <ng-container *ngFor="let obj of footerItems.children">
+                    <li *ngIf="obj.type != 'external'"><a (click)="routeNav($event, obj)" href="#">{{obj.tag}}</a></li>
+                    <li *ngIf="obj.type == 'external'"><a opennewwindow [attr.external]="obj" (click)="routeNav($event, obj)" href="#">{{obj.tag}}</a></li>
+                </ng-container>
+            </ul>
+        </div>
+    </div>
+    <div  *ngIf="!!footer.social" class="row">
+        <div class="col-xs-12 col-sm-12 col-md-11 col-lg-11 ">
+            <ul class="list-unstyled list-inline social text-center">
+                <ng-container *ngFor="let obj of footer.social">
+                    <li *ngIf="obj.type != 'external'" class="list-inline-item" ><a (click)="routeNav($event, obj)" href="#">{{obj.tag}}</a></li>
+                    <li *ngIf="obj.type == 'external'" class="list-inline-item" ><a opennewwindow [attr.external]="obj" (click)="routeNav($event, obj)" href="#">{{obj.tag}}</a></li>
+                </ng-container>
+            </ul>
+        </div>
+        <hr/>
+    </div>	
+    <div *ngIf="!!footer.copyright" class="row">
+        <div class="col-xs-12 col-sm-12 col-md-11 col-lg-11 text-center text-white">
+            <p >{{ footer.copyright.text }}</p>
+            <p  *ngIf="footer.copyright.type != 'external'" class="h6"><a class="text-green ml-2" (click)="routeNav($event, {'link': footer.copyright.link, 'type': footer.copyright.type})" href="#">{{footer.copyright.tag}}</a> &copy; All rights Reserved.</p>
+            <p  *ngIf="footer.copyright.type == 'external'" class="h6"><a class="text-green ml-2" opennewwindow [attr.external]="{'link': footer.copyright.link, 'type': footer.copyright.type}" (click)="routeNav($event, {'link': footer.copyright.link, 'type': footer.copyright.type})" [href]="footer.copyright.type ? '#' + footer.copyright.type : '#/home'">{{footer.copyright.tag}}</a> &copy; All rights Reserved.</p>
+        </div>
+        <hr/>
+    </div>	
 </div>

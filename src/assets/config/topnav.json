@@ -1,6 +1,6 @@
 {
     "brandname": " { ngDocumentor } ",
-    "topnav": [
+    "nav": [
         {
             "tag": "Getting Started",
             "type": "internal",

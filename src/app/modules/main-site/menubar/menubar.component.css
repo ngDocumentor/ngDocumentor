@@ -63,7 +63,7 @@
     outline: 0;
     cursor: pointer;
 }
-
+.topnav-trans{}
 /* Change the color of links on hover */
 .topnav a:hover, .topnav a:active {
     text-decoration: none !important;
@@ -71,7 +71,15 @@
     /*background-color: #23527c;
     color: #ffffff;*/
 }
-
+.topnav-trans:hover, .topnav-trans:active {
+    /*
+    top: 1px;
+    position: relative;
+    -webkit-transition: 1s all ease-in-out;
+	-moz-transition: 1s all ease-in-out;
+    transition: 1s all ease-in-out;
+    */
+}
 /* Add an active class to highlight the current page */
 .active {
     /*background-color: #23527c;
@@ -128,6 +136,7 @@
         width: 100%;
         max-width:100%;
     }
+
 }
 
 /* The "responsive" class is added to the topnav with JavaScript when the user clicks on the icon. This class makes the topnav look good on small screens (display the links vertically instead of horizontally) */
@@ -282,6 +291,7 @@
     margin: 30px;
     margin-left: 0px;
     margin-top: 60px;
+    margin-bottom: 15px;
     padding: 30px;
 }
 @media screen and (max-width: 768px) {
@@ -313,3 +323,81 @@ color:orange;
 */
 
 /* BROWSER ONLY SUPPORT END */
+
+/* FOOTER SUPPORT */
+
+/* Footer */
+
+.list-inline {
+    padding-left: 0;
+    margin-left: -5px;
+    list-style: none;
+}
+.section-title {
+    text-align: center;
+    margin-bottom: 50px;
+    text-transform: uppercase;
+}
+.list-unstyled {
+    -webkit-padding-start: 10px !important;
+}
+.list-inline-item{display:inline-block}.list-inline-item:not(:last-child){margin-right:5px}
+
+#footer {
+    background: #fff !important;
+}
+#footer h4{
+	padding-left: 20px;
+    padding-bottom: 6px;
+    margin-bottom: 20px;
+    color: slategray;
+}
+#footer a {
+    color: #23527c !important;
+    text-decoration: none !important;
+    background-color: transparent;
+    -webkit-text-decoration-skip: objects;
+}
+#footer ul.social li{
+    padding: 3px 0;
+    list-style-type: none;
+}
+#footer ul.social li a i {
+    margin-right: 5px;
+    font-size:25px;
+    /*
+	-webkit-transition: .5s all ease;
+	-moz-transition: .5s all ease;
+    transition: .5s all ease;
+    */
+}
+#footer ul.social li:hover a i {
+	font-size:30px;
+	margin-top:-10px;
+}
+#footer ul.social li a,
+#footer ul.quick-links li a{
+	color: #23527c !important;
+}
+#footer ul.social li a:hover{
+	color:#23527c !important;
+}
+#footer ul.quick-links li{
+    list-style-type: none;
+}
+#footer ul.quick-links li:hover{}
+#footer ul.quick-links li a i{
+	margin-right: 5px;
+}
+#footer ul.quick-links li:hover a i {
+    font-weight: 700;
+}
+
+@media (max-width:767px){
+	#footer h4 {
+    padding-left: 0;
+    border-left: transparent;
+    padding-bottom: 0px;
+    margin-bottom: 10px;
+}
+}

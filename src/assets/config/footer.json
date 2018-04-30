@@ -1,0 +1,83 @@
+{
+    "copyright": {
+        "tag": " { ngDocumentor } ",
+        "link": "/home",
+        "type": "external",
+        "text": "ngDocumentor is a simple markdown rendering site framework that works even on HTML only hosts like github pages"
+    },
+    "nav": [
+        {
+            "tag": "Footer Example 1",
+            "children": [
+                {
+                    "tag": "Getting Started",
+                    "type": "internal",
+                    "link": "/intro"
+                },{
+                    "tag": "Config .json Files",
+                    "type": "internal",
+                    "link": "/config"
+                },{
+                    "tag": "Github",
+                    "type": "external",
+                    "link": "https://github.com/ngDocumentor/ngDocumentor"
+                }
+            ]
+        },
+        {
+            "tag": "Footer Example 2",
+            "children": [
+                {
+                    "tag": "Getting Started",
+                    "type": "internal",
+                    "link": "/intro"
+                },{
+                    "tag": "Config .json Files",
+                    "type": "internal",
+                    "link": "/config"
+                },{
+                    "tag": "Github",
+                    "type": "external",
+                    "link": "https://github.com/ngDocumentor/ngDocumentor"
+                }
+            ]
+        },
+        {
+            "tag": "Footer Example 3",
+            "children": [
+                {
+                    "tag": "Getting Started",
+                    "type": "internal",
+                    "link": "/intro"
+                },{
+                    "tag": "Config .json Files",
+                    "type": "internal",
+                    "link": "/config"
+                },{
+                    "tag": "Github",
+                    "type": "external",
+                    "link": "https://github.com/ngDocumentor/ngDocumentor"
+                }
+            ]
+        }
+    ],
+    "social": [
+        {
+            "tag": "Google +",
+            "type": "internal",
+            "link": "/intro"
+        },{
+            "tag": "Twitter",
+            "type": "internal",
+            "link": "/intro"
+        },{
+            "tag": "Facebook",
+            "type": "internal",
+            "link": "/intro"
+        },{
+            "tag": "Github",
+            "type": "external",
+            "link": "https://github.com/ngDocumentor/ngDocumentor"
+        }
+    ]
+}
