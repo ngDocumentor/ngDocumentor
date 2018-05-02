@@ -11,7 +11,7 @@
 ```json
 {
     "brandname": "My Documentation",
-    "topnav": [
+    "nav": [
         { "tag": "Home", "link": "/home" },
         { "tag": "Getting Started", "link": "/intro" }
     ]
