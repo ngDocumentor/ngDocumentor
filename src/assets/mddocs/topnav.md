@@ -16,7 +16,7 @@
 
 {
     "brandname": "My Documentation",
-    "topnav": [
+    "nav": [
         { "tag": "Home", "link": "/home" },
         { "tag": "Getting Started", "link": "/intro" }
     ]
@@ -25,7 +25,7 @@
 ```
 
 
-* The key `topnav` is an array of link definitions with two internal key definitions `tag` and `link`. The key `tag` is the link text that will be displayed in the sidebar as a link. The key `link` is the link url to open if the tag / link text is clicked in the sidebar. You will notice that this link object structure is common accross all config `.json` files.
+* The key `nav` is an array of link definitions with two internal key definitions `tag` and `link`. The key `tag` is the link text that will be displayed in the sidebar as a link. The key `link` is the link url to open if the tag / link text is clicked in the sidebar. You will notice that this link object structure is common accross all config `.json` files.
 
 
 * There is another optional key definition - `type`. It expects only one value - `external`. All other values or even the existance of key is ignored. The {Key:Value} `{"type":"external"}` denotes that it is an external site url (complete with http:// path). These links will open the specified `link` url in a new tab window. 
