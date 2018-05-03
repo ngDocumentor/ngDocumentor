@@ -37,6 +37,9 @@ The page / view transition is, however, mocked by changing the content display v
 There was another challenge. The first versions release did not support a link from within one markdown file to reference another markdown file. This was because the markdown rendering component did not add a click handler for any links within the markdown converted HTML. A tweak / alteration to the markdown link definition allowed to associate the link change to a hash change. Basically, a definition of internal markdown link `[someurl](#/someurl)` instead of this `[someurl](/someurl)` allowed changing the hash instead of page. This allowed capture of the hash change using a  eventlistener that could allow triggering of a XHR request function within a markdown file link based on hash value. This is a dirty hack but I am open to changing this, if someone can think of a better way.
 
 
+On the other side, the links configuration (top, sidebar, footer) can all be specified with just .json configuration file.
+
+
 ## Structure
 
 
