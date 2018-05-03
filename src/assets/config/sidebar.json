@@ -45,8 +45,8 @@
                     "type": "external",
                     "link": "https://github.com/ngDocumentor/ngDocumentor"
                 },{
-                    "tag": "Documentation",
-                    "link": "/intro"
+                    "tag": "App Design",
+                    "link": "/design"
                 }
             ]
         },{
