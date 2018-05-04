@@ -2,8 +2,6 @@ import { Directive, ElementRef, HostListener, Input, Inject } from '@angular/cor
 
 @Directive({ selector: '[opennewwindow]' })
 export class OpenLinkInNewWindowDirective {
-    // link currently unused
-    @Input('routerLink') link: string;
 
     @Input('attr.external') external: any;
 
