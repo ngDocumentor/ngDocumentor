@@ -1,5 +1,5 @@
 import {MarkdownToHtmlService} from 'ng2-markdown-to-html';
-import { Injectable, EventEmitter, ApplicationRef } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { Http, Response, Request, RequestMethod, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
 
@@ -22,7 +22,7 @@ export class HttpService {
 
   routeme: EventEmitter<string>;
 
-  constructor(http: Http, private _mhSrv: MarkdownToHtmlService, private _ar: ApplicationRef) {
+  constructor(http: Http, private _mhSrv: MarkdownToHtmlService) {
 
     this.http = http;
 
@@ -34,6 +34,8 @@ export class HttpService {
     this.routeme.subscribe((url) => {
 
       let uri;
+      // Bug is that bookmarks now wont work due to hash listener
+      // Handle the bookmark inside page url as well
       let tmpUri = url.split('#')[1] ? url.split('#')[1].split('/') : [];
       //console.log('DEBUG: tmpUri', tmpUri);
       if ((!tmpUri) || (tmpUri.length <= 1) || (tmpUri[1] == '')) {
@@ -46,20 +48,16 @@ export class HttpService {
         console.log('DEBUG: Log area one');
         if (data.includes('<!doctype html>')) {
           that.fileData = that.file404;
-          that._ar.tick();
         } else {
           that.fileData = data;
-          that._ar.tick();
         }
       }, (error) => {
         that._mhSrv.getSource('assets/mddocs/' + 'home.md').subscribe((data) => {
           console.log('DEBUG: Log area two');
           that.fileData = data;
-          that._ar.tick();
         }, (errors) => {
           console.log('DEBUG: Log area three');
           that.fileData = that.file404;
-          that._ar.tick();
         });
       });
 

@@ -1,5 +1,6 @@
-### { ngDocumentor }
-  
+## { ngDocumentor }
+
+
 A simple site to serve .md files; and which gets you up and running in less than 10 minutes. 
 Pass brand name, top navigation, sidebar menus, and footer navigation links using .json configuration files.
 
@@ -10,12 +11,18 @@ Pass brand name, top navigation, sidebar menus, and footer navigation links usin
 * Demo site - You are using it!
 
 ### Github repo to clone for site build
+
+
 [https://github.com/ngDocumentor/ngDocumentor.github.io](https://github.com/ngDocumentor/ngDocumentor.github.io)
 
 ### Contribution and Issues to Github repo
+
+
 [https://github.com/ngDocumentor/ngDocumentor](https://github.com/ngDocumentor/ngDocumentor)
 
 ### Licensing
+
+
 MIT License
 
 

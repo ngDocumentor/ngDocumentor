@@ -2,11 +2,13 @@
 
 
 ### { ngDocumentor }
-  
+
+
 ngDocumentor is a simple website that serves your .md files from a host location and present it as a readable site. It is quite nice and useful for static sites that are generally used for documentation purposes. Just clone the [ngDocumentor site repository](https://github.com/ngDocumentor/ngDocumentor.github.io), add your .md files, and add your link's configuration .json files. It can be as simple as that. Supports HTML only sites like github pages where there is no server configuration access to add url rewrites.
 
 
 #### Getting started - 10 Minutes
+
 
 * Clone the [ngDocumentor github site repository](https://github.com/ngDocumentor/ngDocumentor.github.io) OR download the [latest release v2.2.0](https://github.com/ngDocumentor/ngDocumentor.github.io/releases) to use the ngDocumentor site distribution directly.
 

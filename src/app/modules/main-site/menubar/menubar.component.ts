@@ -134,6 +134,7 @@ export class MenubarComponent implements OnInit {
     this.addEventListenersAccordian();
     window.onhashchange = function() { 
       that._h.fileUrl = window.location.href;
+      // Bug is that bookmarks now wont work
       that._h.routeme.emit(that._h.fileUrl);
     }
 
