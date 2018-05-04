@@ -8,8 +8,6 @@ export class HttpService {
 
   http: Http;
 
-  oldHash: string;
-
   fileUrl: string;
 
   fileData: any;
