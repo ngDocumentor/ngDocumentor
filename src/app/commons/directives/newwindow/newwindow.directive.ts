@@ -8,6 +8,6 @@ export class OpenLinkInNewWindowDirective {
     constructor(private el: ElementRef) {
     }
     @HostListener('mousedown') onMouseEnter() {
-        window.open(this.link || this.external.link);
+        window.open(this.external.link);
     }
 }
