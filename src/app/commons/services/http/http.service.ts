@@ -1,14 +1,15 @@
-import {MarkdownToHtmlService} from 'ng2-markdown-to-html';
-import { Injectable, EventEmitter, ApplicationRef } from '@angular/core';
+import { MarkdownService } from 'ngx-markdown';
+import { Injectable, EventEmitter } from '@angular/core';
 import { Http, Response, Request, RequestMethod, Headers } from '@angular/http';
-import 'rxjs/add/operator/map';
+import { HttpClient, HttpRequest, HttpResponse, HttpHeaders } from '@angular/common/http';
+import { map } from 'rxjs/operators';
+
+
 
 @Injectable()
 export class HttpService {
 
-  http: Http;
-
-  oldHash: string;
+  http: HttpClient;
 
   fileUrl: string;
 
@@ -22,7 +23,7 @@ export class HttpService {
 
   routeme: EventEmitter<string>;
 
-  constructor(http: Http, private _mhSrv: MarkdownToHtmlService, private _ar: ApplicationRef) {
+  constructor(http: HttpClient, private _mhSrv: MarkdownService) {
 
     this.http = http;
 
@@ -34,6 +35,8 @@ export class HttpService {
     this.routeme.subscribe((url) => {
 
       let uri;
+      // Bug is that bookmarks now wont work due to hash listener
+      // Handle the bookmark inside page url as well
       let tmpUri = url.split('#')[1] ? url.split('#')[1].split('/') : [];
       //console.log('DEBUG: tmpUri', tmpUri);
       if ((!tmpUri) || (tmpUri.length <= 1) || (tmpUri[1] == '')) {
@@ -46,43 +49,36 @@ export class HttpService {
         console.log('DEBUG: Log area one');
         if (data.includes('<!doctype html>')) {
           that.fileData = that.file404;
-          that._ar.tick();
         } else {
           that.fileData = data;
-          that._ar.tick();
         }
       }, (error) => {
         that._mhSrv.getSource('assets/mddocs/' + 'home.md').subscribe((data) => {
           console.log('DEBUG: Log area two');
           that.fileData = data;
-          that._ar.tick();
         }, (errors) => {
           console.log('DEBUG: Log area three');
           that.fileData = that.file404;
-          that._ar.tick();
         });
       });
 
     });
   }
 
+  // Not needed but keeping this for any usecase later. Dead code
   httpReq(url: string, method: string, data: any, header: Headers) {
-    let headers = new Headers();
-    headers.append('Content-Type', 'application/json');
+    let headers = new HttpHeaders();
 
-    if (method === 'GET') { var methods = RequestMethod.Get }
-    else if (method === 'POST') { var methods = RequestMethod.Post }
-    else if (method === 'PUT') { var methods = RequestMethod.Put }
-    else if (method === 'PATCH') { var methods = RequestMethod.Patch }
-    else if (method === 'DELETE') { var methods = RequestMethod.Delete }
-    else { var methods = RequestMethod.Get };
+    // TODO : Loop through passed headers, currently ignored
+    headers.set('Content-Type', 'application/json');
 
-    return this.http.request(new Request({
-      method: methods,
-      url: url,
-      body: JSON.stringify(data),
+    return this.http.request(method, url, {
+      responseType: 'json',
+      body: data,
       headers: headers
-    })).map(res => res.json());
+    }).pipe(
+      map(res => res)
+    );
   }
 
 }

@@ -1,5 +1,6 @@
 # Config file Introduction
 
+
 * The configuration files reside inside the `assets/config/` folder. There are three config files. `topnav.json`, `sidebar.json`, and `footer.json`.
 
 
