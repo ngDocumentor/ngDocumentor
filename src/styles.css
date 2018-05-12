@@ -11,8 +11,9 @@ body {
   color: #2f3640 !important;
   font-size: 13px !important;
   font-weight: 100;
-  font-family: sans-serif, verdana,  Times, arial !important;
+  font-family: arial, sans-serif, verdana,  Times  !important;
   width: 100% !important;
+  line-height: 1.5em;
 }
 
 
@@ -123,6 +124,9 @@ code[class*="language-"], pre[class*="language-"] {
 @media (max-width: 992px) { /* Added New */
   .container {
     width: 80%;
+  }
+  body {
+    font-size: 15px !important;
   }
 }
 

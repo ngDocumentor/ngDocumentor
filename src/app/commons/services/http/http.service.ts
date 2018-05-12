@@ -1,12 +1,15 @@
-import {MarkdownToHtmlService} from 'ng2-markdown-to-html';
+import { MarkdownService } from 'ngx-markdown';
 import { Injectable, EventEmitter } from '@angular/core';
 import { Http, Response, Request, RequestMethod, Headers } from '@angular/http';
-import 'rxjs/add/operator/map';
+import { HttpClient, HttpRequest, HttpResponse, HttpHeaders } from '@angular/common/http';
+import { map } from 'rxjs/operators';
+
+
 
 @Injectable()
 export class HttpService {
 
-  http: Http;
+  http: HttpClient;
 
   fileUrl: string;
 
@@ -20,7 +23,7 @@ export class HttpService {
 
   routeme: EventEmitter<string>;
 
-  constructor(http: Http, private _mhSrv: MarkdownToHtmlService) {
+  constructor(http: HttpClient, private _mhSrv: MarkdownService) {
 
     this.http = http;
 
@@ -62,23 +65,20 @@ export class HttpService {
     });
   }
 
+  // Not needed but keeping this for any usecase later. Dead code
   httpReq(url: string, method: string, data: any, header: Headers) {
-    let headers = new Headers();
-    headers.append('Content-Type', 'application/json');
+    let headers = new HttpHeaders();
 
-    if (method === 'GET') { var methods = RequestMethod.Get }
-    else if (method === 'POST') { var methods = RequestMethod.Post }
-    else if (method === 'PUT') { var methods = RequestMethod.Put }
-    else if (method === 'PATCH') { var methods = RequestMethod.Patch }
-    else if (method === 'DELETE') { var methods = RequestMethod.Delete }
-    else { var methods = RequestMethod.Get };
+    // TODO : Loop through passed headers, currently ignored
+    headers.set('Content-Type', 'application/json');
 
-    return this.http.request(new Request({
-      method: methods,
-      url: url,
-      body: JSON.stringify(data),
+    return this.http.request(method, url, {
+      responseType: 'json',
+      body: data,
       headers: headers
-    })).map(res => res.json());
+    }).pipe(
+      map(res => res)
+    );
   }
 
 }

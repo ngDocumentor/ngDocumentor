@@ -5,12 +5,10 @@
     "installMode": "prefetch",
     "resources": {
       "files": [
-        "/index.html"
-      ],
-      "versionedFiles": [
-        "/*.bundle.css",
-        "/*.bundle.js",
-        "/*.chunk.js"
+        "/logo.png",
+        "/index.html",
+        "/*.css",
+        "/*.js"
       ]
     }
   }, {

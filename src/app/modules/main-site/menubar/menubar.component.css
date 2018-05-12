@@ -340,6 +340,7 @@ color:orange;
 }
 .list-unstyled {
     -webkit-padding-start: 10px !important;
+    line-height: 2em;
 }
 .list-inline-item{display:inline-block}.list-inline-item:not(:last-child){margin-right:5px}
 
