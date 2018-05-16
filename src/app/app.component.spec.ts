@@ -24,4 +24,17 @@ describe('AppComponent', () => {
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('h1').textContent).toContain('Welcome to app!');
   }));
+
+  it('getTopnav() tests', async(() => {
+      // check for different superficial structural errors, link definition errors, object key missing errors
+  }));
+
+  it('getSidebar() tests', async(() => {
+    // check for different superficial structural errors, link definition errors, object key missing errors
+  }));
+
+  it('getFooter() tests', async(() => {
+    // check for different superficial structural errors, link definition errors, object key missing errors
+  }));
+
 });

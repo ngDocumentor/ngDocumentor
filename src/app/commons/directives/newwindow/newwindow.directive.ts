@@ -6,7 +6,7 @@ export class OpenLinkInNewWindowDirective {
     @Input('attr.external') external: any;
 
     constructor(private el: ElementRef) { }
-    
+
     @HostListener('mousedown') onMouseEnter() {
         window.open(this.external.link);
     }

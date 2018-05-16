@@ -22,4 +22,8 @@ describe('MenubarComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('mobileAndTabletCheck() test - should resolve to desktop for tests', () => {
+
+  });
 });
