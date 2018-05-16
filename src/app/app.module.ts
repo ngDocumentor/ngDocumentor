@@ -11,9 +11,11 @@ import { MarkdownModule } from 'ngx-markdown';
 
 
 // Routes
-import { HttpService } from './commons/services/http/http.service';
+
 
 // Services
+import { HttpService } from './commons/services/http/http.service';
+import { WorkerService } from './commons/services/worker/worker.service';
 
 
 // Components Directives Pipes
@@ -39,6 +41,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
   ],
   providers: [
     HttpService,
+    WorkerService,
   ],
   bootstrap: [AppComponent]
 })

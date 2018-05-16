@@ -32,6 +32,6 @@ export interface MenuLinks {
  */
 export interface Menu {
     brandname?: string;
-    links: MenuLinks[];
+    nav: MenuLinks[];
 }
 

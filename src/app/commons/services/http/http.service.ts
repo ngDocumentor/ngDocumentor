@@ -13,15 +13,30 @@ export class HttpService {
 
   fileUrl: string;
 
+  bmarkUri: string;
+
   fileData: any;
 
   file404: string = `
+
   # 404 Error
 
-  Note: The file you were trying to find did not exist or escaped an unknown error.
+  Note:
+
+
+  The file you were trying to find did not exist or escaped an unknown error.
+  Please request the owner to raise a github issue with the following information:
+
+
+  * Right click on the browser window.
+  * Click 'Inspect'.
+  * Go to the Console tab.
+  * Copy all the console text or preferably take a print screen of the console.
+  * Attach the print screen image and provide the URL in the browser window when this error occurred.
+
   `;
 
-  routeme: EventEmitter<string>;
+  routeme: EventEmitter<{ url: string; host: string; }>;
 
   constructor(http: HttpClient, private _mhSrv: MarkdownService) {
 
@@ -30,38 +45,74 @@ export class HttpService {
     this.routeme = new EventEmitter();
   }
 
+  getHomeUrl() {
+    let that = this;
+    that._mhSrv.getSource('assets/mddocs/' + 'home.md').subscribe((data) => {
+
+      console.log('DEBUG: RouteEvent Log area seven');
+
+      that.fileData = data;
+    }, (errors) => {
+
+      console.log('DEBUG:E: RouteEvent Log area eight', errors);
+
+      that.fileData = that.file404;
+    });
+  }
+
   getRouteEvent() {
     let that = this;
-    this.routeme.subscribe((url) => {
+    this.routeme.subscribe((linkData) => {
+      let url = linkData.url, host = linkData.host;
 
-      let uri;
-      // Bug is that bookmarks now wont work due to hash listener
-      // Handle the bookmark inside page url as well
-      let tmpUri = url.split('#')[1] ? url.split('#')[1].split('/') : [];
-      //console.log('DEBUG: tmpUri', tmpUri);
-      if ((!tmpUri) || (tmpUri.length <= 1) || (tmpUri[1] == '')) {
-        uri = '/home';
-      } else {
-        console.log('DEBUG: uri arrays', url.split('#').splice(1, 1), url.split('#'));
-        uri = url.split('#').splice(1, 1);
+      console.log('DEBUG: routeUrl', url, host);
+
+      if ((url && (url.includes('http') && !url.includes(host))) || (url == '' || url === '/')) {
+        console.log('DEBUG: RouteEvent Log area one');
+        that.getHomeUrl();
       }
-      that._mhSrv.getSource('assets/mddocs' + uri + '.md').subscribe((data) => {
-        console.log('DEBUG: Log area one');
-        if (data.includes('<!doctype html>')) {
-          that.fileData = that.file404;
-        } else {
-          that.fileData = data;
+
+      if (url.includes(host)) {
+        if (url.split(host + '/').length >= 2) {
+          url = url.split(host + '/')[1];
+          if (url !== '' && url !== '#' && url !== '#/') {
+            if (url.split('#/').length >= 2) {
+              url = url.split('#/')[1];
+            }
+            if (url.indexOf('#') === 0) {
+
+            } else {
+              if (url.split('#').length >= 2) {
+                url = url.split('#')[0];
+              }
+            }
+          }
+          if (url === '' && url === '#' && url === '#/') {
+            that.getHomeUrl();
+          }
         }
-      }, (error) => {
-        that._mhSrv.getSource('assets/mddocs/' + 'home.md').subscribe((data) => {
-          console.log('DEBUG: Log area two');
-          that.fileData = data;
-        }, (errors) => {
-          console.log('DEBUG: Log area three');
+      }
+
+      console.log('DEBUG: routeUrl Two', url, host);
+
+      if (url && !url.includes('http')) {
+        that._mhSrv.getSource('assets/mddocs/' + url + '.md').subscribe((data) => {
+          console.log('DEBUG: RouteEvent Log area two');
+          if (data.includes('<!doctype html>')) {
+            console.log('DEBUG:E: RouteEvent Log area three');
+            that.fileData = that.file404;
+          } else {
+            console.log('DEBUG: RouteEvent Log area four');
+            that.fileData = data;
+          }
+        }, (error) => {
+          console.log('DEBUG:E: RouteEvent Log area five', error);
           that.fileData = that.file404;
         });
-      });
-
+      } else {
+        console.log('DEBUG:E: RouteEvent Log area six');
+        that.getHomeUrl();
+      }
     });
   }
 

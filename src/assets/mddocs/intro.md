@@ -10,13 +10,13 @@ ngDocumentor is a simple website that serves your .md files from a host location
 #### Getting started - 10 Minutes
 
 
-* Clone the [ngDocumentor github site repository](https://github.com/ngDocumentor/ngDocumentor.github.io) OR download the [latest release v2.2.0](https://github.com/ngDocumentor/ngDocumentor.github.io/releases) to use the ngDocumentor site distribution directly.
+* Clone the [ngDocumentor github site repository](https://github.com/ngDocumentor/ngDocumentor.github.io) OR download the [latest release v3.0.0](https://github.com/ngDocumentor/ngDocumentor.github.io/releases) to use the ngDocumentor site distribution directly.
 
 
-* NOTE: If you clone the [ngDocumentor github site repository](https://github.com/ngDocumentor/ngDocumentor.github.io), and do not intend to use Service Worker / Offline viewing support then you can safely delete the `ngsw-worker.js` and `ngsw.json` files from the github clone. Alternatively, if you wish to use the offline viewing (caching) support then use the [ngDocumentor Angular source](https://github.com/ngDocumentor/ngDocumentor) to create a offline viewing enabled build for yourself. Build steps for ngDocumentor development branch can be found in [README.md](https://github.com/ngDocumentor/ngDocumentor/blob/master/README.md) or [here](#/building).
+* NOTE: If you clone the [ngDocumentor github site repository](https://github.com/ngDocumentor/ngDocumentor.github.io), and do not intend to use Service Worker / Offline viewing support then you can safely delete the `ngsw-worker.js` and `ngsw.json` files from the github clone. Alternatively, if you wish to use the offline viewing (caching) support then use the [ngDocumentor Angular source](https://github.com/ngDocumentor/ngDocumentor) to create a offline viewing enabled build for yourself. Build steps for ngDocumentor development branch can be found [here](#/building) or in [README.md](https://github.com/ngDocumentor/ngDocumentor/blob/master/README.md).
 
 
-* If you have created your markdown (.md files) wiki for your project, that should be your starting point. If not create your documentation. Copy all your `.md` files (with the respective folder structure, if needed) into the `assets/mddocs` folder in the downloaded ngDocumentor release. In case of a cloned repository you will find the mddocs folder directly within the `src/assets` folder.
+* If you have created your markdown (.md files) wiki for your project, that should be your starting point. If not create your documentation. You can have a look at [.md doc generation](#/generatedocs) tips and support here. Copy all your `.md` files (with the respective folder structure, if needed) into the `assets/mddocs` folder in the downloaded ngDocumentor release. In case of a cloned repository you will find the mddocs folder directly within the `src/assets` folder.
 
 
 * Create `assets/mddocs/home.md` for top first level home link. This is currently needed and not optional. [1] `home.md` will be path `/` or `/home`.
@@ -63,7 +63,7 @@ ngDocumentor is a simple website that serves your .md files from a host location
 {
     "nav": [
         { "tag": "Home", "link": "/home" },
-        { "tag": "Getting Started - 5 mins", "link": "/intro" }
+        { "tag": "Getting Started - 10 mins", "link": "/intro" }
     ]
 }
 ```
@@ -105,7 +105,7 @@ ngDocumentor is a simple website that serves your .md files from a host location
 ```
 
 
-* The `footer.json` has three keys `copyright`, `nav`, and `social`each catering to copyright, navigation, and social links sections respectively in the footer; as the name suggests.
+* The `footer.json` has three keys `copyright`, `nav`, and `social` each catering to copyright, navigation, and social links sections respectively in the footer; as the name suggests.
 
 
 * The `copyright` key defines a link object with `tag`, and `link` keys. There is another key `text` which allows for addition of text just before the copyright text in the bottom. Have a look at this site's footer.
@@ -126,7 +126,7 @@ ngDocumentor is a simple website that serves your .md files from a host location
 * NOTE: All .md files including home.md will map to `/FILENAME` (without .md) url path for .json configuration files. Example: `assets/mddocs/introduction.md` will be mapped to link `/introduction`. Similarly, `assets/mddocs/mysubfolder/introduction.md` will be mapped to link `mysubfolder/introduction`.
 
 
-* EXCEPTION NOTE: If you want to reference other markdown files within your markdown files as internal links then use a `#` in from of your links. Example: `assets/mddocs/somefile.md` will be referred as `#/somefile` like this `[Some File](#/somefile)` inside the referencing file. This is currently a requirement. If you think we can avoid it, please send a pull request. [Link inside .md file - Demo](#/topnav).
+* EXCEPTION NOTE: If you want to reference other markdown files within your markdown files as internal links then use a `#` in from of your links. Example: `assets/mddocs/somefile.md` will be referred as `#/somefile` like this `[Some File](#/somefile)` inside the referencing file. This is currently a requirement. If you think we can avoid it, please send a pull request. [Link inside .md file for Topnav - Demo](#/topnav).
 
 
 * Thats it! Push your code to your server root or folder. Your simple documentation site is online. 
