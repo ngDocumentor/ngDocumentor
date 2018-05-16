@@ -55,11 +55,11 @@ export class HttpService {
       if (!url.includes('http')) {
         if (url.indexOf('/') === 0 && url.split('/').length >= 1) {
           // /loc, /loc#bmark,
-          // /#loc#bmark?, /##loc#bmark?
-          let tmpUriArr = url.split('/')[1];
+          // /#loc#bmark?, /##loc#bmark
+          let tmpUriArr = url.split('/');
           if (tmpUriArr[1].split('#').length >= 2) {
-            routeUri = tmpUriArr[1].split('#')[1];
-            bmarkUri = tmpUriArr[1].split('#')[2];
+            routeUri = tmpUriArr[1].split('#')[0];
+            bmarkUri = tmpUriArr[1].split('#')[1];
           } else {
             routeUri = tmpUriArr[1].split('#')[0];
             bmarkUri = '';
@@ -67,9 +67,6 @@ export class HttpService {
         }
         if (url.indexOf('#') === 0) {
           // #/loc, #/loc#bmark, #/#loc#bmark?,
-          // #loc?, #loc#bmark?
-          // ##/loc#bmark?, ##/#loc#bmark?
-          // ##loc?, ##loc#bmark?
           let tmpUriArr = url.split('#');
           if (tmpUriArr[1].indexOf('/') === 0) {
             routeUri = tmpUriArr[1].split('/')[1];
@@ -79,12 +76,33 @@ export class HttpService {
               bmarkUri = '';
             }
           }
-          if (tmpUriArr[1].indexOf('#') === 0) {
 
+          if (tmpUriArr[1].indexOf('/') !== 0) {
+            // ##/loc#bmark, ##/#loc#bmark
+            // ##loc, ##loc#bmark
+            if (tmpUriArr[1] === '' && tmpUriArr.length > 2) {
+              routeUri = '';
+              bmarkUri = tmpUriArr[2];
+            }
+            // #
+            if (tmpUriArr[1] === '' && tmpUriArr.length === 2) {
+              routeUri = '';
+              bmarkUri = '';
+            }
+            // #loc#bmark
+            if (tmpUriArr[1] !== '' && tmpUriArr.length > 2) {
+              routeUri = tmpUriArr[1];
+              bmarkUri = tmpUriArr[2];
+            }
+            // #loc
+            if (tmpUriArr[1] !== '' && tmpUriArr.length === 2) {
+              routeUri = tmpUriArr[1];
+              bmarkUri = '';
+            }
           }
         }
         if (url.indexOf('/') !== 0 && url.indexOf('#') !== 0) {
-          // loc?, loc#bmark?
+          // loc, loc#bmark
           let tmpUriArr = url.split('#');
           if (tmpUriArr.length >= 2) {
             routeUri = tmpUriArr[0];
