@@ -49,7 +49,8 @@ export class MenubarComponent implements OnInit {
     this.topnav.nativeElement.style.left = '250px';
     this.contentmain.nativeElement.style.marginLeft = '250px';
     this.footernav.nativeElement.style.left = '250px';
-    this.footernav.nativeElement.style.position = 'relative';
+    this.footernav.nativeElement.style.right = '0px';
+    this.footernav.nativeElement.style.position = 'absolute';
     return false;
   }
 
@@ -59,7 +60,8 @@ export class MenubarComponent implements OnInit {
     this.topnav.nativeElement.style.left = '0';
     this.contentmain.nativeElement.style.marginLeft = '0px';
     this.footernav.nativeElement.style.left = '0';
-    this.footernav.nativeElement.style.position = 'relative';
+    this.footernav.nativeElement.style.right = '0px';
+    this.footernav.nativeElement.style.position = 'absolute';
     return false;
   }
 

@@ -45,7 +45,7 @@ export class HttpService {
     this.routeme = new EventEmitter();
   }
 
-  // TODO: INCOMPLETE
+  // TODO: INCOMPLETE Tests to be added
   cleanUrl(url, host): { routeUri, bmarkUri } {
     let that = this, routeUri = '', bmarkUri = '';
     if (url.includes(host)) {

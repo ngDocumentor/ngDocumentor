@@ -347,6 +347,7 @@ color:orange;
 #footer {
     background: #fff !important;
 }
+
 #footer h4{
 	padding-left: 20px;
     padding-bottom: 6px;
@@ -387,7 +388,7 @@ color:orange;
     list-style-type: none;
 }
 #footer ul.quick-links li:hover{}
-#footer ul.quick-links li a i{
+#footer ul.quick-links li a i {
 	margin-right: 5px;
 }
 #footer ul.quick-links li:hover a i {
@@ -401,4 +402,16 @@ color:orange;
     padding-bottom: 0px;
     margin-bottom: 10px;
 }
+}
+
+ .footer-copyright {
+    padding-top: 3px;
+    padding-bottom: 3px;
+    text-align: center;
+}
+
+.social-networks {
+    text-align: center;
+    padding-top: 15px;
+    padding-bottom: 15px;
 }

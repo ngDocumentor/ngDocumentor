@@ -59,6 +59,24 @@
                     "link": "https://github.com/ngDocumentor/ngDocumentor"
                 }
             ]
+        },
+        {
+            "tag": "Footer Example 3",
+            "children": [
+                {
+                    "tag": "Getting Started",
+                    "type": "internal",
+                    "link": "/intro"
+                },{
+                    "tag": "Config .json Files",
+                    "type": "internal",
+                    "link": "/config"
+                },{
+                    "tag": "Github",
+                    "type": "external",
+                    "link": "https://github.com/ngDocumentor/ngDocumentor"
+                }
+            ]
         }
     ],
     "social": [
