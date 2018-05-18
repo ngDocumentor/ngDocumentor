@@ -144,6 +144,11 @@ export class MenubarComponent implements OnInit {
     }
   }
 
+  searchDoc(event) {
+    console.log('Submit');
+    return false;
+  }
+
   ngOnInit(): void {
     this.addEventListenersAccordian();
 
