@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { SearchResult, SearchRequest } from '../../interfaces/search/search';
 
 @Injectable({
   providedIn: 'root'
@@ -7,14 +8,14 @@ export class WorkerService {
 
   searchWorker: any;
 
-  searchData: any | null = null;
+  searchResult: SearchResult | null = null;
 
   constructor() {
     this.searchInit('/assets/scripts/search-worker.js');
     this.onmessage();
   }
 
-  postMessage(data: any): void {
+  postMessage(data: SearchRequest): void {
     this.searchWorker.postMessage(data);
   }
 
@@ -24,8 +25,8 @@ export class WorkerService {
 
   onmessage(): void {
     let that = this;
-    this.searchWorker.onmessage = function (data) {
-      this.searchData = data;
+    this.searchWorker.onmessage = function (data: SearchResult) {
+      this.searchResult = data;
     };
   }
 

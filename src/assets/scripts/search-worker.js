@@ -37,10 +37,10 @@ async function getDocs(urlsArr) {
   let filteredRes, ajaxArr = [],
     searchableArr = [];
 
-    // TODO: Improve ajax trigger loop into a parallel request. 
-    // Issue: Error cases handling the issue for parallel trigger implementation with asyncjs, t/co, and promise.all
-    // Reason: ? Iterables in t/co, asyncjs, and promise.all with error handling is a mess! 
-    // Solution: Proposal needed for promise.all where errors of only error promises can be handled without breaking other promises 
+  // TODO: Improve ajax trigger loop into a parallel request. 
+  // Issue: Error cases handling the issue for parallel trigger implementation with asyncjs, t/co, and promise.all
+  // Reason: ? Iterables in t/co, asyncjs, and promise.all with error handling is a mess! 
+  // Solution: Proposal needed for promise.all where errors of only error promises can be handled without breaking other promises 
   for (let i = 0; i < urlsArr.length; i++) {
     try {
       let res = await ajax(urlsArr[i]).catch(function (e) {
@@ -68,7 +68,6 @@ function searchDocs(mdArr, searchString) {
     this.metadataWhitelist = ['position'];
 
     for (var i = 0; i < mdArr.length; i++) {
-      console.log('lunr', mdArr[i]);
       if (!!mdArr[i].body && (mdArr[i].body.indexOf('Error') !== 0 && !mdArr.err)) {
         let a = mdArr[i];
         this.add(a);
@@ -90,7 +89,7 @@ async function search(eData) {
 
 onmessage = async function (e) {
   let actionResult;
-  console.log(e);
+
   // trigger activity based on action
   if (e.data.action === 'search') {
     actionResult = await search(e.data);
@@ -99,5 +98,5 @@ onmessage = async function (e) {
       result: actionResult
     });
   };
-  
+
 };
