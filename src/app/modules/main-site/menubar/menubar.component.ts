@@ -41,6 +41,8 @@ export class MenubarComponent implements OnInit {
 
   menuclosed: boolean = true;
 
+  @ViewChild('searchform') searchform;
+
   constructor(private _h: HttpService, private _wsrv: WorkerService) { }
 
   openNav(): boolean {
@@ -144,8 +146,14 @@ export class MenubarComponent implements OnInit {
     }
   }
 
-  searchDoc(event) {
-    console.log('Submit');
+  searchDoc() {
+
+    console.log('Submit', this.searchform.nativeElement.value);
+    this._wsrv.postMessage({
+      action: 'search',
+      key: this.searchform.nativeElement.value,
+      urls: ['/assets/mddocs/home.m', '/assets/mddocs/credits.md', '/assets/mddocs/intro.md']
+    });
     return false;
   }
 

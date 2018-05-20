@@ -3,22 +3,12 @@
   <a class="invisible-menu" href="javascript:void(0);">
     <span *ngIf="!sidebarclosed" class="pad-top-menuicon" (click)="closeNav()">
       &nbsp;&nbsp;&nbsp;
-      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 26 26" version="1.1" width="12px"
-        height="12px">
-        <g id="surface1">
-          <path style=" " d="M 0 4 L 0 6 L 26 6 L 26 4 Z M 0 12 L 0 14 L 26 14 L 26 12 Z M 0 20 L 0 22 L 26 22 L 26 20 Z " />
-        </g>
-      </svg>
+      <img src="/assets/img/menuicon.svg" style="width: 12px; height: 12px;" alt="Menu">
       &nbsp;&nbsp;&nbsp;
     </span>
     <span *ngIf="!!sidebarclosed" class="pad-top-menuicon" (click)="openNav()">
       &nbsp;&nbsp;&nbsp;
-      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 26 26" version="1.1" width="12px"
-        height="12px">
-        <g id="surface1">
-          <path style=" " d="M 0 4 L 0 6 L 26 6 L 26 4 Z M 0 12 L 0 14 L 26 14 L 26 12 Z M 0 20 L 0 22 L 26 22 L 26 20 Z " />
-        </g>
-      </svg>
+      <img src="/assets/img/menuicon.svg" style="width: 12px; height: 12px;" alt="Menu">
       &nbsp;&nbsp;&nbsp;
     </span>
     <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
@@ -97,8 +87,8 @@
 <div #contentmain class="main">
   <div class="searchbar">
       <div class="search-container">
-        <form (submit)="searchDoc($event)">
-          <input type="text" placeholder="Search.." name="search">
+        <form (submit)="searchDoc()">
+          <input type="text" placeholder="Search.." #searchform name="search">
           <button type="submit">search</button>
         </form>
       </div>

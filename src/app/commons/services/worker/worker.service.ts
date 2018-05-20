@@ -8,28 +8,27 @@ export class WorkerService {
 
   searchWorker: any;
 
+  searchData: any | null = null;
+
   constructor() {
     // Comment out the following after implementation
-    this.init('/assets/scripts/search-worker.js');
-
+    this.searchInit('/assets/scripts/search-worker.js');
     this.onmessage();
-
-    // Comment out the following after implementation
-    this.postMessage('Test from web worker srv');
   }
 
   postMessage(data: any): void {
     this.searchWorker.postMessage(data);
   }
 
-  init(fileUrl: string): void {
+  searchInit(fileUrl: string): void {
     this.searchWorker = new Worker(fileUrl);
   }
 
   onmessage(): void {
     let that = this;
     this.searchWorker.onmessage = function (data) {
-      console.log(data);
+      this.searchData = data;
+      console.log(this.searchData);
     };
   }
 
