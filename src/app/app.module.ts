@@ -24,6 +24,7 @@ import { MenubarComponent } from './modules/main-site/menubar/menubar.component'
 import { OpenLinkInNewWindowDirective } from './commons/directives/newwindow/newwindow.directive';
 import { RendermdComponent } from './modules/main-site/rendermd/rendermd.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { SearchListComponent } from './modules/main-site/search-list/search-list.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     AppComponent,
     MenubarComponent,
     OpenLinkInNewWindowDirective,
-    RendermdComponent
+    RendermdComponent,
+    SearchListComponent
   ],
   imports: [
     BrowserModule,

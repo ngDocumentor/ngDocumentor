@@ -45,8 +45,14 @@
                     "type": "external",
                     "link": "https://github.com/ngDocumentor/ngDocumentor"
                 },{
+                    "tag": "Generate .md Docs",
+                    "link": "/genmd"
+                },{
                     "tag": "App Design",
                     "link": "/design"
+                },{
+                    "tag": "Search Functionality",
+                    "link": "/search"
                 }
             ]
         },{
