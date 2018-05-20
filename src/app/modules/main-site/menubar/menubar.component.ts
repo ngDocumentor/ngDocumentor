@@ -147,8 +147,6 @@ export class MenubarComponent implements OnInit {
   }
 
   searchDoc() {
-
-    console.log('Submit', this.searchform.nativeElement.value);
     this._wsrv.postMessage({
       action: 'search',
       key: this.searchform.nativeElement.value,
