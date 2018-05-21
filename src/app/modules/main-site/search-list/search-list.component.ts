@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchListComponent implements OnInit {
 
+  searchlist: any[] = [1, 2, 3, 4, 5];
   constructor() { }
 
   ngOnInit() {
