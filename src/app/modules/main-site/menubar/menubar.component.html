@@ -3,13 +3,11 @@
   <a class="invisible-menu" href="javascript:void(0);">
     <span *ngIf="!sidebarclosed" class="pad-top-menuicon" (click)="closeNav()">
       &nbsp;&nbsp;&nbsp;
-      <img src="/assets/img/menuicon.svg" style="width: 12px; height: 12px;" alt="Menu">
-      &nbsp;&nbsp;&nbsp;
+      <img src="/assets/img/menuicon.svg" style="width: 12px; height: 12px;" alt="Menu"> &nbsp;&nbsp;&nbsp;
     </span>
     <span *ngIf="!!sidebarclosed" class="pad-top-menuicon" (click)="openNav()">
       &nbsp;&nbsp;&nbsp;
-      <img src="/assets/img/menuicon.svg" style="width: 12px; height: 12px;" alt="Menu">
-      &nbsp;&nbsp;&nbsp;
+      <img src="/assets/img/menuicon.svg" style="width: 12px; height: 12px;" alt="Menu"> &nbsp;&nbsp;&nbsp;
     </span>
     <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
     <span (click)="routeMain()" class="fontcolor-primary font-bold"> {{ brandname }} </span>
@@ -27,13 +25,11 @@
   <a href="javascript:void(0);" class="icon-left">
     <span class="pad-left-right menu-position" *ngIf="!sidebarclosed" (click)="closeNav()">
       &nbsp;&nbsp;&nbsp;
-      <img src="/assets/img/menuicon.svg" style="width: 12px; height: 12px;" alt="Menu">
-      &nbsp;&nbsp;&nbsp;
+      <img src="/assets/img/menuicon.svg" style="width: 12px; height: 12px;" alt="Menu"> &nbsp;&nbsp;&nbsp;
     </span>
     <span class="pad-left-right menu-position" *ngIf="!!sidebarclosed" (click)="openNav()">
       &nbsp;&nbsp;&nbsp;
-      <img src="/assets/img/menuicon.svg" style="width: 12px; height: 12px;" alt="Menu">
-      &nbsp;&nbsp;&nbsp;
+      <img src="/assets/img/menuicon.svg" style="width: 12px; height: 12px;" alt="Menu"> &nbsp;&nbsp;&nbsp;
     </span>
   </a>
 </div>
@@ -85,18 +81,18 @@
 </div>
 
 <div #contentmain class="main">
-  <div class="searchbar">
-      <div class="search-container">
-        <form (submit)="searchDoc()">
-          <input type="text" placeholder="Search.." #searchform name="search">
-          <button type="submit">search</button>
-        </form>
-      </div>
+  <div *ngIf="showsearch" class="searchbar">
+    <div class="search-container">
+      <form (submit)="searchDoc()">
+        <input type="text" placeholder="Search.." #searchform name="search">
+        <button type="submit">search</button>
+      </form>
+    </div>
   </div>
   <app-rendermd></app-rendermd>
-  
-  <span *ngIf="mobileAndTabletCheck()" class="fab-icon" title="Search Site">
-      <img src="/assets/img/search.svg" style="width: 10px; height: 10px;" alt="Search">
+
+  <span *ngIf="searchicon" class="fab-icon" title="Search Site" (click)="showSearch()">
+    <img src="/assets/img/search.svg" style="width: 10px; height: 10px;" alt="Search">
   </span>
 </div>
 

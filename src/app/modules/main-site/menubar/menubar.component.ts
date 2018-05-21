@@ -41,6 +41,10 @@ export class MenubarComponent implements OnInit {
 
   menuclosed: boolean = true;
 
+  showsearch: boolean = false;
+
+  searchicon: boolean = true;
+
   @ViewChild('searchform') searchform;
 
   constructor(private _h: HttpService, private _wsrv: WorkerService) { }
@@ -152,7 +156,16 @@ export class MenubarComponent implements OnInit {
       key: this.searchform.nativeElement.value,
       urls: ['/assets/mddocs/home.m', '/assets/mddocs/credits.md', '/assets/mddocs/intro.md']
     });
+    if (this.mobileAndTabletCheck()) {
+      this.searchicon = true;
+      this.showsearch = false;
+    }
     return false;
+  }
+
+  showSearch() {
+    this.showsearch = true;
+    this.searchicon = false;
   }
 
   ngOnInit(): void {
@@ -166,6 +179,8 @@ export class MenubarComponent implements OnInit {
     document.addEventListener("DOMContentLoaded", function (event) {
       if (!this.mobileAndTabletCheck()) {
         this.openNav();
+        this.searchicon = false;
+        this.showsearch = true;
       }
     }.bind(this));
   }

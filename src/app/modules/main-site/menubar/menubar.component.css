@@ -547,7 +547,7 @@ color:orange;
     float: none;
     display: block;
     text-align: center;
-    width: 150px;
+    width: 200px;
     margin: 0;
     padding: 8px;
   }
@@ -556,6 +556,17 @@ color:orange;
     padding-right: 0px;
     padding-left: 0px;
     width: calc(100% - 2px);
+  }
+}
+
+@media screen and (max-width:300px) {
+  .searchbar a, .searchbar input[type=text], .searchbar .search-container button {
+    float: none;
+    display: block;
+    text-align: center;
+    width: 125px;
+    margin: 0;
+    padding: 8px;
   }
 }
 
