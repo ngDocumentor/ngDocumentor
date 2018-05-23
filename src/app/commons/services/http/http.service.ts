@@ -144,6 +144,7 @@ export class HttpService {
 
       console.log('DEBUG: routeUrl', url, host);
 
+      /* If the load is a search event */
       if (url.includes('#/#/?search=')) {
         search = url.split('#/#/?search=')[1];
         url = 'http';
@@ -157,11 +158,13 @@ export class HttpService {
         return;
       }
 
+      /* If http is included but host is not in the url and url is blank or / */
       if ((url && (url.includes('http') && !url.includes(host))) || (url === '' || url === '/')) {
         console.log('DEBUG: RouteEvent Log area one');
         that.getHomeUrl();
       }
 
+      /* If http and host is included */
       if (url.includes(host)) {
         if (url.split(host + '/').length >= 2) {
           url = url.split(host + '/')[1];
@@ -187,6 +190,7 @@ export class HttpService {
 
       console.log('DEBUG: routeUrl Two', url, host);
 
+      /* If url is valid but doesnot include http and is file name */
       if (url && !url.includes('http')) {
         that._mhSrv.getSource('assets/mddocs/' + url + '.md').subscribe((data) => {
           console.log('DEBUG: RouteEvent Log area two');
@@ -198,10 +202,12 @@ export class HttpService {
             that.fileData = data;
           }
         }, (error) => {
+          /* If url filename has error or unhandled condition */
           console.log('DEBUG:E: RouteEvent Log area five', error);
           that.fileData = that.file404;
         });
       } else {
+        /* If url is not valid or includes http */
         console.log('DEBUG:E: RouteEvent Log area six');
         that.getHomeUrl();
       }
