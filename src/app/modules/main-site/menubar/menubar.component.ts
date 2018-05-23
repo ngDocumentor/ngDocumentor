@@ -47,7 +47,7 @@ export class MenubarComponent implements OnInit {
 
   @ViewChild('searchform') searchform;
 
-  constructor(private _h: HttpService, private _wsrv: WorkerService) { }
+  constructor(private _h: HttpService, private _wksrv: WorkerService) { }
 
   openNav(): boolean {
     this.sidebarclosed = false;
@@ -97,7 +97,7 @@ export class MenubarComponent implements OnInit {
       let cleaner = this._h.cleanUrl(url, window.location.host);
       routeUri = cleaner.routeUri;
       bmarkUri = cleaner.bmarkUri;
-
+      
       that._h.fileUrl = routeUri;
       that._h.bmarkUri = bmarkUri;
       if (that._h.fileUrl !== window.location.host) {
@@ -115,8 +115,12 @@ export class MenubarComponent implements OnInit {
         window.location.href = url;
       }
       window.scroll(0, 0);
+      this._wksrv.searchResult = null;
+      return;
     } else {
       console.log('DEBUG: HashChangeURI Four - Error occurred due to no url string', url);
+      this._wksrv.searchResult = null;
+      return;
     }
   }
 
@@ -151,14 +155,18 @@ export class MenubarComponent implements OnInit {
   }
 
   searchDoc() {
-    this._wsrv.postMessage({
-      action: 'search',
-      key: this.searchform.nativeElement.value,
-      urls: ['/assets/mddocs/home.m', '/assets/mddocs/credits.md', '/assets/mddocs/intro.md']
-    });
+    if (this.searchform.nativeElement.value !== '') {
+      this._wksrv.searchResult = null;
+      this._wksrv.postMessage({
+        action: 'search',
+        key: this.searchform.nativeElement.value,
+        urls: ['/assets/mddocs/home.m', '/assets/mddocs/credits.md', '/assets/mddocs/intro.md']
+      });
+      window.location.replace('#/#/?search=' + this.searchform.nativeElement.value);
+    }
     if (this.mobileAndTabletCheck()) {
-      this.searchicon = true;
       this.showsearch = false;
+      this.searchicon = true;
     }
     return false;
   }

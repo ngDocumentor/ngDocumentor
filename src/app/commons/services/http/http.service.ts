@@ -3,6 +3,7 @@ import { Injectable, EventEmitter } from '@angular/core';
 import { Http, Response, Request, RequestMethod, Headers } from '@angular/http';
 import { HttpClient, HttpRequest, HttpResponse, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import { WorkerService } from '../worker/worker.service';
 
 
 
@@ -38,7 +39,7 @@ export class HttpService {
 
   routeme: EventEmitter<{ url: string; host: string; }>;
 
-  constructor(http: HttpClient, private _mhSrv: MarkdownService) {
+  constructor(http: HttpClient, private _mhSrv: MarkdownService, private _wksrv: WorkerService) {
 
     this.http = http;
 
@@ -139,11 +140,24 @@ export class HttpService {
   getRouteEvent() {
     let that = this;
     this.routeme.subscribe((linkData) => {
-      let url = linkData.url, host = linkData.host;
+      let url = linkData.url, host = linkData.host, search = '';
 
       console.log('DEBUG: routeUrl', url, host);
 
-      if ((url && (url.includes('http') && !url.includes(host))) || (url == '' || url === '/')) {
+      if (url.includes('#/#/?search=')) {
+        search = url.split('#/#/?search=')[1];
+        url = 'http';
+        if (search && search !== '') {
+          that._wksrv.postMessage({
+            action: 'search',
+            key: search,
+            urls: ['/assets/mddocs/home.m', '/assets/mddocs/credits.md', '/assets/mddocs/intro.md']
+          });
+        }
+        return;
+      }
+
+      if ((url && (url.includes('http') && !url.includes(host))) || (url === '' || url === '/')) {
         console.log('DEBUG: RouteEvent Log area one');
         that.getHomeUrl();
       }
@@ -151,6 +165,8 @@ export class HttpService {
       if (url.includes(host)) {
         if (url.split(host + '/').length >= 2) {
           url = url.split(host + '/')[1];
+          console.log('route url', url);
+
           if (url !== '' && url !== '#' && url !== '#/') {
             if (url.split('#/').length >= 2) {
               url = url.split('#/')[1];

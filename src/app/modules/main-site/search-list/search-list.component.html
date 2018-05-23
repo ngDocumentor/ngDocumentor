@@ -1,5 +1,20 @@
-<div *ngFor="let item of searchlist">
-  <h4 style="margin-bottom: 0px !important;"><a href="">This is a head</a></h4>
-  <h5 style="margin-top: 0px !important;">Search Match - %: 0.111123, Keys : [kjsdfkjdfldflkdfs: 10, lkdflkdflkfd: 23, kfdlkdflkdflk: 96]</h5>
-  <span style="margin-top: 0px !important;">This is the search result trimmed text</span>
+<div *ngFor="let item of (_wksrv.searchResult || [])">
+
+  <h4 style="margin-bottom: 0px !important;">
+    <a class="text-green ml-2" href="{{ '#' + item.ref.split('/assets/mddocs')[1].split('.md')[0]}}">
+      {{item.ref}}
+    </a>
+  </h4>
+  <h5 style="margin-top: 0px !important;">Search Match - %: {{item.score}}, Keys : [
+    <span></span>
+    <!--
+      <span *ngFor="let obj of item.matchData.metadata.keys()">
+      <span>{{ obj }}</span>:
+      <span>{{ item.matchData.metadata[obj] }}</span>
+    </span>
+    -->
+    ]
+  </h5>
+  <span style="margin-top: 0px !important;">{{ item.ref.body }}</span>
+
 </div>
