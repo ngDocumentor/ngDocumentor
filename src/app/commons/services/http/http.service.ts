@@ -6,7 +6,6 @@ import { map } from 'rxjs/operators';
 import { WorkerService } from '../worker/worker.service';
 
 
-
 @Injectable()
 export class HttpService {
 
@@ -46,7 +45,14 @@ export class HttpService {
     this.routeme = new EventEmitter();
   }
 
-  // TODO: INCOMPLETE Tests to be added
+  /**
+   * TODO: INCOMPLETE Tests to be added
+   * 
+   * @param {any} url 
+   * @param {any} host 
+   * @returns {{ routeUri, bmarkUri }} 
+   * @memberof HttpService
+   */
   cleanUrl(url, host): { routeUri, bmarkUri } {
     let that = this, routeUri = '', bmarkUri = '';
     if (url.includes(host)) {
@@ -122,7 +128,13 @@ export class HttpService {
     };
   }
 
-  getHomeUrl() {
+/**
+ * Gets the home.md file and assigns
+ * If no home.md present 404 error is assigned
+ * 
+ * @memberof HttpService
+ */
+getHomeUrl() {
     let that = this;
     that._mhSrv.getSource('assets/mddocs/' + 'home.md').subscribe((data) => {
 
@@ -137,7 +149,12 @@ export class HttpService {
     });
   }
 
-  getRouteEvent() {
+/**
+ * Function to initiate routeme listener/subscriber
+ * 
+ * @memberof HttpService
+ */
+getRouteEvent() {
     let that = this;
     this.routeme.subscribe((linkData) => {
       let url = linkData.url, host = linkData.host, search = '';
@@ -214,7 +231,16 @@ export class HttpService {
     });
   }
 
-  // Not needed but keeping this for any usecase later. Dead code
+  /**
+   * Not needed but keeping this for any usecase later. Dead code
+   * 
+   * @param {string} url 
+   * @param {string} method 
+   * @param {*} data 
+   * @param {Headers} header 
+   * @returns 
+   * @memberof HttpService
+   */
   httpReq(url: string, method: string, data: any, header: Headers) {
     let headers = new HttpHeaders();
 

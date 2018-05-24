@@ -13,6 +13,28 @@ export class SearchListComponent implements OnInit {
 
   constructor(private _wksrv: WorkerService) {}
 
+  /**
+   * Returns object keys as an array for looping
+   * 
+   * @param {any} obj 
+   * @returns {any[]} 
+   * @memberof SearchListComponent
+   */
+  objectKeys(obj): any[] {
+    return Object.keys(obj);
+  }
+
+  /**
+   * Returns an array as a string
+   * 
+   * @param {any} obj 
+   * @returns {string} 
+   * @memberof SearchListComponent
+   */
+  stringifyArray(obj): string {
+    return JSON.stringify(obj);
+  }
+
   ngOnInit() {}
 
 }

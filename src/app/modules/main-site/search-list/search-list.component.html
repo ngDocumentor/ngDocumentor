@@ -1,3 +1,7 @@
+<div *ngIf="!_wksrv.searchResult.length">
+  <h2>No search results</h2>
+</div>
+
 <div *ngFor="let item of (_wksrv.searchResult || [])">
 
   <h4 style="margin-bottom: 0px !important;">
@@ -6,13 +10,11 @@
     </a>
   </h4>
   <h5 style="margin-top: 0px !important;">Search Match - %: {{item.score}}, Keys : [
-    <span></span>
-    <!--
-      <span *ngFor="let obj of item.matchData.metadata.keys()">
+    <span *ngFor="let obj of objectKeys(item.matchData.metadata); let i = index;">
       <span>{{ obj }}</span>:
-      <span>{{ item.matchData.metadata[obj] }}</span>
+      <span>{{ stringifyArray(item.matchData.metadata[obj].body.position.length) }}</span>
+      <span *ngIf="i !== objectKeys(item.matchData.metadata).length - 1">,</span>
     </span>
-    -->
     ]
   </h5>
   <span style="margin-top: 0px !important;">{{ item.ref.body }}</span>
