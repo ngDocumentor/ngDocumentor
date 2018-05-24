@@ -29,7 +29,14 @@ export class AppComponent implements OnInit {
 
   constructor(private _h: HttpService) { }
 
-  // Do a check for structure
+  /**
+   * Get the topnav.json file
+   * Do a check for structure of object
+   * Basic missing file and objects handled
+   * 
+   * @param {string} topnavSrc topnav.json file path
+   * @memberof AppComponent
+   */
   getTopnav(topnavSrc: string): void {
     const that = this;
 
@@ -46,7 +53,14 @@ export class AppComponent implements OnInit {
       });
   }
 
-  // Do a check for structure
+  /**
+   * Get sidebar.json file
+   * Do a check for structure of object
+   * Basic mising file and objects handled
+   * 
+   * @param {string} sidebarSrc sidebar.json file path
+   * @memberof AppComponent
+   */
   getSidebar(sidebarSrc: string): void {
     const that = this;
 
@@ -63,7 +77,14 @@ export class AppComponent implements OnInit {
 
   }
 
-  // Do a check for structure
+  /**
+   * Get footer.json file
+   * Do a check for structure of object
+   * Basic missing file and objects handled
+   * 
+   * @param {string} footerSrc footer.json file path
+   * @memberof AppComponent
+   */
   getFooter(footerSrc: string): void {
     const that = this;
 
@@ -89,6 +110,14 @@ export class AppComponent implements OnInit {
       });
   }
 
+  /**
+   * Init gets:
+   * Window location url into service
+   * Trigger routeme event (choose better name!)
+   * Gets the topnav, sidebar, and footer
+   * 
+   * @memberof AppComponent
+   */
   ngOnInit(): void {
     let that = this;
     this._h.fileUrl = window.location.href;

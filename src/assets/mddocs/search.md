@@ -1,1 +1,1 @@
-## Search
+## Search Functionality
