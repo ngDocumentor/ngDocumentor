@@ -1,6 +1,12 @@
-//importScripts('/assets/scripts/elasticlunr.js');
 importScripts('/assets/scripts/lunr.js');
 
+/**
+ * Ajax request to fetch .md files
+ * Can be stripped out to make a better comprehensive function / request call. Independant project
+ * 
+ * @param {any} url 
+ * @returns 
+ */
 function ajax(url) {
   var prom = new Promise(function (resolve, reject) {
     if (!!XMLHttpRequest) {
@@ -33,6 +39,14 @@ function ajax(url) {
   return prom;
 };
 
+/**
+ * Trigger Ajax request to get the .md files for search
+ * Performance issue: Synchronous behaviour due to await inside the loop. Proposal detailed
+ * Can be made async (TODO item)
+ * 
+ * @param {any} urlsArr 
+ * @returns 
+ */
 async function getDocs(urlsArr) {
   let filteredRes, ajaxArr = [],
     searchableArr = [];
@@ -61,6 +75,13 @@ async function getDocs(urlsArr) {
   return ajaxArr;
 };
 
+/**
+ * Loop through .md array results and search the aray using lunrjs
+ * 
+ * @param {any} mdArr 
+ * @param {any} searchString 
+ * @returns 
+ */
 function searchDocs(mdArr, searchString) {
   let result, docIndex = lunr(function () {
     this.ref('url');
@@ -79,6 +100,12 @@ function searchDocs(mdArr, searchString) {
   return result;
 }
 
+/**
+ * Search function (Integrates individual functions)
+ * 
+ * @param {any} eData 
+ * @returns 
+ */
 async function search(eData) {
   let urlsArr = eData.urls,
     searchString = eData.key;
@@ -87,6 +114,11 @@ async function search(eData) {
   return searchArr;
 };
 
+/**
+ * Capture messages from parent process
+ * 
+ * @param {any} e 
+ */
 onmessage = async function (e) {
   let actionResult;
 
