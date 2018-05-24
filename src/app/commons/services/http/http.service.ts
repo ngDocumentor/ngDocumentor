@@ -159,7 +159,7 @@ getRouteEvent() {
     this.routeme.subscribe((linkData) => {
       let url = linkData.url, host = linkData.host, search = '';
 
-      console.log('DEBUG: routeUrl', url, host);
+      console.log('DEBUG: routeUrl getRouteEvent ', url, host);
 
       /* If the load is a search event */
       if (url.includes('#/#/?search=')) {
@@ -185,7 +185,6 @@ getRouteEvent() {
       if (url.includes(host)) {
         if (url.split(host + '/').length >= 2) {
           url = url.split(host + '/')[1];
-          console.log('route url', url);
 
           if (url !== '' && url !== '#' && url !== '#/') {
             if (url.split('#/').length >= 2) {

@@ -49,7 +49,7 @@ export class WorkerService {
     let that = this;
     this.searchWorker.onmessage = function (data: any) {
       that.searchResult = data.data.result;
-      console.log('Search Data', that.searchResult);
+      console.log('DEBUG: Search Data WorkerService', that.searchResult);
       that.searchResultEvt.emit({ action: data.data.action, data: that.searchResult });
     };
   }

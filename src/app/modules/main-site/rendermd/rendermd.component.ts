@@ -12,6 +12,6 @@ import { SearchResult } from '../../../commons/interfaces/search/search';
 })
 export class RendermdComponent {
 
-  constructor(public _h: HttpService, private _wksrv: WorkerService) {}
+  constructor(public _h: HttpService, public _wksrv: WorkerService) {}
 
 }

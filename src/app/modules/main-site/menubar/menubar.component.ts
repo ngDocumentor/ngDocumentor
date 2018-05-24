@@ -47,7 +47,7 @@ export class MenubarComponent implements OnInit {
 
   @ViewChild('searchform') searchform;
 
-  constructor(private _h: HttpService, private _wksrv: WorkerService) { }
+  constructor(private _h: HttpService, public _wksrv: WorkerService) { }
 
   /**
    * Opens sidebar navigation
@@ -230,11 +230,15 @@ export class MenubarComponent implements OnInit {
   searchDoc() {
     if (this.searchform.nativeElement.value !== '') {
       this._wksrv.searchResult = null;
+      /*
+      // Code creates redundant request. Removing this.
+      // Hashchange event handles the search
       this._wksrv.postMessage({
         action: 'search',
         key: this.searchform.nativeElement.value,
         urls: ['/assets/mddocs/home.m', '/assets/mddocs/credits.md', '/assets/mddocs/intro.md']
       });
+      */
       window.location.replace('#/#/?search=' + this.searchform.nativeElement.value);
     }
     if (this.mobileAndTabletCheck()) {

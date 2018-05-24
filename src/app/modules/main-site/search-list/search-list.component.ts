@@ -11,7 +11,7 @@ export class SearchListComponent implements OnInit {
 
   searchResult: SearchResult;
 
-  constructor(private _wksrv: WorkerService) {}
+  constructor(public _wksrv: WorkerService) {}
 
   /**
    * Returns object keys as an array for looping
