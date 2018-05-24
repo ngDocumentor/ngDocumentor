@@ -40,7 +40,7 @@ async function getDocs(urlsArr) {
   // TODO: Improve ajax trigger loop into a parallel request. 
   // Issue: Error cases handling the issue for parallel trigger implementation with asyncjs, t/co, and promise.all
   // Reason: ? Iterables in t/co, asyncjs, and promise.all with error handling is a mess! 
-  // Solution: Proposal needed for promise.all where errors of only error promises can be handled without breaking other promises 
+  // Solution: Proposal needed for promise.all where errors of only error promises can be handled without breaking other promises
   for (let i = 0; i < urlsArr.length; i++) {
     try {
       let res = await ajax(urlsArr[i]).catch(function (e) {
