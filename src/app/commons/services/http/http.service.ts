@@ -250,7 +250,7 @@ export class HttpService {
         console.log('11');
         search = url.split('#/#/?search=')[1];
         url = 'http';
-        if (search && search !== '') {
+        if (!!search && search !== '') {
           if (!that.searchUrlList.length && that.topnav && that.sidebarnav && that.footernav) {
             that.searchUrlList.concat(that.getLinksList(that.topnav));
             that.searchUrlList.concat(that.getLinksList(that.sidebarnav));

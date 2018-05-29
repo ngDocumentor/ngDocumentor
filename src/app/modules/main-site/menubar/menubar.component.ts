@@ -115,10 +115,10 @@ export class MenubarComponent implements OnInit, AfterViewChecked {
    * 
    * @memberof MenubarComponent
    */
-  routeMain(): boolean {
+  routeMain(e): void {
+    e.preventDefault();
     window.location.href = '#/home';
     window.scroll(0, 0);
-    return false;
   }
 
   /**
@@ -229,7 +229,7 @@ export class MenubarComponent implements OnInit, AfterViewChecked {
    * @memberof MenubarComponent
    */
   searchDoc(e): boolean {
-    e.preventDefault();
+    e ? e.preventDefault ? e.preventDefault() : null : null;
 
     if (!this._h.searchUrlList.length) {
       this._h.searchUrlList = this._h.searchUrlList.concat(this._h.getLinksList(this._h.topnavItems));
@@ -304,6 +304,7 @@ export class MenubarComponent implements OnInit, AfterViewChecked {
   ngAfterViewChecked(): void {
     if (!!this._h.fileUrl.includes('#/#/?search=') && !!this._h.topnavItems.length && !!this._h.sidebarItems.length && !!this._h.footerItems && !!this.searchform && (this.searchform.nativeElement.value !== decodeURIComponent(window.location.href.split('#/#/?search=')[1]))) {
       this.searchform.nativeElement.value = decodeURIComponent(window.location.href.split('#/#/?search=')[1]);
+      let event = {};
       this.searchDoc(event);
     }
   }

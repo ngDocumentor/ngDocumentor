@@ -10,7 +10,7 @@
       <img src="/assets/img/menuicon.svg" style="width: 12px; height: 12px;" alt="Menu"> &nbsp;&nbsp;&nbsp;
     </span>
     <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-    <span (click)="routeMain()" class="fontcolor-primary font-bold"> {{ brandname }} </span>
+    <span (click)="routeMain($event)" class="pad-left-right fontcolor-primary font-bold"> {{ brandname }} </span> 
   </a>
 
   <ng-container *ngFor="let obj of topnavItems; let i = index;">
@@ -20,7 +20,7 @@
 
   <a href="javascript:void(0);" class="icon">
     <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-    <span class="pad-left-right" (click)="routeMain()" class="fontcolor-primary font-bold"> {{ brandname }} </span>
+    <span (click)="routeMain($event)" class="pad-left-right fontcolor-primary font-bold"> {{ brandname }} </span> 
   </a>
   <a href="javascript:void(0);" class="icon-left">
     <span class="pad-left-right menu-position" *ngIf="!sidebarclosed" (click)="closeNav()">
