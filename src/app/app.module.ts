@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { environment } from '../environments/environment';
 
 import { ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
-import { MarkdownModule } from 'ngx-markdown';
+import { MarkdownModule, MarkedOptions } from 'ngx-markdown';
 
 // Modules
 
@@ -38,7 +38,12 @@ import { SearchListComponent } from './modules/main-site/search-list/search-list
   imports: [
     BrowserModule,
     HttpClientModule,
-    MarkdownModule.forRoot(),
+    MarkdownModule.forRoot({
+      provide: MarkedOptions,
+      useValue: {
+        sanitize: true,
+      },
+    }),
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [

@@ -1,11 +1,10 @@
 <div *ngIf="!_wksrv.searchResult.length">
   <h2>No search results</h2>
 </div>
-
 <div *ngFor="let item of (_wksrv.searchResult || [])">
 
   <h4 style="margin-bottom: 0px !important;">
-    <a class="text-green ml-2" href="{{ '#' + item.ref.split('/assets/mddocs')[1].split('.md')[0]}}">
+    <a class="text-green ml-2" href="{{ '#' + item.ref}}">
       {{item.ref}}
     </a>
   </h4>

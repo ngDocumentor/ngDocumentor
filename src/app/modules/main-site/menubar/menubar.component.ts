@@ -1,4 +1,4 @@
-import { Component, Input, Output, ViewChild, ElementRef, OnInit, EventEmitter } from '@angular/core';
+import { Component, Input, Output, ViewChild, ElementRef, OnInit, EventEmitter, AfterViewChecked } from '@angular/core';
 import { HttpService } from '../../../commons/services/http/http.service';
 import { WorkerService } from '../../../commons/services/worker/worker.service';
 
@@ -13,7 +13,7 @@ declare var gnMenu;
   templateUrl: './menubar.component.html',
   styleUrls: ['./menubar.component.css']
 })
-export class MenubarComponent implements OnInit {
+export class MenubarComponent implements OnInit, AfterViewChecked {
 
   @ViewChild('sidebarfixed') sidebarfixed: ElementRef;
 
@@ -22,6 +22,8 @@ export class MenubarComponent implements OnInit {
   @ViewChild('contentmain') contentmain: ElementRef;
 
   @ViewChild('footernav') footernav: ElementRef;
+
+  @ViewChild('searchform') searchform;
 
   @Input('brandname') brandname: string;
 
@@ -44,8 +46,6 @@ export class MenubarComponent implements OnInit {
   showsearch: boolean = false;
 
   searchicon: boolean = true;
-
-  @ViewChild('searchform') searchform;
 
   constructor(private _h: HttpService, public _wksrv: WorkerService) { }
 
@@ -227,19 +227,25 @@ export class MenubarComponent implements OnInit {
    * @returns boolean (always false to avoid default behaviour)
    * @memberof MenubarComponent
    */
-  searchDoc() {
+  searchDoc(e) {
+    if (e) {
+      e.preventDefault();
+    };
+
+    if (!this._h.searchUrlList.length) {
+      this._h.searchUrlList = this._h.searchUrlList.concat(this._h.getLinksList(this._h.topnavItems));
+      this._h.searchUrlList = this._h.searchUrlList.concat(this._h.getLinksList(this._h.sidebarItems));
+      this._h.searchUrlList = this._h.searchUrlList.concat(this._h.getLinksList(this._h.footerItems));
+      this._h.searchUrlList = this._h.arrayUnique(this._h.searchUrlList);
+    }
     if (this.searchform.nativeElement.value !== '') {
       this._wksrv.searchResult = null;
-      /*
-      // Code creates redundant request. Removing this.
-      // Hashchange event handles the search
+      window.location.replace('#/#/?search=' + this.searchform.nativeElement.value);
       this._wksrv.postMessage({
         action: 'search',
         key: this.searchform.nativeElement.value,
-        urls: ['/assets/mddocs/home.m', '/assets/mddocs/credits.md', '/assets/mddocs/intro.md']
+        urls: this._h.searchUrlList
       });
-      */
-      window.location.replace('#/#/?search=' + this.searchform.nativeElement.value);
     }
     if (this.mobileAndTabletCheck()) {
       this.showsearch = false;
@@ -267,13 +273,17 @@ export class MenubarComponent implements OnInit {
    * @memberof MenubarComponent
    */
   ngOnInit(): void {
+
     this.addEventListenersAccordian();
 
     console.log('DEBUG: Menubar Host OnInit', window.location.host);
+
+    /* Handles hash change functionality */
     window.onhashchange = function () {
       this.hashChangeFunction(window.location.href);
     }.bind(this);
 
+    /* Handles dom content loaded fnctionality for opening nav and hiding search icon in desktop currently */
     document.addEventListener("DOMContentLoaded", function (event) {
       if (!this.mobileAndTabletCheck()) {
         this.openNav();
@@ -281,6 +291,21 @@ export class MenubarComponent implements OnInit {
         this.showsearch = true;
       }
     }.bind(this));
+  }
+
+  /**
+   * TODO: 
+   * Check if this can be bettered. 
+   * Late initialization through view checked 
+   * Reason: During the service initialization time does not capture or have the nav configs initialized
+   * 
+   * @memberof MenubarComponent
+   */
+  ngAfterViewChecked() {
+    if (this._h.fileUrl.includes('#/#/?search=') && !!this.searchform && (this.searchform.nativeElement.value !== decodeURIComponent(window.location.href.split('#/#/?search=')[1])) {
+      this.searchform.nativeElement.value = decodeURIComponent(window.location.href.split('#/#/?search=')[1]);
+      this.searchDoc(event);
+    }
   }
 
 }

@@ -83,8 +83,8 @@
 <div #contentmain class="main">
   <div *ngIf="showsearch" class="searchbar">
     <div class="search-container">
-      <form (submit)="searchDoc()">
-        <input type="text" placeholder="Search.." #searchform name="search">
+      <form (submit)="searchDoc($event)">
+        <input type="text" placeholder="Search.." #searchform name="search" value="">
         <button type="submit">search</button>
       </form>
     </div>

@@ -5,6 +5,11 @@ import { HttpClient, HttpRequest, HttpResponse, HttpHeaders } from '@angular/com
 import { map } from 'rxjs/operators';
 import { WorkerService } from '../worker/worker.service';
 
+// Interfaces for structure check. Options are becoming complex.
+import { Menu, MenuLinks } from '../../../commons/interfaces/menu/menu';
+import { Sidebar, SidebarLinks, SidebarParentLinks } from '../../../commons/interfaces/sidebar/sidebar';
+import { Footer } from '../../../commons/interfaces/footer/footer';
+
 
 @Injectable()
 export class HttpService {
@@ -38,11 +43,69 @@ export class HttpService {
 
   routeme: EventEmitter<{ url: string; host: string; }>;
 
+  topnav: any;
+
+  sidebarnav: any;
+
+  footernav: any;
+
+  searchUrlList: string[] = [];
+
+  sidebarSrc: string = 'assets/config/sidebar.json';
+
+  topnavSrc: string = 'assets/config/topnav.json';
+
+  footerSrc: string = 'assets/config/footer.json';
+
+  topnavItems: MenuLinks[] = [];
+
+  brandname: string = '';
+
+  sidebarItems: (SidebarLinks | SidebarParentLinks)[] = [];
+
+  footerItems: Footer = { copyright: { tag: '', text: '', link: '/home', type: 'internal' }, nav: [], social: [] };
+
   constructor(http: HttpClient, private _mhSrv: MarkdownService, private _wksrv: WorkerService) {
 
     this.http = http;
 
     this.routeme = new EventEmitter();
+  }
+
+  /**
+   * Prune Nav objects to get urls
+   * 
+   * @param {any} obj 
+   * @returns {any[]} 
+   * @memberof MenubarComponent
+   */
+  getLinksList(obj): any[] {
+    let arr = [],
+      linkArr = (obj instanceof Array) ? obj : (typeof obj === 'object') ? obj.nav ? obj.nav : [] : [],
+      socialArr = (obj instanceof Array) ? [] : (typeof obj === 'object') ? obj.social ? obj.social : [] : [];
+
+    for (let i = 0; i < linkArr.length; i++) {
+      if (!!linkArr[i].link && !linkArr[i].link.includes('http') && arr.indexOf(linkArr[i].link) === -1 && !linkArr[i].children && linkArr[i].type !== 'external') {
+        arr.push(linkArr[i].link);
+      }
+      if (!!linkArr[i].children) {
+        for (let j = 0; j < linkArr[i].children.length; j++) {
+          if (!!linkArr[i].children[j].link && !linkArr[i].children[j].link.includes('http') && arr.indexOf(linkArr[i].children[j].link) === -1 && linkArr[i].children[j].type !== 'external') {
+            arr.push(linkArr[i].children[j].link);
+          }
+        }
+      }
+    }
+
+    if (socialArr.length > 0) {
+      for (let j = 0; j < socialArr.length; j++) {
+        if (!!socialArr[j].link && !socialArr[j].link.includes('http') && (arr.indexOf(socialArr[j].link) === -1) && socialArr[j].type !== 'external') {
+          arr.push(socialArr[j].link);
+        }
+      }
+    }
+
+    return arr;
   }
 
   /**
@@ -62,7 +125,7 @@ export class HttpService {
       if (!url.includes('http')) {
         if (url.indexOf('/') === 0 && url.split('/').length >= 1) {
           // /loc, /loc#bmark,
-          // /#loc#bmark?, /##loc#bmark
+          // /#loc#bmark, /##loc#bmark
           let tmpUriArr = url.split('/');
           if (tmpUriArr[1].split('#').length >= 2) {
             routeUri = tmpUriArr[1].split('#')[0];
@@ -73,7 +136,7 @@ export class HttpService {
           }
         }
         if (url.indexOf('#') === 0) {
-          // #/loc, #/loc#bmark, #/#loc#bmark?,
+          // #/loc, #/loc#bmark, #/#loc#bmark,
           let tmpUriArr = url.split('#');
           if (tmpUriArr[1].indexOf('/') === 0) {
             routeUri = tmpUriArr[1].split('/')[1];
@@ -121,6 +184,7 @@ export class HttpService {
         }
       }
     }
+
     console.log('DEBUG: CleanUrl', { routeUri: routeUri, bmarkUri: bmarkUri });
     return {
       routeUri: routeUri,
@@ -128,13 +192,13 @@ export class HttpService {
     };
   }
 
-/**
- * Gets the home.md file and assigns
- * If no home.md present 404 error is assigned
- * 
- * @memberof HttpService
- */
-getHomeUrl() {
+  /**
+   * Gets the home.md file and assigns
+   * If no home.md present 404 error is assigned
+   * 
+   * @memberof HttpService
+   */
+  getHomeUrl() {
     let that = this;
     that._mhSrv.getSource('assets/mddocs/' + 'home.md').subscribe((data) => {
 
@@ -149,14 +213,32 @@ getHomeUrl() {
     });
   }
 
-/**
- * Function to initiate routeme listener/subscriber
- * 
- * @memberof HttpService
- */
-getRouteEvent() {
+  /**
+   * 
+   * 
+   * @param {any[]} array 
+   * @returns {any[]} 
+   * @memberof HttpService
+   */
+  arrayUnique(array: any[]): any[] {
+    let a = array.concat();
+    for (let i = 0; i < a.length; ++i) {
+      for (let j = i + 1; j < a.length; ++j) {
+        if (a[i] === a[j]) {
+          a.splice(j--, 1);
+        }
+      }
+    }
+    return a;
+  }
+  /**
+   * Function to initiate routeme listener/subscriber
+   * 
+   * @memberof HttpService
+   */
+  getRouteEvent() {
     let that = this;
-    this.routeme.subscribe((linkData) => {
+    this.routeme.subscribe(async function (linkData) {
       let url = linkData.url, host = linkData.host, search = '';
 
       console.log('DEBUG: routeUrl getRouteEvent ', url, host);
@@ -166,11 +248,14 @@ getRouteEvent() {
         search = url.split('#/#/?search=')[1];
         url = 'http';
         if (search && search !== '') {
-          that._wksrv.postMessage({
-            action: 'search',
-            key: search,
-            urls: ['/assets/mddocs/home.m', '/assets/mddocs/credits.md', '/assets/mddocs/intro.md']
-          });
+          //console.log('Search URL List', that.searchUrlList, that.sidebarItems, that.topnav, that.sidebarnav, that.footernav);
+          if (!that.searchUrlList.length && that.topnav && that.sidebarnav && that.footernav) {
+            //console.log('topnavlinks', that.searchUrlList, that.searchUrlList.concat(that.getLinksList(that.topnav)))
+            that.searchUrlList.concat(that.getLinksList(that.topnav));
+            that.searchUrlList.concat(that.getLinksList(that.sidebarnav));
+            that.searchUrlList.concat(that.getLinksList(that.footernav));
+            //console.log('Search URL List 1', that.searchUrlList);
+          }
         }
         return;
       }
@@ -231,7 +316,7 @@ getRouteEvent() {
   }
 
   /**
-   * Not needed but keeping this for any usecase later. Dead code
+   * Https Trigger for getting .json configs
    * 
    * @param {string} url 
    * @param {string} method 

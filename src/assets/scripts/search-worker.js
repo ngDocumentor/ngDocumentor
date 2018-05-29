@@ -57,7 +57,7 @@ async function getDocs(urlsArr) {
   // Solution: Proposal needed for promise.all where errors of only error promises can be handled without breaking other promises
   for (let i = 0; i < urlsArr.length; i++) {
     try {
-      let res = await ajax(urlsArr[i]).catch(function (e) {
+      let res = await ajax('/assets/mddocs/' + urlsArr[i] + '.md').catch(function (e) {
         throw new Error(e);
       });
       ajaxArr[i] = {
@@ -96,7 +96,7 @@ function searchDocs(mdArr, searchString) {
     }
   });
 
-  result = docIndex.search(searchString);
+  result = docIndex.search(searchString, { autoWildcard: false });
   return result;
 }
 
@@ -121,7 +121,6 @@ async function search(eData) {
  */
 onmessage = async function (e) {
   let actionResult;
-
   // trigger activity based on action
   if (e.data.action === 'search') {
     actionResult = await search(e.data);

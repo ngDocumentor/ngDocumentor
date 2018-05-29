@@ -13,21 +13,29 @@ import { Footer } from './commons/interfaces/footer/footer';
 })
 export class AppComponent implements OnInit {
 
-  @Input('sidebarSrc') sidebarSrc: string = 'assets/config/sidebar.json';
+  @Input('sidebarSrc') sidebarSrc: string;
 
-  @Input('topnavSrc') topnavSrc: string = 'assets/config/topnav.json';
+  @Input('topnavSrc') topnavSrc: string;
 
-  @Input('footerSrc') footerSrc: string = 'assets/config/footer.json';
+  @Input('footerSrc') footerSrc: string;
 
   brandname: string = '  ';
 
-  sidebarItems: (SidebarLinks | SidebarParentLinks)[] = [];
+  sidebarItems: (SidebarLinks | SidebarParentLinks)[];
 
-  topnavItems: MenuLinks[] = [];
+  topnavItems: MenuLinks[];
 
-  footer: Footer = { copyright: { tag: '', text: '', link: '/home', type: 'internal' }, nav: [], social: [] };
+  footerItems: Footer;
 
-  constructor(private _h: HttpService) { }
+  constructor(private _h: HttpService) {
+    this.topnavSrc = this._h.topnavSrc;
+    this.sidebarSrc = this._h.sidebarSrc;
+    this.footerSrc = this._h.footerSrc;
+    this.topnavItems = this._h.topnavItems;
+    this.brandname = this._h.brandname;
+    this.footerItems = this._h.footerItems;
+  }
+
 
   /**
    * Get the topnav.json file
@@ -37,13 +45,14 @@ export class AppComponent implements OnInit {
    * @param {string} topnavSrc topnav.json file path
    * @memberof AppComponent
    */
-  getTopnav(topnavSrc: string): void {
+  getTopnav(topnavSrc: string) {
     const that = this;
 
     that._h.httpReq(topnavSrc, 'GET', null, null)
       .subscribe((data: Menu) => {
-        that.topnavItems = data.nav ? data.nav : [];
-        that.brandname = data.brandname ? data.brandname : '';
+        that._h.topnavItems = data.nav ? data.nav : [];
+        that._h.brandname = data.brandname ? data.brandname : '';
+        that._h.topnav = data;
       }, (e: any) => {
         console.log(`
         Http Get Request error from topnav.json.
@@ -61,12 +70,13 @@ export class AppComponent implements OnInit {
    * @param {string} sidebarSrc sidebar.json file path
    * @memberof AppComponent
    */
-  getSidebar(sidebarSrc: string): void {
+  getSidebar(sidebarSrc: string) {
     const that = this;
 
     that._h.httpReq(sidebarSrc, 'GET', null, null)
       .subscribe((data: Sidebar) => {
-        that.sidebarItems = data.nav ? data.nav : [];
+        that._h.sidebarItems = data.nav ? data.nav : [];
+        that._h.sidebarnav = data;
       }, (e: any) => {
         console.log(`
         Http Get Request error from sidebar.json. 
@@ -85,12 +95,12 @@ export class AppComponent implements OnInit {
    * @param {string} footerSrc footer.json file path
    * @memberof AppComponent
    */
-  getFooter(footerSrc: string): void {
+  getFooter(footerSrc: string) {
     const that = this;
 
     that._h.httpReq(footerSrc, 'GET', null, null)
       .subscribe((data: Footer) => {
-        let ftr = that.footer.copyright;
+        let ftr = that.footerItems.copyright;
         if (!!data.copyright) {
           ftr.tag = data.copyright.tag ? data.copyright.tag : '';
           ftr.link = data.copyright.link ? data.copyright.link : '/home';
@@ -99,8 +109,9 @@ export class AppComponent implements OnInit {
         } else {
           ftr = null;
         }
-        that.footer.nav = data.nav ? data.nav : [];
-        that.footer.social = data.social ? data.social : [];
+        that._h.footerItems.nav = data.nav ? data.nav : [];
+        that._h.footerItems.social = data.social ? data.social : [];
+        that._h.footernav = data;
       }, (e: any) => {
         console.log(`
         Http Get Request error from footer.json. 
@@ -118,17 +129,19 @@ export class AppComponent implements OnInit {
    * 
    * @memberof AppComponent
    */
-  ngOnInit(): void {
+  ngOnInit() {
     let that = this;
     this._h.fileUrl = window.location.href;
+    this.getTopnav(this._h.topnavSrc);
+    this.getSidebar(this._h.sidebarSrc);
+    this.getFooter(this._h.footerSrc);
+
     this._h.getRouteEvent();
+    // Get the items into the class arrays
+
     if (!!this._h.fileUrl) {
       console.log('DEBUG: Fileurl init', this._h.fileUrl);
       this._h.routeme.emit({ url: this._h.fileUrl, host: window.location.host });
     }
-    // Get the items into the class arrays
-    this.getTopnav(this.topnavSrc);
-    this.getSidebar(this.sidebarSrc);
-    this.getFooter(this.footerSrc);
   }
 }
