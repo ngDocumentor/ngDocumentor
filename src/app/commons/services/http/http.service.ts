@@ -198,7 +198,7 @@ export class HttpService {
    * 
    * @memberof HttpService
    */
-  getHomeUrl() {
+  getHomeUrl(): void {
     let that = this;
     that._mhSrv.getSource('assets/mddocs/' + 'home.md').subscribe((data) => {
 
@@ -236,7 +236,7 @@ export class HttpService {
    * 
    * @memberof HttpService
    */
-  getRouteEvent() {
+  getRouteEvent(): void {
     let that = this;
     this.routeme.subscribe(async function (linkData) {
       let url = linkData.url, host = linkData.host, search = '';
@@ -319,10 +319,10 @@ export class HttpService {
    * @param {string} method 
    * @param {*} data 
    * @param {Headers} header 
-   * @returns 
+   * @returns Observable object
    * @memberof HttpService
    */
-  httpReq(url: string, method: string, data: any, header: Headers) {
+  httpReq(url: string, method: string, data: any, header: Headers): any {
     let headers = new HttpHeaders();
 
     // TODO : Loop through passed headers, currently ignored
