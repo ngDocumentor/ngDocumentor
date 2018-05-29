@@ -247,7 +247,6 @@ export class HttpService {
 
       /* If the load is a search event. TODO: Fails for reload */
       if (url.includes('#/#/?search=') && !!that.topnav && !!that.sidebarnav && !!that.footernav) {
-        console.log('11');
         search = url.split('#/#/?search=')[1];
         url = 'http';
         if (!!search && search !== '') {
