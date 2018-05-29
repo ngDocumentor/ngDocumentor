@@ -302,6 +302,7 @@ export class MenubarComponent implements OnInit, AfterViewChecked {
    * @memberof MenubarComponent
    */
   ngAfterViewChecked(): void {
+    // MAJOR ERROR HERE THAT CREATES ISSUES IN MOBILE
     if (!!this._h.fileUrl.includes('#/#/?search=') && !!this._h.topnavItems.length && !!this._h.sidebarItems.length && !!this._h.footerItems && !!this.searchform && (this.searchform.nativeElement.value !== decodeURIComponent(window.location.href.split('#/#/?search=')[1]))) {
       this.searchform.nativeElement.value = decodeURIComponent(window.location.href.split('#/#/?search=')[1]);
       let event = {};
