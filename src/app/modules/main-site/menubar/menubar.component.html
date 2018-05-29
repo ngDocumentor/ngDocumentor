@@ -106,7 +106,7 @@
         <ul class="list-unstyled quick-links">
           <ng-container *ngFor="let obj of footerItems.children">
             <li *ngIf="obj.type != 'external'">
-              <a href="{{'#' + obj.link}}">{{obj.tag}}</a>
+              <a href="{{obj.link ? (obj.link.includes('http') ? obj.link : '#' + obj.link) : '#/home'}}">{{obj.tag}}</a>
             </li>
             <li *ngIf="obj.type == 'external'">
               <a opennewwindow [attr.external]="obj" href="#">{{obj.tag}}</a>
@@ -120,7 +120,7 @@
     <ul class="list-unstyled list-inline social text-center">
       <ng-container *ngFor="let obj of footer.social">
         <li *ngIf="obj.type != 'external'" class="list-inline-item">
-          <a href="{{'#' + obj.link}}">{{obj.tag}}</a>
+          <a href="{{obj.link ? (obj.link.includes('http') ? obj.link : '#' + obj.link) : '#/home'}}">{{obj.tag}}</a>
         </li>
         <li *ngIf="obj.type == 'external'" class="list-inline-item">
           <a opennewwindow [attr.external]="obj" href="#">{{obj.tag}}</a>
@@ -131,9 +131,9 @@
   <div *ngIf="!!footer.copyright" class="footer-copyright">
     <p>{{ footer.copyright.text }}</p>
     <p *ngIf="footer.copyright.type != 'external'" class="h6">
-      <a class="text-green ml-2" href="{{ '#' + footer.copyright.link}}">{{footer.copyright.tag}}</a> &copy; All rights Reserved.</p>
+      <a class="text-green ml-2" href="{{ footer.copyright.link ? (footer.copyright.link.includes('http') ? footer.copyright.link : '#' + footer.copyright.link) : '#/home'}}">{{footer.copyright.tag}}</a> &copy; All rights Reserved.</p>
     <p *ngIf="footer.copyright.type == 'external'" class="h6">
       <a class="text-green ml-2" opennewwindow [attr.external]="{'link': footer.copyright.link, 'type': footer.copyright.type}"
-        [href]="footer.copyright.type ? '#' + footer.copyright.link : '#/home'">{{footer.copyright.tag}}</a> &copy; All rights Reserved.</p>
+        [href]="footer.copyright.type ? footer.copyright.link ? (footer.copyright.link.includes('http') ? footer.copyright.link : '#' + footer.copyright.link) : '#/home' : '#/home'">{{footer.copyright.tag}}</a> &copy; All rights Reserved.</p>
   </div>
 </footer>
