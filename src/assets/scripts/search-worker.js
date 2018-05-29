@@ -59,7 +59,7 @@ async function getDocs(urlsArr) {
   // Allow for synchronous or asynchronous implementation using an argument
   for (let i = 0; i < urlsArr.length; i++) {
     try {
-      let res = await ajax('/assets/mddocs/' + urlsArr[i] + '.md').catch(function (e) {
+      let res = await ajax('/assets/mddocs' + urlsArr[i] + '.md').catch(function (e) {
         throw new Error(e);
       });
       ajaxArr[i] = {

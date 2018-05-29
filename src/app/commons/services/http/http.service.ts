@@ -29,6 +29,8 @@ export class HttpService {
   Note:
 
 
+  Either the Network connection is down
+   OR 
   The file you were trying to find did not exist or escaped an unknown error.
   Please request the owner to raise a github issue with the following information:
 
