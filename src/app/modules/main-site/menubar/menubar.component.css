@@ -475,7 +475,7 @@ color:orange;
     margin-bottom: 10px;
   }
   .fab-icon {
-    top: 75% !important;
+    top: 65% !important;
     right: 10%;
   }
 }
@@ -543,7 +543,7 @@ color:orange;
 @media screen and (max-width:767px) {
   .searchbar {
     position: fixed;
-    top: 50%;
+    top: 30%;
     margin: 5px 0px 5px 0px;
     padding: 15px 15px 15px 15px;
     background: #fff !important;

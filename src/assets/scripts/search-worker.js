@@ -99,7 +99,7 @@ function searchDocs(mdArr, searchString) {
     }
   });
 
-  result = docIndex.search(searchString, { autoWildcard: false });
+  result = docIndex.search(searchString, { autoWildcard: true });
   return result;
 }
 
