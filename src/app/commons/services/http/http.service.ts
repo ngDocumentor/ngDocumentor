@@ -244,7 +244,8 @@ export class HttpService {
       console.log('DEBUG: routeUrl getRouteEvent ', url, host);
 
       /* If the load is a search event. TODO: Fails for reload */
-      if (url.includes('#/#/?search=')) {
+      if (url.includes('#/#/?search=') && !!that.topnav && !!that.sidebarnav && !!that.footernav) {
+        console.log('11');
         search = url.split('#/#/?search=')[1];
         url = 'http';
         if (search && search !== '') {
@@ -258,13 +259,13 @@ export class HttpService {
       }
 
       /* If http is included but host is not in the url and url is blank or / */
-      if ((url && (url.includes('http') && !url.includes(host))) || (url === '' || url === '/')) {
+      if ((url && (url.includes('http') && !url.includes(host))) || (url === '' || url === '/') && (!url.includes('#/#/?search='))) {
         console.log('DEBUG: RouteEvent Log area one');
         that.getHomeUrl();
       }
 
       /* If http and host is included */
-      if (url.includes(host)) {
+      if (url.includes(host) && (!url.includes('#/#/?search='))) {
         if (url.split(host + '/').length >= 2) {
           url = url.split(host + '/')[1];
 
@@ -289,25 +290,27 @@ export class HttpService {
       console.log('DEBUG: routeUrl Two', url, host);
 
       /* If url is valid but doesnot include http and is file name */
-      if (url && !url.includes('http')) {
-        that._mhSrv.getSource('assets/mddocs/' + url + '.md').subscribe((data) => {
-          console.log('DEBUG: RouteEvent Log area two');
-          if (data.includes('<!doctype html>')) {
-            console.log('DEBUG:E: RouteEvent Log area three');
+      if ((!url.includes('#/#/?search='))) {
+        if (url && !url.includes('http')) {
+          that._mhSrv.getSource('assets/mddocs/' + url + '.md').subscribe((data) => {
+            console.log('DEBUG: RouteEvent Log area two');
+            if (data.includes('<!doctype html>')) {
+              console.log('DEBUG:E: RouteEvent Log area three');
+              that.fileData = that.file404;
+            } else {
+              console.log('DEBUG: RouteEvent Log area four');
+              that.fileData = data;
+            }
+          }, (error) => {
+            /* If url filename has error or unhandled condition */
+            console.log('DEBUG:E: RouteEvent Log area five', error);
             that.fileData = that.file404;
-          } else {
-            console.log('DEBUG: RouteEvent Log area four');
-            that.fileData = data;
-          }
-        }, (error) => {
-          /* If url filename has error or unhandled condition */
-          console.log('DEBUG:E: RouteEvent Log area five', error);
-          that.fileData = that.file404;
-        });
-      } else {
-        /* If url is not valid or includes http */
-        console.log('DEBUG:E: RouteEvent Log area six');
-        that.getHomeUrl();
+          });
+        } else {
+          /* If url is not valid or includes http */
+          console.log('DEBUG:E: RouteEvent Log area six');
+          that.getHomeUrl();
+        }
       }
     });
   }

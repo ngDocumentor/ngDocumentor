@@ -111,8 +111,11 @@ function searchDocs(mdArr, searchString) {
 async function search(eData) {
   let urlsArr = eData.urls,
     searchString = eData.key;
+  console.log('DEBUG: WorkerSearch Urls', urlsArr);
   let mdArr = await getDocs(urlsArr);
+  console.log('DEBUG: WorkerSearch Docs', mdArr);
   let searchArr = searchDocs(mdArr, searchString);
+  console.log('DEBUG: WorkerSearch Results', searchArr);
   return searchArr;
 };
 

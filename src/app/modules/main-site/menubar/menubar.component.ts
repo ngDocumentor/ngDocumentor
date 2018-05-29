@@ -115,9 +115,10 @@ export class MenubarComponent implements OnInit, AfterViewChecked {
    * 
    * @memberof MenubarComponent
    */
-  routeMain(): void {
+  routeMain(): boolean {
     window.location.href = '#/home';
     window.scroll(0, 0);
+    return false;
   }
 
   /**
@@ -228,9 +229,7 @@ export class MenubarComponent implements OnInit, AfterViewChecked {
    * @memberof MenubarComponent
    */
   searchDoc(e): boolean {
-    if (e) {
-      e.preventDefault();
-    };
+    e.preventDefault();
 
     if (!this._h.searchUrlList.length) {
       this._h.searchUrlList = this._h.searchUrlList.concat(this._h.getLinksList(this._h.topnavItems));
@@ -238,8 +237,9 @@ export class MenubarComponent implements OnInit, AfterViewChecked {
       this._h.searchUrlList = this._h.searchUrlList.concat(this._h.getLinksList(this._h.footerItems));
       this._h.searchUrlList = this._h.arrayUnique(this._h.searchUrlList);
     }
-    if (this.searchform.nativeElement.value !== '') {
+    if (this.searchform.nativeElement.value !== '' && !!this._h.searchUrlList.length) {
       this._wksrv.searchResult = null;
+      this._h.fileData = null;
       window.location.replace('#/#/?search=' + this.searchform.nativeElement.value);
       this._wksrv.postMessage({
         action: 'search',
@@ -302,7 +302,7 @@ export class MenubarComponent implements OnInit, AfterViewChecked {
    * @memberof MenubarComponent
    */
   ngAfterViewChecked(): void {
-    if (this._h.fileUrl.includes('#/#/?search=') && !!this.searchform && (this.searchform.nativeElement.value !== decodeURIComponent(window.location.href.split('#/#/?search=')[1]))) {
+    if (!!this._h.fileUrl.includes('#/#/?search=') && !!this._h.topnavItems.length && !!this._h.sidebarItems.length && !!this._h.footerItems && !!this.searchform && (this.searchform.nativeElement.value !== decodeURIComponent(window.location.href.split('#/#/?search=')[1]))) {
       this.searchform.nativeElement.value = decodeURIComponent(window.location.href.split('#/#/?search=')[1]);
       this.searchDoc(event);
     }
