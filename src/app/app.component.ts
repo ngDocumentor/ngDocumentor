@@ -27,7 +27,7 @@ export class AppComponent implements OnInit {
 
   footerItems: Footer;
 
-  constructor(private _h: HttpService) {
+  constructor(public _h: HttpService) {
     this.topnavSrc = this._h.topnavSrc;
     this.sidebarSrc = this._h.sidebarSrc;
     this.footerSrc = this._h.footerSrc;

@@ -302,7 +302,7 @@ export class MenubarComponent implements OnInit, AfterViewChecked {
    * @memberof MenubarComponent
    */
   ngAfterViewChecked(): void {
-    if (this._h.fileUrl.includes('#/#/?search=') && !!this.searchform && (this.searchform.nativeElement.value !== decodeURIComponent(window.location.href.split('#/#/?search=')[1])) {
+    if (this._h.fileUrl.includes('#/#/?search=') && !!this.searchform && (this.searchform.nativeElement.value !== decodeURIComponent(window.location.href.split('#/#/?search=')[1]))) {
       this.searchform.nativeElement.value = decodeURIComponent(window.location.href.split('#/#/?search=')[1]);
       this.searchDoc(event);
     }
