@@ -45,7 +45,7 @@ export class AppComponent implements OnInit {
    * @param {string} topnavSrc topnav.json file path
    * @memberof AppComponent
    */
-  getTopnav(topnavSrc: string) {
+  getTopnav(topnavSrc: string): void {
     const that = this;
 
     that._h.httpReq(topnavSrc, 'GET', null, null)
@@ -70,7 +70,7 @@ export class AppComponent implements OnInit {
    * @param {string} sidebarSrc sidebar.json file path
    * @memberof AppComponent
    */
-  getSidebar(sidebarSrc: string) {
+  getSidebar(sidebarSrc: string): void {
     const that = this;
 
     that._h.httpReq(sidebarSrc, 'GET', null, null)
@@ -95,7 +95,7 @@ export class AppComponent implements OnInit {
    * @param {string} footerSrc footer.json file path
    * @memberof AppComponent
    */
-  getFooter(footerSrc: string) {
+  getFooter(footerSrc: string): void {
     const that = this;
 
     that._h.httpReq(footerSrc, 'GET', null, null)
@@ -129,7 +129,7 @@ export class AppComponent implements OnInit {
    * 
    * @memberof AppComponent
    */
-  ngOnInit() {
+  ngOnInit(): void {
     let that = this;
     this._h.fileUrl = window.location.href;
     this.getTopnav(this._h.topnavSrc);

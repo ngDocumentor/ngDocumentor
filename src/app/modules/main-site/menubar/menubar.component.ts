@@ -227,7 +227,7 @@ export class MenubarComponent implements OnInit, AfterViewChecked {
    * @returns boolean (always false to avoid default behaviour)
    * @memberof MenubarComponent
    */
-  searchDoc(e) {
+  searchDoc(e): boolean {
     if (e) {
       e.preventDefault();
     };
@@ -259,7 +259,7 @@ export class MenubarComponent implements OnInit, AfterViewChecked {
    * 
    * @memberof MenubarComponent
    */
-  showSearch() {
+  showSearch(): void {
     this.showsearch = true;
     this.searchicon = false;
   }
@@ -301,7 +301,7 @@ export class MenubarComponent implements OnInit, AfterViewChecked {
    * 
    * @memberof MenubarComponent
    */
-  ngAfterViewChecked() {
+  ngAfterViewChecked(): void {
     if (this._h.fileUrl.includes('#/#/?search=') && !!this.searchform && (this.searchform.nativeElement.value !== decodeURIComponent(window.location.href.split('#/#/?search=')[1])) {
       this.searchform.nativeElement.value = decodeURIComponent(window.location.href.split('#/#/?search=')[1]);
       this.searchDoc(event);

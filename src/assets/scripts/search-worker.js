@@ -42,7 +42,7 @@ function ajax(url) {
 /**
  * Trigger Ajax request to get the .md files for search
  * Performance issue: Synchronous behaviour due to await inside the loop. Proposal detailed
- * Can be made async (TODO item)
+ * Can be made async. Currently async makes code event driven, complicated, and messy (TODO item)
  * 
  * @param {any} urlsArr 
  * @returns 
@@ -52,9 +52,11 @@ async function getDocs(urlsArr) {
     searchableArr = [];
 
   // TODO: Improve ajax trigger loop into a parallel request. 
-  // Issue: Error cases handling the issue for parallel trigger implementation with asyncjs, t/co, and promise.all
-  // Reason: ? Iterables in t/co, asyncjs, and promise.all with error handling is a mess! 
-  // Solution: Proposal needed for promise.all where errors of only error promises can be handled without breaking other promises
+  // ISSUE: Error cases handling the issue for parallel trigger implementation with asyncjs, t/co, and promise.all
+  // REASON: ? Iterables in t/co, asyncjs, and promise.all with error handling is a mess! 
+  // SOLUTION: 
+  // Proposal needed for promise.all where errors of only error promises can be handled without breaking other promises
+  // Allow for synchronous or asynchronous implementation using an argument
   for (let i = 0; i < urlsArr.length; i++) {
     try {
       let res = await ajax('/assets/mddocs/' + urlsArr[i] + '.md').catch(function (e) {
@@ -115,7 +117,7 @@ async function search(eData) {
 };
 
 /**
- * Capture messages from parent process
+ * Capture messages from parent process for any action
  * 
  * @param {any} e 
  */
@@ -129,5 +131,4 @@ onmessage = async function (e) {
       result: actionResult
     });
   };
-
 };
