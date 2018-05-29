@@ -243,18 +243,15 @@ export class HttpService {
 
       console.log('DEBUG: routeUrl getRouteEvent ', url, host);
 
-      /* If the load is a search event */
+      /* If the load is a search event. TODO: Fails for reload */
       if (url.includes('#/#/?search=')) {
         search = url.split('#/#/?search=')[1];
         url = 'http';
         if (search && search !== '') {
-          //console.log('Search URL List', that.searchUrlList, that.sidebarItems, that.topnav, that.sidebarnav, that.footernav);
           if (!that.searchUrlList.length && that.topnav && that.sidebarnav && that.footernav) {
-            //console.log('topnavlinks', that.searchUrlList, that.searchUrlList.concat(that.getLinksList(that.topnav)))
             that.searchUrlList.concat(that.getLinksList(that.topnav));
             that.searchUrlList.concat(that.getLinksList(that.sidebarnav));
             that.searchUrlList.concat(that.getLinksList(that.footernav));
-            //console.log('Search URL List 1', that.searchUrlList);
           }
         }
         return;
