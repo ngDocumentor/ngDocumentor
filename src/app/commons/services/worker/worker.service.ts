@@ -1,4 +1,4 @@
-import { Injectable, EventEmitter, ApplicationRef } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { SearchResult, SearchRequest } from '../../interfaces/search/search';
 
 
@@ -11,7 +11,7 @@ export class WorkerService {
 
   searchResult: SearchResult[] | null = null;
 
-  constructor(private _ar: ApplicationRef) {
+  constructor() {
     this.searchInit('/assets/scripts/search-worker.js');
     this.onmessage();
   }
