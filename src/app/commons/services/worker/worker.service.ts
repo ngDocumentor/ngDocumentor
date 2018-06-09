@@ -11,11 +11,8 @@ export class WorkerService {
 
   searchResult: SearchResult[] | null = null;
 
-  searchResultEvt: EventEmitter<any>; // Currently not using this
-
   constructor(private _ar: ApplicationRef) {
     this.searchInit('/assets/scripts/search-worker.js');
-    this.searchResultEvt = new EventEmitter();
     this.onmessage();
   }
 
@@ -50,7 +47,6 @@ export class WorkerService {
     this.searchWorker.onmessage = function (data: any) {
       that.searchResult = data.data.result;
       console.log('DEBUG: Search Data WorkerService', that.searchResult);
-      //that.searchResultEvt.emit({ action: data.data.action, data: that.searchResult });
     };
   }
 
