@@ -8,7 +8,7 @@ article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,su
 
 
 body {
-  color: #2f3640 !important;
+  color: #2f3640;
   font-size: 13px !important;
   font-weight: 100;
   font-family: arial, sans-serif, verdana,  Times  !important;
@@ -16,12 +16,10 @@ body {
   line-height: 1.5em;
 }
 
-
 h1 , h2, h3, h4, h5, h6 {
   color: #40739e !important;
   line-height: 1.5em;
 }
-
 
 code, kbd, pre, samp {
   background-color: #f9f9f9 !important;
@@ -42,7 +40,7 @@ code[class*="language-"], pre[class*="language-"] {
 }
 
 @media screen and (max-width: 768px) {
-  
+
   code, kbd, pre, samp {
     background-color: #f9f9f9 !important;
     padding: 2px !important;
@@ -126,7 +124,13 @@ code[class*="language-"], pre[class*="language-"] {
     width: 80%;
   }
   body {
+    color: #000 !important;
     font-size: 15px !important;
+  }
+  h5, h6 {
+    color: #2f3640 !important;
+    line-height: 1em !important;
+    font-weight: normal !important;
   }
 }
 

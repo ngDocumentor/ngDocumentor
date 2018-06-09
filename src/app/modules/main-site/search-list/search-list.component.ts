@@ -20,7 +20,7 @@ export class SearchListComponent implements OnInit {
    * @returns {any[]} 
    * @memberof SearchListComponent
    */
-  objectKeys(obj): any[] {
+  objectKeys(obj: any): any[] {
     return Object.keys(obj);
   }
 
@@ -31,7 +31,7 @@ export class SearchListComponent implements OnInit {
    * @returns {string} 
    * @memberof SearchListComponent
    */
-  stringifyArray(obj): string {
+  stringifyArray(obj: any): string {
     return JSON.stringify(obj);
   }
 

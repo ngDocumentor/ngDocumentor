@@ -67,6 +67,8 @@ export class HttpService {
 
   footerItems: Footer = { copyright: { tag: '', text: '', link: '/home', type: 'internal' }, nav: [], social: [] };
 
+  domLoaded: boolean = false;
+
   constructor(http: HttpClient, private _mhSrv: MarkdownService, private _wksrv: WorkerService) {
 
     this.http = http;
@@ -77,11 +79,11 @@ export class HttpService {
   /**
    * Prune Nav objects to get urls
    * 
-   * @param {any} obj 
+   * @param {any} obj (nav objects merge structure for type : todo)
    * @returns {any[]} 
    * @memberof MenubarComponent
    */
-  getLinksList(obj): any[] {
+  getLinksList(obj: any): any[] {
     let arr = [],
       linkArr = (obj instanceof Array) ? obj : (typeof obj === 'object') ? obj.nav ? obj.nav : [] : [],
       socialArr = (obj instanceof Array) ? [] : (typeof obj === 'object') ? obj.social ? obj.social : [] : [];
@@ -118,7 +120,7 @@ export class HttpService {
    * @returns {{ routeUri, bmarkUri }} 
    * @memberof HttpService
    */
-  cleanUrl(url, host): { routeUri, bmarkUri } {
+  cleanUrl(url: string, host: string): { routeUri, bmarkUri } {
     let that = this, routeUri = '', bmarkUri = '';
     if (url.includes(host)) {
       url = url.split(host + '/')[1];

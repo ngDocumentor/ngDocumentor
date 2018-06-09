@@ -1,10 +1,12 @@
-import { Component, Input, Output, ViewChild, ElementRef, OnInit, EventEmitter, AfterViewChecked } from '@angular/core';
+import { Component, Input, Output, ViewChild, ElementRef, OnInit, EventEmitter, OnChanges, AfterViewChecked } from '@angular/core';
 import { HttpService } from '../../../commons/services/http/http.service';
 import { WorkerService } from '../../../commons/services/worker/worker.service';
 
 import { MenuLinks } from '../../../commons/interfaces/menu/menu';
 import { SidebarLinks, SidebarParentLinks } from '../../../commons/interfaces/sidebar/sidebar';
 import { Footer } from '../../../commons/interfaces/footer/footer';
+import { SearchResult } from '../../../commons/interfaces/search/search';
+
 
 declare var gnMenu;
 
@@ -230,27 +232,40 @@ export class MenubarComponent implements OnInit, AfterViewChecked {
    */
   searchDoc(e): boolean {
     e ? e.preventDefault ? e.preventDefault() : null : null;
-
+    let searchValue = '';
     if (!this._h.searchUrlList.length) {
       this._h.searchUrlList = this._h.searchUrlList.concat(this._h.getLinksList(this._h.topnavItems));
       this._h.searchUrlList = this._h.searchUrlList.concat(this._h.getLinksList(this._h.sidebarItems));
       this._h.searchUrlList = this._h.searchUrlList.concat(this._h.getLinksList(this._h.footerItems));
       this._h.searchUrlList = this._h.arrayUnique(this._h.searchUrlList);
     }
-    if (this.searchform.nativeElement.value !== '' && !!this._h.searchUrlList.length) {
+
+    if (!this.searchform && window.location.href.includes('#/#/?search=')) {
+      searchValue = decodeURIComponent(window.location.href.split('#/#/?search=')[1]);
+    } else {
+      searchValue = this.searchform.nativeElement.value;
+    }
+
+    if (!!this.searchform && this.searchform.nativeElement.value !== '' && !!this._h.searchUrlList.length) {
       this._wksrv.searchResult = null;
       this._h.fileData = null;
       window.location.replace('#/#/?search=' + this.searchform.nativeElement.value);
+    }
+
+    if (searchValue !== '') {
       this._wksrv.postMessage({
         action: 'search',
-        key: this.searchform.nativeElement.value,
+        key: searchValue,
         urls: this._h.searchUrlList
       });
+      console.log('searchDoc: Debug Search triggered');
     }
+
     if (this.mobileAndTabletCheck()) {
       this.showsearch = false;
       this.searchicon = true;
     }
+
     return false;
   }
 
@@ -284,29 +299,34 @@ export class MenubarComponent implements OnInit, AfterViewChecked {
     }.bind(this);
 
     /* Handles dom content loaded fnctionality for opening nav and hiding search icon in desktop currently */
-    document.addEventListener("DOMContentLoaded", function (event) {
+    document.addEventListener("DOMContentLoaded", function (event: Event) {
       if (!this.mobileAndTabletCheck()) {
         this.openNav();
         this.searchicon = false;
         this.showsearch = true;
       }
     }.bind(this));
+
   }
 
   /**
-   * TODO: 
-   * Check if this can be bettered. 
    * Late initialization through view checked 
    * Reason: During the service initialization time does not capture or have the nav configs initialized
    * 
    * @memberof MenubarComponent
    */
   ngAfterViewChecked(): void {
-    // MAJOR ERROR HERE THAT CREATES ISSUES IN MOBILE
-    if (!!this._h.fileUrl.includes('#/#/?search=') && !!this._h.topnavItems.length && !!this._h.sidebarItems.length && !!this._h.footerItems && !!this.searchform && (this.searchform.nativeElement.value !== decodeURIComponent(window.location.href.split('#/#/?search=')[1]))) {
-      this.searchform.nativeElement.value = decodeURIComponent(window.location.href.split('#/#/?search=')[1]);
-      let event = {};
-      this.searchDoc(event);
+    // Ensuring minimal checks on domLoaded and /?search= string to avoid performance issue.
+    // But performance will be impacted since there is a check on
+    if (this._h.domLoaded !== true && !!this._h.fileUrl.includes('#/#/?search=') && this._h.topnavItems.length > 0 && this._h.sidebarItems.length > 0 && !!this._h.footerItems) {
+      this.searchDoc({});
+      this._h.domLoaded = true;
+      console.log('View Checked', this._wksrv.searchResult);
+    }
+
+    // Assigning value in search form from url
+    if (!this.mobileAndTabletCheck() && !!this.searchform && this.searchform.nativeElement.value === '' && window.location.href.includes('#/#/?search=')) {
+      this.searchform.nativeElement.value = decodeURIComponent(window.location.href.split('#/#/?search=')[1]) ? decodeURIComponent(window.location.href.split('#/#/?search=')[1]) : '';
     }
   }
 

@@ -22,6 +22,7 @@ export interface FooterLink {
     link: string;
     text?: string; // Needed for copyright
 }
+
 /**
  * Basic structure of footer sections
  * 
