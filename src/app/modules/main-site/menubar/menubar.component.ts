@@ -1,4 +1,4 @@
-import { Component, Input, Output, ViewChild, ElementRef, OnInit, EventEmitter, OnChanges, AfterViewChecked } from '@angular/core';
+import { Component, Input, Output, ViewChild, ElementRef, OnInit, AfterViewChecked } from '@angular/core';
 import { HttpService } from '../../../commons/services/http/http.service';
 import { WorkerService } from '../../../commons/services/worker/worker.service';
 
