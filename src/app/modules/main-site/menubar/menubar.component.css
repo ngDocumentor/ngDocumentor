@@ -562,18 +562,19 @@ color:orange;
     float: none;
     display: block;
     text-align: center;
-    width: 200px;
-    max-width: 200px;
     margin: 0;
-    padding: 15px !important;
     font-size: 18px !important;
   }
-  .searchbar input[type=text] {
+
+  .searchbar input[type=text], .searchbar .search-container button {
     border: 1px solid #ccc;  
     padding-right: 0px;
     padding-left: 0px;
     margin-bottom: 1px;
-    width: calc(100% - 5px);
+    width: calc(100% - 5px) !important;
+  }
+  .searchbar .search-container button {
+    width: calc(100% - 3px) !important;
   }
 }
 
