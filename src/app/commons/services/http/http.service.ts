@@ -63,6 +63,8 @@ export class HttpService {
 
   brandname: string = '';
 
+  brandicon: string = '';
+
   sidebarItems: (SidebarLinks | SidebarParentLinks)[] = [];
 
   footerItems: Footer = { copyright: { tag: '', text: '', link: '/home', type: 'internal' }, nav: [], social: [] };

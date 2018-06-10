@@ -21,6 +21,8 @@ export class AppComponent implements OnInit {
 
   brandname: string = '  ';
 
+  brandicon: string;
+
   sidebarItems: (SidebarLinks | SidebarParentLinks)[];
 
   topnavItems: MenuLinks[];
@@ -28,6 +30,7 @@ export class AppComponent implements OnInit {
   footerItems: Footer;
 
   constructor(public _h: HttpService) {
+    this.brandicon = this._h.brandicon;
     this.topnavSrc = this._h.topnavSrc;
     this.sidebarSrc = this._h.sidebarSrc;
     this.footerSrc = this._h.footerSrc;
@@ -50,6 +53,7 @@ export class AppComponent implements OnInit {
 
     that._h.httpReq(topnavSrc, 'GET', null, null)
       .subscribe((data: Menu) => {
+        that._h.brandicon = data.logo ? data.logo : '';
         that._h.topnavItems = data.nav ? data.nav : [];
         that._h.brandname = data.brandname ? data.brandname : '';
         that._h.topnav = data;
@@ -137,11 +141,11 @@ export class AppComponent implements OnInit {
     this.getFooter(this._h.footerSrc);
 
     this._h.getRouteEvent();
-    // Get the items into the class arrays
 
     if (!!this._h.fileUrl) {
       console.log('DEBUG: Fileurl init', this._h.fileUrl);
       this._h.routeme.emit({ url: this._h.fileUrl, host: window.location.host });
     }
   }
+
 }

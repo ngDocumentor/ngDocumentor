@@ -7,7 +7,6 @@ import { SidebarLinks, SidebarParentLinks } from '../../../commons/interfaces/si
 import { Footer } from '../../../commons/interfaces/footer/footer';
 import { SearchResult } from '../../../commons/interfaces/search/search';
 
-
 declare var gnMenu;
 
 @Component({
@@ -25,9 +24,11 @@ export class MenubarComponent implements OnInit, AfterViewChecked {
 
   @ViewChild('footernav') footernav: ElementRef;
 
-  @ViewChild('searchform') searchform;
+  @ViewChild('searchform') searchform: any;
 
   @Input('brandname') brandname: string;
+
+  @Input('brandicon') brandicon: string = '';
 
   @Input('sidebartype') sidebartype: string = 'non-blocking';
 
@@ -306,11 +307,6 @@ export class MenubarComponent implements OnInit, AfterViewChecked {
         this.showsearch = true;
       }
     }.bind(this));
-
-  }
-
-  ngAfterViewInit() {
-    // Assigning value in search form from url
 
   }
 

@@ -10,6 +10,7 @@
       <img src="/assets/img/menuicon.svg" style="width: 12px; height: 12px;" alt="Menu"> &nbsp;&nbsp;&nbsp;
     </span>
     <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+    <span *ngIf="brandicon != ''"> <img [src]="brandicon" alt="Logo" class="logoicon" /> </span>
     <span (click)="routeMain($event)" class="pad-left-right fontcolor-primary font-bold brand"> {{ brandname }} </span>
   </a>
 
@@ -20,6 +21,7 @@
 
   <a href="javascript:void(0);" class="icon">
     <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+    <span *ngIf="mobileAndTabletCheck() && brandicon != ''"> <img [src]="brandicon" alt="Logo" class="logoicon" /> </span>
     <span (click)="routeMain($event)" class="pad-left-right fontcolor-primary font-bold brand"> {{ brandname }} </span>
   </a>
   <a href="javascript:void(0);" class="icon-left">
@@ -34,6 +36,7 @@
   </a>
 </div>
 <div #sidebarfixed id="sidebarfixed" class="sidenav sbar-style">
+  
   <a *ngIf="mobileAndTabletCheck()" href="#/home" class="brandname fontcolor-primary font-bold"> {{ brandname }} </a>
   <a style="font-size: 18px;" href="javascript:void(0)" class="closebtn" (click)="closeNav()">
     <span class="button-plus-span">&times;</span>

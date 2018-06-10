@@ -41,6 +41,10 @@
 
 /* Add a black background color to the top navigation */
 
+.logoicon {
+  width:15px; height: 15px; top:2px; position: relative;
+}
+
 .topnav {
   background-color: #ffffff;
   overflow: hidden;
