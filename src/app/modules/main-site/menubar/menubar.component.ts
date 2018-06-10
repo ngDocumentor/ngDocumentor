@@ -324,18 +324,14 @@ export class MenubarComponent implements OnInit, AfterViewChecked {
 
     // Ensuring minimal checks on domLoaded and /?search= string to avoid performance issue.
     // But performance will be impacted since there is a check on
-    console.log('View Checked 1');
     if (this._h.domLoaded !== true) {
-      console.log('View Checked 2');
       if (!this.mobileAndTabletCheck() && !!this.searchform && this.searchform.nativeElement.value === '' && window.location.href.includes('#/#/?search=')) {
-        console.log('View Checked 3');
         this.searchform.nativeElement.value = decodeURIComponent(window.location.href.split('#/#/?search=')[1]) ? decodeURIComponent(window.location.href.split('#/#/?search=')[1]) : '';
       }
       if (!!this._h.fileUrl.includes('#/#/?search=') && this._h.topnavItems.length > 0 && this._h.sidebarItems.length > 0 && !!this._h.footerItems) {
-        console.log('View Checked 4');
         this.searchDoc({});
         this._h.domLoaded = true;
-        console.log('View Checked', this._wksrv.searchResult);
+        console.log('Debug: Menubar AfterViewChecked', this._wksrv.searchResult);
       }
     }
 
