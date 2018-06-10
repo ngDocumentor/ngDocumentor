@@ -309,6 +309,11 @@ export class MenubarComponent implements OnInit, AfterViewChecked {
 
   }
 
+  ngAfterViewInit() {
+    // Assigning value in search form from url
+
+  }
+
   /**
    * Late initialization through view checked 
    * Reason: During the service initialization time does not capture or have the nav configs initialized
@@ -316,18 +321,24 @@ export class MenubarComponent implements OnInit, AfterViewChecked {
    * @memberof MenubarComponent
    */
   ngAfterViewChecked(): void {
+
     // Ensuring minimal checks on domLoaded and /?search= string to avoid performance issue.
     // But performance will be impacted since there is a check on
-    if (this._h.domLoaded !== true && !!this._h.fileUrl.includes('#/#/?search=') && this._h.topnavItems.length > 0 && this._h.sidebarItems.length > 0 && !!this._h.footerItems) {
-      this.searchDoc({});
-      this._h.domLoaded = true;
-      console.log('View Checked', this._wksrv.searchResult);
+    console.log('View Checked 1');
+    if (this._h.domLoaded !== true) {
+      console.log('View Checked 2');
+      if (!this.mobileAndTabletCheck() && !!this.searchform && this.searchform.nativeElement.value === '' && window.location.href.includes('#/#/?search=')) {
+        console.log('View Checked 3');
+        this.searchform.nativeElement.value = decodeURIComponent(window.location.href.split('#/#/?search=')[1]) ? decodeURIComponent(window.location.href.split('#/#/?search=')[1]) : '';
+      }
+      if (!!this._h.fileUrl.includes('#/#/?search=') && this._h.topnavItems.length > 0 && this._h.sidebarItems.length > 0 && !!this._h.footerItems) {
+        console.log('View Checked 4');
+        this.searchDoc({});
+        this._h.domLoaded = true;
+        console.log('View Checked', this._wksrv.searchResult);
+      }
     }
 
-    // Assigning value in search form from url
-    if (!this.mobileAndTabletCheck() && !!this.searchform && this.searchform.nativeElement.value === '' && window.location.href.includes('#/#/?search=')) {
-      this.searchform.nativeElement.value = decodeURIComponent(window.location.href.split('#/#/?search=')[1]) ? decodeURIComponent(window.location.href.split('#/#/?search=')[1]) : '';
-    }
   }
 
 }

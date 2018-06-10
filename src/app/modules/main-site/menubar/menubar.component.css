@@ -9,15 +9,15 @@
 }
 
 .fontcolor-default:hover {
-  color: #23527c !important;
+  color: #013243 !important;
 }
 
 .fontcolor-primary {
-  color: #23527c !important;
+  color: #013243 !important;
 }
 
 .fontcolor-primary:hover {
-  color: #23527c !important;
+  color: #013243 !important;
 }
 
 .float-right {
@@ -60,7 +60,7 @@
 .topnav a {
   float: left;
   display: block;
-  color: #23527c !important;
+  color: #2980b9 !important;
   text-align: center;
   padding: 22px 22px;
   text-decoration: none;
@@ -106,7 +106,10 @@
 }
 
 .brand {
-  text-transform: uppercase !important;
+  color: #013243 !important;
+  font-weight: 600;
+  font-size: 1.3em;
+  opacity: 1;
 }
 
 .brand-position,
@@ -227,7 +230,7 @@
 .sidenav p a {
   padding: 8px 8px 8px 32px;
   text-decoration: none;
-  color: slategray;
+  color: #2f3640 !important;
   display: block;
   transition: 0.5s;
 }
@@ -242,7 +245,7 @@
 
 .sidenav a:hover,
 .sidenav p a:hover {
-  color: #23527c;
+  color: #2f3640;
 }
 
 .sidenav .closebtn {
@@ -258,6 +261,7 @@
   left: 0px;
   font-weight: normal;
   margin-right: 20px;
+  color: #013243 !important;
 }
 
 @media screen and (max-height: 450px) {
@@ -395,17 +399,18 @@ color:orange;
 
 #footer {
   background: #fff !important;
+  z-index: 0 !important;
 }
 
-#footer h4 {
+#footer h5 {
   padding-left: 20px;
   padding-bottom: 6px;
   margin-bottom: 20px;
-  color: slategray;
+  color: #013243 !important;
 }
 
 #footer a {
-  color: #23527c !important;
+  color: #2980b9 !important;
   text-decoration: none !important;
   background-color: transparent;
   -webkit-text-decoration-skip: objects;
@@ -433,11 +438,11 @@ color:orange;
 
 #footer ul.social li a,
 #footer ul.quick-links li a {
-  color: #23527c !important;
+  color: #2980b9 !important;
 }
 
 #footer ul.social li a:hover {
-  color: #23527c !important;
+  color: #2980b9 !important;
 }
 
 #footer ul.quick-links li {

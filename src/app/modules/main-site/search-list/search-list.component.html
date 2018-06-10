@@ -1,7 +1,7 @@
 <div *ngIf="!_wksrv.searchResult.length">
-  <h2>No search results</h2>
+  <h4>No search results</h4>
 </div>
-<h2 *ngIf="_wksrv.searchResult.length">Search results</h2>
+<h4 *ngIf="_wksrv.searchResult.length">Search results</h4>
 <div *ngFor="let item of (_wksrv.searchResult || [])">
   <h4 style="margin-bottom: 0px !important;">
     <a class="text-green ml-2" href="{{ '#' + item.ref}}">
