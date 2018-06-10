@@ -335,7 +335,7 @@ export class MenubarComponent implements OnInit, AfterViewChecked {
         console.log('Debug: Menubar AfterViewChecked', this._wksrv.searchResult);
       }
     }
-
+ 
   }
 
 }
