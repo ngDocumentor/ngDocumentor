@@ -323,7 +323,8 @@ export class MenubarComponent implements OnInit, AfterViewChecked {
   ngAfterViewChecked(): void {
 
     // Ensuring minimal checks on domLoaded and /?search= string to avoid performance issue.
-    // But performance will be impacted since there is a check on
+    // But performance will be impacted since there is a check on domLoaded on every view change
+    // TODO: Move to Observables.
     if (this._h.domLoaded !== true) {
       if (!this.mobileAndTabletCheck() && !!this.searchform && this.searchform.nativeElement.value === '' && window.location.href.includes('#/#/?search=')) {
         this.searchform.nativeElement.value = decodeURIComponent(window.location.href.split('#/#/?search=')[1]) ? decodeURIComponent(window.location.href.split('#/#/?search=')[1]) : '';
