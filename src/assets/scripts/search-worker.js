@@ -1,4 +1,4 @@
-importScripts('/assets/scripts/lunr.js');
+//importScripts('/assets/scripts/lunr.js');
 
 /**
  * Ajax request to fetch .md files
@@ -79,13 +79,69 @@ async function getDocs(urlsArr) {
 };
 
 /**
+ * Orders the search result based on total
+ * 
+ * TODO: 
+ * T1: Make this better by giving weightages, 
+ * T2: All items having counts will score more than other not having them
+ *
+ * @param {*} arr
+ * @returns
+ */
+function orderBy(arr) {
+  return arr.sort(function(first, second) {
+    if (first[0].total == second[0].total) { return 0; } 
+    else if (first[0].total < second[0].total) { return 1; } 
+    else { return -1; }
+  });
+}
+
+/**
+ * Searches the array using simple occurance count
+ *
+ * @param {*} arr
+ * @param {*} str
+ * @returns
+ */
+function searchAlgoDocs(arr, str) {
+  var result = [{
+    total: 0,
+    url: str.url,
+    docLength: str.body.split(' ').length
+  }];
+  for (var i = 0; i < arr.length; i++) {
+    var splitter = (str.body.toLowerCase().split(arr[i].toLowerCase()).length - 1) , key = arr[i];
+    result.push({ key : key, count: splitter });
+    result[0].total = result[0].total + splitter;
+  }
+  return result;
+}
+
+/**
+ * Loop through .md array results and search the array using searchAlgoDocs
+ *
+ * @param {*} mdArr
+ * @param {*} searchString
+ * @returns
+ */
+function searchDocs(mdArr, searchString) {
+  let searchResult = [];
+  for (var i = 0; i < mdArr.length; i++) {
+    let res = searchAlgoDocs(searchString.split(' '), mdArr[i]);
+    searchResult.push(res);
+  }
+  return orderBy(searchResult);
+}
+
+/**
  * Loop through .md array results and search the aray using lunrjs
  * 
  * @param {any} mdArr 
  * @param {any} searchString 
  * @returns 
  */
-function searchDocs(mdArr, searchString) {
+/*
+function searchDocsDeprecated(mdArr, searchString) {
   let result, docIndex = lunr(function () {
     this.ref('url');
     this.field('body');
@@ -99,9 +155,12 @@ function searchDocs(mdArr, searchString) {
     }
   });
 
-  result = docIndex.search(searchString, { autoWildcard: true });
+  result = docIndex.search(searchString, {
+    autoWildcard: true
+  });
   return result;
 }
+*/
 
 /**
  * Search function (Integrates individual functions)

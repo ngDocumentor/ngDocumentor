@@ -1,21 +1,22 @@
 <div *ngIf="!_wksrv.searchResult.length">
   <h4>No search results</h4>
 </div>
-<h4 *ngIf="_wksrv.searchResult.length">Search results</h4>
+<h4 *ngIf="_wksrv.searchResult.length - 1">Search results</h4>
 <div *ngFor="let item of (_wksrv.searchResult || [])">
-  <h4 style="margin-bottom: 0px !important;">
-    <a class="text-green ml-2" href="{{ '#' + item.ref}}">
-      {{item.ref}}
+  <h4 *ngIf="item[0].total !== 0" style="margin-bottom: 0px !important;">
+    <a class="text-green ml-2" href="{{ '#' + item[0].url}}">
+      {{ item[0].url }}
     </a>
   </h4>
-  <h5 style="margin-top: 0px !important;">Search Match - %: {{item.score}}, Keys : [
-    <span *ngFor="let obj of objectKeys(item.matchData.metadata); let i = index;">
-      <span>{{ obj }}</span>:
-      <span>{{ stringifyArray(item.matchData.metadata[obj].body.position.length) }}</span>
-      <span *ngIf="i !== objectKeys(item.matchData.metadata).length - 1">,</span>
+  <h5 *ngIf="item[0].total !== 0" style="margin-top: 0px !important;">Search Result - {{ item[0].total }} Matches, Keys : [
+    <span>&nbsp;&nbsp;</span>
+    <span *ngFor="let obj of item.splice(1, item.length); let i = index;">
+      <span>{{ obj.key }}</span>:
+      <span>{{ obj.count }}</span>
+      <span>&nbsp;&nbsp;</span>
     </span>
     ]
   </h5>
-  <span style="margin-top: 0px !important;">{{ item.ref.body }}</span>
+  <span style="margin-top: 0px !important;"></span>
 
 </div>
