@@ -84,6 +84,7 @@ async function getDocs(urlsArr) {
  * T1: Make this better by giving weightages, 
  * T2: All items having counts will score more than other not having them in one or few
  * T3: Add language fillers and score them lesser only in a phrase
+ * T4: Partial Word Search and full word search scoring with full word weighing more (how much? what ratio)
  *
  * @param {*} arr
  * @returns
