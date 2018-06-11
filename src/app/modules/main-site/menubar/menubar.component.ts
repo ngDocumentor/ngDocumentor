@@ -138,6 +138,7 @@ export class MenubarComponent implements OnInit, AfterViewChecked {
       /* Handles back arrow trigger for search on hash change */
       if (window.location.href.includes('#/#/?search=')) {
         that._h.routeme.emit({ url: window.location.href, host: window.location.host });
+        that.searchDoc({});
         return;
       }
 
@@ -326,7 +327,7 @@ export class MenubarComponent implements OnInit, AfterViewChecked {
         this.searchform.nativeElement.value = decodeURIComponent(window.location.href.split('#/#/?search=')[1]) ? decodeURIComponent(window.location.href.split('#/#/?search=')[1]) : '';
       }
       if (!!this._h.fileUrl.includes('#/#/?search=') && this._h.topnavItems.length > 0 && this._h.sidebarItems.length > 0 && !!this._h.footerItems) {
-        this.searchDoc({});
+        this.hashChangeFunction(window.location.href);
         this._h.domLoaded = true;
         console.log('Debug: Menubar AfterViewChecked', this._wksrv.searchResult);
       }

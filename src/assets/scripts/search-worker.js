@@ -82,7 +82,7 @@ async function getDocs(urlsArr) {
  * 
  * TODO: 
  * T1: Make this better by giving weightages, 
- * T2: All items having counts will score more than other not having them
+ * T2: All items having counts will score more than other not having them in one or few
  *
  * @param {*} arr
  * @returns
@@ -97,6 +97,8 @@ function orderBy(arr) {
 
 /**
  * Searches the array using simple occurance count
+ * 
+ * TODO: Add indexes of each keyfor highlighting in browser (P5)
  *
  * @param {*} arr
  * @param {*} str
@@ -106,7 +108,9 @@ function searchAlgoDocs(arr, str) {
   var result = [{
     total: 0,
     url: str.url,
-    docLength: str.body.split(' ').length
+    charLength: str.body.split('').length,
+    wordLength: str.body.split(' ').length,
+    body: str.body.split('').splice(0,200).join('')
   }];
   for (var i = 0; i < arr.length; i++) {
     var splitter = (str.body.toLowerCase().split(arr[i].toLowerCase()).length - 1) , key = arr[i];
