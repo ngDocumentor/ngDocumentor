@@ -1,4 +1,3 @@
-//importScripts('/assets/scripts/lunr.js');
 
 /**
  * Ajax request to fetch .md files
@@ -132,35 +131,6 @@ function searchDocs(mdArr, searchString) {
   }
   return orderBy(searchResult);
 }
-
-/**
- * Loop through .md array results and search the aray using lunrjs
- * 
- * @param {any} mdArr 
- * @param {any} searchString 
- * @returns 
- */
-/*
-function searchDocsDeprecated(mdArr, searchString) {
-  let result, docIndex = lunr(function () {
-    this.ref('url');
-    this.field('body');
-    this.metadataWhitelist = ['position'];
-
-    for (var i = 0; i < mdArr.length; i++) {
-      if (!!mdArr[i].body && (mdArr[i].body.indexOf('Error') !== 0 && !mdArr.err)) {
-        let a = mdArr[i];
-        this.add(a);
-      }
-    }
-  });
-
-  result = docIndex.search(searchString, {
-    autoWildcard: true
-  });
-  return result;
-}
-*/
 
 /**
  * Search function (Integrates individual functions)
