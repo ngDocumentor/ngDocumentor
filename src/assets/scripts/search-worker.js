@@ -85,7 +85,7 @@ function iterate() {
  * 
  * TODO: 
  * T1: Make this better by giving weightages, 
- * T2: All items having counts will score more than other not having them in one or few
+ * T2 (Done): All items having counts will score more than other not having them in one or few
  * T3: Add language fillers and score them lesser only in a phrase
  * T4: Partial Word Search and full word search in document scoring with full word weighing more (how much? what ratio)
  * T5: Now copy this logic into a function
