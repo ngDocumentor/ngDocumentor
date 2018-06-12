@@ -1,4 +1,3 @@
-
 /**
  * Ajax request to fetch .md files
  * Can be stripped out to make a better comprehensive function / request call. Independant project
@@ -77,6 +76,10 @@ async function getDocs(urlsArr) {
   return ajaxArr;
 };
 
+function iterate() {
+
+}
+
 /**
  * Orders the search result based on total
  * 
@@ -91,10 +94,28 @@ async function getDocs(urlsArr) {
  * @returns
  */
 function orderBy(arr) {
-  return arr.sort(function(first, second) {
-    if (first.total == second.total) { return 0; } 
-    else if (first.total < second.total) { return 1; } 
-    else { return -1; }
+  return arr.sort(function (first, second) {
+    if (first.total == second.total) {
+      function countZeros(item) {
+        if (item.count === 0) {
+          return item;
+        }
+      }
+
+      var f = first.keys.filter(countZeros);
+      var s = second.keys.filter(countZeros);
+      if (f.length > s.length) {
+        return 1;
+      } else if (f.length < s.length) {
+        return -1;
+      } else if (f.length === s.length) {
+        return 0;
+      }
+    } else if (first.total < second.total) {
+      return 1;
+    } else {
+      return -1;
+    }
   });
 }
 
@@ -117,8 +138,12 @@ function searchAlgoDocs(arr, str) {
     keys: []
   };
   for (var i = 0; i < arr.length; i++) {
-    var splitter = (str.body.toLowerCase().split(arr[i].toLowerCase()).length - 1) , key = arr[i];
-    result.keys.push({ key : key, count: splitter });
+    var splitter = (str.body.toLowerCase().split(arr[i].toLowerCase()).length - 1),
+      key = arr[i];
+    result.keys.push({
+      key: key,
+      count: splitter
+    });
     result.total = result.total + splitter;
   }
   return result;
