@@ -84,7 +84,7 @@ async function getDocs(urlsArr) {
  * T1: Make this better by giving weightages, 
  * T2: All items having counts will score more than other not having them in one or few
  * T3: Add language fillers and score them lesser only in a phrase
- * T4: Partial Word Search and full word search scoring with full word weighing more (how much? what ratio)
+ * T4: Partial Word Search and full word search in document scoring with full word weighing more (how much? what ratio)
  * T5: Now copy this logic into a function
  *
  * @param {*} arr
@@ -92,8 +92,8 @@ async function getDocs(urlsArr) {
  */
 function orderBy(arr) {
   return arr.sort(function(first, second) {
-    if (first[0].total == second[0].total) { return 0; } 
-    else if (first[0].total < second[0].total) { return 1; } 
+    if (first.total == second.total) { return 0; } 
+    else if (first.total < second.total) { return 1; } 
     else { return -1; }
   });
 }
@@ -108,17 +108,18 @@ function orderBy(arr) {
  * @returns
  */
 function searchAlgoDocs(arr, str) {
-  var result = [{
+  var result = {
     total: 0,
     url: str.url,
     charLength: str.body.split('').length,
     wordLength: str.body.split(' ').length,
-    body: str.body.split('').splice(0,200).join('')
-  }];
+    body: str.body.split('').splice(0, 200).join(''),
+    keys: []
+  };
   for (var i = 0; i < arr.length; i++) {
     var splitter = (str.body.toLowerCase().split(arr[i].toLowerCase()).length - 1) , key = arr[i];
-    result.push({ key : key, count: splitter });
-    result[0].total = result[0].total + splitter;
+    result.keys.push({ key : key, count: splitter });
+    result.total = result.total + splitter;
   }
   return result;
 }
