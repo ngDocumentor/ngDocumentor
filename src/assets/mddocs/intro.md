@@ -10,7 +10,7 @@ ngDocumentor is a simple website that serves your .md files from a host location
 #### Getting started - 10 Minutes
 
 
-* Clone the [ngDocumentor github site repository](https://github.com/ngDocumentor/ngDocumentor.github.io) OR download the [latest release v2.2.0](https://github.com/ngDocumentor/ngDocumentor.github.io/releases) to use the ngDocumentor site distribution directly.
+* Clone the [ngDocumentor github site repository](https://github.com/ngDocumentor/ngDocumentor.github.io) OR download the [latest release v3.0.0](https://github.com/ngDocumentor/ngDocumentor.github.io/releases) to use the ngDocumentor site distribution directly.
 
 
 * NOTE: If you clone the [ngDocumentor github site repository](https://github.com/ngDocumentor/ngDocumentor.github.io), and do not intend to use Service Worker / Offline viewing support then you can safely delete the `ngsw-worker.js` and `ngsw.json` files from the github clone. Alternatively, if you wish to use the offline viewing (caching) support then use the [ngDocumentor Angular source](https://github.com/ngDocumentor/ngDocumentor) to create a offline viewing enabled build for yourself. Build steps for ngDocumentor development branch can be found [here](#/building) or in [README.md](https://github.com/ngDocumentor/ngDocumentor/blob/master/README.md).
@@ -28,7 +28,7 @@ ngDocumentor is a simple website that serves your .md files from a host location
 ##### Top Navigation
 
 
-* Specify `brandname` and `nav` keys to define the `topnav.json`, which take care of brandname and the links definition for the topnav respectively. Links inside the `nav` key in the topnav.json is an array / group of objects which is defined using `tag` (Link text), and `link` (url path) definitions respectively as below.
+* Specify `brandname`, `logo` and `nav` keys to define the `topnav.json`, which take care of brandname and the links definition for the topnav respectively. Links inside the `nav` key in the topnav.json is an array / group of objects which is defined using `tag` (Link text), and `link` (url path) definitions respectively as below.
 
 
 * `topnav.json`
@@ -36,6 +36,7 @@ ngDocumentor is a simple website that serves your .md files from a host location
 ```json
 {
     "brandname": "My Documentation",
+    "logo": "/assets/img/logo.png",
     "nav": [
         { "tag": "Home", "link": "/home" },
         { "tag": "Getting Started", "link": "/intro" }
