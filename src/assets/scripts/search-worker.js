@@ -2,13 +2,13 @@
  * Ajax request to fetch .md files
  * Can be stripped out to make a better comprehensive function / request call. Independant project
  * 
- * @param {any} url 
- * @returns 
+ * @param {any} url - URL to be searched
+ * @returns {string} - Fetched .md doc's string
  */
 function ajax(url) {
-  var prom = new Promise(function (resolve, reject) {
+  let prom = new Promise(function (resolve, reject) {
     if (!!XMLHttpRequest) {
-      var xhttp = new XMLHttpRequest();
+      let xhttp = new XMLHttpRequest();
       xhttp.timeout = 5000;
 
       xhttp.onload = function () {
@@ -42,15 +42,15 @@ function ajax(url) {
  * Performance issue: Synchronous behaviour due to await inside the loop. Proposal detailed
  * Can be made async. Currently async makes code event driven, complicated, and messy (TODO item)
  * 
- * @param {any} urlsArr 
- * @returns 
+ * @param {any} urlsArr - Array of URLs
+ * @returns {any[]} - Array of fetched .md docs
  */
 async function getDocs(urlsArr) {
   let filteredRes, ajaxArr = [],
     searchableArr = [];
 
-  // TODO: Improve ajax trigger loop into a parallel request. 
-  // ISSUE: Error cases handling the issue for parallel trigger implementation with asyncjs, t/co, and promise.all
+  // TODO: Improve ajax trigger loop into a concurrent request. 
+  // ISSUE: Error cases handling the issue for concurrent trigger implementation with asyncjs, t/co, and promise.all
   // REASON: ? Iterables in t/co, asyncjs, and promise.all with error handling is a mess! 
   // SOLUTION: 
   // Proposal needed for promise.all where errors of only error promises can be handled without breaking other promises
@@ -76,10 +76,6 @@ async function getDocs(urlsArr) {
   return ajaxArr;
 };
 
-function iterate() {
-
-}
-
 /**
  * Orders the search result based on total
  * 
@@ -90,8 +86,8 @@ function iterate() {
  * T4: Partial Word Search and full word search in document scoring with full word weighing more (how much? what ratio)
  * T5: Now copy this logic into a function
  *
- * @param {*} arr
- * @returns
+ * @param {*} arr - Searched Array to be sorted as per above logic
+ * @returns {any[]} - Relevant search results array without unrelevant data
  */
 function orderBy(arr) {
   return arr.sort(function (first, second) {
@@ -101,9 +97,8 @@ function orderBy(arr) {
           return item;
         }
       }
-
-      var f = first.keys.filter(countZeros);
-      var s = second.keys.filter(countZeros);
+      let f = first.keys.filter(countZeros);
+      let s = second.keys.filter(countZeros);
       if (f.length > s.length) {
         return 1;
       } else if (f.length < s.length) {
@@ -116,6 +111,10 @@ function orderBy(arr) {
     } else {
       return -1;
     }
+  }).filter(function (item) {
+    if (item.total !== 0) {
+      return item;
+    }
   });
 }
 
@@ -124,12 +123,12 @@ function orderBy(arr) {
  * 
  * TODO: Add indexes of each keyfor highlighting in browser (P5)
  *
- * @param {*} arr
- * @param {*} str
- * @returns
+ * @param {*} arr - Array to be searched for key words
+ * @param {*} str - String to be searched
+ * @returns {any[]} - Search results
  */
 function searchAlgoDocs(arr, str) {
-  var result = {
+  let result = {
     total: 0,
     url: str.url,
     charLength: str.body.split('').length,
@@ -137,8 +136,8 @@ function searchAlgoDocs(arr, str) {
     body: str.body.split('').splice(0, 200).join(''),
     keys: []
   };
-  for (var i = 0; i < arr.length; i++) {
-    var splitter = (str.body.toLowerCase().split(arr[i].toLowerCase()).length - 1),
+  for (let i = 0; i < arr.length; i++) {
+    let splitter = (str.body.toLowerCase().split(arr[i].toLowerCase()).length - 1),
       key = arr[i];
     result.keys.push({
       key: key,
@@ -152,13 +151,13 @@ function searchAlgoDocs(arr, str) {
 /**
  * Loop through .md array results and search the array using searchAlgoDocs
  *
- * @param {*} mdArr
- * @param {*} searchString
- * @returns
+ * @param {*} mdArr - Array of .md files
+ * @param {*} searchString - Search string
+ * @returns {any[]} - Ordered array
  */
 function searchDocs(mdArr, searchString) {
   let searchResult = [];
-  for (var i = 0; i < mdArr.length; i++) {
+  for (let i = 0; i < mdArr.length; i++) {
     let res = searchAlgoDocs(searchString.split(' '), mdArr[i]);
     searchResult.push(res);
   }
@@ -168,8 +167,8 @@ function searchDocs(mdArr, searchString) {
 /**
  * Search function (Integrates individual functions)
  * 
- * @param {any} eData 
- * @returns 
+ * @param {any} eData - Search relevant data with search string, urls
+ * @returns {any[]} - Search result's array
  */
 async function search(eData) {
   let urlsArr = eData.urls,
