@@ -16,6 +16,7 @@
 
 {
     "brandname": "My Documentation",
+    "logo": "/assets/img/logo.png",
     "nav": [
         { "tag": "Home", "link": "/home" },
         { "tag": "Getting Started", "link": "/intro" }
@@ -23,6 +24,10 @@
 }
 
 ```
+
+
+* The key `logo` is the url / path which points to the logo used for the top navigation. Supports any extension supported by HTML `<img>` tag.
+
 
 
 * The key `nav` is an array of link definitions with two internal key definitions `tag` and `link`. The key `tag` is the link text that will be displayed in the sidebar as a link. The key `link` is the link url to open if the tag / link text is clicked in the sidebar. You will notice that this link object structure is common accross all config `.json` files.

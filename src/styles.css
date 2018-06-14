@@ -1,4 +1,4 @@
-
+/* TODO: Move to SCSS */
 
 /* NORMALISE START */
 
@@ -8,7 +8,7 @@ article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,su
 
 
 body {
-  color: #2f3640 !important;
+  color: #000 !important;
   font-size: 13px !important;
   font-weight: 100;
   font-family: arial, sans-serif, verdana,  Times  !important;
@@ -16,16 +16,16 @@ body {
   line-height: 1.5em;
 }
 
-
-h1 , h2, h3, h4, h5, h5 {
-  color: #40739e !important;
+h1 , h2, h3, h4, h5, h6 {
+  color: slategray !important; /* 40739e 2f3640  */
+  line-height: 1.5em;
 }
-
 
 code, kbd, pre, samp {
   background-color: #f9f9f9 !important;
   padding: 2px !important;
   line-height: 1.5em !important;
+  color: #2f3640 !important;
 }
 
 a, a:hover, a:active, a:focus {
@@ -34,19 +34,19 @@ a, a:hover, a:active, a:focus {
 }
 :not(pre) > code[class*="language-"], pre[class*="language-"] {
   background: #f9f9f9 !important;
-  
 }
 code[class*="language-"], pre[class*="language-"] {
-  color: #57606f  !important;
+  color: #2f3640  !important;
   text-shadow: 0 0px rgba(0, 0, 0, 0.3) !important;
 }
 
 @media screen and (max-width: 768px) {
-  
+
   code, kbd, pre, samp {
     background-color: #f9f9f9 !important;
     padding: 2px !important;
     line-height: 1.5em !important;
+    color: #2f3640 !important;
   }
 
   a, a:hover, a:active, a:focus {
@@ -55,10 +55,10 @@ code[class*="language-"], pre[class*="language-"] {
   }
   :not(pre) > code[class*="language-"], pre[class*="language-"] {
     background: #f9f9f9 !important;
-    
+    color: #2f3640 !important;
   }
   code[class*="language-"], pre[class*="language-"] {
-    color: #57606f !important;
+    color: #2f3640 !important;
     text-shadow: 0 0px rgba(0, 0, 0, 0.3) !important;
   }
 }
@@ -121,12 +121,26 @@ code[class*="language-"], pre[class*="language-"] {
   margin-left: auto;
 }
 
+.visible-mobile {
+  display: none;
+}
+
 @media (max-width: 992px) { /* Added New */
   .container {
     width: 80%;
   }
   body {
+    color: #000 !important;
     font-size: 15px !important;
+    font-weight: 300;
+  }
+  h5, h6 {
+    color: slategray !important;
+    line-height: 1em !important;
+    font-weight: normal !important;
+  }
+  .visible-mobile {
+    display: block !important;
   }
 }
 
@@ -1094,3 +1108,4 @@ code[class*="language-"], pre[class*="language-"] {
 }
 
 /* COLUMN GRID END */
+

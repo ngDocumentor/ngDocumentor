@@ -1,3 +1,7 @@
 <div class="markdownclass">
-  <markdown [data]="_h.fileData"></markdown> 
+  <div *ngIf="!_wksrv.searchResult && !_h.fileData">
+    <h4>Searching...</h4>
+  </div>
+  <app-search-list *ngIf="!!_wksrv.searchResult"></app-search-list>
+  <markdown [data]="_h.fileData" *ngIf="!_wksrv.searchResult && _h.fileData"></markdown>
 </div>

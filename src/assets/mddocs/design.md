@@ -19,7 +19,7 @@ However, since I needed the markdown documentation to be associated with my own 
 ## Goal
 
 
-Github like sites allow you to host HTML only pages to project your project work. You can view details in the [github pages](https://pages.github.com/). However, it allows for only simple HTML pages to work. Only snippets of UI components would work right but it leads to reloading of same static assets. The reason: most Single page applications need a UI or a component router to work with views / site pages but need a URL redirection in the server to the main HTML page.
+Github or Gitlab like sites allow you to host HTML only pages to project your project work. You can view details in the [github pages](https://pages.github.com/) or [gitlab pages](https://about.gitlab.com/features/pages/). However, it allows for only simple HTML pages to work. Only snippets of UI components would work right but it leads to reloading of same static assets. The reason: most Single page applications need a UI or a component router to work with views / site pages but need a URL redirection in the server to the main HTML page.
 
 
 This site framework allows you to work with a single page application like features but still run without URL rewrites options in server, or configuration access. A easy way of turning markdown readme files into a site with modern web capabilities using just configuration files.
@@ -95,4 +95,4 @@ The application has PWA / Service workers support enabled and allows for basic o
 ## Contribution / Requests / Issues
 
 
-Note: This was a weekend project. If you have ideas, feature requests, improvements in application / code, removing code smell, and/or find bugs, you are welcome to raise a [github issue]() or a [pull request]().
+Note: This was a weekend project. If you have ideas, feature requests, improvements in application / code, removing code smell, and/or find bugs, you are welcome to raise a [github issue](https://github.com/ngDocumentor/ngDocumentor/issues) or a [pull request](https://github.com/ngDocumentor/ngDocumentor/pulls).

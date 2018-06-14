@@ -7,16 +7,16 @@
     },
     "nav": [
         {
-            "tag": "Footer Example 1",
+            "tag": "Introduction",
             "children": [
                 {
+                    "tag": "Home",
+                    "type": "internal",
+                    "link": "/home"
+                },{
                     "tag": "Getting Started",
                     "type": "internal",
                     "link": "/intro"
-                },{
-                    "tag": "Config .json Files",
-                    "type": "internal",
-                    "link": "/config"
                 },{
                     "tag": "Github",
                     "type": "external",
@@ -25,16 +25,34 @@
             ]
         },
         {
-            "tag": "Footer Example 2",
+            "tag": "Configurations",
             "children": [
                 {
-                    "tag": "Getting Started",
+                    "tag": "Top Nav",
                     "type": "internal",
-                    "link": "/intro"
+                    "link": "/topnav"
                 },{
-                    "tag": "Config .json Files",
+                    "tag": "Sidebar Nav",
                     "type": "internal",
-                    "link": "/config"
+                    "link": "/sidebar"
+                },{
+                    "tag": "Footer Nav",
+                    "type": "internal",
+                    "link": "/footer"
+                }
+            ]
+        },
+        {
+            "tag": "Resources",
+            "children": [
+                {
+                    "tag": "App Design",
+                    "type": "internal",
+                    "link": "/design"
+                },{
+                    "tag": "Search Feature",
+                    "type": "internal",
+                    "link": "/search"
                 },{
                     "tag": "Github",
                     "type": "external",
@@ -43,18 +61,18 @@
             ]
         },
         {
-            "tag": "Footer Example 3",
+            "tag": "Github Repos",
             "children": [
                 {
-                    "tag": "Getting Started",
+                    "tag": "Cloning Site Repo",
                     "type": "internal",
-                    "link": "/intro"
+                    "link": "https://github.com/ngDocumentor/ngDocumentor.github.io"
                 },{
-                    "tag": "Config .json Files",
+                    "tag": "Building",
                     "type": "internal",
-                    "link": "/config"
+                    "link": "/building"
                 },{
-                    "tag": "Github",
+                    "tag": "Development/Build Repo",
                     "type": "external",
                     "link": "https://github.com/ngDocumentor/ngDocumentor"
                 }

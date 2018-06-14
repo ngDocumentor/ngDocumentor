@@ -49,5 +49,5 @@ export interface SidebarParentLinks {
  * @interface Sidebar
  */
 export interface Sidebar {
-    links: [SidebarLinks | SidebarParentLinks];
+    nav: [SidebarLinks | SidebarParentLinks];
 }
