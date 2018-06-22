@@ -76,6 +76,13 @@ async function getDocs(urlsArr) {
   return ajaxArr;
 };
 
+/**
+ * Function to check fillers of English language when fillers are in a phrase
+ *
+ * @param {Array} arr
+ * @param {String} str
+ * @returns {str || undefined}
+ */
 function checkFiller(arr, str) {
   var filler = [
     'a',
