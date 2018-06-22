@@ -245,7 +245,9 @@ export class MenubarComponent implements OnInit, AfterViewChecked {
 
     if (!this.searchform && window.location.href.includes('#/#/?search=')) {
       searchValue = decodeURIComponent(window.location.href.split('#/#/?search=')[1]);
-      this.searchform.nativeElement.value = searchValue;
+      if (!this.mobileAndTabletCheck()) {
+        this.searchform.nativeElement.value = searchValue;
+      }
     } else {
       searchValue = this.searchform.nativeElement.value;
     }
