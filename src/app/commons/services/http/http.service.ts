@@ -249,7 +249,7 @@ export class HttpService {
 
       console.log('DEBUG: routeUrl getRouteEvent ', url, host);
 
-      /* If the load is a search event. TODO: Fails for reload */
+      /* If the load is a search event. TODO: Fails for back navigation */
       if (url.includes('#/#/?search=') && !!that.topnav && !!that.sidebarnav && !!that.footernav) {
         search = url.split('#/#/?search=')[1];
         url = 'http';

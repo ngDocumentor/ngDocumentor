@@ -138,6 +138,7 @@ export class MenubarComponent implements OnInit, AfterViewChecked {
       /* Handles back arrow trigger for search on hash change */
       if (window.location.href.includes('#/#/?search=')) {
         that._h.routeme.emit({ url: window.location.href, host: window.location.host });
+        console.log('test');
         that.searchDoc({});
         return;
       }
@@ -244,6 +245,7 @@ export class MenubarComponent implements OnInit, AfterViewChecked {
 
     if (!this.searchform && window.location.href.includes('#/#/?search=')) {
       searchValue = decodeURIComponent(window.location.href.split('#/#/?search=')[1]);
+      this.searchform.nativeElement.value = searchValue;
     } else {
       searchValue = this.searchform.nativeElement.value;
     }
