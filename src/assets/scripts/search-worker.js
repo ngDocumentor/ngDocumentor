@@ -78,6 +78,7 @@ async function getDocs(urlsArr) {
 
 /**
  * Function to check fillers of English language when fillers are in a phrase
+ * Credit: Fillers taken from lunrjs
  *
  * @param {Array} arr
  * @param {String} str
