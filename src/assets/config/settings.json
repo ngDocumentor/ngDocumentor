@@ -6,23 +6,24 @@
         "highlight": {
             "type": "slider",
             "img": [
-                {"url":"http://placeholder.pics/svg/300/00cec9-00cec9/00cec9-00cec9", "text":"This is the first slide"},
-                {"url":"/assets/img/test-two.jpg", "text":"This is the second slide"},
-                {"url":"http://placeholder.pics/svg/300/f7f1e3-f7f1e3/f7f1e3-f7f1e3", "text":"This is the fourth slide"},
-                {"url":"http://placeholder.pics/svg/300/00cec9-00cec9/00cec9-00cec9", "text":"This is the third slide"},
-                {"url":"http://placeholder.pics/svg/300/f7f1e3-f7f1e3/f7f1e3-f7f1e3", "text":"This is the fourth slide"},
-                {"url":"/assets/img/test-two.jpg", "text":"This is the second slide"}
+                {"url":"http://placeholder.pics/svg/300/00cec9-00cec9/00cec9-00cec9", "text":"ngDocumentor can be as simple as you need"},
+                {"url":"/assets/img/test-two.jpg", "text":"One settings file to manage the whole documentation site and related links"},
+                {"url":"http://placeholder.pics/svg/300/f7f1e3-f7f1e3/f7f1e3-f7f1e3", "text":"Text or Slider based highlighter"},
+                {"url":"http://placeholder.pics/svg/300/00cec9-00cec9/00cec9-00cec9", "text":"Avoid usage of landing page completely and use home.md file as home page"},
+                {"url":"http://placeholder.pics/svg/300/f7f1e3-f7f1e3/f7f1e3-f7f1e3", "text":"Offline support / Basic simple PWA using Service Workers"},
+                {"url":"http://placeholder.pics/svg/300/00cec9-00cec9/00cec9-00cec9", "text":"Search across documents or across keywords using search key occurance counts"}
             ]
         },
         "blocks": {
-            "heading": "This is a heading for blocks of the section",
+            "heading": "ngDocumentor features flexibility for your documentation or your Site",
             "items": [
-                {"title": "Web Development", "description" : "Web Development Web Development Web Development Web Development Web Development Web Development Web Development", "url": "/home"},
-                {"title": "Web Designing", "description" : "Web Development Web Development Web Development Web Development Web Development Web Development Web Development", "url": "/credits"},
-                {"title": "Web Development", "description" : "Web Development Web Development Web Development Web Development Web Development Web Development Web Development", "url": "/building"},
-                {"title": "Web Development", "description" : "Web Development Web Development Web Development Web Development Web Development Web Development Web Development", "url": "/home"},
-                {"title": "Web Designing", "description" : "Web Development Web Development Web Development Web Development Web Development Web Development Web Development", "url": "/credits"},
-                {"title": "Web Development", "description" : "Web Development Web Development Web Development Web Development Web Development Web Development Web Development", "url": "/building"}
+                {"title": "Reuse Markdown", "description" : "Use your markdown readme files to create the documentation site.", "url": "/"},
+                {"title": "Offline Support", "description" : "Basic offline support / PWA using service workers. May need rebuilding.", "url": "/"},
+                {"title": "Simpler Search", "description" : "Simple keyword occurance based search that fits documentation sites better. Search will be improved sooner.", "url": "/"},
+                {"title": "Configure & Deploy", "description" : "Just configure the home page, top navigation, sidebar links, and footer links in one settings file; and deploy to host", "url": "/"},
+                {"title": "Custom Router", "description" : "Works even on HTML only hosts like Github pages or Gitlab pages like an Single page application", "url": "/"},
+                {"title": "Extendable", "description" : "Easily extendable, themable. Simple structure any can extend.", "url": "/"},
+                {"title": "Made with Angular", "description" : "Managed dependencies and packages. Made with Angular", "url": "/"}
             ]
         }
     },
