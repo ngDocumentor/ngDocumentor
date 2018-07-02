@@ -2,7 +2,7 @@
 /* highlighter start */
 
 .highlighter-text-landing {
-    background-color: #fff;border: 1px solid #e7e7e7; margin: auto; border-radius: 3px;  margin-bottom:40px !important;
+    background-color: #fff;border: 1px solid #e7e7e7; margin: auto; border-radius: 3px;  margin-bottom:40px !important; margin-left: 10px !important;
   }
   
   .highlighter-img {
@@ -20,7 +20,7 @@
   }
   
   .highlighter-text {
-    top:75px;position:relative;height: 400px; max-height: 400px;
+    top:75px;position:relative;height: 400px; max-height: 400px; 
   }
   
   .slider-imgs {
