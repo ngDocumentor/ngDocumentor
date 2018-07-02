@@ -7,7 +7,7 @@
             "type": "text",
             "img":"/assets/img/new-file-1.svg",
             "heading": "ngDocumentor",
-            "description": "ngDocumentor can be as simple as you need. One settings file to manage the whole documentation site and related links. Text or Slider based highlighter. Avoid usage of landing page completely and use home.md file as home page. Offline support / Basic simple PWA using Service Workers. Search across documents or across keywords using search key occurance counts. Max char size 500 chars.",
+            "description": "ngDocumentor can be as simple as you need. One settings file to manage the whole documentation site and related links. Text or Slider based highlighter and landing page. Offline support / Basic simple PWA using Service Workers. Max char size 500 chars.",
             "buttontext": "Getting Started",
             "buttonurl": "/intro"
         },
