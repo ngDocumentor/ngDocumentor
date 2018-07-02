@@ -22,7 +22,8 @@
             ],
             "styles": [
               "node_modules/prismjs/themes/prism-okaidia.css",
-              "src/styles.css"
+              "src/styles.css",
+              "src/landing-styles.css"
             ],
             "scripts": []
           },
