@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { SearchResult, SearchRequest } from '../../interfaces/search/search';
 
 
@@ -11,9 +11,20 @@ export class WorkerService {
 
   searchResult: SearchResult[] | null = null;
 
+  searchResultEvent: EventEmitter<any>;
+
   constructor() {
     this.searchInit('/assets/scripts/search-worker.js');
     this.onmessage();
+    this.searchResultEvent = new EventEmitter();
+  }
+
+  keywordsSearch(str: string, keysObj: any): any {
+    return keysObj.meta.filter(function(meta) {
+      if (meta.keywords.includes(str)) {
+        return meta;
+      }
+    });
   }
 
   /**
@@ -46,6 +57,7 @@ export class WorkerService {
     let that = this;
     this.searchWorker.onmessage = function (data: any) {
       that.searchResult = data.data.result;
+      that.searchResultEvent.next(true);
       console.log('DEBUG: Search Data WorkerService', that.searchResult);
     };
   }

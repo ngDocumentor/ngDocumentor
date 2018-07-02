@@ -1,4 +1,4 @@
-import { Component, Input, Output, ViewChild, ElementRef, OnInit, AfterViewChecked } from '@angular/core';
+import { Component, Input, Output, ViewChild, ElementRef, OnInit, AfterViewChecked, ApplicationRef } from '@angular/core';
 import { HttpService } from '../../../commons/services/http/http.service';
 import { WorkerService } from '../../../commons/services/worker/worker.service';
 
@@ -6,8 +6,6 @@ import { MenuLinks } from '../../../commons/interfaces/menu/menu';
 import { SidebarLinks, SidebarParentLinks } from '../../../commons/interfaces/sidebar/sidebar';
 import { Footer } from '../../../commons/interfaces/footer/footer';
 import { SearchResult } from '../../../commons/interfaces/search/search';
-
-declare var gnMenu;
 
 @Component({
   selector: 'app-menubar',
@@ -25,6 +23,8 @@ export class MenubarComponent implements OnInit, AfterViewChecked {
   @ViewChild('footernav') footernav: ElementRef;
 
   @ViewChild('searchform') searchform: any;
+
+  searchformval: String = '';
 
   @Input('brandname') brandname: string;
 
@@ -50,7 +50,7 @@ export class MenubarComponent implements OnInit, AfterViewChecked {
 
   searchicon: boolean = true;
 
-  constructor(private _h: HttpService, public _wksrv: WorkerService) { }
+  constructor(private _h: HttpService, public _wksrv: WorkerService, private _ar: ApplicationRef) { }
 
   /**
    * Opens sidebar navigation
@@ -132,50 +132,55 @@ export class MenubarComponent implements OnInit, AfterViewChecked {
    * @memberof MenubarComponent
    */
   hashChangeFunction(url): any {
-    let that = this, routeUri = '', bmarkUri = '';
-    if (url) {
 
-      /* Handles back arrow trigger for search on hash change */
-      if (window.location.href.includes('#/#/?search=')) {
-        that._h.routeme.emit({ url: window.location.href, host: window.location.host });
-        console.log('test');
-        that.searchDoc({});
-        return;
-      }
+    // If search then trigger search and router
+    // If url then trigger router
+    let routeUri = '', bmarkUri = '';
+    if (url) {
 
       console.log('DEBUG: HashChange Init', url);
 
-      /* Handle the cleaning of url to get the routeurl filename and bookmark associated */
-      let cleaner = this._h.cleanUrl(url, window.location.host);
-      routeUri = cleaner.routeUri;
-      bmarkUri = cleaner.bmarkUri;
-
-      that._h.fileUrl = routeUri;
-      that._h.bmarkUri = bmarkUri;
-
-      if (that._h.fileUrl !== window.location.host) {
-
-        /* Handles http://external url */
-        console.log('DEBUG: HashChangeURI One', routeUri, bmarkUri);
-        that._h.routeme.emit({ url: routeUri, host: window.location.host });
-      } else if (that._h.fileUrl === window.location.host) {
-
-        /* Handles url which includes host */
-        console.log('DEBUG: HashChangeURI Two', routeUri, bmarkUri);
-        that._h.fileUrl = '';
-        that._h.bmarkUri = '';
-        that._h.routeme.emit({ url: '', host: window.location.host });
+      /* Handles back arrow trigger for search on hash change */
+      if (window.location.href.includes('#/#/?search=')) {
+        this._h.routeme.emit({ url: window.location.href, host: window.location.host });
+        this._h.searchValue = '';
+        this._wksrv.searchResult = null;
+        this.searchDoc({});
+        return;
       } else {
+        /* Handle the cleaning of url to get the routeurl filename and bookmark associated */
+        let cleaner = this._h.cleanUrl(url, window.location.host);
+        routeUri = cleaner.routeUri;
+        bmarkUri = cleaner.bmarkUri;
 
-        /* Handles external url change */
-        console.log('DEBUG: HashChangeURI Three', routeUri, bmarkUri);
-        that._h.fileUrl = '';
-        that._h.bmarkUri = '';
-        window.location.href = url;
+        this._h.fileUrl = routeUri;
+        this._h.bmarkUri = bmarkUri;
+
+        if (this._h.fileUrl !== window.location.host) {
+
+          /* Handles http://external url */
+          console.log('DEBUG: HashChangeURI One', routeUri, bmarkUri);
+          this._h.routeme.emit({ url: routeUri, host: window.location.host });
+        } else if (this._h.fileUrl === window.location.host) {
+
+          /* Handles url which includes host */
+          console.log('DEBUG: HashChangeURI Two', routeUri, bmarkUri);
+          this._h.fileUrl = '';
+          this._h.bmarkUri = '';
+          this._h.routeme.emit({ url: '', host: window.location.host });
+        } else {
+
+          /* Handles external url change */
+          console.log('DEBUG: HashChangeURI Three', routeUri, bmarkUri);
+          this._h.fileUrl = '';
+          this._h.bmarkUri = '';
+          window.location.href = url;
+        }
+        window.scroll(0, 0);
+        this._wksrv.searchResult = null;
+        return;
       }
-      window.scroll(0, 0);
-      this._wksrv.searchResult = null;
-      return;
+
     } else {
 
       /* Handles if no url string passed */
@@ -230,12 +235,23 @@ export class MenubarComponent implements OnInit, AfterViewChecked {
   /**
    * Trigger search on search submit
    * 
-   * @returns boolean (always false to avoid default behaviour)
+   * @returns boolean (always false to avoid default link/ submit behaviour)
    * @memberof MenubarComponent
    */
   searchDoc(e): boolean {
     e ? e.preventDefault ? e.preventDefault() : null : null;
+
+    if (!!this._h.searchSettings && this._h.searchSettings.type === 'keywordss') {
+      if (!!this.searchform && !window.location.href.includes('#/#/?search=')) {
+        console.log(this._wksrv.keywordsSearch(this.searchform.nativeElement.value, this._h.searchSettings));
+      } else if (window.location.href.includes('#/#/?search=')) {
+        console.log(this._wksrv.keywordsSearch(decodeURIComponent(window.location.href.split('#/#/?search=')[1]), this._h.searchSettings));
+      } else {}
+      return false;
+    }
+
     let searchValue = '';
+
     if (!this._h.searchUrlList.length) {
       this._h.searchUrlList = this._h.searchUrlList.concat(this._h.getLinksList(this._h.topnavItems));
       this._h.searchUrlList = this._h.searchUrlList.concat(this._h.getLinksList(this._h.sidebarItems));
@@ -243,28 +259,29 @@ export class MenubarComponent implements OnInit, AfterViewChecked {
       this._h.searchUrlList = this._h.arrayUnique(this._h.searchUrlList);
     }
 
-    if (!this.searchform && window.location.href.includes('#/#/?search=')) {
+    if (!!e.preventDefault) {
+      searchValue = this.searchform.nativeElement.value;
+    } else {
       searchValue = decodeURIComponent(window.location.href.split('#/#/?search=')[1]);
-      if (!this.mobileAndTabletCheck()) {
+      if (!!this.searchform) {
         this.searchform.nativeElement.value = searchValue;
       }
-    } else {
-      searchValue = this.searchform.nativeElement.value;
     }
-
-    if (!!this.searchform && this.searchform.nativeElement.value !== '' && !!this._h.searchUrlList.length) {
+    if (!!this.searchform && !!e.preventDefault) {
       this._wksrv.searchResult = null;
       this._h.fileData = null;
-      window.location.replace('#/#/?search=' + this.searchform.nativeElement.value);
+      window.location.href = '#/#/?search=' + searchValue;
     }
-
     if (searchValue !== '') {
+      this._h.searchValue = searchValue;
       this._wksrv.postMessage({
         action: 'search',
         key: searchValue,
         urls: this._h.searchUrlList
       });
       console.log('searchDoc: Debug Search triggered');
+    } else {
+      this._wksrv.searchResult = [];
     }
 
     if (this.mobileAndTabletCheck()) {
@@ -301,6 +318,7 @@ export class MenubarComponent implements OnInit, AfterViewChecked {
 
     /* Handles hash change functionality */
     window.onhashchange = function () {
+      console.log('Hash change', window.location.href);
       this.hashChangeFunction(window.location.href);
     }.bind(this);
 
@@ -313,6 +331,13 @@ export class MenubarComponent implements OnInit, AfterViewChecked {
       }
     }.bind(this));
 
+    this._wksrv.searchResultEvent.subscribe(function (data) {
+      this._h.landingPage = false;
+      this._h.fileData = null;
+      if (!!this.searchform) {
+        this.searchform.nativeElement.value = this._h.searchValue;
+      }
+    }.bind(this));
   }
 
   /**
@@ -336,7 +361,6 @@ export class MenubarComponent implements OnInit, AfterViewChecked {
         console.log('Debug: Menubar AfterViewChecked', this._wksrv.searchResult);
       }
     }
- 
   }
 
 }

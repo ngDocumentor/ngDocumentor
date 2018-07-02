@@ -1,7 +1,14 @@
-<div class="markdownclass">
-  <div *ngIf="!_wksrv.searchResult && !_h.fileData">
+<!-- SLIDER -->
+<app-slider *ngIf="_h.landingPage"></app-slider>
+
+<!-- BLOCKS -->
+<app-highlight-block *ngIf="_h.landingPage"></app-highlight-block>
+
+<!-- .MD RENDRER -->
+<div class="markdownclass" *ngIf="!_h.landingPage">
+  <div *ngIf="!_wksrv.searchResult && !_h.fileData && !_h.landingPage">
     <h4>Searching...</h4>
   </div>
-  <app-search-list *ngIf="!!_wksrv.searchResult"></app-search-list>
-  <markdown [data]="_h.fileData" *ngIf="!_wksrv.searchResult && _h.fileData"></markdown>
+  <app-search-list *ngIf="!!_wksrv.searchResult && !_h.landingPage"></app-search-list>
+  <markdown [data]="_h.fileData" *ngIf="!_wksrv.searchResult && !!_h.fileData && !_h.landingPage"></markdown>
 </div>

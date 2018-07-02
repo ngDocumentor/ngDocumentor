@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { environment } from '../environments/environment';
 
@@ -25,6 +25,8 @@ import { OpenLinkInNewWindowDirective } from './commons/directives/newwindow/new
 import { RendermdComponent } from './modules/main-site/rendermd/rendermd.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { SearchListComponent } from './modules/main-site/search-list/search-list.component';
+import { SliderComponent } from './modules/main-site/slider/slider.component';
+import { HighlightBlockComponent } from './modules/main-site/highlight-block/highlight-block.component';
 
 
 @NgModule({
@@ -33,11 +35,14 @@ import { SearchListComponent } from './modules/main-site/search-list/search-list
     MenubarComponent,
     OpenLinkInNewWindowDirective,
     RendermdComponent,
-    SearchListComponent
+    SearchListComponent,
+    SliderComponent,
+    HighlightBlockComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
+    FormsModule,
     MarkdownModule.forRoot({
       provide: MarkedOptions,
       useValue: {

@@ -51,13 +51,7 @@ export class HttpService {
 
   footernav: any;
 
-  searchUrlList: string[] = [];
-
-  sidebarSrc: string = 'assets/config/sidebar.json';
-
-  topnavSrc: string = 'assets/config/topnav.json';
-
-  footerSrc: string = 'assets/config/footer.json';
+  settingsSrc: string = 'assets/config/settings.json';
 
   topnavItems: MenuLinks[] = [];
 
@@ -70,6 +64,16 @@ export class HttpService {
   footerItems: Footer = { copyright: { tag: '', text: '', link: '/home', type: 'internal' }, nav: [], social: [] };
 
   domLoaded: boolean = false;
+
+  homePage: any;
+
+  landingPage: boolean = false;
+
+  searchValue: string = '';
+
+  searchSettings: any;
+
+  searchUrlList: string[] = [];
 
   constructor(http: HttpClient, private _mhSrv: MarkdownService, private _wksrv: WorkerService) {
 
@@ -200,23 +204,48 @@ export class HttpService {
 
   /**
    * Gets the home.md file and assigns
-   * If no home.md present 404 error is assigned
+   * If homepage type is 'landing', will get the landing view
+   * Else if the homepage type is 'text', will show home.md view
+   * If no home.md present, 404 error is assigned
    * 
    * @memberof HttpService
    */
   getHomeUrl(): void {
     let that = this;
-    that._mhSrv.getSource('assets/mddocs/' + 'home.md').subscribe((data) => {
+    if (!!this.homePage && this.homePage.type === 'landing') {
 
-      console.log('DEBUG: RouteEvent Log area seven');
+      this.fileData = null;
+      this.landingPage = true;
 
-      that.fileData = data;
-    }, (errors) => {
+    } else if (this.homePage.type === 'text') {
 
-      console.log('DEBUG:E: RouteEvent Log area eight', errors);
+      let url;
+      if (!!this.homePage.url) {
+        url = this.homePage.url ? this.homePage.url : '';
+      }
+      if (url !== '' && url !== '#' && url !== '#/') {
+        that._mhSrv.getSource('assets/mddocs/' + url.split('/')[1] + '.md').subscribe((data) => {
 
-      that.fileData = that.file404;
-    });
+          console.log('DEBUG: RouteEvent Log area seven');
+          that.fileData = data;
+          that.landingPage = false;
+        }, (errors) => {
+
+          console.log('DEBUG:E: RouteEvent Log area eight', errors);
+          that.fileData = that.file404;
+          that.landingPage = false;
+        });
+      } else {
+        this.fileData = this.file404;
+        that.landingPage = false;
+      }
+
+    } else {
+
+      this.fileData = this.file404;
+      that.landingPage = false;
+
+    }
   }
 
   /**
@@ -249,22 +278,8 @@ export class HttpService {
 
       console.log('DEBUG: routeUrl getRouteEvent ', url, host);
 
-      /* If the load is a search event. */
-      if (url.includes('#/#/?search=') && !!that.topnav && !!that.sidebarnav && !!that.footernav) {
-        search = url.split('#/#/?search=')[1];
-        url = 'http';
-        if (!!search && search !== '') {
-          if (!that.searchUrlList.length && that.topnav && that.sidebarnav && that.footernav) {
-            that.searchUrlList.concat(that.getLinksList(that.topnav));
-            that.searchUrlList.concat(that.getLinksList(that.sidebarnav));
-            that.searchUrlList.concat(that.getLinksList(that.footernav));
-          }
-        }
-        return;
-      }
-
       /* If http is included but host is not in the url and url is blank or / */
-      if ((url && (url.includes('http') && !url.includes(host))) || (url === '' || url === '/') && (!url.includes('#/#/?search='))) {
+      if ((url && (url.includes('http') && !url.includes(host))) || (url === '' || url === '/' || url === '#' || url === '#/') && (!url.includes('#/#/?search='))) {
         console.log('DEBUG: RouteEvent Log area one');
         that.getHomeUrl();
       }
@@ -296,20 +311,23 @@ export class HttpService {
 
       /* If url is valid but doesnot include http and is file name */
       if ((!url.includes('#/#/?search='))) {
-        if (url && !url.includes('http')) {
+        if (!!url && !url.includes('http') && url !== '' && url !== '#' && url !== '#/') {
           that._mhSrv.getSource('assets/mddocs/' + url + '.md').subscribe((data) => {
             console.log('DEBUG: RouteEvent Log area two');
             if (data.includes('<!doctype html>')) {
               console.log('DEBUG:E: RouteEvent Log area three');
               that.fileData = that.file404;
+              that.landingPage = false;
             } else {
               console.log('DEBUG: RouteEvent Log area four');
               that.fileData = data;
+              that.landingPage = false;
             }
           }, (error) => {
             /* If url filename has error or unhandled condition */
             console.log('DEBUG:E: RouteEvent Log area five', error);
             that.fileData = that.file404;
+            that.landingPage = false;
           });
         } else {
           /* If url is not valid or includes http */

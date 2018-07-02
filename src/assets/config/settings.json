@@ -1,6 +1,248 @@
 {
     "filetype": "markdown",
-    "search": [
-        {"url": "", "keywords": [], "stopwords": []}
-    ]
+    "home": {
+        "type": "landing",
+        "url": "/home",
+        "highlight": {
+            "type": "slider",
+            "img": [
+                {"url":"http://placeholder.pics/svg/300/00cec9-00cec9/00cec9-00cec9", "text":"This is the first slide"},
+                {"url":"/assets/img/test-two.jpg", "text":"This is the second slide"},
+                {"url":"http://placeholder.pics/svg/300/f7f1e3-f7f1e3/f7f1e3-f7f1e3", "text":"This is the fourth slide"},
+                {"url":"http://placeholder.pics/svg/300/00cec9-00cec9/00cec9-00cec9", "text":"This is the third slide"},
+                {"url":"http://placeholder.pics/svg/300/f7f1e3-f7f1e3/f7f1e3-f7f1e3", "text":"This is the fourth slide"},
+                {"url":"/assets/img/test-two.jpg", "text":"This is the second slide"}
+            ]
+        },
+        "blocks": {
+            "heading": "This is a heading for blocks of the section",
+            "items": [
+                {"title": "Web Development", "description" : "Web Development Web Development Web Development Web Development Web Development Web Development Web Development", "url": "/home"},
+                {"title": "Web Designing", "description" : "Web Development Web Development Web Development Web Development Web Development Web Development Web Development", "url": "/credits"},
+                {"title": "Web Development", "description" : "Web Development Web Development Web Development Web Development Web Development Web Development Web Development", "url": "/building"},
+                {"title": "Web Development", "description" : "Web Development Web Development Web Development Web Development Web Development Web Development Web Development", "url": "/home"},
+                {"title": "Web Designing", "description" : "Web Development Web Development Web Development Web Development Web Development Web Development Web Development", "url": "/credits"},
+                {"title": "Web Development", "description" : "Web Development Web Development Web Development Web Development Web Development Web Development Web Development", "url": "/building"}
+            ]
+        }
+    },
+    "topnav": {
+        "brandname": " { ngDocumentor } ",
+        "logo": "/assets/img/logo.png",
+        "nav": [
+            {
+                "tag": "Getting Started",
+                "type": "internal",
+                "link": "/intro"
+            },
+            {
+                "tag": "Config .json Files",
+                "type": "internal",
+                "link": "/config"
+            },
+            {
+                "tag": "Github",
+                "type": "external",
+                "link": "https://github.com/ngDocumentor/ngDocumentor"
+            }
+        ]
+    },
+    "sidebar": {
+        "nav": [
+            {
+                "tag": "Home",
+                "link": "/"
+            },
+            {
+                "tag": "Getting Started - 10 Mins",
+                "link": "/intro"
+            },
+            {
+                "tag": "Config .json Files",
+                "children": [
+                    {
+                        "tag": "Introduction",
+                        "link": "/config"
+                    },
+                    {
+                        "tag": "topnav.json",
+                        "link": "/topnav"
+                    },
+                    {
+                        "tag": "sidebar.json",
+                        "link": "/sidebar"
+                    },
+                    {
+                        "tag": "footer.json",
+                        "link": "/footer"
+                    },
+                    {
+                        "tag": "Brand Name",
+                        "link": "/brandname"
+                    }
+                ]
+            },
+            {
+                "tag": "Building / Offline Viewing",
+                "link": "/building"
+            },
+            {
+                "tag": "Resources",
+                "children": [
+                    {
+                        "tag": "Clone Site Files - Github",
+                        "type": "external",
+                        "link": "https://github.com/ngDocumentor/ngDocumentor.github.io"
+                    },
+                    {
+                        "tag": "Development Branch - Github",
+                        "type": "external",
+                        "link": "https://github.com/ngDocumentor/ngDocumentor"
+                    },
+                    {
+                        "tag": "Generate .md Docs",
+                        "link": "/genmd"
+                    },
+                    {
+                        "tag": "App Design",
+                        "link": "/design"
+                    },
+                    {
+                        "tag": "Search Functionality",
+                        "link": "/search"
+                    }
+                ]
+            },
+            {
+                "tag": "Contribute, & Issues",
+                "type": "external",
+                "link": "https://github.com/ngDocumentor/ngDocumentor"
+            },
+            {
+                "tag": "Team & Credits",
+                "link": "/credits"
+            }
+        ]
+    },
+    "footer": {
+        "copyright": {
+            "tag": " { ngDocumentor } ",
+            "link": "/home",
+            "type": "external",
+            "text": "ngDocumentor is a simple markdown rendering site framework that works even on HTML only hosts like github pages"
+        },
+        "nav": [
+            {
+                "tag": "Introduction",
+                "children": [
+                    {
+                        "tag": "Home",
+                        "type": "internal",
+                        "link": "/home"
+                    },
+                    {
+                        "tag": "Getting Started",
+                        "type": "internal",
+                        "link": "/intro"
+                    },
+                    {
+                        "tag": "Github",
+                        "type": "external",
+                        "link": "https://github.com/ngDocumentor/ngDocumentor"
+                    }
+                ]
+            },
+            {
+                "tag": "Configurations",
+                "children": [
+                    {
+                        "tag": "Top Nav",
+                        "type": "internal",
+                        "link": "/topnav"
+                    },
+                    {
+                        "tag": "Sidebar Nav",
+                        "type": "internal",
+                        "link": "/sidebar"
+                    },
+                    {
+                        "tag": "Footer Nav",
+                        "type": "internal",
+                        "link": "/footer"
+                    }
+                ]
+            },
+            {
+                "tag": "Resources",
+                "children": [
+                    {
+                        "tag": "App Design",
+                        "type": "internal",
+                        "link": "/design"
+                    },
+                    {
+                        "tag": "Search Feature",
+                        "type": "internal",
+                        "link": "/search"
+                    },
+                    {
+                        "tag": "Github",
+                        "type": "external",
+                        "link": "https://github.com/ngDocumentor/ngDocumentor"
+                    }
+                ]
+            },
+            {
+                "tag": "Github Repos",
+                "children": [
+                    {
+                        "tag": "Cloning Site Repo",
+                        "type": "internal",
+                        "link": "https://github.com/ngDocumentor/ngDocumentor.github.io"
+                    },
+                    {
+                        "tag": "Building",
+                        "type": "internal",
+                        "link": "/building"
+                    },
+                    {
+                        "tag": "Development/Build Repo",
+                        "type": "external",
+                        "link": "https://github.com/ngDocumentor/ngDocumentor"
+                    }
+                ]
+            }
+        ],
+        "social": [
+            {
+                "tag": "Google +",
+                "type": "internal",
+                "link": "/intro"
+            },
+            {
+                "tag": "Twitter",
+                "type": "internal",
+                "link": "/intro"
+            },
+            {
+                "tag": "Facebook",
+                "type": "internal",
+                "link": "/intro"
+            },
+            {
+                "tag": "Github",
+                "type": "external",
+                "link": "https://github.com/ngDocumentor/ngDocumentor"
+            }
+        ]
+    },
+    "search": {
+        "type": "keywords",
+        "stopwords": [],
+        "meta": [
+            {"url": "/home", "keywords": ["angular"]},
+            {"url": "/intro", "keywords": ["test"]},
+            {"url": "/building", "keywords": ["build", "test", "angular"]}
+        ]
+    }
 }

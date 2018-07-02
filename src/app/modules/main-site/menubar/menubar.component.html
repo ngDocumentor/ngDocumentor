@@ -1,13 +1,15 @@
+<!-- TOPNAV START -->
+
 <div #topnav class="topnav" id="topnav">
 
   <a class="invisible-menu" href="javascript:void(0);">
     <span *ngIf="!sidebarclosed" class="pad-top-menuicon" (click)="closeNav()">
       &nbsp;&nbsp;&nbsp;
-      <img src="/assets/img/menuicon.svg" style="width: 12px; height: 12px;" alt="Menu"> &nbsp;&nbsp;&nbsp;
+      <img src="/assets/img/menuicon.svg" class="topnav-menuicon-img" alt="Menu"> &nbsp;&nbsp;&nbsp;
     </span>
     <span *ngIf="!!sidebarclosed" class="pad-top-menuicon" (click)="openNav()">
       &nbsp;&nbsp;&nbsp;
-      <img src="/assets/img/menuicon.svg" style="width: 12px; height: 12px;" alt="Menu"> &nbsp;&nbsp;&nbsp;
+      <img src="/assets/img/menuicon.svg" class="topnav-menuicon-img" alt="Menu"> &nbsp;&nbsp;&nbsp;
     </span>
     <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
     <span *ngIf="brandicon != ''"> <img [src]="brandicon" alt="Logo" class="logoicon" /> </span>
@@ -15,8 +17,8 @@
   </a>
 
   <ng-container *ngFor="let obj of topnavItems; let i = index;">
-    <a *ngIf="obj.type != 'external'" href="{{ '#' + obj.link}}" class="topnav-trans active">{{obj.tag ? obj.tag : 'No Tag'}}</a>
-    <a *ngIf="obj.type == 'external'" [attr.external]="obj" opennewwindow class="topnav-trans active">{{obj.tag ? obj.tag : 'No Tag'}}</a>
+    <a *ngIf="obj.type != 'external'" href="{{ '#' + obj.link}}" class="topnav-trans">{{obj.tag ? obj.tag : 'No Tag'}}</a>
+    <a *ngIf="obj.type == 'external'" [attr.external]="obj" opennewwindow class="topnav-trans">{{obj.tag ? obj.tag : 'No Tag'}}</a>
   </ng-container>
 
   <a href="javascript:void(0);" class="icon">
@@ -27,22 +29,27 @@
   <a href="javascript:void(0);" class="icon-left">
     <span class="pad-left-right menu-position" *ngIf="!sidebarclosed" (click)="closeNav()">
       &nbsp;&nbsp;&nbsp;
-      <img src="/assets/img/menuicon.svg" style="width: 12px; height: 12px;" alt="Menu"> &nbsp;&nbsp;&nbsp;
+      <img src="/assets/img/menuicon.svg" class="topnav-menuicon-img" alt="Menu"> &nbsp;&nbsp;&nbsp;
     </span>
     <span class="pad-left-right menu-position" *ngIf="!!sidebarclosed" (click)="openNav()">
       &nbsp;&nbsp;&nbsp;
-      <img src="/assets/img/menuicon.svg" style="width: 12px; height: 12px;" alt="Menu"> &nbsp;&nbsp;&nbsp;
+      <img src="/assets/img/menuicon.svg" class="topnav-menuicon-img" alt="Menu"> &nbsp;&nbsp;&nbsp;
     </span>
   </a>
 </div>
+
+<!-- TOPNAV END -->
+
+<!-- SIDEBAR START -->
+
 <div #sidebarfixed id="sidebarfixed" class="sidenav sbar-style">
   
   <a *ngIf="mobileAndTabletCheck()" href="#/home" class="brandname fontcolor-primary font-bold"> {{ brandname }} </a>
-  <a style="font-size: 18px;" href="javascript:void(0)" class="closebtn" (click)="closeNav()">
+  <a href="javascript:void(0)" class="closebtn fontsize-eighteen" (click)="closeNav()">
     <span class="button-plus-span">&times;</span>
   </a>
 
-  <div style="margin-top: 50px !important;">
+  <div class="margin-top-fifty">
     <br>
     <br>
 
@@ -83,11 +90,15 @@
   </div>
 </div>
 
+<!-- SIDEBAR END -->
+
+<!-- CONTENT START -->
+
 <div #contentmain class="main">
   <div *ngIf="showsearch" class="searchbar">
     <div class="search-container">
       <form (submit)="searchDoc($event)">
-        <input type="text" placeholder="Search.." #searchform name="search" value="">
+        <input type="text" placeholder="Search.." #searchform name="search"  value="">
         <button type="submit">Search</button>
       </form>
     </div>
@@ -95,11 +106,13 @@
   <app-rendermd></app-rendermd>
 
   <span *ngIf="searchicon" class="fab-icon" title="Search Site" (click)="showSearch()">
-    <img src="/assets/img/search.svg" style="width: 10px; height: 10px;" alt="Search">
+    <img src="/assets/img/search.svg" class="searchicon-mob-img" alt="Search">
   </span>
 </div>
 
-<!-- FOOTER-->
+<!-- CONTENT END -->
+
+<!-- FOOTER START -->
 
 <footer #footernav *ngIf="!!footer" id="footer">
   <div class="container">
@@ -140,3 +153,5 @@
         [href]="footer.copyright.type ? footer.copyright.link ? (footer.copyright.link.includes('http') ? footer.copyright.link : '#' + footer.copyright.link) : '#/home' : '#/home'">{{footer.copyright.tag}}</a> &copy; All rights Reserved.</p>
   </div>
 </footer>
+
+<!-- FOOTER END -->

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SearchResult } from '../../../commons/interfaces/search/search';
 import { WorkerService } from '../../../commons/services/worker/worker.service';
+import { HttpService } from '../../../commons/services/http/http.service';
 
 @Component({
   selector: 'app-search-list',
@@ -11,7 +12,7 @@ export class SearchListComponent {
 
   searchResult: SearchResult;
 
-  constructor(public _wksrv: WorkerService) {}
+  constructor(public _wksrv: WorkerService, public _h: HttpService) {}
 
   /**
    * Returns object keys as an array for looping
