@@ -29,5 +29,9 @@
   .slider-imgs {
     width:100%; max-height: 400px;
   }
+
+  .slider-container {
+    padding: 20px; margin-bottom:40px !important; border: 1px solid #e7e7e7; border-radius: 3px;
+  }
   
   /* highlighter end */

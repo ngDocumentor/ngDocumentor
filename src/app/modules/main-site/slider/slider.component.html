@@ -17,7 +17,7 @@
 </div>
 
 <div *ngIf="!!_h.homePage.type && _h.homePage.type === 'landing' && !!_h.homePage.highlight.type && _h.homePage.highlight.type === 'slider'"
-  style="padding: 20px; margin-bottom:40px !important; border: 1px solid #e7e7e7; border-radius: 3px;">
+  class="slider-container">
 
   <div class="slideshow-container">
 
@@ -34,7 +34,7 @@
 
   <br>
 
-  <div style="text-align:center;">
+  <div class="text-center">
     <span *ngFor="let item of _h.homePage.highlight.img; let i = index;">
       <span class="dot" (click)="currentSlide(i+1)"></span>
     </span>
