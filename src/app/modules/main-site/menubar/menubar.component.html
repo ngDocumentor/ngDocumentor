@@ -12,7 +12,8 @@
       <img src="/assets/img/menuicon.svg" class="topnav-menuicon-img" alt="Menu"> &nbsp;&nbsp;&nbsp;
     </span>
     <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-    <span *ngIf="brandicon != ''"> <img [src]="brandicon" alt="Logo" class="logoicon" /> </span>
+    <span *ngIf="brandicon != ''">
+      <img [src]="brandicon" alt="Logo" class="logoicon" /> </span>
     <span (click)="routeMain($event)" class="pad-left-right fontcolor-primary font-bold brand"> {{ brandname }} </span>
   </a>
 
@@ -23,7 +24,8 @@
 
   <a href="javascript:void(0);" class="icon">
     <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-    <span *ngIf="mobileAndTabletCheck() && brandicon != ''"> <img [src]="brandicon" alt="Logo" class="logoicon" /> </span>
+    <span *ngIf="mobileAndTabletCheck() && brandicon != ''">
+      <img [src]="brandicon" alt="Logo" class="logoicon" /> </span>
     <span (click)="routeMain($event)" class="pad-left-right fontcolor-primary font-bold brand"> {{ brandname }} </span>
   </a>
   <a href="javascript:void(0);" class="icon-left">
@@ -43,8 +45,8 @@
 <!-- SIDEBAR START -->
 
 <div #sidebarfixed id="sidebarfixed" class="sidenav sbar-style">
-  
-  <a *ngIf="mobileAndTabletCheck()" href="#/home" class="brandname fontcolor-primary font-bold"> {{ brandname }} </a>
+
+  <a *ngIf="mobileAndTabletCheck()" href="#/" class="brandname fontcolor-primary font-bold"> {{ brandname }} </a>
   <a href="javascript:void(0)" class="closebtn fontsize-eighteen" (click)="closeNav()">
     <span class="button-plus-span">&times;</span>
   </a>
@@ -57,27 +59,22 @@
       <span *ngIf="!!obj.children">
         <button (click)="openItems($event, i)" [ngClass]="accordianClassList[i] ? accordianClassList[i] : accordianClassList[i]={'accordion': true, 'active-sidebar': false}">
           <span>{{obj.tag}}</span>
-          <span style="float: right" class="">+</span>
+          <span class="float-right">+</span>
         </button>
         <div [ngStyle]="styleList[i] ? styleList[i] : styleList[i]={ 'display': 'none' }" class="panel-sidebar">
           <p *ngFor="let dyobj of obj.children; let j = index;">
-            <ng-container>
-              <a *ngIf="dyobj.type != 'external'" (click)="closeMobileNav(dyobj)" class="margin-zero fontcolor-primary" [href]="dyobj.link ? (dyobj.link.includes('http') ? dyobj.link : '#' + dyobj.link) : '#/home'">{{dyobj.tag ? dyobj.tag : 'No Tag'}}</a>
+              <a *ngIf="dyobj.type != 'external'" (click)="closeMobileNav(dyobj)" class="margin-zero fontcolor-primary" [href]="dyobj.link ? (dyobj.link.includes('http') ? dyobj.link : '#' + dyobj.link) : '#/'">{{dyobj.tag ? dyobj.tag : 'No Tag'}}</a>
               <a *ngIf="dyobj.type == 'external'" (click)="closeMobileNav(dyobj)" [attr.external]="dyobj" opennewwindow class="margin-zero fontcolor-primary"
-                [href]="dyobj.link ? (dyobj.link.includes('http') ? dyobj.link : '#' + dyobj.link) : '#/home'">{{dyobj.tag ? dyobj.tag : 'No Tag'}}</a>
-            </ng-container>
+                [href]="dyobj.link ? (dyobj.link.includes('http') ? dyobj.link : '#' + dyobj.link) : '#/'">{{dyobj.tag ? dyobj.tag : 'No Tag'}}</a>
           </p>
         </div>
       </span>
 
       <span *ngIf="!obj.children">
         <p>
-          <ng-container>
-            <a *ngIf="obj.type != 'external'" (click)="closeMobileNav(obj)" class="margin-zero fontcolor-primary" [href]="obj.link ? (obj.link.includes('http') ? obj.link : '#' + obj.link) : '#/home'">{{obj.tag ? obj.tag : 'No Tag'}}</a>
+            <a *ngIf="obj.type != 'external'" (click)="closeMobileNav(obj)" class="margin-zero fontcolor-primary" [href]="obj.link ? (obj.link.includes('http') ? obj.link : '#' + obj.link) : '#/'">{{obj.tag ? obj.tag : 'No Tag'}}</a>
             <a *ngIf="obj.type == 'external'" (click)="closeMobileNav(obj)" [attr.external]="obj" opennewwindow class="margin-zero fontcolor-primary"
-              [href]="obj.link ? (obj.link.includes('http') ? obj.link : '#' + obj.link) : '#/home'">{{obj.tag ? obj.tag : 'No Tag'}}</a>
-          </ng-container>
-
+              [href]="obj.link ? (obj.link.includes('http') ? obj.link : '#' + obj.link) : '#/'">{{obj.tag ? obj.tag : 'No Tag'}}</a>
         </p>
       </span>
     </ng-container>
@@ -98,7 +95,7 @@
   <div *ngIf="showsearch" class="searchbar">
     <div class="search-container">
       <form (submit)="searchDoc($event)">
-        <input type="text" placeholder="Search.." #searchform name="search"  value="">
+        <input type="text" placeholder="Search.." #searchform name="search" value="">
         <button type="submit">Search</button>
       </form>
     </div>
@@ -117,12 +114,12 @@
 <footer #footernav *ngIf="!!footer" id="footer">
   <div class="container">
     <div *ngIf="!!footer.nav && footer.nav.length > 0" class="row text-center text-xs-center text-sm-left text-md-center">
-      <div *ngFor="let footerItems of footer.nav" class="col-sm-3 col-md-3 col-lg-3" style="padding: 0px;margin: auto">
+      <div *ngFor="let footerItems of footer.nav" class="col-sm-3 col-md-3 col-lg-3 padding-zero margin-auto">
         <h5>{{ footerItems.tag }}</h5>
         <ul class="list-unstyled quick-links">
           <ng-container *ngFor="let obj of footerItems.children">
             <li *ngIf="obj.type != 'external'">
-              <a href="{{obj.link ? (obj.link.includes('http') ? obj.link : '#' + obj.link) : '#/home'}}">{{obj.tag}}</a>
+              <a href="{{obj.link ? (obj.link.includes('http') ? obj.link : '#' + obj.link) : '#/'}}">{{obj.tag}}</a>
             </li>
             <li *ngIf="obj.type == 'external'">
               <a opennewwindow [attr.external]="obj" href="#">{{obj.tag}}</a>
@@ -136,7 +133,7 @@
     <ul class="list-unstyled list-inline social text-center">
       <ng-container *ngFor="let obj of footer.social">
         <li *ngIf="obj.type != 'external'" class="list-inline-item">
-          <a href="{{obj.link ? (obj.link.includes('http') ? obj.link : '#' + obj.link) : '#/home'}}">{{obj.tag}}</a>
+          <a href="{{obj.link ? (obj.link.includes('http') ? obj.link : '#' + obj.link) : '#/'}}">{{obj.tag}}</a>
         </li>
         <li *ngIf="obj.type == 'external'" class="list-inline-item">
           <a opennewwindow [attr.external]="obj" href="#">{{obj.tag}}</a>
@@ -147,10 +144,10 @@
   <div *ngIf="!!footer.copyright" class="footer-copyright">
     <p>{{ footer.copyright.text }}</p>
     <p *ngIf="footer.copyright.type != 'external'" class="h6">
-      <a class="text-green ml-2" href="{{ footer.copyright.link ? (footer.copyright.link.includes('http') ? footer.copyright.link : '#' + footer.copyright.link) : '#/home'}}">{{footer.copyright.tag}}</a> &copy; All rights Reserved.</p>
+      <a class="text-green ml-2" href="{{ footer.copyright.link ? (footer.copyright.link.includes('http') ? footer.copyright.link : '#' + footer.copyright.link) : '#/'}}">{{footer.copyright.tag}}</a> &copy; All rights Reserved.</p>
     <p *ngIf="footer.copyright.type == 'external'" class="h6">
       <a class="text-green ml-2" opennewwindow [attr.external]="{'link': footer.copyright.link, 'type': footer.copyright.type}"
-        [href]="footer.copyright.type ? footer.copyright.link ? (footer.copyright.link.includes('http') ? footer.copyright.link : '#' + footer.copyright.link) : '#/home' : '#/home'">{{footer.copyright.tag}}</a> &copy; All rights Reserved.</p>
+        [href]="footer.copyright.type ? footer.copyright.link ? (footer.copyright.link.includes('http') ? footer.copyright.link : '#' + footer.copyright.link) : '#/' : '#/'">{{footer.copyright.tag}}</a> &copy; All rights Reserved.</p>
   </div>
 </footer>
 

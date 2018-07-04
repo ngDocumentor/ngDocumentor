@@ -71,7 +71,8 @@ export class AppComponent implements OnInit {
         /* Home page settings */
         that._h.homePage = data.home;
         if (that._h.homePage.type === 'landing') {
-          that._h.landingPage = true;
+          // This is creating an issue where search url load is enabling the landingPage before the search results
+          //that._h.landingPage = true;
         }
 
         /* Search settings */

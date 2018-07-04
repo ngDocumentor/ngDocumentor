@@ -11,7 +11,7 @@
 
   @media screen and (max-width: 768px) {
     .highlighter-img {
-      top:25px;left: 5%; bottom: 25px; position:relative;
+      top:25px; left:0%; width: auto !important; margin: auto; bottom: 25px; position:relative;
     }
   }
   
