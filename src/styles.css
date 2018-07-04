@@ -1871,7 +1871,6 @@ pre[class*="language-"] {
 
 #footer ul.quick-links li {
   list-style-type: none;
-  margin-left: -30px;
 }
 
 #footer ul.quick-links li:hover {}
@@ -1910,6 +1909,9 @@ pre[class*="language-"] {
   .fab-icon {
     top: 65% !important;
     right: 10%;
+  }
+  #footer ul.quick-links li {
+    margin-left: -30px;
   }
 }
 
