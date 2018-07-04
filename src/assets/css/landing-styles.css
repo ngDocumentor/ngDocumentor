@@ -8,10 +8,13 @@
   .highlighter-img {
     top:100px;left: 5%; position:relative;
   }
+  .highlighter-text {
+    text-align: left !important;
+  }
 
   @media screen and (max-width: 768px) {
     .highlighter-img {
-      top:25px; left:0%; width: auto !important; margin: auto; bottom: 25px; position:relative;
+      top:25px; left:0%; width: auto !important; margin: auto; bottom: 25px; position:relative; text-align: center;
     }
   }
   
@@ -20,7 +23,7 @@
   }
   
   .highlighter-text {
-    top:75px;position:relative;height: 400px; max-height: 400px; 
+    top:75px;position:relative;height: 400px; max-height: 400px; max-width: 95% !important; text-align: center;
   }
   
   .slider-imgs {
