@@ -1,6 +1,5 @@
 import { MarkdownService } from 'ngx-markdown';
 import { Injectable, EventEmitter } from '@angular/core';
-import { Http, Response, Request, RequestMethod, Headers } from '@angular/http';
 import { HttpClient, HttpRequest, HttpResponse, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { WorkerService } from '../worker/worker.service';
@@ -11,7 +10,9 @@ import { Sidebar, SidebarLinks, SidebarParentLinks } from '../../../commons/inte
 import { Footer } from '../../../commons/interfaces/footer/footer';
 
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class HttpService {
 
   http: HttpClient;
@@ -348,7 +349,7 @@ export class HttpService {
    * @returns Observable object
    * @memberof HttpService
    */
-  httpReq(url: string, method: string, data: any, header: Headers): any {
+  httpReq(url: string, method: string, data: any, header: (HttpHeaders | null)): any {
     let headers = new HttpHeaders();
 
     // TODO : Loop through passed headers, currently ignored

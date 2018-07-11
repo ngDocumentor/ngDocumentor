@@ -1,0 +1,21 @@
+<div class="slider-container">
+
+  <div class="slideshow-container">
+    <div *ngFor="let item of _h.homePage.highlight.img; let i = index;" class="mySlides fade">
+      <div class="numbertext">{{i+1}} / {{ _h.homePage.highlight.img.length }}</div>
+      <img [src]="item.url" class="slider-imgs">
+      <div class="text">{{ item.text }}</div>
+    </div>
+    <a class="prev" (click)="plusSlides(-1)">&#10094;</a>
+    <a class="next" (click)="plusSlides(1)">&#10095;</a>
+  </div>
+
+  <br>
+
+  <div class="text-center">
+    <span *ngFor="let item of _h.homePage.highlight.img; let i = index;">
+      <span class="dot" (click)="currentSlide(i+1)"></span>
+    </span>
+  </div>
+
+</div>

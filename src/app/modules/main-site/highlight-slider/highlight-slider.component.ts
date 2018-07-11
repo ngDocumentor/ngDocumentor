@@ -2,22 +2,22 @@ import { Component, AfterViewInit } from '@angular/core';
 import { HttpService } from '../../../commons/services/http/http.service';
 
 @Component({
-  selector: 'app-slider',
-  templateUrl: './slider.component.html',
-  styleUrls: ['./slider.component.css']
+  selector: 'app-highlight-slider',
+  templateUrl: './highlight-slider.component.html',
+  styleUrls: ['./highlight-slider.component.css']
 })
-export class SliderComponent implements AfterViewInit {
+export class HighlightSliderComponent implements AfterViewInit {
 
-  slideIndex = 1;
+  slideIndex: number = 1;
 
   constructor(public _h: HttpService) { }
 
   /**
-   *
-   *
-   * @param {*} n
-   * @memberof SliderComponent
-   */
+     *
+     *
+     * @param {*} n
+     * @memberof SliderComponent
+     */
   plusSlides(n): void {
     this.showSlides(this.slideIndex += n);
   }

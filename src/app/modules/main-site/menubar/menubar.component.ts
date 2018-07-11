@@ -1,4 +1,4 @@
-import { Component, Input, Output, ViewChild, ElementRef, OnInit, AfterViewChecked, ApplicationRef } from '@angular/core';
+import { Component, Input, Output, ViewChild, ElementRef, OnInit, AfterViewChecked } from '@angular/core';
 import { HttpService } from '../../../commons/services/http/http.service';
 import { WorkerService } from '../../../commons/services/worker/worker.service';
 
@@ -50,7 +50,7 @@ export class MenubarComponent implements OnInit, AfterViewChecked {
 
   searchicon: boolean = true;
 
-  constructor(private _h: HttpService, public _wksrv: WorkerService, private _ar: ApplicationRef) { }
+  constructor(private _h: HttpService, public _wksrv: WorkerService) { }
 
   /**
    * Opens sidebar navigation

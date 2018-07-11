@@ -1,7 +1,7 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { SearchResult, SearchRequest } from '../../interfaces/search/search';
 
-
+declare var PseudoWorker: any;
 @Injectable({
   providedIn: 'root'
 })
@@ -45,7 +45,11 @@ export class WorkerService {
    * @memberof WorkerService
    */
   searchInit(fileUrl: string): void {
-    this.searchWorker = new Worker(fileUrl);
+    if (!Worker) {
+      this.searchWorker = new PseudoWorker(fileUrl);
+     } else {
+      this.searchWorker = new Worker(fileUrl);
+    }
   }
 
   /**
@@ -54,12 +58,11 @@ export class WorkerService {
    * @memberof WorkerService
    */
   onmessage(): void {
-    let that = this;
     this.searchWorker.onmessage = function (data: any) {
-      that.searchResult = data.data.result;
-      that.searchResultEvent.next(true);
-      console.log('DEBUG: Search Data WorkerService', that.searchResult);
-    };
+      this.searchResult = data.data.result;
+      this.searchResultEvent.next(true);
+      console.log('DEBUG: Search Data WorkerService', this.searchResult);
+    }.bind(this);
   }
 
   /**

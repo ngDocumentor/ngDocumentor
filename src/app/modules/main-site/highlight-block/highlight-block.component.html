@@ -13,9 +13,7 @@
       <div class="col-md-5 col-sm-6 col-xsx-6 margin-auto" *ngFor="let item of _h.homePage.blocks.items; let i = index">
         <div [ngClass]="{'serviceBox': true, ' ': (i%3 === 0), ' green': (i%3 === 1), ' orange': (i%3 === 2)} ">
           <div class="service-icon">
-            <span>
-              <!-- Put icons here from settings later -->
-            </span>
+            <span> <!-- Put icons here from settings later --> </span>
           </div>
           <div class="service-content">
             <h3 class="title">{{ item.title }}</h3>

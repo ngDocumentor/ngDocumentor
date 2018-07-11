@@ -1,0 +1,16 @@
+<div class="row highlighter-text-landing">
+
+  <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 highlighter-img">
+    <img class="highlighter-img-size" src="{{ _h.homePage.highlight.img }}" alt="">
+  </div>
+
+  <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 highlighter-text">
+    <h1>{{ _h.homePage.highlight.heading }}</h1>
+    <p>
+      {{ _h.homePage.highlight.description }}
+    </p>
+    <br>
+    <a class="btn btn-primary btn-lg" [href]="_h.homePage.highlight.buttonurl ? (_h.homePage.highlight.buttonurl.includes('http') ? _h.homePage.highlight.buttonurl : '#' + _h.homePage.highlight.buttonurl) : '/'">{{ _h.homePage.highlight.buttontext }}</a>
+  </div>
+
+</div>

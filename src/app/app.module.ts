@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { environment } from '../environments/environment';
 
-import { ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { MarkdownModule, MarkedOptions } from 'ngx-markdown';
 
 // Modules
@@ -25,8 +24,10 @@ import { OpenLinkInNewWindowDirective } from './commons/directives/newwindow/new
 import { RendermdComponent } from './modules/main-site/rendermd/rendermd.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { SearchListComponent } from './modules/main-site/search-list/search-list.component';
-import { SliderComponent } from './modules/main-site/slider/slider.component';
 import { HighlightBlockComponent } from './modules/main-site/highlight-block/highlight-block.component';
+import { HighlightTextComponent } from './modules/main-site/highlight-text/highlight-text.component';
+import { HighlightSliderComponent } from './modules/main-site/highlight-slider/highlight-slider.component';
+import { HighlightMainComponent } from './modules/main-site/highlight-main/highlight-main.component';
 
 
 @NgModule({
@@ -36,8 +37,10 @@ import { HighlightBlockComponent } from './modules/main-site/highlight-block/hig
     OpenLinkInNewWindowDirective,
     RendermdComponent,
     SearchListComponent,
-    SliderComponent,
-    HighlightBlockComponent
+    HighlightBlockComponent,
+    HighlightTextComponent,
+    HighlightSliderComponent,
+    HighlightMainComponent
   ],
   imports: [
     BrowserModule,
