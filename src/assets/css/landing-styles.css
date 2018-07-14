@@ -16,8 +16,12 @@
     .highlighter-img {
       top:25px; left:0%; width: auto !important; margin: auto; bottom: 25px; position:relative;
     }
-    .highlighter-text-landing, .highlighter-img, .highlighter-text  {
+    .highlighter-text-landing, .highlighter-img, .highlighter-text, .service-sec  {
       text-align: center !important;
+    }
+    .service-sec{
+      left: 5%;
+      position: relative;
     }
   }
   
