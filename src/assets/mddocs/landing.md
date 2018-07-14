@@ -4,7 +4,7 @@
 * The landing page or the home page definition has three variations of definitions based on the whether you want to enable the landing page, and if enabled then whether you need to have a text highlighter or a slider highlighter in the landing page.
 
 
-* First definition variation that disables landing page and shows a markdown file based text rendering url. The naming of the url is the filename without the extension. Eg: `FILENAME.md` will have url `/FILENAME`
+* First definition variation that disables landing page and shows a markdown file based text rendering url. 
 
 
 ```json
@@ -18,6 +18,9 @@
 
 
 * The value option `text` for `type` key disables landing page and allows a markdown file enabled home page.
+
+
+* The second is the `url` key. The naming of the url is the filename without the extension. Eg: `FILENAME.md` will have url `/FILENAME`
 
 
 * Second definition variation that enables landing page but shows a text highlighter with blocks of links
