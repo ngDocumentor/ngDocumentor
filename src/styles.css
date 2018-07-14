@@ -1636,7 +1636,7 @@ pre[class*="language-"] {
     top: 0;
     /* Position the navbar at the top of the page */
     left: 0px;
-    min-height: 50px !important;
+    min-height: 60px !important;
     width: 100%;
     max-width: 100%;
   }
