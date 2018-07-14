@@ -272,7 +272,7 @@ export class MenubarComponent implements OnInit, AfterViewChecked {
       this._h.fileData = null;
       window.location.href = '#/#/?search=' + searchValue;
     }
-    if (searchValue !== '') {
+    if (!!searchValue && searchValue !== '') {
       this._h.searchValue = searchValue;
       this._wksrv.postMessage({
         action: 'search',
@@ -281,7 +281,7 @@ export class MenubarComponent implements OnInit, AfterViewChecked {
       });
       console.log('searchDoc: Debug Search triggered');
     } else {
-      this._wksrv.searchResult = [];
+      this._wksrv.searchResult = null;
     }
 
     if (this.mobileAndTabletCheck()) {

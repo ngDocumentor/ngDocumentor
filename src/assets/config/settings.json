@@ -56,26 +56,34 @@
                 "link": "/intro"
             },
             {
-                "tag": "Config .json Files",
+                "tag": "Configuration / Definitions",
                 "children": [
                     {
                         "tag": "Introduction",
                         "link": "/config"
                     },
                     {
-                        "tag": "topnav.json",
+                        "tag": "Landing Page",
+                        "link": "/landing"
+                    },
+                    {
+                        "tag": "Top Navigation",
                         "link": "/topnav"
                     },
                     {
-                        "tag": "sidebar.json",
+                        "tag": "SideBar Navigation",
                         "link": "/sidebar"
                     },
                     {
-                        "tag": "footer.json",
+                        "tag": "Footer Navigation",
                         "link": "/footer"
                     },
                     {
-                        "tag": "Brand Name",
+                        "tag": "Search",
+                        "link": "/searchdef"
+                    },
+                    {
+                        "tag": "Brand Name / Logo",
                         "link": "/brandname"
                     }
                 ]
@@ -83,6 +91,14 @@
             {
                 "tag": "Building / Offline Viewing",
                 "link": "/building"
+            },
+            {
+                "tag": "App Design",
+                "link": "/design"
+            },
+            {
+                "tag": "Search Functionality",
+                "link": "/search"
             },
             {
                 "tag": "Resources",
@@ -93,28 +109,37 @@
                         "link": "https://github.com/ngDocumentor/ngDocumentor.github.io"
                     },
                     {
+                        "tag": "Report Issues",
+                        "type": "external",
+                        "link": "https://github.com/ngDocumentor/ngDocumentor.github.io/issues"
+                    },
+                    {
                         "tag": "Development Branch - Github",
                         "type": "external",
                         "link": "https://github.com/ngDocumentor/ngDocumentor"
+                    },
+                    {
+                        "tag": "Contribute / Pull Requests",
+                        "type": "external",
+                        "link": "https://github.com/ngDocumentor/ngDocumentor/issues"
                     },
                     {
                         "tag": "Generate .md Docs",
                         "link": "/genmd"
                     },
                     {
-                        "tag": "App Design",
-                        "link": "/design"
+                        "tag": "Generate .rst Docs (todo)",
+                        "link": "/genrst"
                     },
                     {
-                        "tag": "Search Functionality",
-                        "link": "/search"
+                        "tag": "App Todo",
+                        "link": "/todo"
+                    },
+                    {
+                        "tag": "App Plans",
+                        "link": "/plans"
                     }
                 ]
-            },
-            {
-                "tag": "Contribute, & Issues",
-                "type": "external",
-                "link": "https://github.com/ngDocumentor/ngDocumentor"
             },
             {
                 "tag": "Team & Credits",

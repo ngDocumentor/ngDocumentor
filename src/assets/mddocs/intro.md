@@ -56,6 +56,7 @@ ngDocumentor is a simple website that serves your .md files from a host location
 
 
 ```json
+
 "home": {
         "type": "landing",
         "url": "/",
@@ -74,6 +75,7 @@ ngDocumentor is a simple website that serves your .md files from a host location
             ]
         }
     }
+
 ```
 
 
@@ -81,6 +83,7 @@ ngDocumentor is a simple website that serves your .md files from a host location
 
 
 ```json
+
 "home": {
         "type": "landing",
         "url": "/",
@@ -97,6 +100,7 @@ ngDocumentor is a simple website that serves your .md files from a host location
             ]
         }
     }
+
 ```
 
 
@@ -104,10 +108,12 @@ ngDocumentor is a simple website that serves your .md files from a host location
 
 
 ```json
+
 "home": {
         "type": "text",
         "url": "/",
     }
+
 ```
 
 
@@ -123,6 +129,7 @@ ngDocumentor is a simple website that serves your .md files from a host location
 * `topnav` key definition
 
 ```json
+
 "topnav": {
     "brandname": "My Documentation",
     "logo": "/assets/img/logo.png",
@@ -131,6 +138,7 @@ ngDocumentor is a simple website that serves your .md files from a host location
         { "tag": "Getting Started", "link": "/intro" }
     ]
 }
+
 ```
 
 * Add any number of link structures below a maximum of 5 links in the topnav key. Do a responsiveness check for this. The topnavigation links are also unavailable in the mobile mode other than the brandname.
@@ -152,12 +160,14 @@ ngDocumentor is a simple website that serves your .md files from a host location
 
 
 ```json
+
 "sidebar": {
     "nav": [
         { "tag": "Home", "link": "/home" },
         { "tag": "Getting Started - 10 mins", "link": "/intro" }
     ]
 }
+
 ```
 
 
@@ -174,6 +184,7 @@ ngDocumentor is a simple website that serves your .md files from a host location
 
 
 ```json
+
 "footer": {
     "copyright": {
         "tag": " { ngDocumentor } ",
@@ -194,6 +205,7 @@ ngDocumentor is a simple website that serves your .md files from a host location
         { "tag": "Google +", "link": "/intro" }
     ]
 }
+
 ```
 
 
@@ -219,23 +231,26 @@ ngDocumentor is a simple website that serves your .md files from a host location
 
 
 ```json
+
 "search": {
     "type": "keywords",
-    "stopwords": [],
     "meta": [
         {"url": "/home", "keywords": ["angular"]},
         {"url": "/intro", "keywords": ["test"]}
     ]
 }
+
 ```
 
 * `search` key definition One
 
 ```json
+
 "search": {
     "type": "fulltext",
     "stopwords": []
 }
+
 ```
 
 

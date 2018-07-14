@@ -7,15 +7,20 @@
 * NOTE: Either one (preferably sidebar.json) is compulsarily required to run the site normally with browsability.
 
 
-* `topnav.json` specifies the links / menu items for the top navigation bar. [Read more](#/topnav) here in the topnav section.
+* `home` specifies the details for the landing page for the site, if enabled. If disabled, it applies a markdown based home url. [Read more](#/landing) here in the home / landing page section.
 
 
-* `sidebar.json` specifies the links / menu items for the sidebar. [Read more](#/sidebar) here in the sidebar section.
+* `topnav` specifies the links / menu items for the top navigation bar. [Read more](#/topnav) here in the topnav section.
 
 
-* `footer.json` specifies the links / menu items for the footer. [Read more](#/footer) here in the footer section.
+* `brandname` is defined in the `topnav` configuration key.  [Read more](#/brandname) here in the brandname section.
 
 
-* `brandname` is defined in the `topnav.json` configuration file.  [Read more](#/brandname) here in the brandname section.
+* `sidebar` specifies the links / menu items for the sidebar. [Read more](#/sidebar) here in the sidebar section.
 
+
+* `footer` specifies the links / menu items for the footer. [Read more](#/footer) here in the footer section.
+
+
+* `search` specifies the search type for the site. [Read more](#/searchdef) here in the search definition section.
 

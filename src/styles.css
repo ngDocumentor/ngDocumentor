@@ -1411,7 +1411,12 @@ pre[class*="language-"] {
 /* SEARCH LIST COMPONENT START */
 
 .search-text {
-  font-weight: normal; font-size: 15px !important; color: #000;
+  font-weight: normal !important; font-size: 13px; color: #000;
+}
+@media screen and (max-width: 768px) {
+  .search-text {
+    font-size: 13px;
+  }
 }
 
 /* SEARCH LIST COMPONENT END */
