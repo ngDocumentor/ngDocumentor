@@ -1,7 +1,7 @@
-# Top navigation .json file specification
+# Top navigation Definition
 
 
-* The top navigation bar links are specified by `assets/config/topnav.json` file as mentioned.
+* The top navigation bar links are specified by `topnav` key inside the `/assets/config/settings.json` file as mentioned.
 
 
 * NOTE: The link definition needs to be specified correctly for ngDocumentor to work right. It assumes you are providing the right definitions.
@@ -10,11 +10,11 @@
 * The definitions are very simple .json syntax. Look at the following .json sample:
 
 
-* `topnav.json`
+* `topnav` key definition
 
 ```json
 
-{
+"topnav": {
     "brandname": "My Documentation",
     "logo": "/assets/img/logo.png",
     "nav": [
@@ -49,5 +49,5 @@
 * NOTE: The path maps compulsorily to `/FILENAME` (without the .md). Example: `assets/mddocs/FILENAME.md` will map to application url `/FILENAME`. Similarly, `assets/mddocs/somefolder/FILENAME` will map to application url `/somefolder/FILENAME`. Please use your link url path mapping / filenaming accordingly. The folder and filenames are `case sensitive` at the moment since linux host filenames are case sensitive.
 
 
-* Thats it!! You now know how to create `topnav.json` definitions for top navigation. We will talk about brandname  in the brandname section.
+* Thats it!! You now know how to create `topnav` key definitions for top navigation. We will talk about brandname in the [brandname](#/brandname) section.
 

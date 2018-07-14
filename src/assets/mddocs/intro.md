@@ -22,19 +22,115 @@ ngDocumentor is a simple website that serves your .md files from a host location
 * Create `assets/mddocs/home.md` for top first level home link. This is currently needed and not optional. [1] `home.md` will be path `/` or `/home`.
 
 
-* Your site's sidebar, top, and footer navigation all can be dynamically specified using `.json` configuration files inside `assets/config/` folder. Top navigation resides in `assets/config/topnav.json`, Sidebar menu in `assets/config/sidebar.json`, and Footer navigation in `assets/config/footer.json`.
+* Your site's sidebar, top, and footer navigation all can be dynamically specified using a single `settings.json` configuration file inside `assets/config/` folder. 
+
+* The settings.json structure is simple consisting of `filetype, home, topnav, sidebar, footer, and search` keys. The Top navigation definition resides in `topnav` key, Sidebar menu definition in `sidebar` key, Footer navigation definition in `footer` key, Landing page definition in `home` key, and Search keywords definitions in `search` key.
 
 
-##### Top Navigation
-
-
-* Specify `brandname`, `logo` and `nav` keys to define the `topnav.json`, which take care of brandname and the links definition for the topnav respectively. Links inside the `nav` key in the topnav.json is an array / group of objects which is defined using `tag` (Link text), and `link` (url path) definitions respectively as below.
-
-
-* `topnav.json`
+##### Settings.json File structure
 
 ```json
+
 {
+    "filetype": "markdown",
+    "home": { },
+    "topnav": { },
+    "sidebar": { },
+    "footer": { },
+    "search": { }
+}
+
+```
+
+
+* Let us look at each one of them seperately.
+
+
+##### Landing Page / Home Page Definition
+
+
+* There are three alternatives of `home` key definition based on, first, whether you want a landing page or not. Second, if you want a landing page, then choose slider or text based home page.
+
+
+* `home` key definition One
+
+
+```json
+
+"home": {
+        "type": "landing",
+        "url": "/",
+        "highlight": {
+            "type": "text",
+            "img":"/assets/img/new-file-1.svg",
+            "heading": "ngDocumentor",
+            "description": "ngDocumentor can be as simple as you need. Max char size 250 chars.",
+            "buttontext": "Getting Started",
+            "buttonurl": "/intro"
+        },
+        "blocks": {
+            "heading": "ngDocumentor features flexibility for your documentation or your Site",
+            "items": [
+                {"title": "Reuse Markdown", "description" : "Use your markdown readme files to create the site.", "url": "/"}
+            ]
+        }
+    }
+
+```
+
+
+* `home` key definition Two
+
+
+```json
+
+"home": {
+        "type": "landing",
+        "url": "/",
+        "highlight": {
+            "type": "slider",
+            "img": [
+                {"url":"http://placeholder.pics/svg/300/00cec9-00cec9/00cec9-00cec9", "text":"ngDocumentor"}
+            ]
+        },
+        "blocks": {
+            "heading": "ngDocumentor features flexibility for your documentation or your Site",
+            "items": [
+                {"title": "Reuse Markdown", "description" : "Use your markdown readme files.", "url": "/"}
+            ]
+        }
+    }
+
+```
+
+
+* `home` key definition Three
+
+
+```json
+
+"home": {
+        "type": "text",
+        "url": "/",
+    }
+
+```
+
+
+##### Top Navigation key Definition
+
+
+* Specify `brandname`, `logo` and `nav` keys to define the `topnav` object key, which take care of brandname and the links definition for the topnav respectively.
+
+
+* Links inside the `nav` key inside the topnav key is an array / group of objects which is defined using `tag` (Link text), and `link` (url path) definitions respectively as below.
+
+
+* `topnav` key definition
+
+```json
+
+"topnav": {
     "brandname": "My Documentation",
     "logo": "/assets/img/logo.png",
     "nav": [
@@ -42,48 +138,54 @@ ngDocumentor is a simple website that serves your .md files from a host location
         { "tag": "Getting Started", "link": "/intro" }
     ]
 }
+
 ```
 
-* Add any number of link structures below a max of 5 in the topnav.json. Do a responsiveness check for this. The topnavigation links are also unavailable in the mobile mode other than the brandname.
+* Add any number of link structures below a maximum of 5 links in the topnav key. Do a responsiveness check for this. The topnavigation links are also unavailable in the mobile mode other than the brandname.
 
 
-
-* For convinience sake, the object `{"tag": "Link Title", "link": "LinkURL"}` will be referred to as the `Link Object`; and this object is consistent across all .json configuration files (topnav, sidebar, and footer).
-
-
-##### Sidebar Navigation
+* For convinience sake, the object `{"tag": "Link Title", "link": "LinkURL"}` will be referred to as the `Link Object`; and this object is consistent across all settings.json key's configuration (topnav, sidebar, and footer).
 
 
-* You can specify a group / array of links object (submenu link items) using the `tag` (Link text), and `link` in the `nav` key of the sidebar.json file. One basic difference between the topnav.json and sidebar.json is that you can specify `children` in sidebar (unavailable in the top navigation). The definition for children array / group is the same as for other sidebar links object (and will have `tag` and `link` keys). The example is as below:
+##### Sidebar Navigation Definition
 
 
-* `sidebar.json`
+* You can specify a group / array of links object (submenu link items) using the `tag` (Link text), and `link` in the `nav` key of the sidebar key.
+
+
+* One basic difference between the topnav and sidebar keys are that you can specify `children` in sidebar (unavailable in the top navigation key definition). The definition for children array / group is the same as for other sidebar links object (and will have `tag` and `link` keys). The example is as below:
+
+
+* `sidebar` key definition
 
 
 ```json
-{
+
+"sidebar": {
     "nav": [
         { "tag": "Home", "link": "/home" },
         { "tag": "Getting Started - 10 mins", "link": "/intro" }
     ]
 }
+
 ```
 
 
-* Add any number of link object structures in the sidebar.json. There is no restriction on the same.
+* Add any number of link object structures in the sidebar key definition. There is no restriction on the same.
 
 
-##### Footer Navigation
+##### Footer Navigation Definition
 
 
-* Footer is the only section that needs a different look to its `footer.json` due to sections present in the footer. The links object structure used anywhere, however, remains the same.
+* Footer is the only section that needs a different look to its `footer` key definition due to sections present in the footer. The links object structure used anywhere, however, remains the same.
 
 
-* `footer.json`
+* `footer` key definition
 
 
 ```json
-{
+
+"footer": {
     "copyright": {
         "tag": " { ngDocumentor } ",
         "link": "/home",
@@ -103,10 +205,11 @@ ngDocumentor is a simple website that serves your .md files from a host location
         { "tag": "Google +", "link": "/intro" }
     ]
 }
+
 ```
 
 
-* The `footer.json` has three keys `copyright`, `nav`, and `social` each catering to copyright, navigation, and social links sections respectively in the footer; as the name suggests.
+* The `footer` key definition has three keys `copyright`, `nav`, and `social` each catering to copyright, navigation, and social links sections respectively in the Footer; as the name suggests.
 
 
 * The `copyright` key defines a link object with `tag`, and `link` keys. There is another key `text` which allows for addition of text just before the copyright text in the bottom. Have a look at this site's footer.
@@ -116,6 +219,39 @@ ngDocumentor is a simple website that serves your .md files from a host location
 
 
 * The `social` key defines social links section in the footer using an array of link objects with `tag` and `link` keys.
+
+
+##### Search Definition
+
+
+* The search definition details what type of search you want to use - full text search or keyword search.
+
+
+* `search` key definition One
+
+
+```json
+
+"search": {
+    "type": "keywords",
+    "meta": [
+        {"url": "/home", "keywords": ["angular"]},
+        {"url": "/intro", "keywords": ["test"]}
+    ]
+}
+
+```
+
+* `search` key definition One
+
+```json
+
+"search": {
+    "type": "fulltext",
+    "stopwords": []
+}
+
+```
 
 
 ##### Final Notes

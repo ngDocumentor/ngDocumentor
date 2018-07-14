@@ -1,18 +1,18 @@
-# Footer navigation .json file specification
+# Footer navigation Definition
 
 
-* The footer navigation bar links are specified by `assets/config/footer.json` file as mentioned.
+* The footer navigation bar links are specified by `footer` key inside `assets/config/settings.json` file as mentioned.
 
 
-* The `footer.json` has three main keys based on which of footer it caters to. The `copyright` key caters to the last copyright section of the footer. The `nav` key caters to the footer navigation links section of the footer. The `social` key caters to the social links section in the footer. Below is a sample definition.
+* The `footer` key has three main keys based on which of footer it caters to. The `copyright` key caters to the last copyright section of the footer. The `nav` key caters to the footer navigation links section of the footer. The `social` key caters to the social links section in the footer. Below is a sample definition.
 
 
-* `footer.json`
+* `footer` key definition sample
 
 
 ```json
 
-{
+"footer": {
     "copyright": {
         "tag": " { ngDocumentor } ",
         "link": "/home",
@@ -23,16 +23,14 @@
             "tag": "Footer Example 1",
             "children": [
                 { "tag": "Getting Started", "link": "/intro" },
-                { "tag": "Config .json Files", "link": "/config" },
-                { "tag": "Github", "link": "/home" }
+                { "tag": "Config .json Files", "link": "/config" }
             ]
         },
         {
             "tag": "Footer Example 2",
             "children": [
                 { "tag": "Getting Started", "link": "/intro" },
-                { "tag": "Config .json Files", "link": "/config" },
-                { "tag": "Github", "link": "/home" }
+                { "tag": "Config .json Files", "link": "/config" }
             ]
         }
     ],
@@ -44,7 +42,7 @@
 ```
 
 
-* The copyright section has keys that is an links object, i.e., `tag`, and `link`. The key `link` is the link url to open if the tag / link text is clicked in the footer. You will notice that this link object structure is common across all config `.json` files.
+* The copyright section has keys that is an links object, i.e., `tag`, and `link`. The key `link` is the link url to open if the tag / link text is clicked in the footer. You will notice that this link object structure is common across entire config `.json` file.
 
 
 * The copyright section has one more key namely, the `text` key. This is the paragraph text just above the copyright section.
@@ -65,14 +63,12 @@
 
 ```json
 
-
 "nav": [
     {
         "tag": "Footer Example 1",
         "children": [
             { "tag": "Getting Started", "link": "/intro" },
-            { "tag": "Config .json Files", "link": "/config" },
-            { "tag": "Github", "link": "/home" }
+            { "tag": "Config .json Files", "link": "/config" }
         ]
     }
 ]
@@ -86,7 +82,8 @@
 ```json
 
 "social": [
-    { "tag": "Google +", "link": "/intro" }
+    { "tag": "Google +", "link": "/intro" },
+    { "tag": "Github +", "link": "/git" }
 ]
 
 ```
@@ -112,7 +109,7 @@
         "tag": " { ngDocumentor } ",
         "link": "/home",
         "type": "external",
-        "text": "ngDocumentor is a simple markdown rendering site framework that works even on HTML only hosts like github pages"
+        "text": "ngDocumentor is a markdown based site framework that works even on HTML only hosts like github pages"
     },
     "nav": [
         {
@@ -136,5 +133,5 @@
 * NOTE: The path maps compulsorily to `/FILENAME` (without the .md). Example: `assets/mddocs/FILENAME.md` will map to application url `/FILENAME`. Similarly, `assets/mddocs/somefolder/FILENAME` will map to application url `/somefolder/FILENAME`. Please use your link url path mapping / filenaming accordingly. The folder and filenames are `case sensitive` at the moment since linux host filenames are case sensitive.
 
 
-* Thats it!! You now know how to define `footer.json` definitions for side navigation bar.
+* Thats it!! You now know how to define `footer` key definitions for side navigation bar.
 

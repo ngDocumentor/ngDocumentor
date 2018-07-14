@@ -1,0 +1,12 @@
+<!-- SLIDER AND TEXT LANDING -->
+<app-highlight-main *ngIf="_h.landingPage"></app-highlight-main>
+
+
+<!-- .MD RENDRER -->
+<div class="markdownclass" *ngIf="!_h.landingPage">
+  <div *ngIf="!_wksrv.searchResult && !_h.fileData && !_h.landingPage">
+    <h4>Loading...</h4>
+  </div>
+  <app-search-list *ngIf="!!_wksrv.searchResult && !_h.landingPage"></app-search-list>
+  <markdown [data]="_h.fileData" *ngIf="!_wksrv.searchResult && !!_h.fileData && !_h.landingPage"></markdown>
+</div>

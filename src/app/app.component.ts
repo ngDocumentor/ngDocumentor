@@ -13,11 +13,7 @@ import { Footer } from './commons/interfaces/footer/footer';
 })
 export class AppComponent implements OnInit {
 
-  @Input('sidebarSrc') sidebarSrc: string;
-
-  @Input('topnavSrc') topnavSrc: string;
-
-  @Input('footerSrc') footerSrc: string;
+  @Input('settingsSrc') settingsSrc: string;
 
   brandname: string = '  ';
 
@@ -31,121 +27,82 @@ export class AppComponent implements OnInit {
 
   constructor(public _h: HttpService) {
     this.brandicon = this._h.brandicon;
-    this.topnavSrc = this._h.topnavSrc;
-    this.sidebarSrc = this._h.sidebarSrc;
-    this.footerSrc = this._h.footerSrc;
+    this.settingsSrc = this._h.settingsSrc;
     this.topnavItems = this._h.topnavItems;
     this.brandname = this._h.brandname;
     this.footerItems = this._h.footerItems;
   }
 
-
   /**
-   * Get the topnav.json file
-   * Do a check for structure of object
-   * Basic missing file and objects handled
-   * 
-   * @param {string} topnavSrc topnav.json file path
+   * Trigger routeme event (choose better name!)
+   * Gets the topnav, sidebar, and footer
+   *
+   * @param {string} settingsSrc
    * @memberof AppComponent
    */
-  getTopnav(topnavSrc: string): void {
-    const that = this;
+  getSettings(settingsSrc: string): void {
+    let that = this;
+    that._h.httpReq(settingsSrc, 'GET', null, null)
+      .subscribe((data) => {
+        /* Topnav item settings */
+        that._h.brandicon = data.topnav.logo ? data.topnav.logo : '';
+        that._h.topnavItems = data.topnav.nav ? data.topnav.nav : [];
+        that._h.brandname = data.topnav.brandname ? data.topnav.brandname : '';
+        that._h.topnav = data.topnav;
 
-    that._h.httpReq(topnavSrc, 'GET', null, null)
-      .subscribe((data: Menu) => {
-        that._h.brandicon = data.logo ? data.logo : '';
-        that._h.topnavItems = data.nav ? data.nav : [];
-        that._h.brandname = data.brandname ? data.brandname : '';
-        that._h.topnav = data;
-      }, (e: any) => {
-        console.log(`
-        Http Get Request error from topnav.json.
-        Check if the name is right or if the path is right in the respective config file.
-        Filenames are case sensitive.
-        `, e);
-      });
-  }
+        /* Sidebar Items settings */
+        that._h.sidebarItems = data.sidebar.nav ? data.sidebar.nav : [];
+        that._h.sidebarnav = data.sidebar;
 
-  /**
-   * Get sidebar.json file
-   * Do a check for structure of object
-   * Basic mising file and objects handled
-   * 
-   * @param {string} sidebarSrc sidebar.json file path
-   * @memberof AppComponent
-   */
-  getSidebar(sidebarSrc: string): void {
-    const that = this;
-
-    that._h.httpReq(sidebarSrc, 'GET', null, null)
-      .subscribe((data: Sidebar) => {
-        that._h.sidebarItems = data.nav ? data.nav : [];
-        that._h.sidebarnav = data;
-      }, (e: any) => {
-        console.log(`
-        Http Get Request error from sidebar.json. 
-        Check if the name is right or if the path is right in the respective config file. 
-        Filenames are case sensitive.
-        `, e);
-      });
-
-  }
-
-  /**
-   * Get footer.json file
-   * Do a check for structure of object
-   * Basic missing file and objects handled
-   * 
-   * @param {string} footerSrc footer.json file path
-   * @memberof AppComponent
-   */
-  getFooter(footerSrc: string): void {
-    const that = this;
-
-    that._h.httpReq(footerSrc, 'GET', null, null)
-      .subscribe((data: Footer) => {
+        /* Footer items settings */
         let ftr = that.footerItems.copyright;
-        if (!!data.copyright) {
-          ftr.tag = data.copyright.tag ? data.copyright.tag : '';
-          ftr.link = data.copyright.link ? data.copyright.link : '/home';
-          ftr.type = data.copyright.type ? data.copyright.type : 'internal';
-          ftr.text = data.copyright.text ? data.copyright.text : '';
+        if (!!data.footer.copyright) {
+          ftr.tag = data.footer.copyright.tag ? data.footer.copyright.tag : '';
+          ftr.link = data.footer.copyright.link ? data.footer.copyright.link : '/home';
+          ftr.type = data.footer.copyright.type ? data.footer.copyright.type : 'internal';
+          ftr.text = data.footer.copyright.text ? data.footer.copyright.text : '';
         } else {
           ftr = null;
         }
-        that._h.footerItems.nav = data.nav ? data.nav : [];
-        that._h.footerItems.social = data.social ? data.social : [];
-        that._h.footernav = data;
+        that._h.footerItems.nav = data.footer.nav ? data.footer.nav : [];
+        that._h.footerItems.social = data.footer.social ? data.footer.social : [];
+        that._h.footernav = data.footer;
+
+        /* Home page settings */
+        that._h.homePage = data.home;
+        if (that._h.homePage.type === 'landing') {
+          // This is creating an issue where search url load is enabling the landingPage before the search results
+          //that._h.landingPage = true;
+        }
+
+        /* Search settings */
+        that._h.searchSettings = data.search;
+
+        that._h.getRouteEvent();
+
+        if (!!that._h.fileUrl) {
+          console.log('DEBUG: Fileurl init', that._h.fileUrl);
+          that._h.routeme.emit({ url: that._h.fileUrl, host: window.location.host });
+        }
+
       }, (e: any) => {
         console.log(`
-        Http Get Request error from footer.json. 
-        Check if the name is right or if the path is right in the respective config file. 
-        Filenames are case sensitive.
-        `, e);
+          Http Get Request error from settings.json.
+          Check if the name is right or if the path is right in the respective config file.
+          Filenames are case sensitive.
+      `, e);
       });
   }
 
   /**
    * Init gets:
    * Window location url into service
-   * Trigger routeme event (choose better name!)
-   * Gets the topnav, sidebar, and footer
    * 
    * @memberof AppComponent
    */
   ngOnInit(): void {
-    let that = this;
     this._h.fileUrl = window.location.href;
-    this.getTopnav(this._h.topnavSrc);
-    this.getSidebar(this._h.sidebarSrc);
-    this.getFooter(this._h.footerSrc);
-
-    this._h.getRouteEvent();
-
-    if (!!this._h.fileUrl) {
-      console.log('DEBUG: Fileurl init', this._h.fileUrl);
-      this._h.routeme.emit({ url: this._h.fileUrl, host: window.location.host });
-    }
+    this.getSettings(this._h.settingsSrc);
   }
 
 }

@@ -1,5 +1,9 @@
 {
   "compileOnSave": false,
+  "angularCompilerOptions": {
+    "preserveWhitespaces": false,
+    "enableIvy": true
+  },
   "compilerOptions": {
     "outDir": "./dist/out-tsc",
     "sourceMap": true,

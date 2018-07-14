@@ -1,0 +1,41 @@
+
+/* highlighter start */
+
+.highlighter-text-landing {
+    background-color: #fff;border: 1px solid #e7e7e7; margin: auto; border-radius: 3px;  margin-bottom:40px !important; margin-left: 10px !important;
+  }
+  
+  .highlighter-img {
+    top:100px;left: 5%; position:relative;
+  }
+  .highlighter-text {
+    text-align: left !important;
+  }
+
+  @media screen and (max-width: 768px) {
+    .highlighter-img {
+      top:25px; left:0%; width: auto !important; margin: auto; bottom: 25px; position:relative;
+    }
+    .highlighter-text-landing, .highlighter-img, .highlighter-text  {
+      text-align: center !important;
+    }
+    
+  }
+  
+  .highlighter-img-size {
+    width: 100%;height: 100%; max-width: 150px !important; max-height: 150px !important;
+  }
+  
+  .highlighter-text {
+    top:75px;position:relative;height: 400px; max-height: 400px; max-width: 95% !important; text-align: center;
+  }
+  
+  .slider-imgs {
+    width:100%; max-height: 400px;
+  }
+
+  .slider-container {
+    padding: 20px; margin-bottom:40px !important; border: 1px solid #e7e7e7; border-radius: 3px;
+  }
+  
+  /* highlighter end */
