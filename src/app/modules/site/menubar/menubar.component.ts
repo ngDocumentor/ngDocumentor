@@ -281,7 +281,7 @@ export class MenubarComponent implements OnInit, AfterViewChecked {
       });
       console.log('searchDoc: Debug Search triggered');
     } else {
-      this._wksrv.searchResult = null;
+      this._wksrv.searchResult = [];
     }
 
     if (this.mobileAndTabletCheck()) {
