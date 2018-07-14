@@ -353,7 +353,19 @@ pre[class*="language-"] {
     font-size: 1.3em;
   }
   h2 {
-    font-size: 1.2em;
+    font-size: 1.25em;
+  }
+  h3 {
+    font-size: 1.20em;
+  }
+  h4 {
+    font-size: 1.15em;
+  }
+  h5 {
+    font-size: 1.10em;
+  }
+  h6 {
+    font-size: 1.05em;
   }
   h5,
   h6 {

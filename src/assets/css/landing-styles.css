@@ -14,7 +14,10 @@
 
   @media screen and (max-width: 768px) {
     .highlighter-img {
-      top:25px; left:0%; width: auto !important; margin: auto; bottom: 25px; position:relative; text-align: center;
+      top:25px; left:0%; width: auto !important; margin: auto; bottom: 25px; position:relative;
+    }
+    .highlighter-text-landing, .highlighter-img, .highlighter-text  {
+      text-align: center !important;
     }
   }
   
