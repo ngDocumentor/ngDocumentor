@@ -1411,7 +1411,7 @@ pre[class*="language-"] {
 /* SEARCH LIST COMPONENT START */
 
 .search-text {
-  font-weight: normal; font-size: 1.2em; color: #000;
+  font-weight: normal; font-size: 15px !important; color: #000;
 }
 
 /* SEARCH LIST COMPONENT END */
@@ -2198,6 +2198,9 @@ img {
 }
 .margin-bottom-zero {
   margin-bottom: 0px !important;
+}
+.margin-bottom-five {
+  margin-bottom: 5px !important;
 }
 .margin-top-zero {
   margin-top: 0px !important;

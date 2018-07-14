@@ -4,12 +4,12 @@
 </div>
 <h4 *ngIf="_wksrv.searchResult.length">Search results for "{{ _h.searchValue }}" </h4>
 <div *ngFor="let item of (_wksrv.searchResult || []); let i = index;" [ngClass]="{ 'border-bottom-gray': (_wksrv.searchResult.length -1 !== i) }">
-  <h4 *ngIf="item.total !== 0" class="margin-bottom-zero">
+  <h4 *ngIf="item.total !== 0" class="margin-bottom-five">
     <a class="text-green ml-2" href="{{ '#' + item.url}}">
       {{ item.url }}
     </a>
   </h4>
-  <h5 *ngIf="item.total !== 0" class="margin-top-zero">Search Result - {{ item.total }} Matches, Keys : [
+  <h6 *ngIf="item.total !== 0" class="margin-top-zero">Search Result - {{ item.total }} Matches, Keys : [
     <span>&nbsp;&nbsp;</span>
     <span *ngFor="let obj of item.keys; let i = index;">
       <span>{{ obj.key }}</span>:
@@ -20,6 +20,6 @@
     <br/>
     <br class="visible-mobile" />
     <span *ngIf="item.total !== 0" class="search-text">{{ item.body }}</span>
-  </h5>
+  </h6>
 </div>
 <!-- SEARCH RESULTS END -->
