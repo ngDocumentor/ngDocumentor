@@ -1446,6 +1446,15 @@ pre[class*="language-"] {
 .serviceBox.blue:hover .read-more{border: 1px solid #3498db;color: #3498db;}
 .serviceBox.orange:hover .read-more{border: 1px solid #e67e22;color: #e67e22;}
 
+@media screen and (max-width: 768px) {
+.service-sec{
+  left: 5%;
+  position: relative;
+}
+.service-sec  {
+  text-align: center !important;
+}
+}
 /* HIGHLIGHT BLOCK COMPONENT END */
 
 
