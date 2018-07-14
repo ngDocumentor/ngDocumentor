@@ -349,6 +349,12 @@ pre[class*="language-"] {
     font-size: 15px !important;
     font-weight: 300;
   }
+  h1 {
+    font-size: 1.3em;
+  }
+  h2 {
+    font-size: 1.2em;
+  }
   h5,
   h6 {
     color: slategray !important;

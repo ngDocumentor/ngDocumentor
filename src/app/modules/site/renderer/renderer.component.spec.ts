@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RendermdComponent } from './rendermd.component';
+import { RendererComponent } from './renderer.component';
 
-describe('RendermdComponent', () => {
-  let component: RendermdComponent;
-  let fixture: ComponentFixture<RendermdComponent>;
+describe('RendererComponent', () => {
+  let component: RendererComponent;
+  let fixture: ComponentFixture<RendererComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RendermdComponent ]
+      declarations: [ RendererComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RendermdComponent);
+    fixture = TestBed.createComponent(RendererComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

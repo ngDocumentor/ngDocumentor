@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { HttpService } from '../../../commons/services/http/http.service';
+import { HttpService } from '../../../../commons/services/http/http.service';
 
 @Component({
   selector: 'app-highlight-text',

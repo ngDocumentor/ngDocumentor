@@ -19,15 +19,15 @@ import { WorkerService } from './commons/services/worker/worker.service';
 
 // Components Directives Pipes
 import { AppComponent } from './app.component';
-import { MenubarComponent } from './modules/main-site/menubar/menubar.component';
+import { MenubarComponent } from './modules/site/menubar/menubar.component';
 import { OpenLinkInNewWindowDirective } from './commons/directives/newwindow/newwindow.directive';
-import { RendermdComponent } from './modules/main-site/rendermd/rendermd.component';
+import { RendererComponent } from './modules/site/renderer/renderer.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
-import { SearchListComponent } from './modules/main-site/search-list/search-list.component';
-import { HighlightBlockComponent } from './modules/main-site/highlight-block/highlight-block.component';
-import { HighlightTextComponent } from './modules/main-site/highlight-text/highlight-text.component';
-import { HighlightSliderComponent } from './modules/main-site/highlight-slider/highlight-slider.component';
-import { HighlightMainComponent } from './modules/main-site/highlight-main/highlight-main.component';
+import { SearchListComponent } from './modules/site/search-list/search-list.component';
+import { HighlightBlockComponent } from './modules/site/landing/highlight-block/highlight-block.component';
+import { HighlightTextComponent } from './modules/site/landing/highlight-text/highlight-text.component';
+import { HighlightSliderComponent } from './modules/site/landing/highlight-slider/highlight-slider.component';
+import { HighlightMainComponent } from './modules/site/landing/highlight-main/highlight-main.component';
 
 
 @NgModule({
@@ -35,7 +35,7 @@ import { HighlightMainComponent } from './modules/main-site/highlight-main/highl
     AppComponent,
     MenubarComponent,
     OpenLinkInNewWindowDirective,
-    RendermdComponent,
+    RendererComponent,
     SearchListComponent,
     HighlightBlockComponent,
     HighlightTextComponent,

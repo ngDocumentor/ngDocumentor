@@ -3,11 +3,11 @@ import { HttpService } from '../../../commons/services/http/http.service';
 import { WorkerService } from '../../../commons/services/worker/worker.service';
 
 @Component({
-  selector: 'app-rendermd',
-  templateUrl: './rendermd.component.html',
-  styleUrls: ['./rendermd.component.css']
+  selector: 'app-renderer',
+  templateUrl: './renderer.component.html',
+  styleUrls: ['./renderer.component.css']
 })
-export class RendermdComponent {
+export class RendererComponent {
 
   constructor(public _h: HttpService, public _wksrv: WorkerService) {}
 
