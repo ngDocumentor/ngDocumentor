@@ -1,7 +1,7 @@
 # Config file Introduction
 
 
-* The configuration files reside inside the `assets/config/` folder. There are three config files. `topnav.json`, `sidebar.json`, and `footer.json`.
+* The configuration files reside inside the `assets/config/` folder. There is a `settings.json` which defines all the configuration needed for the site's configuration.
 
 
 * NOTE: Either one (preferably sidebar.json) is compulsarily required to run the site normally with browsability.

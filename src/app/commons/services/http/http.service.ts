@@ -225,7 +225,7 @@ export class HttpService {
         url = this.homePage.url ? this.homePage.url : '';
       }
       if (url !== '' && url !== '#' && url !== '#/') {
-        that._mhSrv.getSource('assets/mddocs/' + url.split('/')[1] + '.md').subscribe((data) => {
+        that._mhSrv.getSource('assets/docs/' + url.split('/')[1] + '.md').subscribe((data) => {
 
           console.log('DEBUG: RouteEvent Log area seven');
           that.fileData = data;
@@ -313,7 +313,7 @@ export class HttpService {
       /* If url is valid but doesnot include http and is file name */
       if ((!url.includes('#/#/?search='))) {
         if (!!url && !url.includes('http') && url !== '' && url !== '#' && url !== '#/') {
-          that._mhSrv.getSource('assets/mddocs/' + url + '.md').subscribe((data) => {
+          that._mhSrv.getSource('assets/docs/' + url + '.md').subscribe((data) => {
             console.log('DEBUG: RouteEvent Log area two');
             if (data.includes('<!doctype html>')) {
               console.log('DEBUG:E: RouteEvent Log area three');
