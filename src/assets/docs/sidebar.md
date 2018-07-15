@@ -72,7 +72,7 @@
 ```
 
 
-* NOTE: The path maps compulsorily to `/FILENAME` (without the .md). Example: `assets/mddocs/FILENAME.md` will map to application url `/FILENAME`. Similarly, `assets/mddocs/somefolder/FILENAME` will map to application url `/somefolder/FILENAME`. Please use your link url path mapping / filenaming accordingly. The folder and filenames are `case sensitive` at the moment since linux host filenames are case sensitive.
+* NOTE: The path maps compulsorily to `/FILENAME` (without the .md). Example: `assets/docs/FILENAME.md` will map to application url `/FILENAME`. Similarly, `assets/docs/somefolder/FILENAME` will map to application url `/somefolder/FILENAME`. Please use your link url path mapping / filenaming accordingly. The folder and filenames are `case sensitive` at the moment since linux host filenames are case sensitive.
 
 
 * Thats it!! You now know how to define `sidebar` key definitions for side navigation bar.
