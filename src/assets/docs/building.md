@@ -8,7 +8,7 @@ The repository needs [NodeJS](https://nodejs.org/) and [Angular CLI](https://cli
 ## Add your documentation
 
 
-Just add your .md assets in the `src/assets/mddocs` folder. Now create your own cofigurations for topnav, sidebar, and footer. Finally, run the server to view your site / create your own build.
+Just add your .md assets in the `src/assets/docs` folder. Now create your own cofigurations for topnav, sidebar, and footer. Finally, run the server to view your site / create your own build.
 
 
 ## Running Development server
