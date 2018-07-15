@@ -2,7 +2,7 @@
 
 
 A simple site to serve .md files and gets you up and running in 10 minutes. 
-Pass brand name, top navigation menus, and sidebar navigation links using .json configuration files.
+Pass brand name, top navigation menus, and sidebar navigation links single using .json configuration file.
 
 * Works well for any documentation site documented using .md files. Also works with HTML only sites like Github pages where you do not have access to URL Rewrites due to security reasons
 * Edit the [ngDocumentor Angular source](https://github.com/ngDocumentor/ngDocumentor), if you need to extend.
@@ -13,12 +13,12 @@ Pass brand name, top navigation menus, and sidebar navigation links using .json 
 
 ## Installation and Usage
 
-The repository needs [NodeJS](https://nodejs.org/) and [Angular CLI](https://cli.angular.io/) to be installed. NodeJS installation steps using binary or source is available [here](https://nodejs.org/en/download/). Angular CLI can be installed using the command `npm install @angular/cli -g`. Please note Angular CLI is a NodeJS package and needs NodeJS to be installed in your system. This version was developed using the Angular CLI version 1.7.4. Once NodeJS and Angular CLI are installed, choose one of the following steps for your respective activity.
+The repository needs [NodeJS](https://nodejs.org/) and [Angular CLI](https://cli.angular.io/) to be installed. NodeJS installation steps using binary or source is available [here](https://nodejs.org/en/download/). Angular CLI can be installed using the command `npm install @angular/cli -g`. Please note Angular CLI is a NodeJS package and needs NodeJS to be installed in your system. This version was developed using the Angular CLI version 6.x.x. Once NodeJS and Angular CLI are installed, choose one of the following steps for your respective activity.
 
 
 ## Add your documentation
 
-Just add your .md assets in the `src/assets/mddocs` folder. Now create your own cofigurations for topnav, sidebar, and footer. Finally, run the server to view your site / create your own build.
+Just add your .md assets in the `src/assets/docs` folder. Now create your own cofigurations for topnav, sidebar, and footer. Finally, run the server to view your site / create your own build.
 
 
 ## Running Development server
@@ -46,17 +46,17 @@ Now run the build command using the steps in the `Creating a Build` section to c
 
 ## Creating a Build
 
-After `Add your documentation` section steps and `Enabling Service Worker (Support for offline viewing of website)` (if you want offline viewing support / service workers enabled), in the command prompt / CLI, run `ng build --target=production --environment=prod --sourcemaps=false --base-href='/' --vendor-chunk=true --extract-css=true --delete-output-path=true --aot --build-optimizer=true` in the project's folder to build the project. The built artifacts will be stored in the `dist/` directory. Use the `dist/` directory as your documentation site. Use can use this build to push to production.
+After `Add your documentation` section steps and `Enabling Service Worker (Support for offline viewing of website)` (if you want offline viewing support / service workers enabled), in the command prompt / CLI, run `ng build --prod --sourcemaps=false --base-href='/' --vendor-chunk=true --extract-css=true --delete-output-path=true --aot --build-optimizer=true` in the project's folder to build the project. The built artifacts will be stored in the `dist/` directory. Use the `dist/` directory as your documentation site. Use can use this build to push to production.
 
 
 ## TODO / Plans
 
 * REDUCE code size. P4 (Create beta with Ivy renderer P2, Change ng/cli to latest version P3)
-* ADD Search Capability for site or .md files without loss in performance P4
-* ADD Tests P4
+* ADD Search Capability for site or .md files without loss in performance P4 (Partially done)
+* ADD Tests P2
 * Move to Observable based routing P2
 * Check possibility of removing `#/` for .md file's internal linking inside ngDocumentor
-* Bookmarks functionality
+* Bookmarks functionality (Partially done)
 
 ## Further help - Angular CLI
 
