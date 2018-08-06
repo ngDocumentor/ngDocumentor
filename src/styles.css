@@ -256,6 +256,96 @@ pre[class*="language-"] {
   text-shadow: 0 0px rgba(0, 0, 0, 0.3) !important;
 }
 
+.fontsize-eighteen {
+  font-size: 18px;
+}
+.font-bold {
+  font-weight: bold !important;
+}
+.font-normal-slate {
+  font-weight: normal !important; color: slategray !important;
+}
+
+/* COLOR THEMING CSS START */
+
+.fontcolor-default {
+  color: slategray !important;
+}
+.fontcolor-default:hover {
+  color: #013243 !important;
+}
+.fontcolor-primary {
+  color: #013243 !important;
+}
+.fontcolor-primary:hover {
+  color: #013243 !important;
+}
+.font-color-black {
+  color: #000 !important;
+}
+.font-color-white {
+  color: #ffffff !important;
+}
+.font-color-lightergray {
+  color: #f2f2f2 !important;
+}
+.font-color-lightgray {
+  color: #c4c2c2 !important;
+}
+.font-color-slategray {
+  color: slategray !important;
+}
+.font-color-darkgray {
+  color: #2f3640 !important;
+}
+.font-color-darkgray-two {
+  color: #222 !important;
+}
+.font-color-darkgray-three {
+  color: #324545 !important;
+}
+.font-color-lightblue {
+  color: #0297FF !important;
+}
+.font-color-darkblue {
+  color: #2980b9 !important;
+}
+.font-color-bluishgray {
+  color: #727cb6 !important;
+}
+.font-color-darkerblue {
+  color: #2f3640 !important;
+}
+.font-color-darkerblue-two {
+  color: #013243 !important;
+}
+.bg-color-lightergray {
+  background-color: #f9f9f9 !important;
+}
+.bg-color-lightgray {
+  background-color: #ecf0f1 !important;
+}
+.bg-color-gray {
+  background-color: #bbb !important;
+}
+.bg-color-darkgray {
+  background-color: #717171 !important;
+}
+.bg-color-bluishgray {
+  background: #727cb6 !important;
+}
+.bg-color-darkblue {
+  background-color: #2980b9 !important;
+}
+.bg-color-white {
+  background-color: #ffffff !important;
+}
+.bg-color-white {
+  background-color: #000000 !important;
+}
+
+/* COLOR THEMING CSS END */
+
 @media screen and (max-width: 768px) {
   code,
   kbd,
@@ -275,7 +365,7 @@ pre[class*="language-"] {
   }
   :not(pre)>code[class*="language-"],
   pre[class*="language-"] {
-    background: #f9f9f9 !important;
+    background-color: #f9f9f9 !important;
     color: #2f3640 !important;
   }
   code[class*="language-"],
@@ -285,65 +375,7 @@ pre[class*="language-"] {
   }
 }
 
-.markdownclass {
-  padding: 20px;
-  border: 1px solid #e7e7e7;
-  border-radius: 3px;
-  /* box-shadow: 3px 5px 3px 5px #f9f9f9;*/
-  overflow: auto;
-}
-
-/* SCROLLBAR START */
-
-.scrollbar {
-  margin-left: 30px;
-  float: left;
-  height: 300px;
-  width: 65px;
-  background: #FFFFFF;
-  overflow-y: scroll;
-  margin-bottom: 25px;
-}
-
-.sbar-style::-webkit-scrollbar-track {
-  -webkit-box-shadow: inset 0 0 6px #ecf0f1;
-  border-radius: 10px;
-  background-color: #ecf0f1;
-}
-
-.sbar-style::-webkit-scrollbar {
-  width: 10px;
-  background-color: #ecf0f1;
-}
-
-.sbar-style::-webkit-scrollbar-thumb {
-  border-radius: 10px;
-  background-color: #a4b0be;
-  background-image: -webkit-linear-gradient(90deg, transparent, #ecf0f1 50%, transparent, transparent)
-}
-
-/* SCROLLBAR END */
-
-/* COLUMN GRID */
-
-.container {
-  width: 95%;
-  /* Changed from 100% */
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
-}
-
-.visible-mobile {
-  display: none;
-}
-
 @media (max-width: 992px) {
-  /* Added New */
-  .container {
-    width: 80%;
-  }
   body {
     color: #000 !important;
     font-size: 15px !important;
@@ -372,6 +404,837 @@ pre[class*="language-"] {
     color: slategray !important;
     line-height: 1em !important;
     font-weight: normal !important;
+  }
+}
+
+.markdownclass {
+  padding: 20px;
+  border: 1px solid #e7e7e7;
+  border-radius: 3px;
+  /* box-shadow: 3px 5px 3px 5px #f9f9f9;*/
+  overflow: auto;
+}
+
+/* SCROLLBAR START */
+
+.scrollbar {
+  margin-left: 30px;
+  float: left;
+  height: 300px;
+  width: 65px;
+  background-color: #FFFFFF;
+  overflow-y: scroll;
+  margin-bottom: 25px;
+}
+
+.sbar-style::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px #ecf0f1;
+  border-radius: 10px;
+  background-color: #ecf0f1;
+}
+
+.sbar-style::-webkit-scrollbar {
+  width: 10px;
+  background-color: #ecf0f1;
+}
+
+.sbar-style::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #a4b0be;
+  background-image: -webkit-linear-gradient(90deg, transparent, #ecf0f1 50%, transparent, transparent)
+}
+
+/* SCROLLBAR END */
+
+
+
+/* SEARCH LIST COMPONENT START */
+
+.search-text {
+  font-weight: normal !important; font-size: 13px; color: #000;
+}
+@media screen and (max-width: 768px) {
+  .search-text {
+    font-size: 13px;
+  }
+}
+
+/* SEARCH LIST COMPONENT END */
+
+/* HIGHLIGHT BLOCK COMPONENT START */
+
+.service-sec .heading { float: left; width: 100%; margin-bottom: 40px; text-align:center; }
+.service-sec h2 { display: block; text-transform: capitalize; font-weight: 600; color: #0297FF; font-size: 20px; }
+.service-sec h2 small { color: #222; display: block; font-size:18px; margin-bottom: 18px; }
+.serviceBox{text-align: center;margin-top: 30px;position: relative;z-index: 1; margin-bottom: 60px; }
+.serviceBox .service-icon{width: 78px;height: 78px;border-radius:3px;background: #fff;margin: 0 auto;position: absolute;top: -34px;left: 0;right: 0;z-index: 1;transition: all 0.3s ease-out 0s;}
+.serviceBox:hover .service-icon{transform: rotate(45deg);}
+.serviceBox .service-icon span{display: inline-block;width: 60px;height: 60px;line-height: 60px;border-radius:3px;background: #727cb6;font-size: 30px;color: #fff;margin: auto;position: absolute;top: 0;left: 0;bottom: 0;right: 0;transition: all 0.3s ease-out 0s;}
+.serviceBox .service-icon span i{transition: all 0.3s ease-out 0s;}
+.serviceBox:hover .service-icon span i{transform: rotate(-45deg);}
+.serviceBox .service-content{max-height: 300px !important; background: #fff;border: 1px solid #e7e7e7;border-radius: 3px;padding: 55px 15px;position: relative;}
+.serviceBox .service-content:before{content: "";display: block;width: 80px;height: 80px;border: 1px solid #e7e7e7;border-radius: 3px;margin: 0 auto;position: absolute;top: -37px;left: 0;right: 0;z-index: 1;transition: all 0.3s ease-out 0s;}
+.serviceBox:hover .service-content:before{transform: rotate(45deg);}
+.serviceBox .title{max-height: 1em; font-size: 17px;font-weight: 500;color: #324545;text-transform: uppercase;margin: 0 0 25px 0;position: relative;transition: all 0.3s ease-out 0s;}
+.serviceBox:hover .title{color: #727cb6;}
+.serviceBox .description{font-size: 14px;font-weight: 500;line-height: 24px;margin-bottom: 0;}
+.serviceBox .read-more{display: block;width: 40px;height: 40px;line-height: 38px;border-radius: 50%;background: #fff;border: 1px solid #e7e7e7;font-size: 14px;color: #c4c2c2;margin: 0 auto;position: absolute;bottom: -17px;left: 0; right: 0;transition: all 0.3s ease-out 0s;}
+.serviceBox .read-more:hover{border: 1px solid #727cb6;color: #727cb6;text-decoration: none;}
+.serviceBox.green .service-icon span{ background: #008b8b; }
+.serviceBox.blue .service-icon span{ background: #3498db; }
+.serviceBox.orange .service-icon span{ background: #e67e22; }
+.serviceBox.green:hover .title{ color: #008b8b; }
+.serviceBox.blue:hover .title{ color: #3498db; }
+.serviceBox.orange:hover .title{ color: #e67e22; }
+.serviceBox:hover .read-more{border: 1px solid #727cb6;color: #727cb6;}
+.serviceBox.green:hover .read-more{border: 1px solid #008b8b;color: #008b8b;}
+.serviceBox.blue:hover .read-more{border: 1px solid #3498db;color: #3498db;}
+.serviceBox.orange:hover .read-more{border: 1px solid #e67e22;color: #e67e22;}
+
+@media screen and (max-width: 768px) {
+.service-sec{
+  left: 5%;
+  position: relative;
+}
+.service-sec  {
+  text-align: center !important;
+}
+}
+/* HIGHLIGHT BLOCK COMPONENT END */
+
+
+
+/* MENUBAR COMPONENT START */
+
+
+/* Add a black background color to the top navigation */
+
+.logoicon {
+  width:15px; height: 15px; top:2px; position: relative;
+}
+
+.topnav {
+  background-color: #ffffff;
+  overflow: hidden;
+  position: fixed !important;
+  /* Set the navbar to fixed position */
+  top: 0;
+  /* Position the navbar at the top of the page */
+  left: 0px;
+  min-height: 50px !important;
+  width: 100%;
+  max-width: 100%;
+  opacity: 0.75;
+  z-index: 999999 !important;
+}
+
+/* Style the links inside the navigation bar */
+
+.topnav a {
+  float: left;
+  display: block;
+  color: #2f3640 !important;
+  text-align: center;
+  padding: 22px 22px;
+  text-decoration: none;
+  outline: 0;
+  cursor: pointer;
+}
+
+.topnav-trans {}
+
+/* Change the color of links on hover */
+
+.topnav a:hover,
+.topnav a:active {
+  text-decoration: none !important;
+  outline: 0;
+}
+
+.topnav-trans:hover,
+.topnav-trans:active {}
+
+/* Add an active class to highlight the current page */
+
+.active { }
+
+/* Hide the link that should open and close the topnav on small screens */
+
+.topnav .icon,
+.topnav .icon-left {
+  display: none;
+}
+
+.topnav-menuicon-img {
+  width: 12px; height: 12px;
+}
+
+.brand {
+  color: #013243 !important;
+  font-weight: 600;
+  font-size: 1.3em;
+  opacity: 1;
+}
+
+.brand-position,
+.menu-position {
+  top: 5px !important;
+  position: relative;
+}
+
+.invisible-menu {
+  display: block !important;
+}
+
+.invisible-brand {
+  display: none !important;
+}
+
+.pad-top-menuicon {
+  top: 3px !important;
+  position: relative;
+}
+
+/* When the screen is less than 768 pixels wide, hide all links, except for the first one ("Home"). Show the link that contains should open and close the topnav (.icon) */
+
+@media screen and (max-width: 768px) {
+  .topnav a:not(:first-child) {
+    display: none;
+  }
+  .topnav a.icon {
+    float: right;
+    display: block;
+    position: fixed;
+    left: 0;
+    outline: 0;
+  }
+  .topnav a.icon-left {
+    float: right;
+    display: block;
+    position: fixed;
+    right: 0;
+    top: -5px;
+    outline: 0;
+  }
+  .topnav {
+    background-color: #ffffff;
+    overflow: hidden;
+    position: fixed !important;
+    /* Set the navbar to fixed position */
+    top: 0;
+    /* Position the navbar at the top of the page */ 
+    left: 0px;
+    min-height: 60px !important;
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+/* The "responsive" class is added to the topnav with JavaScript when the user clicks on the icon. This class makes the topnav look good on small screens (display the links vertically instead of horizontally) */
+
+@media screen and (max-width: 768px) {
+  .topnav.responsive {
+    position: relative;
+  }
+  .topnav.responsive a.icon {
+    position: fixed;
+    left: 0;
+    top: 0;
+  }
+  .topnav.responsive a.icon-left {
+    position: absolute;
+    right: 45px;
+    top: 0;
+    outline: 0;
+  }
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+    outline: 0;
+  }
+  .invisible-brand {
+    display: block !important;
+  }
+  .invisible-menu {
+    display: none !important;
+  }
+}
+
+/* SIDEBAR START */
+
+.topnav .sidebarmenu {
+  margin: 0px !important;
+  padding: 0px !important;
+  font-weight: normal !important;
+  cursor: pointer;
+  padding: 14px 18px;
+}
+
+.sidenav {
+  height: 100%;
+  min-height: 100%;
+  max-height: 999999px;
+  /*width: 250px;*/
+  width: 0px;
+  position: fixed;
+  z-index: 999999;
+  top: 0;
+  left: 0;
+  background-color: #ffffff;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  padding-top: 20px;
+  padding-bottom: 50px;
+  transition: 0.5s;
+}
+
+.sidenav a,
+.sidenav p a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  color: #2f3640 !important;
+  display: block;
+  transition: 0.5s;
+}
+
+.sidenav p {
+  margin: 0px;
+}
+
+.sidenav p a .margin-zero {
+  margin: 0px;
+}
+
+.sidenav a:hover,
+.sidenav p a:hover {
+  color: #2f3640;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  margin-left: 20px;
+}
+
+.sidenav .brandname {
+  position: absolute;
+  top: 15px;
+  left: 0px;
+  font-weight: normal;
+  margin-right: 20px;
+  color: #013243 !important;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {
+    padding-top: 15px;
+  }
+  .sidenav a {
+    font-size: 13px;
+  }
+}
+
+/* SIDEBAR END */
+
+/* ACCORDIAN SIDEBAR START */
+
+/* Style the buttons that are used to open and close the accordion panel */
+
+.accordion {
+  background-color: #ffffff;
+  color: slategray;
+  cursor: pointer;
+  padding: 10px 30px;
+  width: 100% !important;
+  text-align: left;
+  border: 1px dotted #ffffff;
+  outline: none;
+  transition: 0.5s;
+  z-index: 10;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+
+.active-sidebar,
+.accordion:hover {
+  border: 1px dotted rgba(240, 239, 239, 0.8);
+  color: slategray;
+}
+
+.button-plus-span {
+  padding: 4px 4px 1px 4px;
+  background-color: #2980b9;
+  color: #f9f9f9;
+  border-radius: 2px;
+}
+
+/* Style the accordion panel. Note: hidden by default */
+
+.panel-sidebar {
+  padding: 0 12px;
+  background-color: #ffffff;
+  display: none;
+  overflow: hidden;
+}
+
+.input-sidebar:focus,
+.input-sidebar:active {
+  outline: none !important;
+}
+
+.seperator {
+  border-color: rgba(240, 239, 239, 0.8);
+}
+
+/* ACCORDIAN SIDEBAR STOP */
+
+/* CONTENT SECTION START */
+
+.main {
+  min-width: 600px;
+  margin: 30px;
+  margin-left: 0px;
+  margin-top: 60px;
+  margin-bottom: 15px;
+  padding: 30px;
+}
+
+@media screen and (max-width: 768px) {
+  .main {
+    min-width: 300px;
+    padding: 15px;
+  }
+}
+
+/* CONTENT SECTION END */
+
+
+/* FOOTER SUPPORT */
+
+/* Footer */
+
+.list-inline {
+  padding-left: 0;
+  margin-left: -5px;
+  list-style: none;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 50px;
+  text-transform: uppercase;
+}
+
+.list-unstyled {
+  -webkit-padding-start: 10px !important;
+  line-height: 2em;
+}
+
+.list-inline-item {
+  display: inline-block
+}
+
+.list-inline-item:not(:last-child) {
+  margin-right: 5px
+}
+
+#footer {
+  background: #fff !important;
+  z-index: 0 !important;
+}
+
+#footer h5 {
+  padding-left: 20px;
+  padding-bottom: 6px;
+  margin-bottom: 20px;
+  color: #013243 !important;
+}
+
+#footer a {
+  color: #2980b9 !important;
+  text-decoration: none !important;
+  background-color: transparent;
+  -webkit-text-decoration-skip: objects;
+}
+
+#footer ul.social li {
+  padding: 3px 0;
+  list-style-type: none;
+}
+
+#footer ul.social li a i {
+  margin-right: 5px;
+  font-size: 25px;
+}
+
+#footer ul.social li:hover a i {
+  font-size: 30px;
+  margin-top: -10px;
+}
+
+#footer ul.social li a,
+#footer ul.quick-links li a {
+  color: #2980b9 !important;
+}
+
+#footer ul.social li a:hover {
+  color: #2980b9 !important;
+}
+
+#footer ul.quick-links li {
+  list-style-type: none;
+}
+
+#footer ul.quick-links li:hover {}
+
+#footer ul.quick-links li a i {
+  margin-right: 5px;
+}
+
+#footer ul.quick-links li:hover a i {
+  font-weight: 700;
+}
+
+.footer-copyright {
+  padding-top: 3px;
+  padding-bottom: 3px;
+  text-align: center;
+}
+
+.social-networks {
+  text-align: center;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+
+@media (max-width:767px) {
+  #footer h4 {
+    padding-left: 0;
+    border-left: transparent;
+    padding-bottom: 0px;
+    margin-bottom: 10px;
+  }
+  #footer h5 {
+    padding-left: 0px;
+  }
+  .fab-icon {
+    top: 65% !important;
+    right: 10%;
+  }
+  #footer ul.quick-links li {
+    margin-left: -30px;
+  }
+}
+
+
+.fab-icon {
+  z-index: 2;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  top: 100px;
+  right: 5%;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  cursor: pointer;
+  background: #2980b9;
+}
+
+/* search bar START */
+
+.searchicon-mob-img {
+  width: 10px; height: 10px;
+}
+
+.searchbar {
+  overflow: hidden;
+  background-color: transparent;
+  position: fixed;
+  right: 60px;
+  z-index: 2;
+  padding: 10px 10px 10px 10px;
+  background: #fff !important;
+  border: 1px dotted #eee;
+}
+
+.searchbar .search-container {
+  float: right;
+}
+
+.searchbar input[type=text] {
+  padding: 6px;
+  margin-top: 8px;
+  margin-left: 8px;
+  margin-bottom: 8px;
+  font-size: 11px;
+  border: 1px solid #ddd;
+}
+
+.searchbar .search-container button {
+  float: right;
+  padding: 6px 10px;
+  margin-top: 8px;
+  margin-right: 16px;
+  background: #2980b9;
+  color: #fff;
+  font-size: 12px;
+  border: none;
+  cursor: pointer;
+}
+
+.searchbar .search-container button:hover {
+  background: #ccc;
+}
+
+@media screen and (max-width:767px) {
+  .searchbar {
+    position: fixed;
+    top: 30%;
+    margin: 5px 0px 5px 0px;
+    padding: 15px 15px 15px 15px;
+    background: #fff !important;
+    border: 1px dotted #eee;
+  }
+  .searchbar .search-container {
+    float: none;
+    text-align: center;
+  }
+  .searchbar a, .searchbar input[type=text], .searchbar .search-container button {
+    float: none;
+    display: block;
+    text-align: center;
+    margin: 0;
+    font-size: 18px !important;
+  }
+
+  .searchbar input[type=text], .searchbar .search-container button {
+    border: 1px solid #ccc;  
+    padding-right: 0px;
+    padding-left: 0px;
+    margin-bottom: 1px;
+    width: calc(100% - 5px) !important;
+  }
+  .searchbar .search-container button {
+    width: calc(100% - 3px) !important;
+  }
+}
+
+@media screen and (max-width:300px) {
+  .searchbar a, .searchbar input[type=text], .searchbar .search-container button {
+    float: none;
+    display: block;
+    text-align: center;
+    width: 125px !important;
+    min-width: 125px !important;
+    margin: 0;
+    padding: 12px;
+  }
+}
+
+/* search bar END */
+
+
+/* MENUBAR COMPONENT END */
+
+/* SLIDER COMPONENT START */
+
+.mySlides {
+  display: none;
+}
+
+img {
+  vertical-align: middle;
+}
+
+/* Slideshow container */
+
+.slideshow-container {
+  max-width: auto;
+  max-height: 400px !important;
+  height: 400px !important;
+  position: relative;
+  margin: auto;
+}
+
+/* Next & previous buttons */
+
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  background-color: #fff;
+}
+
+/* Position the "next button" to the right */
+
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+
+.prev:hover,
+.next:hover {
+  background-color: #fff;
+}
+
+/* Caption text */
+
+.text {
+  color: #FFF;
+  font-size: 15px;
+  padding: 10px 0px 10px 0px;
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  text-align: center;
+  background-color: #000;
+  opacity: 0.7;
+}
+
+/* Number text (1/3 etc) */
+
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active,
+.dot:hover {
+  background-color: #717171;
+}
+
+/* Fading animation */
+
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {
+    opacity: .4
+  }
+  to {
+    opacity: 1
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: .4
+  }
+  to {
+    opacity: 1
+  }
+}
+
+/* On smaller screens, decrease text size */
+
+@media only screen and (max-width: 300px) {
+  .prev,
+  .next,
+  .text {
+    font-size: 11px
+  }
+
+}
+
+
+/* SLIDER COMPONENT END  */
+
+.padding-zero {
+  padding: 0px !important;
+}
+.margin-auto {
+  margin: auto !important;
+}
+.margin-bottom-zero {
+  margin-bottom: 0px !important;
+}
+.margin-bottom-five {
+  margin-bottom: 5px !important;
+}
+.margin-top-zero {
+  margin-top: 0px !important;
+}
+.margin-left-zero {
+  margin-left: 0px !important;
+}
+.margin-top-fifty {
+  margin-top: 50px !important;
+}
+.border-bottom-gray {
+  border-bottom: 1px solid #e7e7e7;
+}
+.float-right {
+  float: right !important;
+}
+.float-left {
+  float: left !important;
+}
+.float-center {
+  text-align: center !important;
+}
+
+.pad-left-right {
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+}
+
+/* COLUMN GRID */
+
+.container {
+  width: 95%;
+  /* Changed from 100% */
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.visible-mobile {
+  display: none;
+}
+
+@media (max-width: 992px) {
+  /* Added New */
+  .container {
+    width: 80%;
   }
   .visible-mobile {
     display: block !important;
@@ -1407,822 +2270,3 @@ pre[class*="language-"] {
 }
 
 /* COLUMN GRID END */
-
-/* SEARCH LIST COMPONENT START */
-
-.search-text {
-  font-weight: normal !important; font-size: 13px; color: #000;
-}
-@media screen and (max-width: 768px) {
-  .search-text {
-    font-size: 13px;
-  }
-}
-
-/* SEARCH LIST COMPONENT END */
-
-/* HIGHLIGHT BLOCK COMPONENT START */
-
-.service-sec .heading { float: left; width: 100%; margin-bottom: 40px; text-align:center; }
-.service-sec h2 { display: block; text-transform: capitalize; font-weight: 600; color: #0297FF; font-size: 20px; }
-.service-sec h2 small { color: #222; display: block; font-size:18px; margin-bottom: 18px; }
-.serviceBox{text-align: center;margin-top: 30px;position: relative;z-index: 1; margin-bottom: 60px; }
-.serviceBox .service-icon{width: 78px;height: 78px;border-radius:3px;background: #fff;margin: 0 auto;position: absolute;top: -34px;left: 0;right: 0;z-index: 1;transition: all 0.3s ease-out 0s;}
-.serviceBox:hover .service-icon{transform: rotate(45deg);}
-.serviceBox .service-icon span{display: inline-block;width: 60px;height: 60px;line-height: 60px;border-radius:3px;background: #727cb6;font-size: 30px;color: #fff;margin: auto;position: absolute;top: 0;left: 0;bottom: 0;right: 0;transition: all 0.3s ease-out 0s;}
-.serviceBox .service-icon span i{transition: all 0.3s ease-out 0s;}
-.serviceBox:hover .service-icon span i{transform: rotate(-45deg);}
-.serviceBox .service-content{max-height: 300px !important; background: #fff;border: 1px solid #e7e7e7;border-radius: 3px;padding: 55px 15px;position: relative;}
-.serviceBox .service-content:before{content: "";display: block;width: 80px;height: 80px;border: 1px solid #e7e7e7;border-radius: 3px;margin: 0 auto;position: absolute;top: -37px;left: 0;right: 0;z-index: 1;transition: all 0.3s ease-out 0s;}
-.serviceBox:hover .service-content:before{transform: rotate(45deg);}
-.serviceBox .title{max-height: 1em; font-size: 17px;font-weight: 500;color: #324545;text-transform: uppercase;margin: 0 0 25px 0;position: relative;transition: all 0.3s ease-out 0s;}
-.serviceBox:hover .title{color: #727cb6;}
-.serviceBox .description{font-size: 14px;font-weight: 500;line-height: 24px;margin-bottom: 0;}
-.serviceBox .read-more{display: block;width: 40px;height: 40px;line-height: 38px;border-radius: 50%;background: #fff;border: 1px solid #e7e7e7;font-size: 14px;color: #c4c2c2;margin: 0 auto;position: absolute;bottom: -17px;left: 0; right: 0;transition: all 0.3s ease-out 0s;}
-.serviceBox .read-more:hover{border: 1px solid #727cb6;color: #727cb6;text-decoration: none;}
-.serviceBox.green .service-icon span{ background: #008b8b; }
-.serviceBox.blue .service-icon span{ background: #3498db; }
-.serviceBox.orange .service-icon span{ background: #e67e22; }
-.serviceBox.green:hover .title{ color: #008b8b; }
-.serviceBox.blue:hover .title{ color: #3498db; }
-.serviceBox.orange:hover .title{ color: #e67e22; }
-.serviceBox:hover .read-more{border: 1px solid #727cb6;color: #727cb6;}
-.serviceBox.green:hover .read-more{border: 1px solid #008b8b;color: #008b8b;}
-.serviceBox.blue:hover .read-more{border: 1px solid #3498db;color: #3498db;}
-.serviceBox.orange:hover .read-more{border: 1px solid #e67e22;color: #e67e22;}
-
-@media screen and (max-width: 768px) {
-.service-sec{
-  left: 5%;
-  position: relative;
-}
-.service-sec  {
-  text-align: center !important;
-}
-}
-/* HIGHLIGHT BLOCK COMPONENT END */
-
-
-
-/* MENUBAR COMPONENT START */
-
-/* BASE FONT COLOR START */
-
-.font-bold {
-  font-weight: bold !important;
-}
-
-.fontcolor-default {
-  color: slategray !important;
-}
-
-.fontcolor-default:hover {
-  color: #013243 !important;
-}
-
-.fontcolor-primary {
-  color: #013243 !important;
-}
-
-.fontcolor-primary:hover {
-  color: #013243 !important;
-}
-
-.fontsize-eighteen {
-  font-size: 18px;
-}
-
-.float-right {
-  float: right !important;
-}
-
-.float-left {
-  float: left !important;
-}
-
-.float-center {
-  text-align: center !important;
-}
-
-.pad-left-right {
-  padding-left: 10px !important;
-  padding-right: 10px !important;
-}
-
-/* BASE FONT COLOR END */
-
-/* Add a black background color to the top navigation */
-
-.logoicon {
-  width:15px; height: 15px; top:2px; position: relative;
-}
-
-.topnav {
-  background-color: #ffffff;
-  overflow: hidden;
-  position: fixed !important;
-  /* Set the navbar to fixed position */
-  top: 0;
-  /* Position the navbar at the top of the page */
-  left: 0px;
-  min-height: 50px !important;
-  width: 100%;
-  max-width: 100%;
-  opacity: 0.75;
-  z-index: 999999 !important;
-}
-
-/* Style the links inside the navigation bar */
-
-.topnav a {
-  float: left;
-  display: block;
-  color: #2f3640 !important;
-  text-align: center;
-  padding: 22px 22px;
-  text-decoration: none;
-  outline: 0;
-  cursor: pointer;
-}
-
-.topnav-trans {}
-
-/* Change the color of links on hover */
-
-.topnav a:hover,
-.topnav a:active {
-  text-decoration: none !important;
-  outline: 0;
-  /*background-color: #23527c;
-    color: #ffffff;*/
-}
-
-.topnav-trans:hover,
-.topnav-trans:active {
-  /*
-    top: 1px;
-    position: relative;
-    -webkit-transition: 1s all ease-in-out;
-	-moz-transition: 1s all ease-in-out;
-    transition: 1s all ease-in-out;
-    */
-}
-
-/* Add an active class to highlight the current page */
-
-.active {
-  /*background-color: #23527c;
-    color: white !important;*/
-}
-
-/* Hide the link that should open and close the topnav on small screens */
-
-.topnav .icon,
-.topnav .icon-left {
-  display: none;
-}
-
-.topnav-menuicon-img {
-  width: 12px; height: 12px;
-}
-
-.brand {
-  color: #013243 !important;
-  font-weight: 600;
-  font-size: 1.3em;
-  opacity: 1;
-}
-
-.brand-position,
-.menu-position {
-  top: 5px !important;
-  position: relative;
-}
-
-.invisible-menu {
-  display: block !important;
-}
-
-.invisible-brand {
-  display: none !important;
-}
-
-.pad-top-menuicon {
-  top: 3px !important;
-  position: relative;
-}
-
-/* When the screen is less than 768 pixels wide, hide all links, except for the first one ("Home"). Show the link that contains should open and close the topnav (.icon) */
-
-@media screen and (max-width: 768px) {
-  .topnav a:not(:first-child) {
-    display: none;
-  }
-  .topnav a.icon {
-    float: right;
-    display: block;
-    position: fixed;
-    left: 0;
-    outline: 0;
-  }
-  .topnav a.icon-left {
-    float: right;
-    display: block;
-    position: fixed;
-    right: 0;
-    top: -5px;
-    outline: 0;
-  }
-  .topnav {
-    background-color: #ffffff;
-    overflow: hidden;
-    position: fixed !important;
-    /* Set the navbar to fixed position */
-    top: 0;
-    /* Position the navbar at the top of the page */ 
-    left: 0px;
-    min-height: 60px !important;
-    width: 100%;
-    max-width: 100%;
-  }
-}
-
-/* The "responsive" class is added to the topnav with JavaScript when the user clicks on the icon. This class makes the topnav look good on small screens (display the links vertically instead of horizontally) */
-
-@media screen and (max-width: 768px) {
-  .topnav.responsive {
-    position: relative;
-  }
-  .topnav.responsive a.icon {
-    position: fixed;
-    left: 0;
-    top: 0;
-  }
-  .topnav.responsive a.icon-left {
-    position: absolute;
-    right: 45px;
-    top: 0;
-    outline: 0;
-  }
-  .topnav.responsive a {
-    float: none;
-    display: block;
-    text-align: left;
-    outline: 0;
-  }
-  .invisible-brand {
-    display: block !important;
-  }
-  .invisible-menu {
-    display: none !important;
-  }
-}
-
-/* SIDEBAR START */
-
-.topnav .sidebarmenu {
-  margin: 0px !important;
-  padding: 0px !important;
-  font-weight: normal !important;
-  cursor: pointer;
-  padding: 14px 18px;
-}
-
-.sidenav {
-  height: 100%;
-  min-height: 100%;
-  max-height: 999999px;
-  /*width: 250px;*/
-  width: 0px;
-  position: fixed;
-  z-index: 999999;
-  top: 0;
-  left: 0;
-  background-color: #ffffff;
-  overflow-x: hidden;
-  overflow-y: scroll;
-  padding-top: 20px;
-  padding-bottom: 50px;
-  /*border-right: 1px dotted rgba(240, 239, 239, 0.8); */
-  transition: 0.5s;
-}
-
-.sidenav a,
-.sidenav p a {
-  padding: 8px 8px 8px 32px;
-  text-decoration: none;
-  color: #2f3640 !important;
-  display: block;
-  transition: 0.5s;
-}
-
-.sidenav p {
-  margin: 0px;
-}
-
-.sidenav p a .margin-zero {
-  margin: 0px;
-}
-
-.sidenav a:hover,
-.sidenav p a:hover {
-  color: #2f3640;
-}
-
-.sidenav .closebtn {
-  position: absolute;
-  top: 10px;
-  right: 20px;
-  margin-left: 20px;
-}
-
-.sidenav .brandname {
-  position: absolute;
-  top: 15px;
-  left: 0px;
-  font-weight: normal;
-  margin-right: 20px;
-  color: #013243 !important;
-}
-
-@media screen and (max-height: 450px) {
-  .sidenav {
-    padding-top: 15px;
-  }
-  .sidenav a {
-    font-size: 13px;
-  }
-}
-
-/* SIDEBAR END */
-
-/* ACCORDIAN SIDEBAR START */
-
-/* Style the buttons that are used to open and close the accordion panel */
-
-.accordion {
-  background-color: #ffffff;
-  color: slategray;
-  cursor: pointer;
-  padding: 10px 30px;
-  width: 100% !important;
-  text-align: left;
-  border: 1px dotted #ffffff;
-  outline: none;
-  transition: 0.5s;
-  z-index: 10;
-}
-
-/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
-
-.active-sidebar,
-.accordion:hover {
-  border: 1px dotted rgba(240, 239, 239, 0.8);
-  color: slategray;
-}
-
-.button-plus-span {
-  padding: 4px 4px 1px 4px;
-  background-color: #2980b9;
-  color: #f9f9f9;
-  border-radius: 2px;
-}
-
-/* Style the accordion panel. Note: hidden by default */
-
-.panel-sidebar {
-  padding: 0 12px;
-  background-color: white;
-  display: none;
-  overflow: hidden;
-}
-
-.input-sidebar:focus,
-.input-sidebar:active {
-  outline: none !important;
-}
-
-.seperator {
-  border-color: rgba(240, 239, 239, 0.8);
-}
-
-/* ACCORDIAN SIDEBAR STOP */
-
-/* CONTENT SECTION START */
-
-.main {
-  min-width: 600px;
-  margin: 30px;
-  margin-left: 0px;
-  margin-top: 60px;
-  margin-bottom: 15px;
-  padding: 30px;
-}
-
-@media screen and (max-width: 768px) {
-  .main {
-    min-width: 300px;
-    padding: 15px;
-  }
-}
-
-/* CONTENT SECTION END */
-
-
-/* FOOTER SUPPORT */
-
-/* Footer */
-
-.list-inline {
-  padding-left: 0;
-  margin-left: -5px;
-  list-style: none;
-}
-
-.section-title {
-  text-align: center;
-  margin-bottom: 50px;
-  text-transform: uppercase;
-}
-
-.list-unstyled {
-  -webkit-padding-start: 10px !important;
-  line-height: 2em;
-}
-
-.list-inline-item {
-  display: inline-block
-}
-
-.list-inline-item:not(:last-child) {
-  margin-right: 5px
-}
-
-#footer {
-  background: #fff !important;
-  z-index: 0 !important;
-}
-
-#footer h5 {
-  padding-left: 20px;
-  padding-bottom: 6px;
-  margin-bottom: 20px;
-  color: #013243 !important;
-}
-
-#footer a {
-  color: #2980b9 !important;
-  text-decoration: none !important;
-  background-color: transparent;
-  -webkit-text-decoration-skip: objects;
-}
-
-#footer ul.social li {
-  padding: 3px 0;
-  list-style-type: none;
-}
-
-#footer ul.social li a i {
-  margin-right: 5px;
-  font-size: 25px;
-}
-
-#footer ul.social li:hover a i {
-  font-size: 30px;
-  margin-top: -10px;
-}
-
-#footer ul.social li a,
-#footer ul.quick-links li a {
-  color: #2980b9 !important;
-}
-
-#footer ul.social li a:hover {
-  color: #2980b9 !important;
-}
-
-#footer ul.quick-links li {
-  list-style-type: none;
-}
-
-#footer ul.quick-links li:hover {}
-
-#footer ul.quick-links li a i {
-  margin-right: 5px;
-}
-
-#footer ul.quick-links li:hover a i {
-  font-weight: 700;
-}
-
-.footer-copyright {
-  padding-top: 3px;
-  padding-bottom: 3px;
-  text-align: center;
-}
-
-.social-networks {
-  text-align: center;
-  padding-top: 15px;
-  padding-bottom: 15px;
-}
-
-
-@media (max-width:767px) {
-  #footer h4 {
-    padding-left: 0;
-    border-left: transparent;
-    padding-bottom: 0px;
-    margin-bottom: 10px;
-  }
-  #footer h5 {
-    padding-left: 0px;
-  }
-  .fab-icon {
-    top: 65% !important;
-    right: 10%;
-  }
-  #footer ul.quick-links li {
-    margin-left: -30px;
-  }
-}
-
-
-.fab-icon {
-  z-index: 2;
-  position: fixed;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  top: 100px;
-  right: 5%;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  cursor: pointer;
-  background: #2980b9;
-}
-
-/* search bar START */
-
-.searchicon-mob-img {
-  width: 10px; height: 10px;
-}
-
-.searchbar {
-  overflow: hidden;
-  background-color: transparent;
-  position: fixed;
-  right: 60px;
-  z-index: 2;
-  padding: 10px 10px 10px 10px;
-  background: #fff !important;
-  border: 1px dotted #eee;
-}
-
-.searchbar .search-container {
-  float: right;
-}
-
-.searchbar input[type=text] {
-  padding: 6px;
-  margin-top: 8px;
-  margin-left: 8px;
-  margin-bottom: 8px;
-  font-size: 11px;
-  border: 1px solid #ddd;
-}
-
-.searchbar .search-container button {
-  float: right;
-  padding: 6px 10px;
-  margin-top: 8px;
-  margin-right: 16px;
-  background: #2980b9;
-  color: #fff;
-  font-size: 12px;
-  border: none;
-  cursor: pointer;
-}
-
-.searchbar .search-container button:hover {
-  background: #ccc;
-}
-
-@media screen and (max-width:767px) {
-  .searchbar {
-    position: fixed;
-    top: 30%;
-    margin: 5px 0px 5px 0px;
-    padding: 15px 15px 15px 15px;
-    background: #fff !important;
-    border: 1px dotted #eee;
-  }
-  .searchbar .search-container {
-    float: none;
-    text-align: center;
-  }
-  .searchbar a, .searchbar input[type=text], .searchbar .search-container button {
-    float: none;
-    display: block;
-    text-align: center;
-    margin: 0;
-    font-size: 18px !important;
-  }
-
-  .searchbar input[type=text], .searchbar .search-container button {
-    border: 1px solid #ccc;  
-    padding-right: 0px;
-    padding-left: 0px;
-    margin-bottom: 1px;
-    width: calc(100% - 5px) !important;
-  }
-  .searchbar .search-container button {
-    width: calc(100% - 3px) !important;
-  }
-}
-
-@media screen and (max-width:300px) {
-  .searchbar a, .searchbar input[type=text], .searchbar .search-container button {
-    float: none;
-    display: block;
-    text-align: center;
-    width: 125px !important;
-    min-width: 125px !important;
-    margin: 0;
-    padding: 12px;
-  }
-}
-
-/* search bar END */
-
-
-/* MENUBAR COMPONENT END */
-
-/* SLIDER COMPONENT START */
-
-.mySlides {
-  display: none;
-}
-
-img {
-  vertical-align: middle;
-}
-
-/* Slideshow container */
-
-.slideshow-container {
-  max-width: auto;
-  max-height: 400px !important;
-  height: 400px !important;
-  position: relative;
-  margin: auto;
-}
-
-/* Next & previous buttons */
-
-.prev,
-.next {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  width: auto;
-  padding: 16px;
-  margin-top: -22px;
-  color: white;
-  font-weight: bold;
-  font-size: 18px;
-  transition: 0.6s ease;
-  border-radius: 0 3px 3px 0;
-  background-color: #fff;
-}
-
-/* Position the "next button" to the right */
-
-.next {
-  right: 0;
-  border-radius: 3px 0 0 3px;
-}
-
-/* On hover, add a black background color with a little bit see-through */
-
-.prev:hover,
-.next:hover {
-  background-color: #fff;
-}
-
-/* Caption text */
-
-.text {
-  color: #FFF;
-  font-size: 15px;
-  padding: 10px 0px 10px 0px;
-  position: absolute;
-  bottom: 20px;
-  width: 100%;
-  text-align: center;
-  background-color: #000;
-  opacity: 0.7;
-}
-
-/* Number text (1/3 etc) */
-
-.numbertext {
-  color: #f2f2f2;
-  font-size: 12px;
-  padding: 8px 12px;
-  position: absolute;
-  top: 0;
-}
-
-/* The dots/bullets/indicators */
-
-.dot {
-  cursor: pointer;
-  height: 15px;
-  width: 15px;
-  margin: 0 2px;
-  background-color: #bbb;
-  border-radius: 50%;
-  display: inline-block;
-  transition: background-color 0.6s ease;
-}
-
-.active,
-.dot:hover {
-  background-color: #717171;
-}
-
-/* Fading animation */
-
-.fade {
-  -webkit-animation-name: fade;
-  -webkit-animation-duration: 1.5s;
-  animation-name: fade;
-  animation-duration: 1.5s;
-}
-
-@-webkit-keyframes fade {
-  from {
-    opacity: .4
-  }
-  to {
-    opacity: 1
-  }
-}
-
-@keyframes fade {
-  from {
-    opacity: .4
-  }
-  to {
-    opacity: 1
-  }
-}
-
-/* On smaller screens, decrease text size */
-
-@media only screen and (max-width: 300px) {
-  .prev,
-  .next,
-  .text {
-    font-size: 11px
-  }
-
-}
-
-
-/* SLIDER COMPONENT END  */
-
-.padding-zero {
-  padding: 0px !important;
-}
-.margin-auto {
-  margin: auto !important;
-}
-.margin-bottom-zero {
-  margin-bottom: 0px !important;
-}
-.margin-bottom-five {
-  margin-bottom: 5px !important;
-}
-.margin-top-zero {
-  margin-top: 0px !important;
-}
-.margin-left-zero {
-  margin-left: 0px !important;
-}
-.margin-top-fifty {
-  margin-top: 50px !important;
-}
-
-.font-normal-slate {
-  font-weight: normal !important; color: slategray !important;
-}
-.border-bottom-gray {
-  border-bottom: 1px solid #e7e7e7;
-}
-.float-right {
-  float: right;
-}

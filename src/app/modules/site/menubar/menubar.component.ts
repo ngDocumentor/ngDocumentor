@@ -24,8 +24,6 @@ export class MenubarComponent implements OnInit, AfterViewChecked {
 
   @ViewChild('searchform') searchform: any;
 
-  searchformval: String = '';
-
   @Input('brandname') brandname: string;
 
   @Input('brandicon') brandicon: string = '';
@@ -47,6 +45,8 @@ export class MenubarComponent implements OnInit, AfterViewChecked {
   menuclosed: boolean = true;
 
   showsearch: boolean = false;
+
+  searchformval: String = '';
 
   searchicon: boolean = true;
 
@@ -120,7 +120,7 @@ export class MenubarComponent implements OnInit, AfterViewChecked {
    */
   routeMain(e): void {
     e.preventDefault();
-    window.location.href = '#/home';
+    window.location.href = '#/';
     window.scroll(0, 0);
   }
 
@@ -260,7 +260,11 @@ export class MenubarComponent implements OnInit, AfterViewChecked {
     }
 
     if (!!e.preventDefault) {
-      searchValue = this.searchform.nativeElement.value;
+      if (!!this.searchform.nativeElement.value) {
+        searchValue = this.searchform.nativeElement.value;
+      } else {
+        return;
+      }
     } else {
       searchValue = decodeURIComponent(window.location.href.split('#/#/?search=')[1]);
       if (!!this.searchform) {
@@ -272,7 +276,7 @@ export class MenubarComponent implements OnInit, AfterViewChecked {
       this._h.fileData = null;
       window.location.href = '#/#/?search=' + searchValue;
     }
-    if (!!searchValue && searchValue !== '') {
+    if (!!searchValue && searchValue !== '' && searchValue != null) {
       this._h.searchValue = searchValue;
       this._wksrv.postMessage({
         action: 'search',
