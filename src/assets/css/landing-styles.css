@@ -14,16 +14,15 @@
 
   @media screen and (max-width: 768px) {
     .highlighter-img {
-      top:25px; left:0%; width: auto !important; margin: auto; bottom: 25px; position:relative;
+      top:40px; left:0%; width: auto !important; margin: auto; bottom: 25px; position:relative;
     }
     .highlighter-text-landing, .highlighter-img, .highlighter-text  {
       text-align: center !important;
     }
-    
   }
-  
+
   .highlighter-img-size {
-    width: 100%;height: 100%; max-width: 150px !important; max-height: 150px !important;
+    width: 50%;height: 100%; max-width: 150px !important; max-height: 150px !important;
   }
   
   .highlighter-text {
