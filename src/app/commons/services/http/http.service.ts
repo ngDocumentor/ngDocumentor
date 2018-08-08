@@ -9,6 +9,7 @@ import { Menu, MenuLinks } from '../../../commons/interfaces/menu/menu';
 import { Sidebar, SidebarLinks, SidebarParentLinks } from '../../../commons/interfaces/sidebar/sidebar';
 import { Footer } from '../../../commons/interfaces/footer/footer';
 
+declare var settingsFile: string;
 
 @Injectable({
   providedIn: 'root'
@@ -52,7 +53,7 @@ export class HttpService {
 
   footernav: any;
 
-  settingsSrc: string = 'assets/config/settings.json';
+  settingsSrc: string = 'assets/config/settings.' + settingsFile;
 
   topnavItems: MenuLinks[] = [];
 
