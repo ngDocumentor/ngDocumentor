@@ -59,7 +59,7 @@ sidebar:
     link: "/"
   - tag: Getting Started - 10 Mins
     link: "/intro"
-  - tag: Configuration Defs
+  - tag: Configuration Defns
     children:
     - tag: Introduction
       link: "/config"

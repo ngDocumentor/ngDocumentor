@@ -232,7 +232,7 @@
                         <tag>Brand Name / Logo</tag>
                     </element>
                 </children>
-                <tag>Configuration Defs</tag>
+                <tag>Configuration Defns</tag>
             </element>
             <element>
                 <link>/building</link>
