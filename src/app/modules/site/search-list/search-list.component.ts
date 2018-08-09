@@ -9,6 +9,7 @@ import { HttpService } from '../../../commons/services/http/http.service';
   styleUrls: ['./search-list.component.css']
 })
 export class SearchListComponent {
+
   /**
    *
    *

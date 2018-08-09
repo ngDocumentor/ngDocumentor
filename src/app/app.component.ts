@@ -12,6 +12,7 @@ import { Footer } from './commons/interfaces/footer/footer';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+
   /**
    *
    *

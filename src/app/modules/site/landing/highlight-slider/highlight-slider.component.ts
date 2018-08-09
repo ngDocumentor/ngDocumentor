@@ -7,6 +7,7 @@ import { HttpService } from '../../../../commons/services/http/http.service';
   styleUrls: ['./highlight-slider.component.css']
 })
 export class HighlightSliderComponent implements AfterViewInit {
+
   /**
    *
    *

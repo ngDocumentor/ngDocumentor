@@ -6,6 +6,7 @@ declare var PseudoWorker: any;
   providedIn: 'root'
 })
 export class WorkerService {
+
   /**
    *
    *

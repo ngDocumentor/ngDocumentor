@@ -7,6 +7,7 @@ import { HttpService } from '../../../../commons/services/http/http.service';
   styleUrls: ['./highlight-block.component.css']
 })
 export class HighlightBlockComponent {
+
   /**
    *
    *
