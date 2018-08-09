@@ -19,11 +19,11 @@ export class HighlightSliderComponent implements AfterViewInit {
   constructor(public _h: HttpService) { }
 
   /**
-     *
-     *
-     * @param {*} n
-     * @memberof SliderComponent
-     */
+   *
+   *
+   * @param {*} n
+   * @memberof SliderComponent
+   */
   plusSlides(n): void {
     this.showSlides(this.slideIndex += n);
   }
@@ -66,8 +66,15 @@ export class HighlightSliderComponent implements AfterViewInit {
    * @memberof SliderComponent
    */
   ngAfterViewInit(): void {
-    if (!!this._h.homePage && !!this._h.homePage.type && this._h.homePage.type === 'landing' && !!this._h.homePage.highlighter && !!this._h.homePage.highlighter.type && this._h.homePage.highlighter.type === 'slider') {
+    if (!!this._h.homePage &&
+      !!this._h.homePage.type &&
+      this._h.homePage.type === 'landing' &&
+      !!this._h.homePage.highlighter &&
+      !!this._h.homePage.highlighter.type &&
+      this._h.homePage.highlighter.type === 'slider') {
+
       this.showSlides(this.slideIndex);
+
     }
   }
 

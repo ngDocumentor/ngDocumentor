@@ -464,13 +464,24 @@ export class MenubarComponent implements OnInit, AfterViewChecked {
     // But performance will be impacted since there is a check on domLoaded on every view change
     // TODO: Move to Observables.
     if (this._h.domLoaded !== true) {
-      if (!this.mobileAndTabletCheck() && !!this.searchform && this.searchform.nativeElement.value === '' && window.location.href.includes('#/#/?search=')) {
-        this.searchform.nativeElement.value = decodeURIComponent(window.location.href.split('#/#/?search=')[1]) ? decodeURIComponent(window.location.href.split('#/#/?search=')[1]) : '';
+      if (!this.mobileAndTabletCheck() &&
+        !!this.searchform &&
+        this.searchform.nativeElement.value === '' &&
+        window.location.href.includes('#/#/?search=')) {
+
+        this.searchform.nativeElement.value = decodeURIComponent(window.location.href.split('#/#/?search=')[1]) ?
+          decodeURIComponent(window.location.href.split('#/#/?search=')[1]) : '';
+
       }
-      if (!!this._h.fileUrl.includes('#/#/?search=') && this._h.topnavItems.length > 0 && this._h.sidebarItems.length > 0 && !!this._h.footerItems) {
+      if (!!this._h.fileUrl.includes('#/#/?search=') &&
+        this._h.topnavItems.length > 0 &&
+        this._h.sidebarItems.length > 0 &&
+        !!this._h.footerItems) {
+
         this.hashChangeFunction(window.location.href);
         this._h.domLoaded = true;
         console.log('Debug: Menubar AfterViewChecked', this._wksrv.searchResult);
+
       }
     }
   }
