@@ -21,7 +21,10 @@
 
   <ng-container *ngFor="let obj of topnavItems; let i = index;">
     <a *ngIf="obj.type != 'external'" href="{{ '#' + obj.link}}" class="topnav-trans">{{obj.tag ? obj.tag : 'No Tag'}}</a>
-    <a *ngIf="obj.type == 'external'" [attr.external]="obj" opennewwindow class="topnav-trans">{{obj.tag ? obj.tag : 'No Tag'}}</a>
+    <a *ngIf="obj.type == 'external'" [attr.external]="obj" opennewwindow class="topnav-trans">
+      {{obj.tag ? obj.tag : 'No Tag'}} 
+      <img src="/assets/img/externallink.svg" alt="External">
+    </a>
   </ng-container>
 
   <a href="javascript:void(0);" class="icon">
@@ -66,7 +69,10 @@
           <p *ngFor="let dyobj of obj.children; let j = index;">
               <a *ngIf="dyobj.type != 'external'" (click)="closeMobileNav(dyobj)" class="margin-zero fontcolor-primary" [href]="dyobj.link ? (dyobj.link.includes('http') ? dyobj.link : '#' + dyobj.link) : '#/'">{{dyobj.tag ? dyobj.tag : 'No Tag'}}</a>
               <a *ngIf="dyobj.type == 'external'" (click)="closeMobileNav(dyobj)" [attr.external]="dyobj" opennewwindow class="margin-zero fontcolor-primary"
-                [href]="dyobj.link ? (dyobj.link.includes('http') ? dyobj.link : '#' + dyobj.link) : '#/'">{{dyobj.tag ? dyobj.tag : 'No Tag'}}</a>
+                [href]="dyobj.link ? (dyobj.link.includes('http') ? dyobj.link : '#' + dyobj.link) : '#/'">
+                {{dyobj.tag ? dyobj.tag : 'No Tag'}} 
+                <img src="/assets/img/externallink.svg" alt="External">
+              </a>
           </p>
         </div>
       </span>
@@ -75,7 +81,10 @@
         <p>
             <a *ngIf="obj.type != 'external'" (click)="closeMobileNav(obj)" class="margin-zero fontcolor-primary" [href]="obj.link ? (obj.link.includes('http') ? obj.link : '#' + obj.link) : '#/'">{{obj.tag ? obj.tag : 'No Tag'}}</a>
             <a *ngIf="obj.type == 'external'" (click)="closeMobileNav(obj)" [attr.external]="obj" opennewwindow class="margin-zero fontcolor-primary"
-              [href]="obj.link ? (obj.link.includes('http') ? obj.link : '#' + obj.link) : '#/'">{{obj.tag ? obj.tag : 'No Tag'}}</a>
+              [href]="obj.link ? (obj.link.includes('http') ? obj.link : '#' + obj.link) : '#/'">
+              {{obj.tag ? obj.tag : 'No Tag'}} 
+              <img src="/assets/img/externallink.svg" alt="External">
+            </a>
         </p>
       </span>
     </ng-container>
@@ -123,7 +132,10 @@
               <a href="{{obj.link ? (obj.link.includes('http') ? obj.link : '#' + obj.link) : '#/'}}">{{obj.tag}}</a>
             </li>
             <li *ngIf="obj.type == 'external'">
-              <a opennewwindow [attr.external]="obj" href="#">{{obj.tag}}</a>
+              <a opennewwindow [attr.external]="obj" href="#">
+                {{obj.tag}} 
+                <img src="/assets/img/externallink.svg" alt="External">
+              </a>
             </li>
           </ng-container>
         </ul>
@@ -137,7 +149,10 @@
           <a href="{{obj.link ? (obj.link.includes('http') ? obj.link : '#' + obj.link) : '#/'}}">{{obj.tag}}</a>
         </li>
         <li *ngIf="obj.type == 'external'" class="list-inline-item">
-          <a opennewwindow [attr.external]="obj" href="#">{{obj.tag}}</a>
+          <a opennewwindow [attr.external]="obj" href="#">
+            {{obj.tag}} 
+            <img src="/assets/img/externallink.svg" alt="External">
+          </a>
         </li>
       </ng-container>
     </ul>
@@ -148,7 +163,10 @@
       <a class="text-green ml-2" href="{{ footer.copyright.link ? (footer.copyright.link.includes('http') ? footer.copyright.link : '#' + footer.copyright.link) : '#/'}}">{{footer.copyright.tag}}</a> &copy; All rights Reserved.</p>
     <p *ngIf="footer.copyright.type == 'external'" class="h6">
       <a class="text-green ml-2" opennewwindow [attr.external]="{'link': footer.copyright.link, 'type': footer.copyright.type}"
-        [href]="footer.copyright.type ? footer.copyright.link ? (footer.copyright.link.includes('http') ? footer.copyright.link : '#' + footer.copyright.link) : '#/' : '#/'">{{footer.copyright.tag}}</a> &copy; All rights Reserved.</p>
+        [href]="footer.copyright.type ? footer.copyright.link ? (footer.copyright.link.includes('http') ? footer.copyright.link : '#' + footer.copyright.link) : '#/' : '#/'">
+        {{footer.copyright.tag}} 
+        <img src="/assets/img/externallink.svg" alt="External">
+      </a> &copy; All rights Reserved.</p>
   </div>
 </footer>
 
