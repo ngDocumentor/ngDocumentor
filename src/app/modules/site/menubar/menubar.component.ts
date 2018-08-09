@@ -228,7 +228,7 @@ export class MenubarComponent implements OnInit, AfterViewChecked {
    */
   routeMain(e): void {
     e.preventDefault();
-    if (!!this._h.homePage) {
+    if (!!this._h.homePage && !!this._h.homePage.url) {
       window.location.href = '#' + this._h.homePage.url;
     } else {
       window.location.href = '#/';
