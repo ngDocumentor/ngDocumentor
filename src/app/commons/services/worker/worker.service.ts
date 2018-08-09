@@ -7,10 +7,28 @@ declare var PseudoWorker: any;
 })
 export class WorkerService {
 
+  /**
+   *
+   *
+   * @type {*}
+   * @memberof WorkerService
+   */
   searchWorker: any;
 
+  /**
+   *
+   *
+   * @type {(SearchResult[] | null)}
+   * @memberof WorkerService
+   */
   searchResult: SearchResult[] | null = null;
 
+  /**
+   *
+   *
+   * @type {EventEmitter<any>}
+   * @memberof WorkerService
+   */
   searchResultEvent: EventEmitter<any>;
 
   constructor() {
@@ -19,8 +37,16 @@ export class WorkerService {
     this.searchResultEvent = new EventEmitter();
   }
 
+  /**
+   *
+   *
+   * @param {string} str
+   * @param {*} keysObj
+   * @returns {*}
+   * @memberof WorkerService
+   */
   keywordsSearch(str: string, keysObj: any): any {
-    return keysObj.meta.filter(function(meta) {
+    return keysObj.meta.filter(function (meta) {
       if (meta.keywords.includes(str)) {
         return meta;
       }
@@ -47,7 +73,7 @@ export class WorkerService {
   searchInit(fileUrl: string): void {
     if (!Worker) {
       this.searchWorker = new PseudoWorker(fileUrl);
-     } else {
+    } else {
       this.searchWorker = new Worker(fileUrl);
     }
   }

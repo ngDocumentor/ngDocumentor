@@ -1,0 +1,187 @@
+---
+filetype: markdown
+home:
+  type: landing
+  url: "/"
+  highlight:
+    type: text
+    img: "/assets/img/new-file-1.svg"
+    heading: ngDocumentor
+    description: ngDocumentor can be as simple as you need. One settings file to manage
+      the whole documentation site and related links. Text or Slider based highlighter
+      and landing page. Offline support / Basic simple PWA using Service Workers.
+      Max char size 250 chars.
+    buttontext: Getting Started
+    buttonurl: "/intro"
+  blocks:
+    heading: ngDocumentor features flexibility for your documentation or your Site
+    items:
+    - title: Reuse Markdown
+      description: Use your markdown readme files to create the documentation site.
+      url: "/"
+    - title: Offline Support
+      description: Basic offline support / PWA using service workers. May need rebuilding.
+      url: "/"
+    - title: Simpler Search
+      description: Simple keyword occurance based search that fits documentation sites
+        better. Search will be improved sooner.
+      url: "/"
+    - title: Configure & Deploy
+      description: Just configure the home page, top navigation, sidebar links, and
+        footer links in one settings file; and deploy to host
+      url: "/"
+    - title: Custom Router
+      description: A custom router that works even on HTML only hosts like Github
+        pages or Gitlab pages like a Single page application
+      url: "/"
+    - title: Extendable
+      description: Easily extendable, themable. Simple structure any can extend.
+      url: "/"
+    - title: Made with Angular
+      description: Managed dependencies and packages. Made with Angular
+      url: "/"
+topnav:
+  brandname: " { ngDocumentor } "
+  logo: "/assets/img/logo.png"
+  nav:
+  - tag: Getting Started
+    type: internal
+    link: "/intro"
+  - tag: Config .json Files
+    type: internal
+    link: "/config"
+  - tag: Github
+    type: external
+    link: https://github.com/ngDocumentor/ngDocumentor
+sidebar:
+  nav:
+  - tag: Home
+    link: "/"
+  - tag: Getting Started - 10 Mins
+    link: "/intro"
+  - tag: Configuration Defns
+    children:
+    - tag: Introduction
+      link: "/config"
+    - tag: Landing Page
+      link: "/landing"
+    - tag: Top Navigation
+      link: "/topnav"
+    - tag: SideBar Navigation
+      link: "/sidebar"
+    - tag: Footer Navigation
+      link: "/footer"
+    - tag: Search
+      link: "/searchdef"
+    - tag: Brand Name / Logo
+      link: "/brandname"
+  - tag: Building / Offline Viewing
+    link: "/building"
+  - tag: App Design
+    link: "/design"
+  - tag: Search Functionality
+    link: "/search"
+  - tag: Resources
+    children:
+    - tag: Clone Site Files - Github
+      type: external
+      link: https://github.com/ngDocumentor/ngDocumentor.github.io
+    - tag: Report Issues
+      type: external
+      link: https://github.com/ngDocumentor/ngDocumentor.github.io/issues
+    - tag: Development Branch - Github
+      type: external
+      link: https://github.com/ngDocumentor/ngDocumentor
+    - tag: Contribute / Pull Requests
+      type: external
+      link: https://github.com/ngDocumentor/ngDocumentor/issues
+    - tag: Generate .md Docs
+      link: "/genmd"
+    - tag: Generate .rst Docs (todo)
+      link: "/genrst"
+    - tag: App Todo
+      link: "/todo"
+    - tag: App Plans
+      link: "/plans"
+  - tag: Team & Credits
+    link: "/credits"
+footer:
+  copyright:
+    tag: " { ngDocumentor } "
+    link: "/home"
+    type: external
+    text: ngDocumentor is a simple markdown rendering site framework that works even
+      on HTML only hosts like github pages
+  nav:
+  - tag: Introduction
+    children:
+    - tag: Home
+      type: internal
+      link: "/home"
+    - tag: Getting Started
+      type: internal
+      link: "/intro"
+    - tag: Github
+      type: external
+      link: https://github.com/ngDocumentor/ngDocumentor
+  - tag: Configurations
+    children:
+    - tag: Top Nav
+      type: internal
+      link: "/topnav"
+    - tag: Sidebar Nav
+      type: internal
+      link: "/sidebar"
+    - tag: Footer Nav
+      type: internal
+      link: "/footer"
+  - tag: Resources
+    children:
+    - tag: App Design
+      type: internal
+      link: "/design"
+    - tag: Search Feature
+      type: internal
+      link: "/search"
+    - tag: Github
+      type: external
+      link: https://github.com/ngDocumentor/ngDocumentor
+  - tag: Github Repos
+    children:
+    - tag: Cloning Site Repo
+      type: internal
+      link: https://github.com/ngDocumentor/ngDocumentor.github.io
+    - tag: Building
+      type: internal
+      link: "/building"
+    - tag: Development/Build Repo
+      type: external
+      link: https://github.com/ngDocumentor/ngDocumentor
+  social:
+  - tag: Google +
+    type: internal
+    link: "/intro"
+  - tag: Twitter
+    type: internal
+    link: "/intro"
+  - tag: Facebook
+    type: internal
+    link: "/intro"
+  - tag: Github
+    type: external
+    link: https://github.com/ngDocumentor/ngDocumentor
+search:
+  type: keywords
+  stopwords: []
+  meta:
+  - url: "/home"
+    keywords:
+    - angular
+  - url: "/intro"
+    keywords:
+    - test
+  - url: "/building"
+    keywords:
+    - build
+    - test
+    - angular

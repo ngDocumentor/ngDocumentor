@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings>
+    <filetype>markdown</filetype>
+    <footer>
+        <copyright>
+            <link>/home</link>
+            <tag> { ngDocumentor } </tag>
+            <text>ngDocumentor is a simple markdown rendering site framework that works even on HTML only hosts like github pages</text>
+            <type>external</type>
+        </copyright>
+        <nav>
+            <element>
+                <children>
+                    <element>
+                        <link>/home</link>
+                        <tag>Home</tag>
+                        <type>internal</type>
+                    </element>
+                    <element>
+                        <link>/intro</link>
+                        <tag>Getting Started</tag>
+                        <type>internal</type>
+                    </element>
+                    <element>
+                        <link>https://github.com/ngDocumentor/ngDocumentor</link>
+                        <tag>Github</tag>
+                        <type>external</type>
+                    </element>
+                </children>
+                <tag>Introduction</tag>
+            </element>
+            <element>
+                <children>
+                    <element>
+                        <link>/topnav</link>
+                        <tag>Top Nav</tag>
+                        <type>internal</type>
+                    </element>
+                    <element>
+                        <link>/sidebar</link>
+                        <tag>Sidebar Nav</tag>
+                        <type>internal</type>
+                    </element>
+                    <element>
+                        <link>/footer</link>
+                        <tag>Footer Nav</tag>
+                        <type>internal</type>
+                    </element>
+                </children>
+                <tag>Configurations</tag>
+            </element>
+            <element>
+                <children>
+                    <element>
+                        <link>/design</link>
+                        <tag>App Design</tag>
+                        <type>internal</type>
+                    </element>
+                    <element>
+                        <link>/search</link>
+                        <tag>Search Feature</tag>
+                        <type>internal</type>
+                    </element>
+                    <element>
+                        <link>https://github.com/ngDocumentor/ngDocumentor</link>
+                        <tag>Github</tag>
+                        <type>external</type>
+                    </element>
+                </children>
+                <tag>Resources</tag>
+            </element>
+            <element>
+                <children>
+                    <element>
+                        <link>https://github.com/ngDocumentor/ngDocumentor.github.io</link>
+                        <tag>Cloning Site Repo</tag>
+                        <type>internal</type>
+                    </element>
+                    <element>
+                        <link>/building</link>
+                        <tag>Building</tag>
+                        <type>internal</type>
+                    </element>
+                    <element>
+                        <link>https://github.com/ngDocumentor/ngDocumentor</link>
+                        <tag>Development/Build Repo</tag>
+                        <type>external</type>
+                    </element>
+                </children>
+                <tag>Github Repos</tag>
+            </element>
+        </nav>
+        <social>
+            <element>
+                <link>/intro</link>
+                <tag>Google +</tag>
+                <type>internal</type>
+            </element>
+            <element>
+                <link>/intro</link>
+                <tag>Twitter</tag>
+                <type>internal</type>
+            </element>
+            <element>
+                <link>/intro</link>
+                <tag>Facebook</tag>
+                <type>internal</type>
+            </element>
+            <element>
+                <link>https://github.com/ngDocumentor/ngDocumentor</link>
+                <tag>Github</tag>
+                <type>external</type>
+            </element>
+        </social>
+    </footer>
+    <home>
+        <blocks>
+            <heading>ngDocumentor features flexibility for your documentation or your Site</heading>
+            <items>
+                <element>
+                    <description>Use your markdown readme files to create the documentation site.</description>
+                    <title>Reuse Markdown</title>
+                    <url>/</url>
+                </element>
+                <element>
+                    <description>Basic offline support / PWA using service workers. May need rebuilding.</description>
+                    <title>Offline Support</title>
+                    <url>/</url>
+                </element>
+                <element>
+                    <description>Simple keyword occurance based search that fits documentation sites better. Search will be improved sooner.</description>
+                    <title>Simpler Search</title>
+                    <url>/</url>
+                </element>
+                <element>
+                    <description>Just configure the home page, top navigation, sidebar links, and footer links in one settings file; and deploy to host</description>
+                    <title>Configure &amp; Deploy</title>
+                    <url>/</url>
+                </element>
+                <element>
+                    <description>A custom router that works even on HTML only hosts like Github pages or Gitlab pages like a Single page application</description>
+                    <title>Custom Router</title>
+                    <url>/</url>
+                </element>
+                <element>
+                    <description>Easily extendable, themable. Simple structure any can extend.</description>
+                    <title>Extendable</title>
+                    <url>/</url>
+                </element>
+                <element>
+                    <description>Managed dependencies and packages. Made with Angular</description>
+                    <title>Made with Angular</title>
+                    <url>/</url>
+                </element>
+            </items>
+        </blocks>
+        <highlight>
+            <buttontext>Getting Started</buttontext>
+            <buttonurl>/intro</buttonurl>
+            <description>ngDocumentor can be as simple as you need. One settings file to manage the whole documentation site and related links. Text or Slider based highlighter and landing page. Offline support / Basic simple PWA using Service Workers. Max char size 250 chars.</description>
+            <heading>ngDocumentor</heading>
+            <img>/assets/img/new-file-1.svg</img>
+            <type>text</type>
+        </highlight>
+        <type>landing</type>
+        <url>/</url>
+    </home>
+    <search>
+        <meta>
+            <element>
+                <keywords>
+                    <element>angular</element>
+                </keywords>
+                <url>/home</url>
+            </element>
+            <element>
+                <keywords>
+                    <element>test</element>
+                </keywords>
+                <url>/intro</url>
+            </element>
+            <element>
+                <keywords>
+                    <element>build</element>
+                    <element>test</element>
+                    <element>angular</element>
+                </keywords>
+                <url>/building</url>
+            </element>
+        </meta>
+        <stopwords />
+        <type>keywords</type>
+    </search>
+    <sidebar>
+        <nav>
+            <element>
+                <link>/</link>
+                <tag>Home</tag>
+            </element>
+            <element>
+                <link>/intro</link>
+                <tag>Getting Started - 10 Mins</tag>
+            </element>
+            <element>
+                <children>
+                    <element>
+                        <link>/config</link>
+                        <tag>Introduction</tag>
+                    </element>
+                    <element>
+                        <link>/landing</link>
+                        <tag>Landing Page</tag>
+                    </element>
+                    <element>
+                        <link>/topnav</link>
+                        <tag>Top Navigation</tag>
+                    </element>
+                    <element>
+                        <link>/sidebar</link>
+                        <tag>SideBar Navigation</tag>
+                    </element>
+                    <element>
+                        <link>/footer</link>
+                        <tag>Footer Navigation</tag>
+                    </element>
+                    <element>
+                        <link>/searchdef</link>
+                        <tag>Search</tag>
+                    </element>
+                    <element>
+                        <link>/brandname</link>
+                        <tag>Brand Name / Logo</tag>
+                    </element>
+                </children>
+                <tag>Configuration Defns</tag>
+            </element>
+            <element>
+                <link>/building</link>
+                <tag>Building / Offline Viewing</tag>
+            </element>
+            <element>
+                <link>/design</link>
+                <tag>App Design</tag>
+            </element>
+            <element>
+                <link>/search</link>
+                <tag>Search Functionality</tag>
+            </element>
+            <element>
+                <children>
+                    <element>
+                        <link>https://github.com/ngDocumentor/ngDocumentor.github.io</link>
+                        <tag>Clone Site Files - Github</tag>
+                        <type>external</type>
+                    </element>
+                    <element>
+                        <link>https://github.com/ngDocumentor/ngDocumentor.github.io/issues</link>
+                        <tag>Report Issues</tag>
+                        <type>external</type>
+                    </element>
+                    <element>
+                        <link>https://github.com/ngDocumentor/ngDocumentor</link>
+                        <tag>Development Branch - Github</tag>
+                        <type>external</type>
+                    </element>
+                    <element>
+                        <link>https://github.com/ngDocumentor/ngDocumentor/issues</link>
+                        <tag>Contribute / Pull Requests</tag>
+                        <type>external</type>
+                    </element>
+                    <element>
+                        <link>/genmd</link>
+                        <tag>Generate .md Docs</tag>
+                    </element>
+                    <element>
+                        <link>/genrst</link>
+                        <tag>Generate .rst Docs (todo)</tag>
+                    </element>
+                    <element>
+                        <link>/todo</link>
+                        <tag>App Todo</tag>
+                    </element>
+                    <element>
+                        <link>/plans</link>
+                        <tag>App Plans</tag>
+                    </element>
+                </children>
+                <tag>Resources</tag>
+            </element>
+            <element>
+                <link>/credits</link>
+                <tag>Team &amp; Credits</tag>
+            </element>
+        </nav>
+    </sidebar>
+    <topnav>
+        <brandname> { ngDocumentor } </brandname>
+        <logo>/assets/img/logo.png</logo>
+        <nav>
+            <element>
+                <link>/intro</link>
+                <tag>Getting Started</tag>
+                <type>internal</type>
+            </element>
+            <element>
+                <link>/config</link>
+                <tag>Config .json Files</tag>
+                <type>internal</type>
+            </element>
+            <element>
+                <link>https://github.com/ngDocumentor/ngDocumentor</link>
+                <tag>Github</tag>
+                <type>external</type>
+            </element>
+        </nav>
+    </topnav>
+</settings>

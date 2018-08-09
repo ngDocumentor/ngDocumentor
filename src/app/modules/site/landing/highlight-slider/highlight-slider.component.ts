@@ -8,16 +8,22 @@ import { HttpService } from '../../../../commons/services/http/http.service';
 })
 export class HighlightSliderComponent implements AfterViewInit {
 
+  /**
+   *
+   *
+   * @type {number}
+   * @memberof HighlightSliderComponent
+   */
   slideIndex: number = 1;
 
   constructor(public _h: HttpService) { }
 
   /**
-     *
-     *
-     * @param {*} n
-     * @memberof SliderComponent
-     */
+   *
+   *
+   * @param {*} n
+   * @memberof SliderComponent
+   */
   plusSlides(n): void {
     this.showSlides(this.slideIndex += n);
   }
@@ -50,7 +56,6 @@ export class HighlightSliderComponent implements AfterViewInit {
     for (i = 0; i < dots.length; i++) {
       dots[i].className = dots[i].className.replace(' active', '');
     }
-    //console.log(slides, slides[this.slideIndex - 1])
     slides[this.slideIndex - 1].setAttribute('style', 'display:block');
     dots[this.slideIndex - 1].className += ' active';
   }
@@ -61,8 +66,15 @@ export class HighlightSliderComponent implements AfterViewInit {
    * @memberof SliderComponent
    */
   ngAfterViewInit(): void {
-    if (!!this._h.homePage && !!this._h.homePage.type && this._h.homePage.type === 'landing' && !!this._h.homePage.highlighter && !!this._h.homePage.highlighter.type && this._h.homePage.highlighter.type === 'slider') {
+    if (!!this._h.homePage &&
+      !!this._h.homePage.type &&
+      this._h.homePage.type === 'landing' &&
+      !!this._h.homePage.highlighter &&
+      !!this._h.homePage.highlighter.type &&
+      this._h.homePage.highlighter.type === 'slider') {
+
       this.showSlides(this.slideIndex);
+
     }
   }
 

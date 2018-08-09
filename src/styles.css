@@ -510,7 +510,7 @@ pre[class*="language-"] {
 /* Add a black background color to the top navigation */
 
 .logoicon {
-  width:15px; height: 15px; top:2px; position: relative;
+  width:15px; height: 15px; top:0px; position: relative;
 }
 
 .topnav {

@@ -1,28 +1,200 @@
-import { MarkdownService } from 'ngx-markdown';
-import { Injectable, EventEmitter } from '@angular/core';
+import { Injectable, EventEmitter, Inject } from '@angular/core';
 import { HttpClient, HttpRequest, HttpResponse, HttpHeaders } from '@angular/common/http';
+import { MarkdownService } from 'ngx-markdown';
 import { map } from 'rxjs/operators';
 import { WorkerService } from '../worker/worker.service';
+
 
 // Interfaces for structure check. Options are becoming complex.
 import { Menu, MenuLinks } from '../../../commons/interfaces/menu/menu';
 import { Sidebar, SidebarLinks, SidebarParentLinks } from '../../../commons/interfaces/sidebar/sidebar';
 import { Footer } from '../../../commons/interfaces/footer/footer';
 
+declare var settingsFile: string;
+
+if (!settingsFile) {
+  settingsFile = 'json';
+}
 
 @Injectable({
   providedIn: 'root'
 })
 export class HttpService {
 
+  /**
+   *
+   *
+   * @type {HttpClient}
+   * @memberof HttpService
+   */
   http: HttpClient;
 
+  /**
+   *
+   *
+   * @type {string}
+   * @memberof HttpService
+   */
+  settingsFileType: string;
+
+  /**
+   *
+   *
+   * @type {string}
+   * @memberof HttpService
+   */
   fileUrl: string;
 
+  /**
+   *
+   *
+   * @type {string}
+   * @memberof HttpService
+   */
   bmarkUri: string;
 
+  /**
+   *
+   *
+   * @type {EventEmitter<{ url: string; host: string; }>}
+   * @memberof HttpService
+   */
+  routeme: EventEmitter<{ url: string; host: string; }>;
+
+  /**
+   *
+   *
+   * @type {*}
+   * @memberof HttpService
+   */
+  topnav: any;
+
+  /**
+   *
+   *
+   * @type {*}
+   * @memberof HttpService
+   */
+  sidebarnav: any;
+
+  /**
+   *
+   *
+   * @type {*}
+   * @memberof HttpService
+   */
+  footernav: any;
+
+  /**
+   *
+   *
+   * @type {string}
+   * @memberof HttpService
+   */
+  settingsSource: string = 'assets/config/settings.' + settingsFile;
+
+  /**
+   *
+   *
+   * @type {MenuLinks[]}
+   * @memberof HttpService
+   */
+  topnavItems: MenuLinks[] = [];
+
+  /**
+   *
+   *
+   * @type {string}
+   * @memberof HttpService
+   */
+  brandname: string = '';
+
+  /**
+   *
+   *
+   * @type {string}
+   * @memberof HttpService
+   */
+  brandicon: string = '';
+
+  /**
+   *
+   *
+   * @type {((SidebarLinks | SidebarParentLinks)[])}
+   * @memberof HttpService
+   */
+  sidebarItems: (SidebarLinks | SidebarParentLinks)[] = [];
+
+  /**
+   *
+   *
+   * @type {Footer}
+   * @memberof HttpService
+   */
+  footerItems: Footer = { copyright: { tag: '', text: '', link: '/home', type: 'internal' }, nav: [], social: [] };
+
+  /**
+   *
+   *
+   * @type {boolean}
+   * @memberof HttpService
+   */
+  domLoaded: boolean = false;
+
+  /**
+   *
+   *
+   * @type {*}
+   * @memberof HttpService
+   */
+  homePage: any;
+
+  /**
+   *
+   *
+   * @type {boolean}
+   * @memberof HttpService
+   */
+  landingPage: boolean = false;
+
+  /**
+   *
+   *
+   * @type {string}
+   * @memberof HttpService
+   */
+  searchValue: string = '';
+
+  /**
+   *
+   *
+   * @type {*}
+   * @memberof HttpService
+   */
+  searchSettings: any;
+
+  /**
+   *
+   *
+   * @type {string[]}
+   * @memberof HttpService
+   */
+  searchUrlList: string[] = [];
+
+  /**
+   *
+   *
+   * @type {*}
+   * @memberof HttpService
+   */
   fileData: any;
 
+  /**
+   *
+   *
+   * @type {string}
+   * @memberof HttpService
+   */
   file404: string = `
 
   # 404 Error
@@ -44,42 +216,8 @@ export class HttpService {
 
   `;
 
-  routeme: EventEmitter<{ url: string; host: string; }>;
-
-  topnav: any;
-
-  sidebarnav: any;
-
-  footernav: any;
-
-  settingsSrc: string = 'assets/config/settings.json';
-
-  topnavItems: MenuLinks[] = [];
-
-  brandname: string = '';
-
-  brandicon: string = '';
-
-  sidebarItems: (SidebarLinks | SidebarParentLinks)[] = [];
-
-  footerItems: Footer = { copyright: { tag: '', text: '', link: '/home', type: 'internal' }, nav: [], social: [] };
-
-  domLoaded: boolean = false;
-
-  homePage: any;
-
-  landingPage: boolean = false;
-
-  searchValue: string = '';
-
-  searchSettings: any;
-
-  searchUrlList: string[] = [];
-
   constructor(http: HttpClient, private _mhSrv: MarkdownService, private _wksrv: WorkerService) {
-
     this.http = http;
-
     this.routeme = new EventEmitter();
   }
 
@@ -96,13 +234,24 @@ export class HttpService {
       socialArr = (obj instanceof Array) ? [] : (typeof obj === 'object') ? obj.social ? obj.social : [] : [];
 
     for (let i = 0; i < linkArr.length; i++) {
-      if (!!linkArr[i].link && !linkArr[i].link.includes('http') && arr.indexOf(linkArr[i].link) === -1 && !linkArr[i].children && linkArr[i].type !== 'external') {
+      if (!!linkArr[i].link &&
+        !linkArr[i].link.includes('http') &&
+        arr.indexOf(linkArr[i].link) === -1 &&
+        !linkArr[i].children &&
+        linkArr[i].type !== 'external') {
+
         arr.push(linkArr[i].link);
+
       }
       if (!!linkArr[i].children) {
         for (let j = 0; j < linkArr[i].children.length; j++) {
-          if (!!linkArr[i].children[j].link && !linkArr[i].children[j].link.includes('http') && arr.indexOf(linkArr[i].children[j].link) === -1 && linkArr[i].children[j].type !== 'external') {
+          if (!!linkArr[i].children[j].link &&
+            !linkArr[i].children[j].link.includes('http') &&
+            arr.indexOf(linkArr[i].children[j].link) === -1 &&
+            linkArr[i].children[j].type !== 'external') {
+
             arr.push(linkArr[i].children[j].link);
+
           }
         }
       }
@@ -110,8 +259,13 @@ export class HttpService {
 
     if (socialArr.length > 0) {
       for (let j = 0; j < socialArr.length; j++) {
-        if (!!socialArr[j].link && !socialArr[j].link.includes('http') && (arr.indexOf(socialArr[j].link) === -1) && socialArr[j].type !== 'external') {
+        if (!!socialArr[j].link &&
+          !socialArr[j].link.includes('http') &&
+          (arr.indexOf(socialArr[j].link) === -1) &&
+          socialArr[j].type !== 'external') {
+
           arr.push(socialArr[j].link);
+
         }
       }
     }
@@ -238,13 +392,13 @@ export class HttpService {
         });
       } else {
         this.fileData = this.file404;
-        that.landingPage = false;
+        this.landingPage = false;
       }
 
     } else {
 
       this.fileData = this.file404;
-      that.landingPage = false;
+      this.landingPage = false;
 
     }
   }
@@ -267,6 +421,7 @@ export class HttpService {
     }
     return a;
   }
+
   /**
    * Function to initiate routeme listener/subscriber
    * 
@@ -275,12 +430,14 @@ export class HttpService {
   getRouteEvent(): void {
     let that = this;
     this.routeme.subscribe(async function (linkData) {
-      let url = linkData.url, host = linkData.host, search = '';
+      let url = linkData.url, host = linkData.host;
 
       console.log('DEBUG: routeUrl getRouteEvent ', url, host);
 
       /* If http is included but host is not in the url and url is blank or / */
-      if ((url && (url.includes('http') && !url.includes(host))) || (url === '' || url === '/' || url === '#' || url === '#/') && (!url.includes('#/#/?search='))) {
+      if ((url && (url.includes('http') && !url.includes(host))) ||
+        (url === '' || url === '/' || url === '#' || url === '#/') &&
+        (!url.includes('#/#/?search='))) {
         console.log('DEBUG: RouteEvent Log area one');
         that.getHomeUrl();
       }

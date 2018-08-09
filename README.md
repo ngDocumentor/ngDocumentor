@@ -57,6 +57,7 @@ After `Add your documentation` section steps and `Enabling Service Worker (Suppo
 * Move to Observable based routing P2
 * Check possibility of removing `#/` for .md file's internal linking inside ngDocumentor
 * Bookmarks functionality (Partially done)
+* Add settings support using .yaml, .xml P3
 
 ## Further help - Angular CLI
 

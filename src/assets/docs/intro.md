@@ -19,9 +19,6 @@ ngDocumentor is a simple website that serves your .md files from a host location
 * If you have created your markdown (.md files) wiki for your project, that should be your starting point. If not create your documentation. You can have a look at [.md doc generation](#/genmd) tips and support here. Copy all your `.md` files (with the respective folder structure, if needed) into the `assets/docs` folder in the downloaded ngDocumentor release. In case of a cloned repository you will find the docs folder directly within the `src/assets` folder.
 
 
-* Create `assets/docs/home.md` for top first level home link. This is currently needed and not optional. [1] `home.md` will be path `/` or `/home`.
-
-
 * Your site's sidebar, top, and footer navigation all can be dynamically specified using a single `settings.json` configuration file inside `assets/config/` folder. 
 
 * The settings.json structure is simple consisting of `filetype, home, topnav, sidebar, footer, and search` keys. The Top navigation definition resides in `topnav` key, Sidebar menu definition in `sidebar` key, Footer navigation definition in `footer` key, Landing page definition in `home` key, and Search keywords definitions in `search` key.
@@ -107,11 +104,14 @@ ngDocumentor is a simple website that serves your .md files from a host location
 * `home` key definition Three
 
 
+* Create `assets/docs/home.md` for top first level home link, if type of home settings is `text`. This is currently needed and not optional. [1] `home.md` will be path `/home`. For that matter you can name the file anything. But do not forget to use the url of home settings to be of the path corresponding to the filename without the extension.
+
+
 ```json
 
 "home": {
         "type": "text",
-        "url": "/",
+        "url": "/home" // for filename home.md to be homepage
     }
 
 ```
@@ -233,7 +233,7 @@ ngDocumentor is a simple website that serves your .md files from a host location
 ```json
 
 "search": {
-    "type": "keywords",
+    "type": "keywords", // TODO Item
     "meta": [
         {"url": "/home", "keywords": ["angular"]},
         {"url": "/intro", "keywords": ["test"]}
@@ -248,7 +248,7 @@ ngDocumentor is a simple website that serves your .md files from a host location
 
 "search": {
     "type": "fulltext",
-    "stopwords": []
+    "stopwords": [] // TODO Item
 }
 
 ```

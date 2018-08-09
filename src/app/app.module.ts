@@ -16,7 +16,6 @@ import { MarkdownModule, MarkedOptions } from 'ngx-markdown';
 import { HttpService } from './commons/services/http/http.service';
 import { WorkerService } from './commons/services/worker/worker.service';
 
-
 // Components Directives Pipes
 import { AppComponent } from './app.component';
 import { MenubarComponent } from './modules/site/menubar/menubar.component';
@@ -56,7 +55,7 @@ import { HighlightMainComponent } from './modules/site/landing/highlight-main/hi
   ],
   providers: [
     HttpService,
-    WorkerService,
+    WorkerService
   ],
   bootstrap: [AppComponent]
 })

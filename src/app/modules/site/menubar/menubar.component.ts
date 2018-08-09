@@ -14,40 +14,148 @@ import { SearchResult } from '../../../commons/interfaces/search/search';
 })
 export class MenubarComponent implements OnInit, AfterViewChecked {
 
+  /**
+   *
+   *
+   * @type {ElementRef}
+   * @memberof MenubarComponent
+   */
   @ViewChild('sidebarfixed') sidebarfixed: ElementRef;
 
+  /**
+   *
+   *
+   * @type {ElementRef}
+   * @memberof MenubarComponent
+   */
   @ViewChild('topnav') topnav: ElementRef;
 
+  /**
+   *
+   *
+   * @type {ElementRef}
+   * @memberof MenubarComponent
+   */
   @ViewChild('contentmain') contentmain: ElementRef;
 
+  /**
+   *
+   *
+   * @type {ElementRef}
+   * @memberof MenubarComponent
+   */
   @ViewChild('footernav') footernav: ElementRef;
 
+  /**
+   *
+   *
+   * @type {*}
+   * @memberof MenubarComponent
+   */
   @ViewChild('searchform') searchform: any;
 
+  /**
+   *
+   *
+   * @type {string}
+   * @memberof MenubarComponent
+   */
   @Input('brandname') brandname: string;
 
+  /**
+   *
+   *
+   * @type {string}
+   * @memberof MenubarComponent
+   */
   @Input('brandicon') brandicon: string = '';
 
+  /**
+   *
+   *
+   * @type {string}
+   * @memberof MenubarComponent
+   */
   @Input('sidebartype') sidebartype: string = 'non-blocking';
 
+  /**
+   *
+   *
+   * @type {((SidebarLinks | SidebarParentLinks)[])}
+   * @memberof MenubarComponent
+   */
   @Input('sidebarItems') sidebarItems: (SidebarLinks | SidebarParentLinks)[] = [];
 
+  /**
+   *
+   *
+   * @type {MenuLinks[]}
+   * @memberof MenubarComponent
+   */
   @Input('topnavItems') topnavItems: MenuLinks[] = [];
 
+  /**
+   *
+   *
+   * @type {Footer}
+   * @memberof MenubarComponent
+   */
   @Input('footer') footer: Footer = { copyright: { tag: '', text: '', link: '/home', type: 'internal' }, nav: [], social: [] };
 
+  /**
+   *
+   *
+   * @type {boolean}
+   * @memberof MenubarComponent
+   */
   sidebarclosed: boolean = true;
 
+  /**
+   *
+   *
+   * @type {any[]}
+   * @memberof MenubarComponent
+   */
   styleList: any[] = [];
 
+  /**
+   *
+   *
+   * @type {any[]}
+   * @memberof MenubarComponent
+   */
   accordianClassList: any[] = [];
 
+  /**
+   *
+   *
+   * @type {boolean}
+   * @memberof MenubarComponent
+   */
   menuclosed: boolean = true;
 
+  /**
+   *
+   *
+   * @type {boolean}
+   * @memberof MenubarComponent
+   */
   showsearch: boolean = false;
 
+  /**
+   *
+   *
+   * @type {String}
+   * @memberof MenubarComponent
+   */
   searchformval: String = '';
 
+  /**
+   *
+   *
+   * @type {boolean}
+   * @memberof MenubarComponent
+   */
   searchicon: boolean = true;
 
   constructor(private _h: HttpService, public _wksrv: WorkerService) { }
@@ -120,7 +228,11 @@ export class MenubarComponent implements OnInit, AfterViewChecked {
    */
   routeMain(e): void {
     e.preventDefault();
-    window.location.href = '#/';
+    if (!!this._h.homePage && !!this._h.homePage.url) {
+      window.location.href = '#' + this._h.homePage.url;
+    } else {
+      window.location.href = '#/';
+    }
     window.scroll(0, 0);
   }
 
@@ -246,7 +358,7 @@ export class MenubarComponent implements OnInit, AfterViewChecked {
         console.log(this._wksrv.keywordsSearch(this.searchform.nativeElement.value, this._h.searchSettings));
       } else if (window.location.href.includes('#/#/?search=')) {
         console.log(this._wksrv.keywordsSearch(decodeURIComponent(window.location.href.split('#/#/?search=')[1]), this._h.searchSettings));
-      } else {}
+      } else { }
       return false;
     }
 
@@ -327,7 +439,7 @@ export class MenubarComponent implements OnInit, AfterViewChecked {
     }.bind(this);
 
     /* Handles dom content loaded fnctionality for opening nav and hiding search icon in desktop currently */
-    document.addEventListener("DOMContentLoaded", function (event: Event) {
+    document.addEventListener('DOMContentLoaded', function (event: Event) {
       if (!this.mobileAndTabletCheck()) {
         this.openNav();
         this.searchicon = false;
@@ -356,13 +468,24 @@ export class MenubarComponent implements OnInit, AfterViewChecked {
     // But performance will be impacted since there is a check on domLoaded on every view change
     // TODO: Move to Observables.
     if (this._h.domLoaded !== true) {
-      if (!this.mobileAndTabletCheck() && !!this.searchform && this.searchform.nativeElement.value === '' && window.location.href.includes('#/#/?search=')) {
-        this.searchform.nativeElement.value = decodeURIComponent(window.location.href.split('#/#/?search=')[1]) ? decodeURIComponent(window.location.href.split('#/#/?search=')[1]) : '';
+      if (!this.mobileAndTabletCheck() &&
+        !!this.searchform &&
+        this.searchform.nativeElement.value === '' &&
+        window.location.href.includes('#/#/?search=')) {
+
+        this.searchform.nativeElement.value = decodeURIComponent(window.location.href.split('#/#/?search=')[1]) ?
+          decodeURIComponent(window.location.href.split('#/#/?search=')[1]) : '';
+
       }
-      if (!!this._h.fileUrl.includes('#/#/?search=') && this._h.topnavItems.length > 0 && this._h.sidebarItems.length > 0 && !!this._h.footerItems) {
+      if (!!this._h.fileUrl.includes('#/#/?search=') &&
+        this._h.topnavItems.length > 0 &&
+        this._h.sidebarItems.length > 0 &&
+        !!this._h.footerItems) {
+
         this.hashChangeFunction(window.location.href);
         this._h.domLoaded = true;
         console.log('Debug: Menubar AfterViewChecked', this._wksrv.searchResult);
+
       }
     }
   }

@@ -5,7 +5,7 @@
         "url": "/",
         "highlight": {
             "type": "text",
-            "img":"/assets/img/new-file-1.svg",
+            "img": "/assets/img/new-file-1.svg",
             "heading": "ngDocumentor",
             "description": "ngDocumentor can be as simple as you need. One settings file to manage the whole documentation site and related links. Text or Slider based highlighter and landing page. Offline support / Basic simple PWA using Service Workers. Max char size 250 chars.",
             "buttontext": "Getting Started",
@@ -14,13 +14,41 @@
         "blocks": {
             "heading": "ngDocumentor features flexibility for your documentation or your Site",
             "items": [
-                {"title": "Reuse Markdown", "description" : "Use your markdown readme files to create the documentation site.", "url": "/"},
-                {"title": "Offline Support", "description" : "Basic offline support / PWA using service workers. May need rebuilding.", "url": "/"},
-                {"title": "Simpler Search", "description" : "Simple keyword occurance based search that fits documentation sites better. Search will be improved sooner.", "url": "/"},
-                {"title": "Configure & Deploy", "description" : "Just configure the home page, top navigation, sidebar links, and footer links in one settings file; and deploy to host", "url": "/"},
-                {"title": "Custom Router", "description" : "A custom router that works even on HTML only hosts like Github pages or Gitlab pages like a Single page application", "url": "/"},
-                {"title": "Extendable", "description" : "Easily extendable, themable. Simple structure any can extend.", "url": "/"},
-                {"title": "Made with Angular", "description" : "Managed dependencies and packages. Made with Angular", "url": "/"}
+                {
+                    "title": "Reuse Markdown",
+                    "description": "Use your markdown readme files to create the documentation site.",
+                    "url": "/"
+                },
+                {
+                    "title": "Offline Support",
+                    "description": "Basic offline support / PWA using service workers. May need rebuilding.",
+                    "url": "/"
+                },
+                {
+                    "title": "Simpler Search",
+                    "description": "Simple keyword occurance based search that fits documentation sites better. Search will be improved sooner.",
+                    "url": "/"
+                },
+                {
+                    "title": "Configure & Deploy",
+                    "description": "Just configure the home page, top navigation, sidebar links, and footer links in one settings file; and deploy to host",
+                    "url": "/"
+                },
+                {
+                    "title": "Custom Router",
+                    "description": "A custom router that works even on HTML only hosts like Github pages or Gitlab pages like a Single page application",
+                    "url": "/"
+                },
+                {
+                    "title": "Extendable",
+                    "description": "Easily extendable, themable. Simple structure any can extend.",
+                    "url": "/"
+                },
+                {
+                    "title": "Made with Angular",
+                    "description": "Managed dependencies and packages. Made with Angular",
+                    "url": "/"
+                }
             ]
         }
     },
@@ -56,7 +84,7 @@
                 "link": "/intro"
             },
             {
-                "tag": "Configuration/Definitions",
+                "tag": "Configuration Defns",
                 "children": [
                     {
                         "tag": "Introduction",
@@ -263,9 +291,45 @@
         "type": "keywords",
         "stopwords": [],
         "meta": [
-            {"url": "/home", "keywords": ["angular"]},
-            {"url": "/intro", "keywords": ["test"]},
-            {"url": "/building", "keywords": ["build", "test", "angular"]}
+            {
+                "url": "/home",
+                "keywords": [
+                    {
+                        "key": "angular",
+                        "weight": 1
+                    }
+                ]
+            },
+            {
+                "url": "/intro",
+                "keywords": [
+                    {
+                        "key": "introduction",
+                        "weight": 1
+                    }
+                ]
+            },
+            {
+                "url": "/building",
+                "keywords": [
+                    {
+                        "key": "angular",
+                        "weight": 1
+                    },
+                    {
+                        "key": "build",
+                        "weight": 1
+                    },
+                    {
+                        "key": "offline",
+                        "weight": 1
+                    },
+                    {
+                        "key": "pwa",
+                        "weight": 1
+                    }
+                ]
+            }
         ]
     }
 }
