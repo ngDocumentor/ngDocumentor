@@ -12,22 +12,57 @@ import { Footer } from './commons/interfaces/footer/footer';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+  /**
+   *
+   *
+   * @type {string}
+   * @memberof AppComponent
+   */
+  @Input('settingsSource') settingsSource: string;
 
-  @Input('settingsSrc') settingsSrc: string;
-
+  /**
+   *
+   *
+   * @type {string}
+   * @memberof AppComponent
+   */
   brandname: string = '  ';
 
+  /**
+   *
+   *
+   * @type {string}
+   * @memberof AppComponent
+   */
   brandicon: string;
 
+  /**
+   *
+   *
+   * @type {((SidebarLinks | SidebarParentLinks)[])}
+   * @memberof AppComponent
+   */
   sidebarItems: (SidebarLinks | SidebarParentLinks)[];
 
+  /**
+   *
+   *
+   * @type {MenuLinks[]}
+   * @memberof AppComponent
+   */
   topnavItems: MenuLinks[];
 
+  /**
+   *
+   *
+   * @type {Footer}
+   * @memberof AppComponent
+   */
   footerItems: Footer;
 
   constructor(public _h: HttpService) {
     this.brandicon = this._h.brandicon;
-    this.settingsSrc = this._h.settingsSrc;
+    this.settingsSource = this._h.settingsSource;
     this.topnavItems = this._h.topnavItems;
     this.brandname = this._h.brandname;
     this.footerItems = this._h.footerItems;
@@ -37,12 +72,12 @@ export class AppComponent implements OnInit {
    * Trigger routeme event (choose better name!)
    * Gets the topnav, sidebar, and footer
    *
-   * @param {string} settingsSrc
+   * @param {string} settingsSource
    * @memberof AppComponent
    */
-  getSettings(settingsSrc: string): void {
+  getSettings(settingsSource: string): void {
     let that = this;
-    that._h.httpReq(settingsSrc, 'GET', null, null)
+    that._h.httpReq(settingsSource, 'GET', null, null)
       .subscribe((data) => {
         /* Topnav item settings */
         that._h.brandicon = data.topnav.logo ? data.topnav.logo : '';
@@ -102,7 +137,7 @@ export class AppComponent implements OnInit {
    */
   ngOnInit(): void {
     this._h.fileUrl = window.location.href;
-    this.getSettings(this._h.settingsSrc);
+    this.getSettings(this._h.settingsSource);
   }
 
 }

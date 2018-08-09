@@ -9,10 +9,15 @@ import { HttpService } from '../../../commons/services/http/http.service';
   styleUrls: ['./search-list.component.css']
 })
 export class SearchListComponent {
-
+  /**
+   *
+   *
+   * @type {SearchResult}
+   * @memberof SearchListComponent
+   */
   searchResult: SearchResult;
 
-  constructor(public _wksrv: WorkerService, public _h: HttpService) {}
+  constructor(public _wksrv: WorkerService, public _h: HttpService) { }
 
   /**
    * Returns object keys as an array for looping

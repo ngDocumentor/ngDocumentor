@@ -7,7 +7,12 @@ import { HttpService } from '../../../../commons/services/http/http.service';
   styleUrls: ['./highlight-slider.component.css']
 })
 export class HighlightSliderComponent implements AfterViewInit {
-
+  /**
+   *
+   *
+   * @type {number}
+   * @memberof HighlightSliderComponent
+   */
   slideIndex: number = 1;
 
   constructor(public _h: HttpService) { }
@@ -50,7 +55,6 @@ export class HighlightSliderComponent implements AfterViewInit {
     for (i = 0; i < dots.length; i++) {
       dots[i].className = dots[i].className.replace(' active', '');
     }
-    //console.log(slides, slides[this.slideIndex - 1])
     slides[this.slideIndex - 1].setAttribute('style', 'display:block');
     dots[this.slideIndex - 1].className += ' active';
   }
