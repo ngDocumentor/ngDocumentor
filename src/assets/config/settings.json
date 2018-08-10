@@ -1,11 +1,11 @@
 {
-    "filetype": "markdown",
+    "filetype": "md",
     "home": {
         "type": "landing",
         "url": "/",
         "highlight": {
             "type": "text",
-            "img": "/assets/img/new-file-1.svg",
+            "img": "/assets/img/landing-img.svg",
             "heading": "ngDocumentor",
             "description": "ngDocumentor can be as simple as you need. One settings file to manage the whole documentation site and related links. Text or Slider based highlighter and landing page. Offline support / Basic simple PWA using Service Workers. Max char size 250 chars.",
             "buttontext": "Getting Started",

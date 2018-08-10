@@ -1,5 +1,5 @@
 ---
-filetype: markdown
+filetype: md
 home:
   type: landing
   url: "/"

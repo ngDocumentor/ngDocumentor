@@ -184,6 +184,14 @@ export class HttpService {
   /**
    *
    *
+   * @type {string}
+   * @memberof HttpService
+   */
+  fileType: string = 'md';
+
+  /**
+   *
+   *
    * @type {*}
    * @memberof HttpService
    */
@@ -282,7 +290,7 @@ export class HttpService {
    * @memberof HttpService
    */
   cleanUrl(url: string, host: string): { routeUri, bmarkUri } {
-    let that = this, routeUri = '', bmarkUri = '';
+    let routeUri = '', bmarkUri = '';
     if (url.includes(host)) {
       url = url.split(host + '/')[1];
     }
@@ -366,7 +374,7 @@ export class HttpService {
    * @memberof HttpService
    */
   getHomeUrl(): void {
-    let that = this;
+
     if (!!this.homePage && this.homePage.type === 'landing') {
 
       this.fileData = null;
@@ -379,17 +387,20 @@ export class HttpService {
         url = this.homePage.url ? this.homePage.url : '';
       }
       if (url !== '' && url !== '#' && url !== '#/') {
-        that._mhSrv.getSource('assets/docs/' + url.split('/')[1] + '.md').subscribe((data) => {
+        this._mhSrv.getSource('assets/docs/' + url.split('/')[1] + '.' + this.fileType).subscribe(function (data) {
 
           console.log('DEBUG: RouteEvent Log area seven');
-          that.fileData = data;
-          that.landingPage = false;
-        }, (errors) => {
+          this.fileData = data;
+          this.landingPage = false;
+
+        }.bind(this), function (errors) {
 
           console.log('DEBUG:E: RouteEvent Log area eight', errors);
-          that.fileData = that.file404;
-          that.landingPage = false;
-        });
+          this.fileData = this.file404;
+          this.landingPage = false;
+
+        }.bind(this));
+
       } else {
         this.fileData = this.file404;
         this.landingPage = false;
@@ -401,6 +412,7 @@ export class HttpService {
       this.landingPage = false;
 
     }
+
   }
 
   /**
@@ -411,6 +423,7 @@ export class HttpService {
    * @memberof HttpService
    */
   arrayUnique(array: any[]): any[] {
+
     let a = array.concat();
     for (let i = 0; i < a.length; ++i) {
       for (let j = i + 1; j < a.length; ++j) {
@@ -420,6 +433,7 @@ export class HttpService {
       }
     }
     return a;
+
   }
 
   /**
@@ -428,7 +442,7 @@ export class HttpService {
    * @memberof HttpService
    */
   getRouteEvent(): void {
-    let that = this;
+
     this.routeme.subscribe(async function (linkData) {
       let url = linkData.url, host = linkData.host;
 
@@ -438,8 +452,10 @@ export class HttpService {
       if ((url && (url.includes('http') && !url.includes(host))) ||
         (url === '' || url === '/' || url === '#' || url === '#/') &&
         (!url.includes('#/#/?search='))) {
+
         console.log('DEBUG: RouteEvent Log area one');
-        that.getHomeUrl();
+        this.getHomeUrl();
+
       }
 
       /* If http and host is included */
@@ -460,7 +476,7 @@ export class HttpService {
             }
           }
           if (url === '' && url === '#' && url === '#/') {
-            that.getHomeUrl();
+            this.getHomeUrl();
           }
         }
       }
@@ -469,31 +485,41 @@ export class HttpService {
 
       /* If url is valid but doesnot include http and is file name */
       if ((!url.includes('#/#/?search='))) {
+
         if (!!url && !url.includes('http') && url !== '' && url !== '#' && url !== '#/') {
-          that._mhSrv.getSource('assets/docs/' + url + '.md').subscribe((data) => {
+
+          this._mhSrv.getSource('assets/docs/' + url + '.' + this.fileType).subscribe(function (data) {
+
             console.log('DEBUG: RouteEvent Log area two');
             if (data.includes('<!doctype html>')) {
               console.log('DEBUG:E: RouteEvent Log area three');
-              that.fileData = that.file404;
-              that.landingPage = false;
+              this.fileData = this.file404;
+              this.landingPage = false;
             } else {
               console.log('DEBUG: RouteEvent Log area four');
-              that.fileData = data;
-              that.landingPage = false;
+              this.fileData = data;
+              this.landingPage = false;
             }
-          }, (error) => {
+
+          }.bind(this), function (error) {
+
             /* If url filename has error or unhandled condition */
             console.log('DEBUG:E: RouteEvent Log area five', error);
-            that.fileData = that.file404;
-            that.landingPage = false;
-          });
+            this.fileData = this.file404;
+            this.landingPage = false;
+
+          }.bind(this));
+
         } else {
+
           /* If url is not valid or includes http */
           console.log('DEBUG:E: RouteEvent Log area six');
-          that.getHomeUrl();
+          this.getHomeUrl();
+
         }
       }
-    });
+    }.bind(this));
+
   }
 
   /**
@@ -507,6 +533,7 @@ export class HttpService {
    * @memberof HttpService
    */
   httpReq(url: string, method: string, data: any, header: (HttpHeaders | null)): any {
+
     let headers = new HttpHeaders();
 
     // TODO : Loop through passed headers, currently ignored
