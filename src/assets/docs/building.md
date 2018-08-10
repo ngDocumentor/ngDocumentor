@@ -27,19 +27,29 @@ Offline viewing requires hashing for each of our assets to be kept track of. Thi
 
       "vendorChunk": false,
       "buildOptimizer": true,
-      "serviceWorker": true,
+      "serviceWorker": true, // Add key 'serviceWorker' with value 'true' for PWA support
       "ngswConfigPath": "ngsw-config.json",
 
 ```
 
 
-Now run the build command using the steps in the `Creating a Build` section to create a production build. In most cases this should be true. The repo keeps this feature enabled or disabled as per need of the current version's build.
+Now run the build command using the steps in the `Creating a Build` section below to create a production build. In most cases this should be true. The repo keeps this feature enabled or disabled as per need of the current version's build.
 
 
 ## Creating a Build
 
 
-After `Add your documentation` section steps and `Enabling Service Worker (Support for offline viewing of website)` (if you want offline viewing support / service workers enabled), in the command prompt / CLI, run `ng build --prod --source-map=false --base-href='/' --vendor-chunk=true --extract-css=true --delete-output-path=true --aot --build-optimizer=true` in the project's folder to build the project. The built artifacts will be stored in the `dist/` directory. Use the `dist/` directory as your documentation site. You can use this build to push to production.
+After `Add your documentation` section steps and `Enabling Service Worker (Support for offline viewing of website)` (if you want offline viewing support / service workers enabled), in the command prompt / CLI, run the command below in the project's folder to build the project.
+
+
+```sh
+
+ng build --prod --source-map=false --base-href='/' --vendor-chunk=true --extract-css=true --delete-output-path=true --aot --build-optimizer=true
+
+``` 
+
+
+The built artifacts will be stored in the `dist/` directory. Use the `dist/` directory as your documentation site. You can use this build directly and push to production.
 
 
 ## Further help - Angular CLI

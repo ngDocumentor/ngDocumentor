@@ -5,7 +5,7 @@
         "url": "/",
         "highlight": {
             "type": "text",
-            "img":"/assets/img/new-file-1.svg",
+            "img":"/assets/img/landing-img.svg",
             "heading": "ngDocumentor",
             "description": "ngDocumentor can be as simple as you need. One settings file to manage the whole documentation site and related links. Text or Slider based highlighter and landing page. Offline support / Basic simple PWA using Service Workers. Max char size 250 chars.",
             "buttontext": "Getting Started",
@@ -34,7 +34,7 @@
             "type": "slider",
             "img": [
                 {"url":"http://placeholder.pics/svg/300/00cec9-00cec9/00cec9-00cec9", "text":"ngDocumentor can be as simple as you need"},
-                {"url":"/assets/img/test-two.jpg", "text":"One settings file to manage the whole documentation site and related links"},
+                {"url":"/assets/img/slider-one.jpg", "text":"One settings file to manage the whole documentation site and related links"},
                 {"url":"http://placeholder.pics/svg/300/f7f1e3-f7f1e3/f7f1e3-f7f1e3", "text":"Text or Slider based highlighter"},
                 {"url":"http://placeholder.pics/svg/300/00cec9-00cec9/00cec9-00cec9", "text":"Avoid usage of landing page completely and use home.md file as home page"},
                 {"url":"http://placeholder.pics/svg/300/f7f1e3-f7f1e3/f7f1e3-f7f1e3", "text":"Offline support / Basic simple PWA using Service Workers"},

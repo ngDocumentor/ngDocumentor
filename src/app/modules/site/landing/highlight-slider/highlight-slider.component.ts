@@ -66,16 +66,7 @@ export class HighlightSliderComponent implements AfterViewInit {
    * @memberof SliderComponent
    */
   ngAfterViewInit(): void {
-    if (!!this._h.homePage &&
-      !!this._h.homePage.type &&
-      this._h.homePage.type === 'landing' &&
-      !!this._h.homePage.highlighter &&
-      !!this._h.homePage.highlighter.type &&
-      this._h.homePage.highlighter.type === 'slider') {
-
-      this.showSlides(this.slideIndex);
-
-    }
+    this.showSlides(this.slideIndex);
   }
 
 }

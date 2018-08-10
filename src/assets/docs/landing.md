@@ -33,7 +33,7 @@
     "url": "/",
     "highlight": {
         "type": "text",
-        "img":"/assets/img/new-file-1.svg",
+        "img":"/assets/img/landing-img.svg",
         "heading": "ngDocumentor",
         "description": "ngDocumentor can be as simple as you need. Max char size 250 chars.",
         "buttontext": "Getting Started",
@@ -80,7 +80,7 @@
         "type": "slider",
         "img": [
             {"url":"http://placeholder.pics/svg/300", "text":"ngDocumentor can be as simple as you need"},
-            {"url":"/assets/img/test-two.jpg", "text":"One settings file to manage the whole documentation site"}
+            {"url":"/assets/img/slider-one.jpg", "text":"One settings file to manage the whole documentation site"}
         ]
     },
     "blocks": {
