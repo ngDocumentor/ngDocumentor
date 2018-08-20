@@ -764,10 +764,16 @@ pre[class*="language-"] {
 }
 
 .button-plus-span {
-  padding: 4px 4px 1px 4px;
+  /* padding: 4px 4px 1px 4px;
   background-color: #2980b9;
   color: #f9f9f9;
-  border-radius: 2px;
+  border-radius: 2px; */
+  top: 10px;
+  position: relative;
+}
+.button-plus-span img {
+  height: 20px !important;
+  width: 20px !important;
 }
 
 /* Style the accordion panel. Note: hidden by default */
@@ -805,6 +811,10 @@ pre[class*="language-"] {
   .main {
     min-width: 300px;
     padding: 15px;
+  }
+  .button-plus-span {
+    top: 5px;
+    position: relative;
   }
 }
 
