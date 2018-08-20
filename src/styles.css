@@ -775,6 +775,12 @@ pre[class*="language-"] {
   height: 20px !important;
   width: 20px !important;
 }
+@media screen and (max-width: 768px) {
+  .button-plus-span {
+    top: 5px;
+    position: relative;
+  }
+}
 
 /* Style the accordion panel. Note: hidden by default */
 
@@ -811,10 +817,6 @@ pre[class*="language-"] {
   .main {
     min-width: 300px;
     padding: 15px;
-  }
-  .button-plus-span {
-    top: 5px;
-    position: relative;
   }
 }
 
