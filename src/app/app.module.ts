@@ -45,12 +45,14 @@ import { HighlightMainComponent } from './modules/site/landing/highlight-main/hi
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    MarkdownModule.forRoot({
-      provide: MarkedOptions,
-      useValue: {
-        sanitize: true,
-      },
-    }),
+    MarkdownModule.forRoot(
+    //   {
+    //   provide: MarkedOptions,
+    //   useValue: {
+    //     sanitize: true,
+    //   },
+    // }
+    ), 
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [

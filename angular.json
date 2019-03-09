@@ -24,7 +24,9 @@
               "node_modules/prismjs/themes/prism-okaidia.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/marked/lib/marked.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -72,7 +74,9 @@
             "karmaConfig": "./karma.conf.js",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.spec.json",
-            "scripts": [],
+            "scripts": [
+              "node_modules/marked/lib/marked.js"
+            ],
             "styles": [
               "node_modules/prismjs/themes/prism-okaidia.css",
               "src/styles.css"
