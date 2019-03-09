@@ -7,7 +7,7 @@ Pass brand name, top navigation menus, and sidebar navigation links single using
 * Works well for any documentation site documented using .md files. Also works with HTML only sites like Github pages where you do not have access to URL Rewrites due to security reasons
 * Edit the [ngDocumentor Angular source](https://github.com/ngDocumentor/ngDocumentor), if you need to extend.
 * Documentation available in this site.
-* This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.x.x.
+* This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.x.
 * Has Angular Service Workers enabled (basic PWA support). You will have to use the [developement repository](https://github.com/ngDocumentor/ngDocumentor) to achieve that. Disabled by default (service worker config file generation needed).
 
 
