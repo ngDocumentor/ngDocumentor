@@ -52,7 +52,10 @@
         </button>
         <mat-menu #menu="matMenu" xPosition="before">
           <button mat-menu-item *ngFor="let item of _h.topnavItems">
-            {{ item.tag }}
+            <a href="{{ '#' + item.link }}">
+              {{ item.tag }}
+              <img *ngIf="item.type === 'external'" src="/assets/img/externallink.svg">
+            </a> 
           </button>
         </mat-menu>
       </div>
