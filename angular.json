@@ -23,7 +23,7 @@
             "styles": [
               "src/assets/css/indigo-pink.css",
               "node_modules/prismjs/themes/prism-okaidia.css",
-              "src/styles.css"
+              "src/assets/css/styles.css"
             ],
             "scripts": [
               "node_modules/marked/lib/marked.js"

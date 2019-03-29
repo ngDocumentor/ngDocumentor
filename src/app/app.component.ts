@@ -28,7 +28,7 @@ export class AppComponent implements OnInit {
    */
   ngOnInit(): void {
     this._h.fileUrl = window.location.href;
-    if (!!this.settingsSource) {
+    if (!!this.settingsSource && this.settingsSource !== '') {
       this._h.settingsSource = this.settingsSource;
     }
     this._h.getSettings(this._h.settingsSource);

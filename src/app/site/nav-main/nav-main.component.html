@@ -7,7 +7,7 @@
       <!-- <a mat-list-item routerLink="/">Ganesh Bhat</a> -->
       <ng-container>
         <mat-form-field *ngIf="!(isHandset$ | async)" class="sidebar-search-form font-ten">
-          <input matInput type="text" placeholder="Type to Search & Press Enter">
+          <input matInput [(ngModel)]="sidebarSearchedValue" (ngModelChange)="onSearchedValueChange($event)" type="text" placeholder="Type to Search">
         </mat-form-field>
       </ng-container>
       <mat-divider *ngIf="!(isHandset$ | async)"></mat-divider>

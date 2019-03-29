@@ -312,13 +312,15 @@ export class HttpService {
   }
 
   searchdocs() {
-    this._wksrv.postMessage({
-      action: 'search',
-      key: this.searchFormValue.search,
-      type: this.searchFormValue.type,
-      urls: this.searchUrlList
-    });
-    this.routeMe('/?search=' + this.searchFormValue.search);
+    if (this.searchFormValue.search !== '') {
+      this._wksrv.postMessage({
+        action: 'search',
+        key: this.searchFormValue.search,
+        type: this.searchFormValue.type,
+        urls: this.searchUrlList
+      });
+      this.routeMe('/?search=' + this.searchFormValue.search);
+    }
   }
 
   routeMe(url: string) {

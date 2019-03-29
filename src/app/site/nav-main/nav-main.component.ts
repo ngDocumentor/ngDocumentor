@@ -2,8 +2,8 @@ import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router'
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { MatDialog } from '@angular/material';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, Subject } from 'rxjs';
+import { map, debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { HttpService } from '../../commons/services/http/http.service';
 import { WorkerService } from '../../commons/services/worker/worker.service';
 import { SearchComponent } from '../search/search.component';
@@ -18,8 +18,10 @@ export class NavMainComponent implements OnInit {
     .pipe(
       map(result => result.matches)
     );
-  
-  
+
+  sidebarSearchedValue: string = '';
+  sidebarSearchedValueChanged: Subject<string>;
+
   constructor(
     private breakpointObserver: BreakpointObserver,
     public _h: HttpService,
@@ -27,8 +29,14 @@ export class NavMainComponent implements OnInit {
     public activatedRoute: ActivatedRoute,
     public dialog: MatDialog,
     public ref: ChangeDetectorRef
-  ) { }
-  
+  ) {
+    this.sidebarSearchedValueChanged = new Subject();
+  }
+
+  onSearchedValueChange(val: any) {
+    this.sidebarSearchedValueChanged.next(val);
+  }
+
   searchForm() {
     const dialogRef = this.dialog.open(SearchComponent, {
       width: '250px',
@@ -36,18 +44,26 @@ export class NavMainComponent implements OnInit {
       data: { search: this._h.searchFormValue.search, type: this._h.searchFormValue.type }
     });
     dialogRef.afterClosed().subscribe(val => {
-      console.log('The dialog was closed', val?val:'closed');
+      console.log('The dialog was closed', val ? val : 'closed');
       this._h.searchFormValue.search = !!val ? !!val.search ? val.search : '' : '';
       this._h.searchFormValue.type = !!val ? !!val.type ? val.type : 'adv' : 'adv';
       this._h.searchValue = !!val ? !!val.search ? val.search : '' : '';
       if (this._h.searchFormValue.search !== '') {
-        this._h.searchdocs(); 
+        this._h.searchdocs();
       }
     });
   }
 
   ngOnInit() {
-    
+    this.sidebarSearchedValueChanged.pipe(
+      debounceTime(1000),
+      distinctUntilChanged()
+    ).subscribe(model => {
+      if (model !== '' && model !== this._h.searchFormValue.search) {
+        this._h.searchFormValue.search = model;
+        this._h.searchdocs();
+      }
+    });
     this._wksrv.searchResultEvent.subscribe(function (data) {
       this._h.landingPage = false;
       this._h.fileData = null;
@@ -56,10 +72,10 @@ export class NavMainComponent implements OnInit {
       }
     }.bind(this));
 
-    this.activatedRoute.params.subscribe(function(param){
+    this.activatedRoute.params.subscribe(function (param) {
       // console.log('params', param['url']);
       if (!param['url']) {
-        this.activatedRoute.queryParams.subscribe(function(query){
+        this.activatedRoute.queryParams.subscribe(function (query) {
           if (!query['search']) {
             this._h.searchResults = false;
             this._h.getUrl('home');
@@ -69,11 +85,11 @@ export class NavMainComponent implements OnInit {
             this._h.searchFormValue.search = query['search'];
             if (!!this._h.searchUrlList.length) {
               // this._h.searchResults = true;
-              this._h.searchdocs(); 
+              this._h.searchdocs();
             }
           }
         }.bind(this))
-        
+
       } else {
         this._h.searchResults = false;
         this._h.getUrl(param['url']);
