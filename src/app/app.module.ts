@@ -1,16 +1,16 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
 import { environment } from '../environments/environment';
 
+// Modules
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MarkdownModule, MarkedOptions } from 'ngx-markdown';
 
-// Modules
-
-
 // Routes
-
+import { AppRoutingModule } from './app.routing.module'
 
 // Services
 import { HttpService } from './commons/services/http/http.service';
@@ -18,8 +18,6 @@ import { WorkerService } from './commons/services/worker/worker.service';
 
 // Components Directives Pipes
 import { AppComponent } from './app.component';
-import { ServiceWorkerModule } from '@angular/service-worker';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavMainComponent } from './site/nav-main/nav-main.component';
 import { RendermdComponent } from './site/rendermd/rendermd.component';
 import { SearchComponent } from './site/search/search.component';
@@ -40,8 +38,6 @@ import {
   MatDialogModule,
 } from '@angular/material';
 
-
-import { AppRoutingModule } from './app.routing.module'
 @NgModule({
   declarations: [
     AppComponent,

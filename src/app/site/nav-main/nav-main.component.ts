@@ -7,7 +7,6 @@ import { map } from 'rxjs/operators';
 import { HttpService } from '../../commons/services/http/http.service';
 import { WorkerService } from '../../commons/services/worker/worker.service';
 import { SearchComponent } from '../search/search.component';
-import { MarkdownService } from 'ngx-markdown';
 
 @Component({
   selector: 'app-nav-main',
@@ -69,8 +68,8 @@ export class NavMainComponent implements OnInit {
             this._h.searchValue = query['search'];
             this._h.searchFormValue.search = query['search'];
             if (!!this._h.searchUrlList.length) {
-              this._h.searchResults = true;
-              this._h.searchdocs();
+              // this._h.searchResults = true;
+              this._h.searchdocs(); 
             }
           }
         }.bind(this))

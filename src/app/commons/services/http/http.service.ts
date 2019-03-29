@@ -6,8 +6,8 @@ import { WorkerService } from '../worker/worker.service';
 
 
 // Interfaces for structure check. Options are becoming complex.
-import { Menu, MenuLinks } from '../../../commons/interfaces/menu/menu';
-import { Sidebar, SidebarLinks, SidebarParentLinks } from '../../../commons/interfaces/sidebar/sidebar';
+import { MenuLinks } from '../../../commons/interfaces/menu/menu';
+import { SidebarLinks, SidebarParentLinks } from '../../../commons/interfaces/sidebar/sidebar';
 import { Footer } from '../../../commons/interfaces/footer/footer';
 import { Router } from '@angular/router';
 
