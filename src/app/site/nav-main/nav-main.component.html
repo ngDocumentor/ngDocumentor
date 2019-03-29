@@ -7,7 +7,7 @@
         <mat-icon aria-label="Side nav toggle icon">close</mat-icon>
       </button>
     </mat-toolbar>
-    <mat-nav-list class="padding-top-zero">
+    <mat-nav-list style="padding-top:0px;">
       <ng-container>
         <mat-form-field *ngIf="!(isHandset$ | async)" class="sidebar-search-form font-twelve">
           <input matInput [(ngModel)]="sidebarSearchedValue" (ngModelChange)="onSearchedValueChange($event)" type="text"
