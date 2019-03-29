@@ -2,12 +2,17 @@
   <mat-sidenav #drawer class="sidenav" fixedInViewport="true"
     [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'"
     [opened]="!(isHandset$ | async)">
-    <mat-toolbar></mat-toolbar>
+    <mat-toolbar>
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+    </mat-toolbar>
     <mat-nav-list style="padding-top: 0px">
       <!-- <a mat-list-item routerLink="/">Ganesh Bhat</a> -->
       <ng-container>
         <mat-form-field *ngIf="!(isHandset$ | async)" class="sidebar-search-form font-ten">
-          <input matInput [(ngModel)]="sidebarSearchedValue" (ngModelChange)="onSearchedValueChange($event)" type="text" placeholder="Type to Search">
+          <input matInput [(ngModel)]="sidebarSearchedValue" (ngModelChange)="onSearchedValueChange($event)" type="text"
+            placeholder="Type to Search">
         </mat-form-field>
       </ng-container>
       <mat-divider *ngIf="!(isHandset$ | async)"></mat-divider>
@@ -20,24 +25,30 @@
               </mat-panel-title>
             </mat-expansion-panel-header>
             <p class="nav-sub-menu cursor-pointer font-normal" *ngFor="let link of item.children">
-              <a href="{{ '#' + link.link }}">
+              <a *ngIf="link.type !== 'external'" (click)="routeMe(link.link);">
                 {{ link.tag }}
-                <img *ngIf="link.type === 'external'" src="/assets/img/externallink.svg">
+              </a>
+              <a *ngIf="link.type === 'external'" opennewwindow [attr.external]="link">
+                {{ link.tag }}
+                <img src="/assets/img/externallink.svg">
               </a>
             </p>
           </mat-expansion-panel>
         </mat-accordion>
         <p class="nav-sub-menu cursor-pointer font-normal" *ngIf="!item.children">
-          <a href="{{ '#' + item.link }}">
+          <a *ngIf="item.type !== 'external'" (click)="routeMe(item.link);">
             {{ item.tag }}
-            <img *ngIf="item.type === 'external'" src="/assets/img/externallink.svg">
+          </a>
+          <a *ngIf="item.type === 'external'" opennewwindow [attr.external]="item">
+            {{ item.tag }}
+            <img src="/assets/img/externallink.svg">
           </a>
         </p>
         <mat-divider *ngIf="!(isHandset$ | async)"></mat-divider>
       </ng-container>
     </mat-nav-list>
   </mat-sidenav>
-  <mat-sidenav-content style="padding-top:0px;"  class="app-navbar">
+  <mat-sidenav-content style="padding-top:0px;" class="app-navbar">
     <mat-toolbar color="primary">
       <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
@@ -52,10 +63,13 @@
         </button>
         <mat-menu #menu="matMenu" xPosition="before">
           <button mat-menu-item *ngFor="let item of _h.topnavItems">
-            <a href="{{ '#' + item.link }}">
+            <a *ngIf="item.type !== 'external'" (click)="routeMe(item.link);">
               {{ item.tag }}
-              <img *ngIf="item.type === 'external'" src="/assets/img/externallink.svg">
-            </a> 
+            </a>
+            <a *ngIf="item.type === 'external'" opennewwindow [attr.external]="item">
+              {{ item.tag }}
+              <img src="/assets/img/externallink.svg">
+            </a>
           </button>
         </mat-menu>
       </div>

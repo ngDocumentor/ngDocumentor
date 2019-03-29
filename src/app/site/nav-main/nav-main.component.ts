@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router'
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { MatDialog } from '@angular/material';
@@ -19,6 +19,8 @@ export class NavMainComponent implements OnInit {
       map(result => result.matches)
     );
 
+  @ViewChild('drawer') drawer: any;
+
   sidebarSearchedValue: string = '';
   sidebarSearchedValueChanged: Subject<string>;
 
@@ -31,6 +33,14 @@ export class NavMainComponent implements OnInit {
     public ref: ChangeDetectorRef
   ) {
     this.sidebarSearchedValueChanged = new Subject();
+  }
+
+  routeMe(link) {
+    if (this.isHandset$) {
+      this.drawer.toggle();
+    }
+    this._h.routeMe(link);
+    return false;
   }
 
   onSearchedValueChange(val: any) {
