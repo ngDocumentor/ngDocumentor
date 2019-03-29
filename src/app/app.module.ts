@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { environment } from '../environments/environment';
 
 // Modules
+import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ServiceWorkerModule } from '@angular/service-worker';
@@ -22,6 +23,7 @@ import { NavMainComponent } from './site/nav-main/nav-main.component';
 import { RendermdComponent } from './site/rendermd/rendermd.component';
 import { SearchComponent } from './site/search/search.component';
 import { SearchResultsComponent } from './site/search-results/search-results.component';
+import { OpenLinkInNewWindowDirective } from './commons/directives/newwindow/newwindow.directive';
 
 import {
   MatMenuModule,
@@ -38,16 +40,19 @@ import {
   MatDialogModule,
 } from '@angular/material';
 
+
 @NgModule({
   declarations: [
     AppComponent,
     NavMainComponent,
     RendermdComponent,
     SearchComponent,
-    SearchResultsComponent
+    SearchResultsComponent,
+    OpenLinkInNewWindowDirective
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     HttpClientModule,
     FormsModule,
     AppRoutingModule,
