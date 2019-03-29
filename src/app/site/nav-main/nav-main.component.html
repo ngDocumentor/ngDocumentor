@@ -3,7 +3,7 @@
     [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'"
     [opened]="!(isHandset$ | async)">
     <mat-toolbar>
-      <button class="close-sidenav" type="button" *ngIf="(isHandset$ | async)" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
+      <button style="right: 24px; position: absolute;" type="button" *ngIf="(isHandset$ | async)" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
         <mat-icon aria-label="Side nav toggle icon">close</mat-icon>
       </button>
     </mat-toolbar>

@@ -277,9 +277,3 @@ code[class*="language-"], pre[class*="language-"] {
 .font-twelve {
   font-size: 12px;
 }
-.close-sidenav {
-  right: 24px; position: absolute;
-}
-.padding-top-zero {
-  padding-top: 0px
-}
