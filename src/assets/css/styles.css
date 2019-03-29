@@ -274,6 +274,12 @@ code[class*="language-"], pre[class*="language-"] {
 .sidebar-search-form {
   padding: 10px 24px 0px 24px;
 }
-.font-ten {
-  font-size: 10px;
+.font-twelve {
+  font-size: 12px;
+}
+.close-sidenav {
+  right: 24px; position: absolute;
+}
+.padding-top-zero {
+  padding-top: 0px
 }

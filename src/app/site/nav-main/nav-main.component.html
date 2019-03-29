@@ -3,14 +3,13 @@
     [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'"
     [opened]="!(isHandset$ | async)">
     <mat-toolbar>
-      <button type="button" *ngIf="(isHandset$ | async)" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
+      <button class="close-sidenav" type="button" *ngIf="(isHandset$ | async)" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
         <mat-icon aria-label="Side nav toggle icon">close</mat-icon>
       </button>
     </mat-toolbar>
-    <mat-nav-list style="padding-top: 0px">
-      <!-- <a mat-list-item routerLink="/">Ganesh Bhat</a> -->
+    <mat-nav-list class="padding-top-zero">
       <ng-container>
-        <mat-form-field *ngIf="!(isHandset$ | async)" class="sidebar-search-form font-ten">
+        <mat-form-field *ngIf="!(isHandset$ | async)" class="sidebar-search-form font-twelve">
           <input matInput [(ngModel)]="sidebarSearchedValue" (ngModelChange)="onSearchedValueChange($event)" type="text"
             placeholder="Type to Search">
         </mat-form-field>
