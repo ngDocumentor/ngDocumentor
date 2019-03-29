@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HighlightBlockComponent } from './highlight-block.component';
+import { NavMainComponent } from './nav-main.component';
 
-describe('HighlightBlockComponent', () => {
-  let component: HighlightBlockComponent;
-  let fixture: ComponentFixture<HighlightBlockComponent>;
+describe('NavMainComponent', () => {
+  let component: NavMainComponent;
+  let fixture: ComponentFixture<NavMainComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HighlightBlockComponent ]
+      declarations: [ NavMainComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(HighlightBlockComponent);
+    fixture = TestBed.createComponent(NavMainComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

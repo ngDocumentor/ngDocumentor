@@ -1,0 +1,27 @@
+<mat-card style="margin: 10px;">
+
+  <div *ngIf="!_wksrv.searchResult || !_wksrv.searchResult.length">
+    <h5>No search results</h5>
+  </div>
+  <h5 *ngIf="!!_wksrv.searchResult &&  _wksrv.searchResult.length">Search results for "{{ _h.searchValue }}" </h5>
+  <mat-card *ngFor="let item of (_wksrv.searchResult || []); let i = index;" style="margin:10px;">
+    <mat-card-content>
+      <h5 *ngIf="item.total !== 0" class="margin-bottom-five">
+        <a class="text-green ml-2" href="{{ '#' + item.url}}">
+          {{ item.url }}
+        </a>
+      </h5>
+      <span *ngIf="item.total !== 0" class="margin-top-zero">Search Result - {{ item.total }} Matches, Keys : [
+        <span>&nbsp;&nbsp;</span>
+        <span *ngFor="let obj of item.keys; let i = index;">
+          <span>{{ obj.key }}</span>:
+          <span>{{ obj.count }}</span>
+          <span>&nbsp;&nbsp;</span>
+        </span>
+        ]
+        <br class="visible-mobile" />
+        <p *ngIf="item.total !== 0" class="search-text">{{ item.body }}</p>
+      </span>
+    </mat-card-content>
+  </mat-card>
+</mat-card>

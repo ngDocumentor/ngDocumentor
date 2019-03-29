@@ -31,7 +31,9 @@ export class WorkerService {
    */
   searchResultEvent: EventEmitter<any>;
 
-  constructor() {
+  constructor(
+
+  ) {
     this.searchInit('/assets/scripts/search-worker.js');
     this.onmessage();
     this.searchResultEvent = new EventEmitter();

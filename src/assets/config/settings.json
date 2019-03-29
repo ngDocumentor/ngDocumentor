@@ -126,6 +126,7 @@
             },
             {
                 "tag": "Search Functionality",
+                "type": "external",
                 "link": "/search"
             },
             {

@@ -1,0 +1,65 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport="true"
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="!(isHandset$ | async)">
+    <mat-toolbar></mat-toolbar>
+    <mat-nav-list style="padding-top: 0px">
+      <!-- <a mat-list-item routerLink="/">Ganesh Bhat</a> -->
+      <ng-container>
+        <mat-form-field *ngIf="!(isHandset$ | async)" class="sidebar-search-form font-ten">
+          <input matInput type="text" placeholder="Type to Search & Press Enter">
+        </mat-form-field>
+      </ng-container>
+      <mat-divider *ngIf="!(isHandset$ | async)"></mat-divider>
+      <ng-container *ngFor="let item of _h.sidebarItems">
+        <mat-accordion class="nav-accordian-custom cursor-pointer" *ngIf="!!item.children">
+          <mat-expansion-panel>
+            <mat-expansion-panel-header class="font-normal">
+              <mat-panel-title>
+                {{ item.tag }}
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <p class="nav-sub-menu cursor-pointer font-normal" *ngFor="let link of item.children">
+              <a href="{{ '#' + link.link }}">
+                {{ link.tag }}
+                <img *ngIf="link.type === 'external'" src="/assets/img/externallink.svg">
+              </a>
+            </p>
+          </mat-expansion-panel>
+        </mat-accordion>
+        <p class="nav-sub-menu cursor-pointer font-normal" *ngIf="!item.children">
+          <a href="{{ '#' + item.link }}">
+            {{ item.tag }}
+            <img *ngIf="item.type === 'external'" src="/assets/img/externallink.svg">
+          </a>
+        </p>
+        <mat-divider *ngIf="!(isHandset$ | async)"></mat-divider>
+      </ng-container>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content style="padding-top:0px;"  class="app-navbar">
+    <mat-toolbar color="primary">
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span class="branding">{{ _h.brandname }}</span>
+      <div class="card-more-button float-right" style="top:10px;">
+        <button mat-icon-button (click)="searchForm()" aria-label="Search Form">
+          <mat-icon>search</mat-icon>
+        </button>
+        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+          <mat-icon>more_horiz</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu" xPosition="before">
+          <button mat-menu-item *ngFor="let item of _h.topnavItems">
+            {{ item.tag }}
+          </button>
+        </mat-menu>
+      </div>
+    </mat-toolbar>
+
+    <!-- Add Content Here -->
+    <app-search-results *ngIf="!!_h.searchResults"></app-search-results>
+    <app-rendermd *ngIf="!_h.searchResults"></app-rendermd>
+  </mat-sidenav-content>
+</mat-sidenav-container>

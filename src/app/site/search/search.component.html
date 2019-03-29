@@ -1,0 +1,14 @@
+<h1 mat-dialog-title>Search</h1>
+<div mat-dialog-content class="height-hundred">
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.search">
+  </mat-form-field>
+  <mat-radio-group aria-label="Search option" [(ngModel)]="data.type">
+    <mat-radio-button value="key">Keyword</mat-radio-button>
+    <mat-radio-button value="adv">Advanced</mat-radio-button>
+  </mat-radio-group>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button [mat-dialog-close]="{ search: data.search, type: data.type }" cdkFocusInitial>Search</button>
+</div>

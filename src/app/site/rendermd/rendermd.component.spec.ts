@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HighlightSliderComponent } from './highlight-slider.component';
+import { RendermdComponent } from './rendermd.component';
 
-describe('HighlightSliderComponent', () => {
-  let component: HighlightSliderComponent;
-  let fixture: ComponentFixture<HighlightSliderComponent>;
+describe('RendermdComponent', () => {
+  let component: RendermdComponent;
+  let fixture: ComponentFixture<RendermdComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HighlightSliderComponent ]
+      declarations: [ RendermdComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(HighlightSliderComponent);
+    fixture = TestBed.createComponent(RendermdComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

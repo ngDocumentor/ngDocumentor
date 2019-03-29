@@ -18,47 +18,63 @@ import { WorkerService } from './commons/services/worker/worker.service';
 
 // Components Directives Pipes
 import { AppComponent } from './app.component';
-import { MenubarComponent } from './modules/site/menubar/menubar.component';
-import { OpenLinkInNewWindowDirective } from './commons/directives/newwindow/newwindow.directive';
-import { RendererComponent } from './modules/site/renderer/renderer.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
-import { SearchListComponent } from './modules/site/search-list/search-list.component';
-import { HighlightBlockComponent } from './modules/site/landing/highlight-block/highlight-block.component';
-import { HighlightTextComponent } from './modules/site/landing/highlight-text/highlight-text.component';
-import { HighlightSliderComponent } from './modules/site/landing/highlight-slider/highlight-slider.component';
-import { HighlightMainComponent } from './modules/site/landing/highlight-main/highlight-main.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NavMainComponent } from './site/nav-main/nav-main.component';
+import { RendermdComponent } from './site/rendermd/rendermd.component';
+import { SearchComponent } from './site/search/search.component';
+import { SearchResultsComponent } from './site/search-results/search-results.component';
+
+import {
+  MatMenuModule,
+  MatToolbarModule,
+  MatSidenavModule,
+  MatButtonModule,
+  MatIconModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatRadioModule,
+  MatCardModule,
+  MatExpansionModule,
+  MatListModule,
+  MatDialogModule,
+} from '@angular/material';
 
 
+import { AppRoutingModule } from './app.routing.module'
 @NgModule({
   declarations: [
     AppComponent,
-    MenubarComponent,
-    OpenLinkInNewWindowDirective,
-    RendererComponent,
-    SearchListComponent,
-    HighlightBlockComponent,
-    HighlightTextComponent,
-    HighlightSliderComponent,
-    HighlightMainComponent
+    NavMainComponent,
+    RendermdComponent,
+    SearchComponent,
+    SearchResultsComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    MarkdownModule.forRoot(
-    //   {
-    //   provide: MarkedOptions,
-    //   useValue: {
-    //     sanitize: true,
-    //   },
-    // }
-    ), 
-    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
+    AppRoutingModule,
+    MarkdownModule.forRoot(), 
+    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }), BrowserAnimationsModule,
+    MatMenuModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatButtonModule,
+    MatIconModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatRadioModule,
+    MatCardModule,
+    MatExpansionModule,
+    MatListModule,
+    MatDialogModule,
   ],
   providers: [
     HttpService,
     WorkerService
   ],
+  entryComponents: [SearchComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
