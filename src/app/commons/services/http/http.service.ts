@@ -382,7 +382,7 @@ export class HttpService {
           this.searchUrlList = this.arrayUnique(this.searchUrlList);
         }
 
-        if (!!this.fileUrl.includes('?search=')) {
+        if (!!this.fileUrl.includes('?search=')) { 
           this.searchdocs(); 
         }
 
