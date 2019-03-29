@@ -18,7 +18,7 @@ export class NavMainComponent implements OnInit {
     .pipe(
       map(result => result.matches)
     );
-
+  ishandsetdevice = false;
   @ViewChild('drawer') drawer: any;
 
   sidebarSearchedValue: string = '';
@@ -35,8 +35,8 @@ export class NavMainComponent implements OnInit {
     this.sidebarSearchedValueChanged = new Subject();
   }
 
-  routeMe(link) {
-    if (this.isHandset$) {
+  routeMe(link: string) {
+    if (!!this.ishandsetdevice && !!this.drawer.opened) {
       this.drawer.toggle();
     }
     this._h.routeMe(link);
@@ -65,6 +65,10 @@ export class NavMainComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.isHandset$.subscribe(function (val){
+      this.ishandsetdevice = val;
+    }.bind(this))
+
     this.sidebarSearchedValueChanged.pipe(
       debounceTime(1000),
       distinctUntilChanged()
