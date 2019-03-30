@@ -2,7 +2,7 @@
 
 
 A simple site to serve .md files and gets you up and running in 10 minutes. 
-Pass brand name, top navigation menus, and sidebar navigation links single using .json configuration file.
+Pass brand name, top navigation menus, and sidebar navigation links configuration using .json configuration file.
 
 * Works well for any documentation site documented using .md files. Also works with HTML only sites like Github pages where you do not have access to URL Rewrites due to security reasons
 * Edit the [ngDocumentor Angular source](https://github.com/ngDocumentor/ngDocumentor), if you need to extend.
@@ -34,7 +34,7 @@ Once NodeJS and Angular CLI are installed, follow the steps below.
 ## Add your documentation
 
 
-Just add your .md file documentation/assets in the `src/assets/docs` folder. Now, create your own cofigurations for topnav, sidebar, and footer. Finally, run the server using the steps below to view your site / create your own build.
+Just add your .md file documentation/assets in the `src/assets/docs` folder. Now, create your own configurations for [topnav, sidebar, and footer](https://github.com/ganeshkbhat/ngDocumentor/blob/master/src/assets/docs/config.md). Finally, run the server using the steps below to view your site / create your own build.
 
 
 ## Running Development server
