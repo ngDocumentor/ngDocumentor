@@ -16,15 +16,15 @@ Pass brand name, top navigation menus, and sidebar navigation links single using
 
 The repository needs [NodeJS](https://nodejs.org/) and [Angular CLI](https://cli.angular.io/) to be installed. This version was developed using the Angular CLI version 7.3.x.
 
-### Install Node.js
+#### Install Node.js
 
 NodeJS installation steps using binary or source is available in the site [https://nodejs.org/en/download/](https://nodejs.org/en/download/). 
 
-### Install Angular/CLI
+#### Install Angular/CLI
 
 Once NodeJS is installed, Angular CLI can be installed using the command `npm install @angular/cli -g`. Details of steps to install Angular cli can be found in the site - [https://cli.angular.io/](https://cli.angular.io/).
 
-### Further help - Angular CLI
+#### Further help - Angular CLI
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
@@ -50,7 +50,7 @@ Note: The app will automatically reload if you change any of the source files, w
 
 Offline viewing requires keeping track of our assets in the service worker configuration file. This is done by associating file hashes in a service worker configuration file. To do this, we have to enable service workers and then creating a custom build for your distribution. 
 
-### Enable Service Worker Support / PWA application configuration
+#### Enable Service Worker Support / PWA application configuration
 
 Enabing service workers/pwa support can be done in the `.angular.json` file (within the root folder of the git repositiory). Edit the `.angular.json` section `"serviceWorker": false,` to `"serviceWorker": true,`. If this section is not there then add the key `"serviceWorker": true,` like below:
 
@@ -66,7 +66,7 @@ Enabing service workers/pwa support can be done in the `.angular.json` file (wit
 
 This will create a distribution with all your assets supported with offline viewing, when you build the project. In most cases, this setting should be true. The repository keeps this feature enabled or disabled as per need of the current version's build.
 
-### Create Service Worker Configuration
+#### Create Service Worker Configuration
 
 Now run the build command using the steps in the `Creating a Build` section. 
 
