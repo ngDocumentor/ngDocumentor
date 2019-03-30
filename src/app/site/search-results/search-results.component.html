@@ -1,8 +1,7 @@
 <mat-card style="margin: 10px;" *ngIf="_h.searchFormValue.type === 'keywords'">
   <mat-card-header>
   <div *ngIf="!_wksrv.searchResult || !_wksrv.searchResult.length">
-    <h5 *ngIf="!!_wksrv.searchResult && !_wksrv.searchResult.length">Loading results</h5>
-    <h5 *ngIf="!_wksrv.searchResult">No search results</h5>
+    <h5>No search results</h5>
   </div>
   <h5 *ngIf="!!_wksrv.searchResult &&  !!_wksrv.searchResult.length">Search results for "{{ _h.searchValue }}" : {{ _wksrv.searchResult.length }} Results </h5>
   </mat-card-header>
