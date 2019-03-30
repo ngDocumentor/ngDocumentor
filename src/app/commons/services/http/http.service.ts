@@ -10,6 +10,7 @@ import { MenuLinks } from '../../../commons/interfaces/menu/menu';
 import { SidebarLinks, SidebarParentLinks } from '../../../commons/interfaces/sidebar/sidebar';
 import { Footer } from '../../../commons/interfaces/footer/footer';
 import { Router } from '@angular/router';
+import { KeywordsSearchItems } from '../../interfaces/search/search';
 
 declare var settingsFile: string;
 
@@ -38,12 +39,12 @@ export class HttpService {
    */
   settingsFileType: string;
 
-    /**
-   *
-   *
-   * @type {string}
-   * @memberof HttpService
-   */
+  /**
+ *
+ *
+ * @type {string}
+ * @memberof HttpService
+ */
   fileUrl: string;
 
   /**
@@ -124,6 +125,14 @@ export class HttpService {
    * @type {*}
    * @memberof HttpService
    */
+  keywordsItems: KeywordsSearchItems[] = [];
+
+  /**
+   *
+   *
+   * @type {*}
+   * @memberof HttpService
+   */
   homePage: any;
 
   /**
@@ -142,8 +151,8 @@ export class HttpService {
    */
   searchValue: string = '';
 
-  searchFormValue: {search: string, type: string} = {search: '', type: 'adv'};
-  
+  searchFormValue: { search: string, type: string } = { search: '', type: 'advanced' };
+
   /**
    *
    *
@@ -211,8 +220,8 @@ export class HttpService {
   `;
 
   constructor(
-    http: HttpClient, 
-    private _mhSrv: MarkdownService, 
+    http: HttpClient,
+    private _mhSrv: MarkdownService,
     private _wksrv: WorkerService,
     public _r: Router
   ) {
@@ -311,6 +320,83 @@ export class HttpService {
 
   }
 
+  /**
+   *
+   *
+   * @param {any[]} arr
+   * @memberof HttpService
+   */
+  concatableArrayItems(arr: any[]) {
+    let resultArr = [], arrLen = arr.length;
+    for (let ki = 0; ki < arrLen; ki++) {
+      if (!!arr[ki].keywords && !!arr[ki].keywords.length) {
+        resultArr.push({
+          link: arr[ki].link,
+          keywords: arr[ki].keywords
+        })
+      } else if (!!arr[ki].children && !!arr[ki].children.length) {
+        let len = arr[ki].children.length;
+        for (let kj = 0; kj < len; kj++) {
+          if (!!arr[ki].children[kj].keywords && !!arr[ki].children[kj].keywords.length) {
+            resultArr.push({
+              link: arr[ki].children[kj].link,
+              keywords: arr[ki].children[kj].keywords
+            })
+          }
+        }
+      }
+    }
+    return resultArr;
+  }
+
+  orderKeywordResults(result: any): any {
+    let objKeys = Object.keys(result), arrKeys = [];
+    for (let i = 0; i < objKeys.length; i++) {
+      arrKeys.push({
+        link: objKeys[i],
+        keywords: result[objKeys[i]].keys,
+        weight: result[objKeys[i]].weight
+      });
+    }
+    arrKeys.sort(function (a, b) {
+      return b.weight - a.weight;
+    });
+    console.log('DEBUG: Keyword Search HTTPService array', arrKeys);
+    return arrKeys;
+  }
+
+  keywordsLookup(items, searchKey): any {
+    let results = {};
+    let searchItems = searchKey.split(' ');
+    for (let k = 0; k < searchItems.length; k++) {
+      for (let i = 0; i < items.length; i++) {
+        if (!!items[i].keywords) {
+          for (let j = 0; j < items[i].keywords.length; j++) {
+            if (items[i].keywords[j].key.toLowerCase() === searchItems[k].toLowerCase()) {
+              if (!results[items[i].link]) {
+                results[items[i].link] = {};
+                results[items[i].link].keys = [];
+                results[items[i].link].weight = 0;
+              }
+              results[items[i].link].keys.push(items[i].keywords[j]);
+              results[items[i].link].weight = results[items[i].link].weight + items[i].keywords[j].weight;
+            }
+          }
+        }
+      }
+    }
+    return results;
+  }
+
+  searchKeys(items, searchKey) {
+    let results = this.keywordsLookup(items, searchKey);
+    // this.routeMe('/?search=' + this.searchFormValue.search);
+    this._wksrv.searchResult = this.orderKeywordResults(results);
+    console.log('DEBUG: Search Data HTTPService', this._wksrv.searchResult);
+    this._wksrv.searchResultEvent.next(true);
+    this.searchResults = true;
+  }
+
   searchdocs() {
     if (this.searchFormValue.search !== '') {
       this._wksrv.postMessage({
@@ -319,7 +405,6 @@ export class HttpService {
         type: this.searchFormValue.type,
         urls: this.searchUrlList
       });
-      this.routeMe('/?search=' + this.searchFormValue.search);
     }
   }
 
@@ -374,9 +459,19 @@ export class HttpService {
           //this.landingPage = true;
         }
 
+        /* Mergelinks for search - TODO */
+
         /* Search settings */
         this.searchSettings = data.search;
-        
+        this.searchFormValue.type = data.search.type;
+        if (!this.keywordsItems.length) {
+          this.keywordsItems = this.keywordsItems.concat(this.searchSettings.meta);
+          this.keywordsItems = this.keywordsItems.concat(this.concatableArrayItems(this.topnavItems));
+          this.keywordsItems = this.keywordsItems.concat(this.concatableArrayItems(this.sidebarItems));
+          this.keywordsItems = this.keywordsItems.concat(this.concatableArrayItems(this.footerItems));
+        }
+        console.log('test keys - 2', this.keywordsItems);
+
         if (!this.searchUrlList.length) {
           this.searchUrlList = this.searchUrlList.concat(this.getLinksList(this.topnavItems));
           this.searchUrlList = this.searchUrlList.concat(this.getLinksList(this.sidebarItems));
@@ -384,11 +479,17 @@ export class HttpService {
           this.searchUrlList = this.arrayUnique(this.searchUrlList);
         }
 
-        if (!!this.fileUrl.includes('?search=')) { 
-          this.searchdocs(); 
+        if (!!this.fileUrl.includes('?search=')) {
+          if (this.searchFormValue.type === 'keywords') {
+            console.log('Test keys - 3', this.searchFormValue.search)
+            this.searchKeys(this.keywordsItems, this.searchFormValue.search);
+          } else {
+            console.log('Test keys - 4', this.searchFormValue.search)
+            this.searchdocs();
+          }
         }
 
-        this._wksrv.searchResultEvent.subscribe(function(data) {
+        this._wksrv.searchResultEvent.subscribe(function (data) {
           if (!!this._wksrv.searchResult) {
             this.searchResults = true;
           }

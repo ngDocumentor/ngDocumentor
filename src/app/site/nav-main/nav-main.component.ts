@@ -53,13 +53,14 @@ export class NavMainComponent implements OnInit {
       minHeight: '100px',
       data: { search: this._h.searchFormValue.search, type: this._h.searchFormValue.type }
     });
+    
     dialogRef.afterClosed().subscribe(val => {
       console.log('The dialog was closed', val ? val : 'closed');
       this._h.searchFormValue.search = !!val ? !!val.search ? val.search : '' : '';
-      this._h.searchFormValue.type = !!val ? !!val.type ? val.type : 'adv' : 'adv';
+      this._h.searchFormValue.type = !!val ? !!val.type ? val.type : 'advanced' : 'advanced';
       this._h.searchValue = !!val ? !!val.search ? val.search : '' : '';
       if (this._h.searchFormValue.search !== '') {
-        this._h.searchdocs();
+        this._h.routeMe('/?search=' + this._h.searchFormValue.search);
       }
     });
   }
@@ -70,14 +71,15 @@ export class NavMainComponent implements OnInit {
     }.bind(this))
 
     this.sidebarSearchedValueChanged.pipe(
-      debounceTime(1000),
+      debounceTime(500),
       distinctUntilChanged()
     ).subscribe(model => {
-      if (model !== '' && model !== this._h.searchFormValue.search) {
+      if (model !== '') {
         this._h.searchFormValue.search = model;
-        this._h.searchdocs();
+        this._h.routeMe('/?search=' + this._h.searchFormValue.search);
       }
     });
+
     this._wksrv.searchResultEvent.subscribe(function (data) {
       this._h.landingPage = false;
       this._h.fileData = null;
@@ -89,6 +91,7 @@ export class NavMainComponent implements OnInit {
     this.activatedRoute.params.subscribe(function (param) {
       // console.log('params', param['url']);
       if (!param['url']) {
+        // Check unsubscribe and memory leak
         this.activatedRoute.queryParams.subscribe(function (query) {
           if (!query['search']) {
             this._h.searchResults = false;
@@ -98,8 +101,11 @@ export class NavMainComponent implements OnInit {
             this._h.searchValue = query['search'];
             this._h.searchFormValue.search = query['search'];
             if (!!this._h.searchUrlList.length) {
-              // this._h.searchResults = true;
-              this._h.searchdocs();
+              if (this._h.searchFormValue.type === 'keywords') {
+                this._h.searchKeys(this._h.keywordsItems, this._h.searchFormValue.search);
+              } else {
+                this._h.searchdocs();
+              }
             }
           }
         }.bind(this))

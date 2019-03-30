@@ -271,7 +271,7 @@ function orderBy(arr) {
 function searchAlgoDocs(arr, str, fillers) {
   let result = {
     total: 0,
-    url: str.url,
+    link: str.url,
     charLength: str.body.split('').length,
     wordLength: str.body.split(' ').length,
     body: str.body.split('').splice(0, 200).join(''),

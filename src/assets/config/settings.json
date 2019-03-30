@@ -292,7 +292,7 @@
         "stopwords": [],
         "meta": [
             {
-                "url": "/home",
+                "link": "/home",
                 "keywords": [
                     {
                         "key": "angular",
@@ -301,7 +301,7 @@
                 ]
             },
             {
-                "url": "/intro",
+                "link": "/intro",
                 "keywords": [
                     {
                         "key": "introduction",
@@ -310,7 +310,7 @@
                 ]
             },
             {
-                "url": "/building",
+                "link": "/building",
                 "keywords": [
                     {
                         "key": "angular",

@@ -18,10 +18,10 @@ export class WorkerService {
   /**
    *
    *
-   * @type {(SearchResult[] | null)}
+   * @type {(any[] | null)}
    * @memberof WorkerService
    */
-  searchResult: SearchResult[] | null = null;
+  searchResult: any[] | null = null;
 
   /**
    *
