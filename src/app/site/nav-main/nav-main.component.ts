@@ -60,9 +60,9 @@ export class NavMainComponent implements OnInit {
       if(this._h.searchFormValue.search === val.search) {
         /**
          * Buggy code:
-         * When the search value does not change then routr does not work
-         * Adding a space to get the router working
-         * Alternatively, trigger the search's from here directly
+         * When the search value does not change then routr does not work.
+         * Adding a space to get the router working.
+         * Alternatively, trigger the search's from here directly.
          */
         val.search = val.search + ' ';
       }
