@@ -1,5 +1,5 @@
-import { Injectable, EventEmitter, Inject, ApplicationRef, NgZone } from '@angular/core';
-import { HttpClient, HttpRequest, HttpResponse, HttpHeaders } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MarkdownService } from 'ngx-markdown';
 import { map } from 'rxjs/operators';
 import { WorkerService } from '../worker/worker.service';
@@ -223,8 +223,7 @@ export class HttpService {
     http: HttpClient,
     private _mhSrv: MarkdownService,
     private _wksrv: WorkerService,
-    public _r: Router,
-    public zone: NgZone
+    public _r: Router
   ) {
     this.http = http;
   }
@@ -492,11 +491,6 @@ export class HttpService {
 
         this._wksrv.searchResultEvent.subscribe(function (data) {
           if (!!this._wksrv.searchResult) {
-            if (this.searchResults === true) {
-              this.zone.run(() => {
-                console.log('force update the screen');
-              });
-            }
             this.searchResults = true;
           }
         }.bind(this))

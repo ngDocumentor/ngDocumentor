@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef, ViewChild, ElementRef, NgZone } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router'
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { MatDialog } from '@angular/material';
@@ -30,8 +30,7 @@ export class NavMainComponent implements OnInit {
     public _wksrv: WorkerService,
     public activatedRoute: ActivatedRoute,
     public dialog: MatDialog,
-    public ref: ChangeDetectorRef,
-    public zone: NgZone
+    public ref: ChangeDetectorRef
   ) {
     this.sidebarSearchedValueChanged = new Subject();
   }
@@ -54,22 +53,17 @@ export class NavMainComponent implements OnInit {
       minHeight: '100px',
       data: { search: this._h.searchFormValue.search, type: this._h.searchFormValue.type }
     });
-    
-    dialogRef.afterClosed().subscribe(function(val) {
+
+    dialogRef.afterClosed().subscribe(function (val) {
       // console.log('The dialog was closed', val ? val : 'closed');
-      if(this._h.searchFormValue.search === val.search) {
-        /**
-         * Buggy code:
-         * When the search value does not change then routr does not work.
-         * Adding a space to get the router working.
-         * Alternatively, trigger the search's from here directly.
-         */
+      if (this._h.searchFormValue.search === val.search) {
         val.search = val.search + ' ';
+        this._h.searchResults = false;
       }
       this._h.searchFormValue.search = !!val ? !!val.search ? val.search : '' : '';
       this._h.searchFormValue.type = !!val ? !!val.type ? val.type : 'advanced' : 'advanced';
       this._h.searchValue = !!val ? !!val.search ? val.search : '' : '';
-      
+
       if (this._h.searchFormValue.search !== '') {
         this._h.routeMe('/?search=' + this._h.searchFormValue.search);
       }
@@ -77,7 +71,7 @@ export class NavMainComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.isHandset$.subscribe(function (val){
+    this.isHandset$.subscribe(function (val) {
       this.ishandsetdevice = val;
     }.bind(this))
 
