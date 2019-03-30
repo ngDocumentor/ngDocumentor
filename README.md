@@ -2,7 +2,7 @@
 
 
 A simple site to serve .md files and gets you up and running in 10 minutes. 
-Pass brand name, top navigation menus, and sidebar navigation links configuration using .json configuration file.
+Pass brand name, top navigation menus, and sidebar navigation links settings using .json configuration file.
 
 * Works well for any documentation site documented using .md files. Also works with HTML only sites like Github pages where you do not have access to URL Rewrites due to security reasons
 * Edit the [ngDocumentor Angular source](https://github.com/ngDocumentor/ngDocumentor), if you need to extend.
