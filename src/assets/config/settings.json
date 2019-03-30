@@ -126,7 +126,7 @@
             },
             {
                 "tag": "Search Functionality",
-                "type": "external",
+                "type": "internal",
                 "link": "/search"
             },
             {
@@ -180,7 +180,6 @@
         "copyright": {
             "tag": " { ngDocumentor } ",
             "link": "/home",
-            "type": "external",
             "text": "ngDocumentor is a simple markdown rendering site framework that works even on HTML only hosts like github pages"
         },
         "nav": [
