@@ -28,71 +28,25 @@ This site framework allows you to work with a single page application like featu
 ## Design
 
 
-The site framework is basically a simple angular component with a few services that allow you to display markdown content. The creation of this same component could have been achieved by use of vuejs, preact, or react. I chose Angular framework to due to ease of use of some patterns and some functionality that comes out of the box with Angular. However, the site does not use the default angular router due to need of support URL rewrite in the server, which is not allowed by github and lots of github like hosts.
+The site framework is basically a simple angular component with a few services that allow you to display markdown content. The creation of this same component could have been achieved by use of vuejs, preact, or react. I chose Angular framework to due to ease of use of some patterns and some functionality that comes out of the box with Angular. The site uses the default angular router, using HashLocationStrategy, to avoid the need of support URL rewrite in the server, which is not allowed by github and lots of github like hosts.
 
 
-The page / view transition is, however, mocked by changing the content display variables for the markdown rendering component. The data / content needed is fetched using a XHR get request to the github pages host and a URL mock change is associated to this. A link click triggers a XHR request, assigns the content of the XHR response to the markdown rendering component. You can call it a minimalistic or barebone router that basically uses / captures a book mark as a pointer to reference a content.
+The page transition or link click triggers a XHR request, which assigns the content of the XHR response to the markdown rendering component.
 
 
-There was another challenge. The first versions release did not support a link from within one markdown file to reference another markdown file. This was because the markdown rendering component did not add a click handler for any links within the markdown converted HTML. A tweak / alteration to the markdown link definition allowed to associate the link change to a hash change. Basically, a definition of internal markdown link `[someurl](#/someurl)` instead of this `[someurl](/someurl)` allowed changing the hash instead of page. This allowed capture of the hash change using a  eventlistener that could allow triggering of a XHR request function within a markdown file link based on hash value. This is a dirty hack but I am open to changing this, if someone can think of a better way.
+There was another challenge. The first versions release did not support a link from within one markdown file to reference another markdown file. This was because the markdown rendering component did not add a click handler for any links within the markdown converted HTML. A tweak / alteration to the markdown link definition allows to associate the link change to a hash change. Basically, a definition of internal markdown link `[someurl](#/someurl)` instead of this `[someurl](/someurl)` allowed internal page linking correctly.
 
 
-On the other side, the links configuration (top, sidebar, footer) can all be specified with just .json configuration file.
-
-
-## Structure
-
-
-Here is a simple view of the structure/functioning of the application:
-
-
-```html
-
-<html>
-
-<body>
-    <application>
-        <!-- Assignedvalue variable coming from application component -->
-        <!-- Hash Value change listener -->
-        <topnav>
-                <links-notcustomcomponent>
-                    <!-- Trigger XHR on click and assign content to Assignedvalue -->
-                </links-notcustomcomponent>
-        </topnav>
-
-        <sidebar>
-                <links-notcustomcomponent>
-                    <!-- Trigger XHR on click and assign content to Assignedvalue -->
-                </links-notcustomcomponent>
-        </sidebar>
-
-        <markdown-render [htmlcontent]="Assignedvalue">
-                <markdownlinkshashbased-notcustomcomponent>
-                    <!-- Trigger XHR on hash change and assign content to Assignedvalue -->
-                </markdownlinkshashbased-notcustomcomponent>
-        </markdown-render>
-
-        <footer>
-                <links-notcustomcomponent>
-                    <!-- Trigger XHR on click and assign content to Assignedvalue -->
-                </links-notcustomcomponent>
-        </footer>
-    </application>
-</body>
-
-</html>
-
-
-```
+On the other side, the links configuration (top, sidebar, footer) can all be specified with just `/link` .json configuration file.
 
 
 ## Offline Support
 
 
-The application has PWA / Service workers support enabled and allows for basic offline viewing of the site. 
+The application has PWA / Service workers support enabled and allows for basic offline viewing of the site. [Read more](#/building) about it here.
 
 
 ## Contribution / Requests / Issues
 
 
-Note: This was a weekend project. If you have ideas, feature requests, improvements in application / code, removing code smell, and/or find bugs, you are welcome to raise a [github issue](https://github.com/ngDocumentor/ngDocumentor/issues) or a [pull request](https://github.com/ngDocumentor/ngDocumentor/pulls).
+Note: This was a weekend project. If you have ideas, feature requests, improvements in application / code, and/or find bugs, you are welcome to raise a [github issue](https://github.com/ngDocumentor/ngDocumentor/issues) or a [pull request](https://github.com/ngDocumentor/ngDocumentor/pulls).

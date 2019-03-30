@@ -33,16 +33,20 @@
 * The key `nav` is an array of link definitions with two internal key definitions `tag` and `link`. The key `tag` is the link text that will be displayed in the sidebar as a link. The key `link` is the link url to open if the tag / link text is clicked in the sidebar. You will notice that this link object structure is common accross all config `.json` files.
 
 
-* There is another optional key definition - `type`. It expects only one value - `external`. All other values or even the existance of key is ignored. The {Key:Value} `{"type":"external"}` denotes that it is an external site url (complete with http:// path). These links will open the specified `link` url in a new tab window. 
+* There is another optional key definition - `type` for all the links object definition. It expects only one value - `external`. The {Key:Value} `{"type":"external"}` denotes that it is an external site url (complete with http:// path). These links will open the specified `link` url in a new tab window.
+* All other values or even the existance of key is ignored if it is not external.
 
 
-* The default link behaviour is You can also specify `{"type":"internal"}` for readability's sake but it is not needed and will be ignored. Any `type` key definition without the value `'external'` will be ignored and default link behaviour is applied.
+* The default link behaviour (`type` key) is `'internal'`, which means it opens the URL in the same browser window. You do not have to specify it.
 
 
 ```json
 
-{ "tag": "Introduction", "type": "external", "link": "https://github.com/ngDocumentor/ngDocumentor" }
-
+{ 
+    "tag": "Introduction",
+    "type": "external",
+    "link": "https://github.com/ngDocumentor/ngDocumentor" 
+}
 ```
 
 

@@ -59,16 +59,20 @@
 * Lets look at the second one with the `children` definition. The key `tag` is the link group's display text (Accordion Heading Text). It specifies a `children` key which defines the children / sub-menu item definitions which can be opened as a dropdown in the sidebar. Have a look at the sidebar of this site. This `children` key can define, again, the same links object with a `tag` and a `link`. Add any number of children link object structures for any `tag` in the sidebar. There is no restriction on the number of links.
 
 
-* There is another optional key definition - `type` for all the links object definition. It expects only one value - `external`. All other values or even the existance of key is ignored. The {Key:Value} `{"type":"external"}` denotes that it is an external site url (complete with `http://` path). These links will open the specified `link` url in a new tab window. 
+* There is another optional key definition - `type` for all the links object definition. It expects only one value - `external`. The {Key:Value} `{"type":"external"}` denotes that it is an external site url (complete with http:// path). These links will open the specified `link` url in a new tab window.
+* All other values or even the existance of key is ignored if it is not external.
 
 
-* The default link behaviour (`type` key) is `'internal'`, which means it opens the URL in the same window. You can also specify `{"type":"internal"}` for readability's sake but it is not needed and will be ignored. Any `type` key definition without the value `'external'` will be ignored and default link behaviour is applied.
+* The default link behaviour (`type` key) is `'internal'`, which means it opens the URL in the same browser window. You do not have to specify it.
 
 
 ```json
 
-{ "tag": "Introduction", "type": "external", "link": "https://github.com/ngDocumentor/ngDocumentor" }
-
+{ 
+    "tag": "Introduction",
+    "type": "external",
+    "link": "https://github.com/ngDocumentor/ngDocumentor" 
+}
 ```
 
 
