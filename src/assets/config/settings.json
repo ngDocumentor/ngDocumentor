@@ -288,7 +288,7 @@
         ]
     },
     "search": {
-        "type": "keywords",
+        "type": "advanced",
         "stopwords": [],
         "meta": [
             {
