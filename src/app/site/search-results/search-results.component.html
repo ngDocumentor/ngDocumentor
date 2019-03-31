@@ -42,7 +42,7 @@
       </span>
     </mat-card-header>
     <mat-card-content>
-      <span *ngIf="item.total !== 0" class="margin-top-zero">Search Result - {{ item.total }} Matches, Keys : [
+      <span *ngIf="item.total !== 0" class="margin-top-zero">Search Result - {{ item.total }} Matches, Full phrase match - {{ item.fullphrase }}, Keys : [
         <span>&nbsp;&nbsp;</span>
         <span *ngFor="let obj of item.keys; let i = index;">
           <span *ngIf="obj.key !== ''">{{ obj.key }}</span>:

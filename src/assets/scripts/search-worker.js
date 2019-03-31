@@ -216,14 +216,43 @@ function checkFiller(arr, str) {
   return str;
 }
 
+
+
+function orderFn(first, second) {
+  function countZeros(item) {
+    if (item.count === 0) {
+      return item;
+    }
+  }
+  if ((second.keys.length - first.keys.length) > 0) {
+    return 1;
+  } else if ((second.keys.length - first.keys.length) === 0) {
+
+    let f = first.keys.filter(countZeros);
+    let s = second.keys.filter(countZeros);
+
+    if (f.length > s.length) { return 1; }
+    else if (f.length < s.length) { return -1; }
+    else { return second.total - first.total }
+
+  } else {
+    return -1;
+  }
+}
+
 /**
  * Orders the search result based on total
  * 
  * TODO: 
  * T1: Make this better by giving weightages, 
- * T2 (Done): All items having counts will score more than other not having them in one or few
- * T3: Add language fillers and score them lesser only in a phrase
+ * T2 (Done): 
+ * All items having full phrase match will have more priority
+ * All items having more matching keys will be prioritized next
+ * All items will be checked for totals of key occurance to be prioritized next
+ * 
+ * T3: Add language fillers and score them lesser only when in a search phrase
  * T4: Partial Word Search and full word search in document scoring with full word weighing more (how much? what ratio)
+ * T4b: Check correlation and do a chisquare test?
  * T5: Now copy this logic into a function
  *
  * @param {*} arr - Searched Array to be sorted as per above logic
@@ -231,27 +260,14 @@ function checkFiller(arr, str) {
  */
 function orderBy(arr) {
   return arr.sort(function (first, second) {
-    if (first.total == second.total) {
-      function countZeros(item) {
-        if (item.count === 0) {
-          return item;
-        }
-      }
-      let f = first.keys.filter(countZeros);
-      let s = second.keys.filter(countZeros);
-      if (f.length > s.length) {
-        return 1;
-      } else if (f.length < s.length) {
-        return -1;
-      } else if (f.length === s.length) {
-        return 0;
-      }
-    } else if (first.total < second.total) {
+    if ((!!second.fullphrase && !!first.fullphrase) || (!second.fullphrase && !first.fullphrase)) {
+      return orderFn(first, second);
+    } else if (!!second.fullphrase && !first.fullphrase) {
       return 1;
-    } else {
+    } else if (!!first.fullphrase && !second.fullphrase) {
       return -1;
     }
-  }).filter(function (item) {
+  }.bind(orderFn)).filter(function (item) {
     if (item.total !== 0) {
       return item;
     }
@@ -271,12 +287,17 @@ function orderBy(arr) {
 function searchAlgoDocs(arr, str, fillers) {
   let result = {
     total: 0,
+    fullphrase: false,
     link: str.url,
     charLength: str.body.split('').length,
     wordLength: str.body.split(' ').length,
     body: str.body.split('').splice(0, 200).join(''),
     keys: []
   };
+  let phraseCheck = str.body.toLowerCase().split((arr.join(' ').toLowerCase()));
+  if (phraseCheck.length > 1) {
+    result.fullphrase = true;
+  }
   for (let i = 0; i < arr.length; i++) {
     let splitter = (str.body.toLowerCase().split(arr[i].toLowerCase()).length - 1),
       key = arr[i];
