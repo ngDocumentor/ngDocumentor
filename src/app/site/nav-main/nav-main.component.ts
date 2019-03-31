@@ -67,10 +67,14 @@ export class NavMainComponent implements OnInit {
       if (this._h.searchFormValue.search === val.search && this._h.searchFormValue.search !== '') {
         searchVal = !!val ? !!val.search ? val.search : '' : '';
       }
+
       /* Bug rectify code : 1:End */
+      
       this._h.searchFormValue.search = !!val ? !!val.search ? val.search : '' : '';
       this._h.searchFormValue.type = !!val ? !!val.type ? val.type : 'advanced' : 'advanced';
       this._h.searchValue = !!val ? !!val.search ? val.search : '' : '';
+      this.sidebarSearchedValue = this._h.searchFormValue.search;
+
       /* Bug rectify code : 1:Start */
       if (this._h.searchFormValue.search === searchVal && this._h.searchFormValue.search !== '') {
         this._h.routeMe('/?search=' + this._h.searchFormValue.search + '&q=' + Math.random());
@@ -92,7 +96,6 @@ export class NavMainComponent implements OnInit {
     ).subscribe(function(model) {
       if (model !== '') {
         this._h.searchFormValue.search = model;
-        // this.sidebarSearchedValue = '';
         this._h.routeMe('/?search=' + this._h.searchFormValue.search);
       }
     }.bind(this));
@@ -106,25 +109,23 @@ export class NavMainComponent implements OnInit {
     }.bind(this));
 
     this.activatedRoute.params.subscribe(function (param) {
-      this.sidebarSearchedValue = '';
-      // console.log('params', param['url']);
       if (!param['url']) {
         // Check unsubscribe and memory leak
         this.activatedRoute.queryParams.subscribe(function (query) {
-          this.sidebarSearchedValue = '';
           if (!query['search']) {
             this._h.searchResults = false;
             this._h.getUrl('home');
           } else {
-            // console.log('query',query['search']);
             this._h.searchValue = query['search'];
             this._h.searchFormValue.search = query['search'];
+            this.sidebarSearchedValue = query['search'];
+
             if (!!this._h.searchUrlList.length) {
               if (this._h.searchFormValue.type === 'keywords') {
                 this._h.searchKeys(this._h.keywordsItems, this._h.searchFormValue.search);
               } else {
                 this._h.searchdocs();
-              }
+              } 
             }
           }
         }.bind(this))
