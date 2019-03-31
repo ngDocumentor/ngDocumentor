@@ -56,15 +56,26 @@ export class NavMainComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(function (val) {
       // console.log('The dialog was closed', val ? val : 'closed');
-      if (this._h.searchFormValue.search === val.search) {
-        val.search = val.search + ' ';
-        this._h.searchResults = false;
+      /*
+      * Bug rectify code: 1: Start
+      * If the search string is the same and the type is different then
+      * the router does not re-route due to browser behaviour
+      * Solution:
+      * To resolve this, a random number is added to the query string to re-route
+      */
+      let searchVal = '';
+      if (this._h.searchFormValue.search === val.search && this._h.searchFormValue.search !== '') {
+        searchVal = !!val ? !!val.search ? val.search : '' : '';
       }
+      /* Bug rectify code : 1:End */
       this._h.searchFormValue.search = !!val ? !!val.search ? val.search : '' : '';
       this._h.searchFormValue.type = !!val ? !!val.type ? val.type : 'advanced' : 'advanced';
       this._h.searchValue = !!val ? !!val.search ? val.search : '' : '';
-
-      if (this._h.searchFormValue.search !== '') {
+      /* Bug rectify code : 1:Start */
+      if (this._h.searchFormValue.search === searchVal && this._h.searchFormValue.search !== '') {
+        this._h.routeMe('/?search=' + this._h.searchFormValue.search + '&q=' + Math.random());
+        /* Bug rectify code : 1:End */
+      } else if (this._h.searchFormValue.search !== '') {
         this._h.routeMe('/?search=' + this._h.searchFormValue.search);
       }
     }.bind(this));
@@ -78,12 +89,13 @@ export class NavMainComponent implements OnInit {
     this.sidebarSearchedValueChanged.pipe(
       debounceTime(500),
       distinctUntilChanged()
-    ).subscribe(model => {
+    ).subscribe(function(model) {
       if (model !== '') {
         this._h.searchFormValue.search = model;
+        // this.sidebarSearchedValue = '';
         this._h.routeMe('/?search=' + this._h.searchFormValue.search);
       }
-    });
+    }.bind(this));
 
     this._wksrv.searchResultEvent.subscribe(function (data) {
       this._h.landingPage = false;
@@ -94,10 +106,12 @@ export class NavMainComponent implements OnInit {
     }.bind(this));
 
     this.activatedRoute.params.subscribe(function (param) {
+      this.sidebarSearchedValue = '';
       // console.log('params', param['url']);
       if (!param['url']) {
         // Check unsubscribe and memory leak
         this.activatedRoute.queryParams.subscribe(function (query) {
+          this.sidebarSearchedValue = '';
           if (!query['search']) {
             this._h.searchResults = false;
             this._h.getUrl('home');

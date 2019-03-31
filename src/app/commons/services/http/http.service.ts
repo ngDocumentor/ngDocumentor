@@ -459,9 +459,8 @@ export class HttpService {
           //this.landingPage = true;
         }
 
-        /* Mergelinks for search - TODO */
+        /* Mergelinks for search and Search settings */
 
-        /* Search settings */
         this.searchSettings = data.search;
         this.searchFormValue.type = data.search.type;
         if (!this.keywordsItems.length) {
@@ -470,7 +469,7 @@ export class HttpService {
           this.keywordsItems = this.keywordsItems.concat(this.concatableArrayItems(this.sidebarItems));
           this.keywordsItems = this.keywordsItems.concat(this.concatableArrayItems(this.footerItems));
         }
-        console.log('test keys - 2', this.keywordsItems);
+        // console.log('test keys - 2', this.keywordsItems);
 
         if (!this.searchUrlList.length) {
           this.searchUrlList = this.searchUrlList.concat(this.getLinksList(this.topnavItems));
@@ -481,10 +480,10 @@ export class HttpService {
 
         if (!!this.fileUrl.includes('?search=')) {
           if (this.searchFormValue.type === 'keywords') {
-            console.log('Test keys - 3', this.searchFormValue.search)
+            // console.log('Test keys - 3', this.searchFormValue.search);
             this.searchKeys(this.keywordsItems, this.searchFormValue.search);
           } else {
-            console.log('Test keys - 4', this.searchFormValue.search)
+            // console.log('Test keys - 4', this.searchFormValue.search);
             this.searchdocs();
           }
         }
