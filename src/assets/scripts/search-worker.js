@@ -217,8 +217,16 @@ function checkFiller(arr, str) {
 }
 
 
-
+/**
+ * OrderFn is used for the sort function to order the results array
+ * first sort based on keys matched, then on total
+ *
+ * @param {*} first
+ * @param {*} second
+ * @returns {boolean}
+ */
 function orderFn(first, second) {
+  
   function countZeros(item) {
     if (item.count === 0) {
       return item;
