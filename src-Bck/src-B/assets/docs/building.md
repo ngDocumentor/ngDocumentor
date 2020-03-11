@@ -1,22 +1,10 @@
-# ngDocumentor
-
-
-A simple site to serve .md files and gets you up and running in 10 minutes. 
-Pass brand name, top navigation menus, and sidebar navigation links settings using .json configuration file.
-
-* Works well for any documentation site documented using .md files. Also works with HTML only sites like Github pages where you do not have access to URL Rewrites due to security reasons
-* Edit the [ngDocumentor Angular source](https://github.com/ngDocumentor/ngDocumentor), if you need to extend.
-* Documentation available in this site.
-* This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.x.
-* Has Angular Service Workers support capability (basic PWA support). You will have to use the [developement repository](https://github.com/ngDocumentor/ngDocumentor) to achieve that. This feature is disabled by default (service worker config file generation needed).
-
 
 ## Installation and Usage
 
 
-The repository needs [NodeJS](https://nodejs.org/) and [Angular CLI](https://cli.angular.io/) to be installed. This version was developed using the Angular CLI version 9.0.x.
+The repository needs [NodeJS](https://nodejs.org/) and [Angular CLI](https://cli.angular.io/) to be installed. This version was developed using the Angular CLI version 7.3.x.
 
-#### Install Node.js 
+#### Install Node.js
 
 NodeJS installation steps using binary or source is available in the site [https://nodejs.org/en/download/](https://nodejs.org/en/download/). 
 
@@ -40,7 +28,7 @@ Just add your .md file documentation/assets in the `src/assets/docs` folder. Now
 ## Running Development server
 
 
-Run the command `ng serve --open` in the root of the project folder to run your dev server. Navigate to `http://localhost:4200/` in the browser. 
+Run the command `ng serve` in the root of the project folder to run your dev server. Navigate to `http://localhost:4200/` in the browser. 
 
 Note: The app will automatically reload if you change any of the source files, when the development server is running.
 
@@ -57,10 +45,10 @@ Enabing service workers/pwa support can be done in the `.angular.json` file (wit
 
 ```json
 
-      "tsconfig": "tsconfig.app.json",
-      "testTsconfig": "tsconfig.spec.json",
-      "serviceWorker": true,
-      "prefix": "app",
+      "vendorChunk": false,
+      "buildOptimizer": true,
+      "serviceWorker": true, // Add key 'serviceWorker' with value 'true' for PWA support
+      "ngswConfigPath": "ngsw-config.json",
 
 ```
 
@@ -74,19 +62,15 @@ Now run the build command using the steps in the `Creating a Build` section.
 ## Creating a Build
 
 
-After enabling service worker configuration in `angular.json`, run `ng build --prod` from project's root folder in the command prompt. The built artifacts will be stored in the `dist/` directory. Use can use this build folder (your site build) to push to production.
+After enabling service worker configuration in `angular.json`, run `ng build --prod --sourcemaps=false --base-href='/' --vendor-chunk=true --extract-css=true --delete-output-path=true --aot --build-optimizer=true` from project's root folder in the command prompt. 
 
 
-## TODO / Plans
+```sh
+
+ng build --prod --source-map=false --base-href='/' --vendor-chunk=true --extract-css=true --delete-output-path=true --aot --build-optimizer=true
+
+``` 
 
 
-* ADD Keyword Search Capability for site or .md files without loss in performance P2
-* REDUCE code size. P4 (Create beta with Ivy renderer P2, Change ng/cli to latest version P3)
-* ~ADD Tests P2~ Consider later
-* ~Move to Observable based routing P2~ Moved to Angular hash based routing.
-* ~Check possibility of removing `#/` for .md file's internal linking inside ngDocumentor~ Not possible without event based or single component system, which will be complicated.
-* Bookmarks functionality - P4
-* Add settings support using .yaml, .xml P4
-* Add support for .rst and other documentation file types P4
-
+The built artifacts will be stored in the `dist/` directory. Use can use this build folder (your site build) to push to production.
 
