@@ -26,7 +26,7 @@
             ],
             "styles": [
               // "src/assets/css/indigo-pink.css",
-              "src/custom-theme.scss",
+              // "src/custom-theme.scss",
               // "src/assets/css/styles.css"
             ],
             "scripts": []
