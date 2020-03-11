@@ -25,9 +25,9 @@
               "src/manifest.webmanifest"
             ],
             "styles": [
-              "indigo-pink.css",
+              "src/assets/css/indigo-pink.css",
               "src/custom-theme.scss",
-              "src/styles.css"
+              "src/assets/css/styles.css"
             ],
             "scripts": []
           },
