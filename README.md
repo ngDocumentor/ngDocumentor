@@ -40,7 +40,7 @@ Just add your .md file documentation/assets in the `src/assets/docs` folder. Now
 ## Running Development server
 
 
-Run the command `ng serve` in the root of the project folder to run your dev server. Navigate to `http://localhost:4200/` in the browser. 
+Run the command `ng serve --open` in the root of the project folder to run your dev server. Navigate to `http://localhost:4200/` in the browser. 
 
 Note: The app will automatically reload if you change any of the source files, when the development server is running.
 
