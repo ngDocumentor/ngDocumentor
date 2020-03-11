@@ -6,7 +6,8 @@ import { HttpService } from './commons/services/http/http.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
+  title = 'ngDocumentor';
 
   /**
    *
@@ -34,5 +35,4 @@ export class AppComponent implements OnInit {
     this._h.getSettings(this._h.settingsSource);
     
   }
-
 }
