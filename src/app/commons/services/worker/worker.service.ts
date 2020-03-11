@@ -18,10 +18,10 @@ export class WorkerService {
   /**
    *
    *
-   * @type {(SearchResult[] | null)}
+   * @type {(any[] | null)}
    * @memberof WorkerService
    */
-  searchResult: SearchResult[] | null = null;
+  searchResult: any[] | null = null;
 
   /**
    *
@@ -31,7 +31,9 @@ export class WorkerService {
    */
   searchResultEvent: EventEmitter<any>;
 
-  constructor() {
+  constructor(
+
+  ) {
     this.searchInit('/assets/scripts/search-worker.js');
     this.onmessage();
     this.searchResultEvent = new EventEmitter();

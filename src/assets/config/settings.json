@@ -126,6 +126,7 @@
             },
             {
                 "tag": "Search Functionality",
+                "type": "internal",
                 "link": "/search"
             },
             {
@@ -179,7 +180,6 @@
         "copyright": {
             "tag": " { ngDocumentor } ",
             "link": "/home",
-            "type": "external",
             "text": "ngDocumentor is a simple markdown rendering site framework that works even on HTML only hosts like github pages"
         },
         "nav": [
@@ -288,11 +288,11 @@
         ]
     },
     "search": {
-        "type": "keywords",
+        "type": "advanced",
         "stopwords": [],
         "meta": [
             {
-                "url": "/home",
+                "link": "/home",
                 "keywords": [
                     {
                         "key": "angular",
@@ -301,7 +301,7 @@
                 ]
             },
             {
-                "url": "/intro",
+                "link": "/intro",
                 "keywords": [
                     {
                         "key": "introduction",
@@ -310,7 +310,7 @@
                 ]
             },
             {
-                "url": "/building",
+                "link": "/building",
                 "keywords": [
                     {
                         "key": "angular",
