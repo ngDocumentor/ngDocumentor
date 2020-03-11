@@ -7,7 +7,7 @@ Pass brand name, top navigation menus, and sidebar navigation links settings usi
 * Works well for any documentation site documented using .md files. Also works with HTML only sites like Github pages where you do not have access to URL Rewrites due to security reasons
 * Edit the [ngDocumentor Angular source](https://github.com/ngDocumentor/ngDocumentor), if you need to extend.
 * Documentation available in this site.
-* This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.x.
+* This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.x.
 * Has Angular Service Workers support capability (basic PWA support). You will have to use the [developement repository](https://github.com/ngDocumentor/ngDocumentor) to achieve that. This feature is disabled by default (service worker config file generation needed).
 
 
@@ -74,7 +74,7 @@ Now run the build command using the steps in the `Creating a Build` section.
 ## Creating a Build
 
 
-After enabling service worker configuration in `angular.json`, run `ng build --prod --sourcemaps=false --base-href='/' --vendor-chunk=true --extract-css=true --delete-output-path=true --aot --build-optimizer=true` from project's root folder in the command prompt. The built artifacts will be stored in the `dist/` directory. Use can use this build folder (your site build) to push to production.
+After enabling service worker configuration in `angular.json`, run `ng build --prod` from project's root folder in the command prompt. The built artifacts will be stored in the `dist/` directory. Use can use this build folder (your site build) to push to production.
 
 
 ## TODO / Plans
