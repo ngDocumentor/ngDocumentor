@@ -14,7 +14,7 @@ Pass brand name, top navigation menus, and sidebar navigation links settings usi
 ## Installation and Usage
 
 
-The repository needs [NodeJS](https://nodejs.org/) and [Angular CLI](https://cli.angular.io/) to be installed. This version was developed using the Angular CLI version 7.3.x.
+The repository needs [NodeJS](https://nodejs.org/) and [Angular CLI](https://cli.angular.io/) to be installed. This version was developed using the Angular CLI version 9.0.x.
 
 #### Install Node.js
 
