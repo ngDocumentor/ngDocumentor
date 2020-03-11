@@ -25,6 +25,7 @@
               "src/manifest.webmanifest"
             ],
             "styles": [
+              "indigo-pink.css",
               "src/custom-theme.scss",
               "src/styles.css"
             ],
